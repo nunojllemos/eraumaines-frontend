@@ -14,7 +14,11 @@ export default function Home() {
             <main>
                 <Grid>
                     <div className='relative col-span-6'>
-                        <Image src='https://source.unsplash.com/random' alt='' fill={true} className='!h-auto' />
+                        <Image src='https://source.unsplash.com/random' alt='' fill={true} className="!h-auto" />
+
+
+
+                        
                     </div>
                     <div className='col-span-6'>
                         <Image src='https://source.unsplash.com/random/?kids' alt='' width={400} height={300} fill={false} />
