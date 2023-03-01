@@ -5,7 +5,7 @@ import { Logo } from "@/public/assets/icons/icons";
 function Header() {
   return (
     <header className="w-full h-auto pt-5 flex justify-between">
-      <div className="z-1 realtive">
+      <div className="">
         <Logo />
       </div>
       <Nav />

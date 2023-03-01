@@ -13,7 +13,7 @@ function Nav() {
 
   return (
     <nav className="h-auto w-auto text-white text-45 flex ">
-      <div className="z-1 relative">
+      <div className="z-1 ">
         <div className=" 1024:hidden">
           {/* retirar z-1 e meter no CloseMenu quando aberto menu */}
           <OpenMenu />
