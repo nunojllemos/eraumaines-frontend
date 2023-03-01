@@ -19,7 +19,8 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       white: "#fff",
-      black: "#000",
+      black: "#000", 
+      primary: "#1a1a1a" 
     },
 
     fontSize: {
@@ -30,7 +31,9 @@ module.exports = {
       14: "1.4rem",
       15: "1.5rem",
       16: "1.6rem",
+      17: "1.7rem",
       18: "1.8rem",
+      19: "1.9rem",
       20: "2rem",
       22: "2.2rem",
       24: "2.4rem",
