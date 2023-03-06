@@ -1,15 +1,16 @@
 import React from "react";
-import Nav from "./nav";
-import { Logo } from "@/public/assets/icons/icons";
+import Nav from "./Nav";
+import { Logo } from "@/components/atoms/Icons";
+import Container from "../ui/container";
 
 function Header() {
   return (
-    <header className="w-full h-auto pt-5 flex justify-between">
-      <div className="">
+    <Container>
+      <header className="w-full h-auto pt-5 flex justify-between">
         <Logo />
-      </div>
-      <Nav />
-    </header>
+        <Nav />
+      </header>
+    </Container>
   );
 }
 

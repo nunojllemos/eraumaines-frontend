@@ -4,9 +4,9 @@ import {
   OpenMenu,
   Instagram,
   Facebook,
-} from "@/public/assets/icons/icons";
+} from "@/components/atoms/Icons";
 
-import { Envelope } from "@/public/assets/icons/icons";
+import { Envelope } from "@/components/atoms/Icons";
 
 function Nav() {
   const urls = ["nós", "histórias", "diário"];
@@ -31,18 +31,16 @@ function Nav() {
           );
         })}
         <li className="flex justify-center py-2.5">
-          <button className="flex w-44 justify-center border-none rounded-md text-45 ">
+          <button className="flex justify-center border-none rounded-md text-45 p-5">
             <p>Olá</p>
-            <div className="picture ml-6">
+            <div className="picture ml-6 w-12 shrink-0">
               <Envelope />
             </div>
           </button>
         </li>
-        <li className="py-2.5">
-          <div className=" ">
-            <Instagram />
-            <Facebook />
-          </div>
+        <li className="py-2.5 ">
+          <Instagram />
+          <Facebook />
         </li>
       </ul>
     </nav>
