@@ -19,8 +19,8 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       white: "#fff",
-      black: "#000", 
-      primary: "#1a1a1a" 
+      black: "#000",
+      primary: "#1a1a1a",
     },
 
     fontSize: {
@@ -67,9 +67,9 @@ module.exports = {
 
     extend: {
       fontFamily: {
-        staff: "Staff Family",
-        "staff-x": "Staff Family X",
-        "staff-xx": "Staff Family XX",
+        subjectivity: "Subjectivity",
+        "power-grotesk": "Power Grotesk",
+        maginia: "Maginia",
       },
 
       transitionDuration: {

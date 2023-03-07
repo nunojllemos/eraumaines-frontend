@@ -1,6 +1,32 @@
 /* @tailwind base;
 @tailwind components; */
 @tailwind utilities;
+@import "/styles/normalize";
+@import "/styles/utils";
+
+@font-face {
+  font-family: "Maginia";
+  font-weight: 400;
+  src: url("../public/fonts/MaginiaRegular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Power Grotesk";
+  font-weight: 400;
+  src: url("../public/fonts/PowerGroteskTrial-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Power Grotesk";
+  font-weight: 600;
+  src: url("../public/fonts/PowerGroteskTrial-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Subjectivity";
+  font-weight: 400;
+  src: url("../public/fonts/Subjectivity-Regular.otf") format("opentype");
+}
 
 * {
   margin: 0;
@@ -14,18 +40,9 @@ html {
 }
 
 body {
-  font-family: Sans Serif, Grotesk;
+  font-family: "Subjectivity";
   overflow: hidden;
   background-color: #ccc;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 button {
