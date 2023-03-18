@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged
-echo "🎯 Congratulations"
+npx lint-staged || (echo "some-script failed"; false)
