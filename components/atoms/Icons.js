@@ -205,7 +205,7 @@ export const Envelope = () => {
 export const OpenMenu = () => {
 	return (
 		<svg viewBox='0 0 38 26' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-			<path d='M1 13H37M13 25H37M1 1H25' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' />
+			<path d='M1 13H37M13 25H37M1 1H25' stroke='white' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
 		</svg>
 	)
 }
@@ -246,7 +246,7 @@ export const Facebook = () => {
 export const Mute = () => {
 	return (
 		<svg viewBox='0 0 22 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-			<path d='M15 9L21 15M21 9L15 15M1 8V16H6.09902L12 21V3L6 8H1Z' stroke='#1C1C1C' stroke-width='2' />
+			<path d='M15 9L21 15M21 9L15 15M1 8V16H6.09902L12 21V3L6 8H1Z' stroke='#1C1C1C' strokeWidth='2' />
 		</svg>
 	)
 }
@@ -254,11 +254,7 @@ export const Mute = () => {
 export const Arrow = () => {
 	return (
 		<svg viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
-			<path
-				d='M15.5061 1.36396L1.36392 15.5061M15.5061 1.36396L2.77813 1.36396M15.5061 1.36396L15.5061 14.0919'
-				stroke='#1A1A1A'
-				stroke-width='2'
-			/>
+			<path d='M15.5061 1.36396L1.36392 15.5061M15.5061 1.36396L2.77813 1.36396M15.5061 1.36396L15.5061 14.0919' stroke='#1A1A1A' strokeWidth='2' />
 		</svg>
 	)
 }
