@@ -14,6 +14,7 @@ export default function Home() {
 			</Head>
 			<main className='py-80'>
 				<Container>
+					<h1>Test Title</h1>
 					<Grid mobileCols={2} desktopCols={4} largeDesktopCols={6}>
 						<Col>
 							<div className='flex items-center justify-center p-8 text-white bg-primary'>1</div>
