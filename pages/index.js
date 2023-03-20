@@ -1,5 +1,6 @@
-import Grid from '@/components/ui/Grid'
-import Container from '@/components/ui/container'
+import Col from '@/components/styled-components/layout/Col'
+import Grid from '@/components/styled-components/layout/Grid'
+import Container from '@/components/ui/Container'
 import Head from 'next/head'
 
 export default function Home() {
@@ -11,15 +12,27 @@ export default function Home() {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className='py-40'>
+			<main className='py-80'>
 				<Container>
-					<Grid mobileCols={2} tabletCols={12} desktopCols={12}>
-						<div>1</div>
-						<div>2</div>
-						<div>3</div>
-						<div>4</div>
-						<div>5</div>
-						<div>6</div>
+					<Grid mobileCols={2} desktopCols={4} largeDesktopCols={6}>
+						<Col>
+							<div className='flex items-center justify-center p-8 text-white bg-primary'>1</div>
+						</Col>
+						<Col>
+							<div className='flex items-center justify-center p-8 text-white bg-primary'>2</div>
+						</Col>
+						<Col>
+							<div className='flex items-center justify-center p-8 text-white bg-primary'>3</div>
+						</Col>
+						<Col>
+							<div className='flex items-center justify-center p-8 text-white bg-primary'>4</div>
+						</Col>
+						<Col>
+							<div className='flex items-center justify-center p-8 text-white bg-primary'>5</div>
+						</Col>
+						<Col>
+							<div className='flex items-center justify-center p-8 text-white bg-primary'>6</div>
+						</Col>
 					</Grid>
 				</Container>
 			</main>

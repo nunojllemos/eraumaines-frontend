@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged || (echo "some-script failed"; false)
+# npx lint-staged || (echo "\n😭 Something went wrong.\n"; false) && (echo "\n🚀 The Commit was added with success!\n"; false)
+npx lint-staged
