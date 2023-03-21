@@ -2,7 +2,7 @@ import Nav from '@/components/blocks/Nav'
 import { Logo } from '@/components/atoms/Icons'
 import Container from '@/layout/Container'
 
-const MenuBar = () => {
+const Header = () => {
 	return (
 		<header className='fixed w-full h-auto pt-5'>
 			<Container>
@@ -18,4 +18,4 @@ const MenuBar = () => {
 	)
 }
 
-export default MenuBar
+export default Header
