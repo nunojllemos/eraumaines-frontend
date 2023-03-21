@@ -1,6 +1,6 @@
-import NavBar from '@/components/blocks/NavBar'
-import { Logo } from '/components/atoms/Icons'
-import Container from '../styled-components/layout/Container'
+import Nav from '@/components/blocks/Nav'
+import { Logo } from '@/components/atoms/Icons'
+import Container from '@/layout/Container'
 
 const MenuBar = () => {
 	return (
@@ -11,7 +11,7 @@ const MenuBar = () => {
 						{/* [ ] verificar se este text-color está certo em relação ao logo*/}
 						<Logo />
 					</div>
-					<NavBar />
+					<Nav />
 				</div>
 			</Container>
 		</header>

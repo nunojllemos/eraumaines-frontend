@@ -1,11 +1,8 @@
-import React from 'react'
-import { CloseMenu, OpenMenu, Instagram, Facebook } from 'components/atoms/Icons'
-
 import Link from 'next/link'
+import { CloseMenu, OpenMenu, Instagram, Facebook } from '@/components/atoms/Icons'
+import { Envelope } from '@/components/atoms/Icons'
 
-import { Envelope } from 'components/atoms/Icons'
-
-const NavBar = () => {
+const Nav = () => {
 	const navLinks = [
 		{
 			title: 'nos',
@@ -82,4 +79,4 @@ const NavBar = () => {
 	)
 }
 
-export default NavBar
+export default Nav
