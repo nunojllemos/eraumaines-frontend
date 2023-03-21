@@ -1,6 +1,6 @@
-import Container from 'components/styled-components/layout/Container'
-import Col from 'components/styled-components/layout/Col'
-import Grid from 'components/styled-components/layout/Grid'
+import Container from '/components/styled-components/layout/Container'
+import Col from '/components/styled-components/layout/Col'
+import Grid from '/components/styled-components/layout/Grid'
 import Head from 'next/head'
 
 export default function Home() {

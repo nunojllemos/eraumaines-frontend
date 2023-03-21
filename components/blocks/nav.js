@@ -56,7 +56,7 @@ const Nav = () => {
 							</Link>
 						</div>
 					</li>
-					<li className='flex justify-center pt-4 pb-8 1024:pr-8 '>
+					<li className='flex justify-center pt-4 pb-8'>
 						<button className='flex px-12 py-2 border-none rounded-md font-power-grotesk text-45 1024:text-28'>
 							<p>ola</p>
 							<div className='w-16 ml-8 picture shrink-0 1024:ml-4 1024:w-12'>
