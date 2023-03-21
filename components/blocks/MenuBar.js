@@ -3,7 +3,7 @@ import Nav from './Nav'
 import { Logo } from '/components/atoms/Icons'
 import Container from '/components/ui/Container'
 
-const Header = () => {
+const MenuBar = () => {
 	return (
 		<Container>
 			<header className='fixed flex items-center justify-between w-full h-auto pt-5'>
@@ -17,4 +17,4 @@ const Header = () => {
 	)
 }
 
-export default Header
+export default MenuBar

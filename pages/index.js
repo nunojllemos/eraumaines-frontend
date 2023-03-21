@@ -1,7 +1,7 @@
+import Container from 'components/styled-components/layout/Container'
 import Col from 'components/styled-components/layout/Col'
 import Grid from 'components/styled-components/layout/Grid'
 import Head from 'next/head'
-import Container from 'components/ui/Container'
 
 export default function Home() {
 	return (
