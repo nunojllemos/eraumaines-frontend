@@ -1,9 +1,9 @@
 import React from 'react'
-import { CloseMenu, OpenMenu, Instagram, Facebook } from '@/components/atoms/Icons'
+import { CloseMenu, OpenMenu, Instagram, Facebook } from 'components/atoms/Icons'
 
 import Link from 'next/link'
 
-import { Envelope } from '@/components/atoms/Icons'
+import { Envelope } from 'components/atoms/Icons'
 
 function Nav() {
 	const navLinks = [
@@ -22,9 +22,9 @@ function Nav() {
 	]
 
 	return (
-		<nav className='h-auto w-auto text-white text-45 flex '>
+		<nav className='flex w-auto h-auto text-white text-45 '>
 			<div className='z-1'>
-				<button className='w-14 h-full bg-transparent border-none 1024:hidden'>
+				<button className='h-full bg-transparent border-none w-14 1024:hidden'>
 					{/* retirar z-1 e meter no CloseMenu quando aberto menu */}
 					<OpenMenu />
 				</button>
@@ -33,7 +33,7 @@ function Nav() {
 					<CloseMenu />
 				</button>
 			</div>
-			<div className='bg-primary absolute text-center top-0 right-0 w-full h-full flex items-center justify-center 1024:bg-transparent 1024:relative '>
+			<div className='absolute top-0 right-0 flex items-center justify-center w-full h-full text-center bg-primary 1024:bg-transparent 1024:relative '>
 				<ul className='1024:flex 1024:items-center 1024:text-28'>
 					{navLinks.map((navLink, i) => {
 						return (
@@ -44,8 +44,8 @@ function Nav() {
 							</li>
 						)
 					})}
-					<li className='hidden 1024:flex mr-10'>
-						<div className=' w-12 mr-8'>
+					<li className='hidden mr-10 1024:flex'>
+						<div className='w-12 mr-8 '>
 							<Link href={'https://www.instagram.com/'}>
 								<Instagram />
 							</Link>
@@ -56,16 +56,16 @@ function Nav() {
 							</Link>
 						</div>
 					</li>
-					<li className='flex justify-center pb-8 pt-4 1024:pr-8  '>
-						<button className='flex border-none font-power-grotesk rounded-md text-45 px-12 py-2 1024:text-28'>
+					<li className='flex justify-center pt-4 pb-8 1024:pr-8 '>
+						<button className='flex px-12 py-2 border-none rounded-md font-power-grotesk text-45 1024:text-28'>
 							<p>ola</p>
-							<div className='picture ml-8 w-16 shrink-0 1024:ml-4 1024:w-12'>
+							<div className='w-16 ml-8 picture shrink-0 1024:ml-4 1024:w-12'>
 								<Envelope />
 							</div>
 						</button>
 					</li>
-					<li className='pb-4 flex justify-center 1024:hidden'>
-						<div className=' w-14 mr-8'>
+					<li className='flex justify-center pb-4 1024:hidden'>
+						<div className='mr-8 w-14'>
 							<Link href={'https://www.instagram.com/'}>
 								<Instagram />
 							</Link>
