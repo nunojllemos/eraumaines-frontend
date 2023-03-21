@@ -1,8 +1,10 @@
 {
 	"compilerOptions": {
-		"baseUrl": "."
-		// "paths": {
-		// 	"@/components/*": ["components/*"]
-		// }
+		"baseUrl": ".",
+		// Paths Aliases
+		"paths": {
+			"@/components/*": ["components/*"],
+			"@/layout/*": ["components/styled-components/layout/*"]
+		}
 	}
 }
