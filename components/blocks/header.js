@@ -3,7 +3,7 @@ import Nav from './Nav'
 import { Logo } from '/components/atoms/Icons'
 import Container from '/components/ui/Container'
 
-function Header() {
+const Header = () => {
 	return (
 		<Container>
 			<header className='fixed flex items-center justify-between w-full h-auto pt-5'>
