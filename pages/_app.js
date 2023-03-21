@@ -5,7 +5,6 @@ export default function App({ Component, pageProps }) {
 	return (
 		<>
 			<Header />
-			{console.log('test')}
 			<Component {...pageProps} />
 		</>
 	)

@@ -35,17 +35,17 @@ const Grid = styled.div`
 
 	@media only screen and (min-width: ${p => p.tablet || tablet}px) {
 		grid-template-columns: repeat(${p => p.tabletCols || p.mobileCols || tabletCols}, 1fr);
-		column-gap: ${p => p.tabletColumnGap || tabletColumnGap}rem;
+		column-gap: ${p => p.tabletColumnGap || p.columnGap || tabletColumnGap}rem;
 	}
 
 	@media only screen and (min-width: ${p => p.desktop || desktop}px) {
 		grid-template-columns: repeat(${p => p.desktopCols || p.tabletCols || p.mobileCols || desktopCols}, 1fr);
-		column-gap: ${p => p.desktopColumnGap || desktopColumnGap}rem;
+		column-gap: ${p => p.desktopColumnGap || p.tabletColumnGap || p.columnGap || desktopColumnGap}rem;
 	}
 
 	@media only screen and (min-width: ${p => p.largeDesktop || largeDesktop}px) {
 		grid-template-columns: repeat(${p => p.largeDesktopCols || p.desktopCols || p.tabletCols || p.mobileCols || largeDesktopCols}, 1fr);
-		column-gap: ${p => p.largeDesktopColumnGap || largeDesktopColumnGap}rem;
+		column-gap: ${p => p.largeDesktopColumnGap || p.desktopColumnGap || p.tabletColumnGap || p.columnGap || largeDesktopColumnGap}rem;
 	}
 `
 

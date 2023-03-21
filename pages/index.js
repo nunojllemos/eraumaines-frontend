@@ -15,25 +15,8 @@ export default function Home() {
 			<main className='py-80'>
 				<Container>
 					<h1>Test Title</h1>
-					<Grid mobileCols={2} desktopCols={4} largeDesktopCols={6}>
-						<Col>
-							<div className='flex items-center justify-center p-8 text-white bg-primary'>1</div>
-						</Col>
-						<Col>
-							<div className='flex items-center justify-center p-8 text-white bg-primary'>2</div>
-						</Col>
-						<Col>
-							<div className='flex items-center justify-center p-8 text-white bg-primary'>3</div>
-						</Col>
-						<Col>
-							<div className='flex items-center justify-center p-8 text-white bg-primary'>4</div>
-						</Col>
-						<Col>
-							<div className='flex items-center justify-center p-8 text-white bg-primary'>5</div>
-						</Col>
-						<Col>
-							<div className='flex items-center justify-center p-8 text-white bg-primary'>6</div>
-						</Col>
+					<Grid>
+						<Col>1</Col>
 					</Grid>
 				</Container>
 			</main>

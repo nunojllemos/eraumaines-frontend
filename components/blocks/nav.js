@@ -22,7 +22,7 @@ const Nav = () => {
 	]
 
 	return (
-		<nav className='flex w-auto h-auto text-white text-45 '>
+		<nav className='flex w-auto h-auto text-white text-45'>
 			<div className='z-1'>
 				<button className='h-full bg-transparent border-none w-14 1024:hidden'>
 					{/* retirar z-1 e meter no CloseMenu quando aberto menu */}
