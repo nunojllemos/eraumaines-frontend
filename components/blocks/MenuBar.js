@@ -1,5 +1,4 @@
-import React from 'react'
-import Nav from '/components/blocks/Nav'
+import NavBar from '@/components/blocks/NavBar'
 import { Logo } from '/components/atoms/Icons'
 import Container from '../styled-components/layout/Container'
 
@@ -12,7 +11,7 @@ const MenuBar = () => {
 						{/* [ ] verificar se este text-color está certo em relação ao logo*/}
 						<Logo />
 					</div>
-					<Nav />
+					<NavBar />
 				</div>
 			</Container>
 		</header>

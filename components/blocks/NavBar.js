@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { Envelope } from 'components/atoms/Icons'
 
-const Nav = () => {
+const NavBar = () => {
 	const navLinks = [
 		{
 			title: 'nos',
@@ -82,4 +82,4 @@ const Nav = () => {
 	)
 }
 
-export default Nav
+export default NavBar
