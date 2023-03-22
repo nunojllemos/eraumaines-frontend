@@ -4,7 +4,13 @@
 		// Paths Aliases
 		"paths": {
 			"@/components/*": ["components/*"],
-			"@/layout/*": ["components/styled-components/layout/*"]
+			"@/styles/*": ["styles/*"],
+			"@/layout/*": ["components/styled-components/layout/*"],
+			"@/atoms/*": ["components/atoms/*"],
+			"@/organisms/*": ["components/organisms/*"],
+			"@/molecules/*": ["components/molecules/*"],
+			"@/pages/*": ["components/pages/*"],
+			"@/templates/*": ["components/templates/*"]
 		}
 	}
 }
