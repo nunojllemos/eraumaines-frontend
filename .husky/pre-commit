@@ -1,4 +1,5 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# npm lint-staged
+# npx lint-staged || (echo "\n😭 Something went wrong.\n"; false) && (echo "\n🚀 The Commit was added with success!\n"; false)
+npx lint-staged
