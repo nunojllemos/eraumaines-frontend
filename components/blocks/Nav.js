@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { CloseMenu, OpenMenu, Instagram, Facebook } from '@/components/atoms/Icons'
-import { Envelope } from '@/components/atoms/Icons'
+import { CloseMenu, OpenMenu, Instagram, Facebook, Envelope } from '@/atoms/Icons'
 
 const Nav = () => {
 	const navLinks = [

@@ -1,5 +1,5 @@
-import Nav from '@/components/blocks/Nav'
-import { Logo } from '@/components/atoms/Icons'
+import Nav from '@/blocks/Nav'
+import { Logo } from '@/atoms/Icons'
 import Container from '@/layout/Container'
 
 const Header = () => {

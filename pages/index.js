@@ -1,7 +1,7 @@
+import Head from 'next/head'
 import Container from '@/layout/Container'
 import Col from '@/layout/Col'
 import Grid from '@/layout/Grid'
-import Head from 'next/head'
 
 export default function Home() {
 	return (
