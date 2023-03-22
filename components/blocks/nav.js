@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   CloseMenu,
   OpenMenu,
@@ -14,7 +15,7 @@ function Nav() {
   const navLinks = [
     {
       title: "nos",
-      url: "/",
+      url: "/about",
     },
     {
       title: "historias",
@@ -26,19 +27,38 @@ function Nav() {
     },
   ];
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className="h-auto w-auto text-white text-45 flex ">
       <div className="z-1">
-        <button className="w-14 h-full bg-transparent border-none 1024:hidden">
-          {/* retirar z-1 e meter no CloseMenu quando aberto menu */}
+        <button
+          onClick={toggleMenu}
+          className={`${
+            isMenuOpen ? "hidden" : "flex"
+          } w-14 h-full bg-transparent border-none 1024:hidden text-white`}
+        >
           <OpenMenu />
         </button>
 
-        <button className="hidden ">
+        <button
+          onClick={toggleMenu}
+          className={`${
+            isMenuOpen ? "flex" : "hidden"
+          } w-10 h-full text-white bg-transparent border-none 1024:hidden`}
+        >
           <CloseMenu />
         </button>
       </div>
-      <div className="bg-primary absolute text-center top-0 right-0 w-full h-full flex items-center justify-center 1024:bg-transparent 1024:relative ">
+      <div
+        className={`${
+          isMenuOpen ? "flex" : "hidden"
+        } bg-primary absolute text-center top-0 right-0 w-full h-full flex items-center justify-center 1024:bg-transparent 1024:relative 1024:flex`}
+      >
         <ul className="1024:flex 1024:items-center 1024:text-28">
           {navLinks.map((navLink, i) => {
             return (
