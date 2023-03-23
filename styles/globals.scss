@@ -1,61 +1,85 @@
 /* @tailwind base;
 @tailwind components; */
 @tailwind utilities;
-@import "/styles/normalize";
-@import "/styles/utils";
+@import '/styles/normalize';
+@import '/styles/utils';
 
 @font-face {
-  font-family: "Maginia";
-  font-weight: 400;
-  src: url("../public/fonts/MaginiaRegular.otf") format("opentype");
+    font-family: 'Maginia';
+    font-weight: 400;
+    src: url('../public/fonts/MaginiaRegular.otf') format('opentype');
 }
 
 @font-face {
-  font-family: "Power Grotesk";
-  font-weight: 400;
-  src: url("../public/fonts/PowerGroteskTrial-Regular.otf") format("opentype");
+    font-family: 'Power Grotesk';
+    font-weight: 400;
+    src: url('../public/fonts/PowerGroteskTrial-Regular.otf') format('opentype');
 }
 
 @font-face {
-  font-family: "Power Grotesk";
-  font-weight: 600;
-  src: url("../public/fonts/PowerGroteskTrial-Bold.otf") format("opentype");
+    font-family: 'Power Grotesk';
+    font-weight: 600;
+    src: url('../public/fonts/PowerGroteskTrial-Bold.otf') format('opentype');
 }
 
 @font-face {
-  font-family: "Subjectivity";
-  font-weight: 400;
-  src: url("../public/fonts/Subjectivity-Regular.otf") format("opentype");
+    font-family: 'Subjectivity';
+    font-weight: 400;
+    src: url('../public/fonts/Subjectivity-Regular.otf') format('opentype');
 }
 
 $red: #ff0000;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  font-size: 10px;
+    scroll-behavior: smooth;
+    font-size: 10px;
 }
 
 body {
-  font-family: "Subjectivity";
-  overflow: hidden;
-  background-color: #ccc;
+    font-family: 'Subjectivity';
+    background-color: #ccc;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 a {
-  text-decoration: none;
-  color: currentColor;
+    text-decoration: none;
+    color: currentColor;
 }
 
 li {
-  list-style: none;
+    list-style: none;
+}
+
+.headroom {
+    top: 0;
+    left: 0;
+    right: 0;
+    zindex: 1;
+}
+.headroom--unfixed {
+    position: relative;
+    transform: translateY(0);
+    background-color: #ff0000;
+}
+.headroom--scrolled {
+    transition: transform 200ms ease-in-out;
+}
+.headroom--unpinned {
+    position: fixed;
+    transform: translateY(-100%);
+    background-color: greenyellow;
+}
+.headroom--pinned {
+    position: fixed;
+    transform: translateY(0%);
+    background-color: teal;
 }
