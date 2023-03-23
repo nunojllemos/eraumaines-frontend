@@ -5,15 +5,15 @@ import { Envelope } from '@/components/atoms/Icons'
 const Nav = () => {
     const navLinks = [
         {
-            title: 'nos',
+            title: 'nós',
             url: '/',
         },
         {
-            title: 'historias',
+            title: 'histórias',
             url: '/',
         },
         {
-            title: 'diario',
+            title: 'diário',
             url: '/',
         },
     ]

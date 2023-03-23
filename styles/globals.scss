@@ -7,19 +7,13 @@
 @font-face {
     font-family: 'Maginia';
     font-weight: 400;
-    src: url('../public/fonts/MaginiaRegular.otf') format('opentype');
+    src: url('../public/fonts/Maginia.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Power Grotesk';
     font-weight: 400;
-    src: url('../public/fonts/PowerGroteskTrial-Regular.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'Power Grotesk';
-    font-weight: 600;
-    src: url('../public/fonts/PowerGroteskTrial-Bold.otf') format('opentype');
+    src: url('../public/fonts/PowerGrotesk-Regular.woff2') format('woff2') url('../public/fonts/PowerGrotesk-Regular.woff') format('woff');
 }
 
 @font-face {
