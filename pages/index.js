@@ -17,6 +17,10 @@ export default function Home({ data }) {
                         <Col>1</Col>
                     </Grid>
                 </Container>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad esse animi vel tempora laboriosam doloribus in, quod assumenda fugit rerum
+                    praesentium, unde maiores nisi voluptatem eveniet officia voluptas rem. Ipsam?
+                </p>
             </main>
         </>
     )
