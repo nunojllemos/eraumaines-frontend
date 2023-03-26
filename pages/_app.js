@@ -31,9 +31,11 @@ export default function App({ Component, pageProps }) {
                 <meta name='msapplication-config' content='/favicon/dark/browserconfig.xml' />
                 <meta name='theme-color' content='#ffffff'></meta>
             </Head>
-            <Header />
-            <Component {...pageProps} />
-            <Footer />
+            <div className='flex flex-col min-h-screen'>
+                <Header />
+                <Component {...pageProps} />
+                <Footer />
+            </div>
         </>
     )
 }

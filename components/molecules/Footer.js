@@ -4,7 +4,7 @@ import FooterLink from '@/molecules/FooterLink'
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className='mt-auto'>
             <Container>
                 <div className='flex flex-col-reverse justify-between w-full gap-6 py-4 border-t border-black 768:flex-row 768:gap-0'>
                     <div>

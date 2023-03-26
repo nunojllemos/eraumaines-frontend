@@ -5,6 +5,8 @@
 @import '/styles/normalize';
 @import '/styles/utils';
 
+$black: #1c1c1c;
+
 @font-face {
     font-family: 'Maginia';
     font-weight: 400;
@@ -63,18 +65,49 @@ li {
 .headroom--unfixed {
     position: relative;
     transform: translateY(0);
-    background-color: #ff0000;
+    // background-color: #ff0000;
 }
+
 .headroom--scrolled {
     transition: transform 200ms ease-in-out;
 }
+
 .headroom--unpinned {
     position: fixed;
     transform: translateY(-100%);
     background-color: greenyellow;
 }
+
 .headroom--pinned {
     position: fixed;
     transform: translateY(0%);
     background-color: teal;
+}
+
+.animated-title-container {
+    //     margin-block: 10rem;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        height: 1px;
+        background-color: $black;
+    }
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.Collapsible {
+    border-bottom: 1px solid $black;
+    padding-bottom: 2rem;
+}
+
+p {
+    min-height: 1em;
 }
