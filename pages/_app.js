@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import '@/styles/globals.scss'
 import Header from '@/organisms/Header'
 import Head from 'next/head'
+import Footer from '@/components/molecules/Footer'
 
 export default function App({ Component, pageProps }) {
     useEffect(() => {
-        alert('Development branch')
+        console.log('Development branch')
     }, [])
 
     return (
@@ -32,6 +33,7 @@ export default function App({ Component, pageProps }) {
             </Head>
             <Header />
             <Component {...pageProps} />
+            <Footer />
         </>
     )
 }
