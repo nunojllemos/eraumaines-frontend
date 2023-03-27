@@ -1,28 +1,31 @@
-/* @tailwind base;
-@tailwind components; */
+// @tailwind components;
+@tailwind base;
 @tailwind utilities;
+
 @import '/styles/normalize';
 @import '/styles/utils';
+
+$black: #1c1c1c;
+$red: #ff0000;
+$easing: cubic-bezier(0.24, 0.16, 0, 0.95);
 
 @font-face {
     font-family: 'Maginia';
     font-weight: 400;
-    src: url('../public/fonts/Maginia.woff2') format('woff2');
+    src: url('/fonts/Maginia.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Power Grotesk';
     font-weight: 400;
-    src: url('../public/fonts/PowerGrotesk-Regular.woff2') format('woff2') url('../public/fonts/PowerGrotesk-Regular.woff') format('woff');
+    src: url('/fonts/PowerGrotesk-Regular.woff2') format('woff2'), url('/fonts/PowerGrotesk-Regular.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Subjectivity';
     font-weight: 400;
-    src: url('../public/fonts/Subjectivity-Regular.otf') format('opentype');
+    src: url('/fonts/Subjectivity-Regular.otf') format('opentype');
 }
-
-$red: #ff0000;
 
 * {
     margin: 0;
@@ -37,7 +40,6 @@ html {
 
 body {
     font-family: 'Subjectivity';
-    background-color: #ccc;
 }
 
 button {
@@ -57,23 +59,53 @@ li {
     top: 0;
     left: 0;
     right: 0;
-    zindex: 1;
+    z-index: 1;
 }
 .headroom--unfixed {
     position: relative;
     transform: translateY(0);
-    background-color: #ff0000;
+    // background-color: #ff0000;
 }
+
 .headroom--scrolled {
     transition: transform 200ms ease-in-out;
 }
+
 .headroom--unpinned {
     position: fixed;
     transform: translateY(-100%);
     background-color: greenyellow;
 }
+
 .headroom--pinned {
     position: fixed;
     transform: translateY(0%);
     background-color: teal;
+}
+
+.animated-title-container {
+    //     margin-block: 10rem;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        height: 1px;
+        background-color: $black;
+    }
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.Collapsible {
+    border-bottom: 1px solid $black;
+}
+
+p {
+    min-height: 1em;
 }

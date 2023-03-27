@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import '@/styles/globals.scss'
 import Header from '@/organisms/Header'
 import Head from 'next/head'
+import Footer from '@/components/molecules/Footer'
 
 export default function App({ Component, pageProps }) {
     useEffect(() => {
-        alert('Development branch')
+        console.log('Development branch')
     }, [])
 
     return (
@@ -30,8 +31,11 @@ export default function App({ Component, pageProps }) {
                 <meta name='msapplication-config' content='/favicon/dark/browserconfig.xml' />
                 <meta name='theme-color' content='#ffffff'></meta>
             </Head>
-            <Header />
-            <Component {...pageProps} />
+            <div className='flex flex-col min-h-screen'>
+                <Header />
+                <Component {...pageProps} />
+                <Footer />
+            </div>
         </>
     )
 }

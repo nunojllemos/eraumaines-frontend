@@ -249,10 +249,31 @@ export const Mute = () => {
     )
 }
 
-export const Arrow = () => {
+export const ExternalLink = () => {
     return (
         <svg viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path d='M15.5061 1.36396L1.36392 15.5061M15.5061 1.36396L2.77813 1.36396M15.5061 1.36396L15.5061 14.0919' stroke='#1A1A1A' strokeWidth='2' />
+        </svg>
+    )
+}
+
+export const Arrow = () => {
+    return (
+        <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 512.00 512.00'
+            fill='currentColor'
+            stroke='currentColor'
+            strokeWidth='0.00512'
+            transform='matrix(-1, 0, 0, 1, 0, 0)'
+        >
+            <g strokeWidth='0' />
+            <g strokeLinecap='round' stroke-linejoin='round' stroke='currentColor' stroke-width='2.048' />
+            <g>
+                <g>
+                    <polygon points='499.264,227.335 122.499,227.335 309.286,40.548 268.747,0 12.736,256 268.747,512 309.286,471.472 122.499,284.665 499.264,284.665 ' />
+                </g>
+            </g>
         </svg>
     )
 }
