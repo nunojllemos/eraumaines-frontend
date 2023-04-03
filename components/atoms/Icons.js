@@ -268,7 +268,7 @@ export const Arrow = () => {
             transform='matrix(-1, 0, 0, 1, 0, 0)'
         >
             <g strokeWidth='0' />
-            <g strokeLinecap='round' stroke-linejoin='round' stroke='currentColor' stroke-width='2.048' />
+            <g strokeLinecap='round' strokeLinejoin='round' stroke='currentColor' strokeWidth='2.048' />
             <g>
                 <g>
                     <polygon points='499.264,227.335 122.499,227.335 309.286,40.548 268.747,0 12.736,256 268.747,512 309.286,471.472 122.499,284.665 499.264,284.665 ' />

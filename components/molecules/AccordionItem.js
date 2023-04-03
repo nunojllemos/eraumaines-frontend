@@ -19,9 +19,9 @@ const AccordionItem = ({ content, title }) => {
 
     return (
         <Collapsible {...collapsibleOptions}>
-            <div onClick={closeAccordion} className='cursor-pointer text-18'>
+            <div onClick={closeAccordion} className='cursor-pointer text-16 1024:text-18'>
                 {content}
-                <p className='text-18'></p>
+                <p></p>
             </div>
         </Collapsible>
     )
