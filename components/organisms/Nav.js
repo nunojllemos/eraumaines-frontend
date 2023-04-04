@@ -1,8 +1,19 @@
 import Link from 'next/link'
 import { CloseMenu, OpenMenu, Instagram, Facebook } from '@/components/atoms/Icons'
 import { Envelope } from '@/components/atoms/Icons'
+import { useState } from 'react'
 
 const Nav = () => {
+    const [isMenuOpen, setMenuOpen] = useState(false)
+
+    const handleOpenMenuClink = () => {
+        setMenuOpen(true)
+    }
+
+    const handleCloseMenuClink = () => {
+        setMenuOpen(false)
+    }
+
     const navLinks = [
         {
             title: 'nós',
@@ -23,11 +34,18 @@ const Nav = () => {
             <div className='z-1'>
                 <button className='h-full bg-transparent border-none w-14 1024:hidden'>
                     {/* retirar z-1 e meter no CloseMenu quando aberto menu */}
-                    <OpenMenu />
-                    <CloseMenu />
+                    <div onClick={handleOpenMenuClink} className={`${isMenuOpen ? 'hidden' : 'flex'}`}>
+                        <OpenMenu />
+                    </div>
+                    <div onClick={handleCloseMenuClink} className={`${isMenuOpen ? 'flex' : 'hidden'}`}>
+                        <CloseMenu />
+                    </div>
                 </button>
             </div>
-            <div className='absolute top-0 right-0 flex items-center justify-center w-full h-full text-center bg-primary 1024:bg-transparent 1024:relative '>
+            <div
+                className={`absolute top-0 right-0 flex items-center justify-center w-full h-full text-center bg-primary 1024:bg-transparent 1024:relative 
+                ${isMenuOpen ? 'flex' : 'hidden'}`}
+            >
                 <ul className='1024:flex 1024:items-center 1024:text-28'>
                     {navLinks.map((navLink, i) => {
                         return (
