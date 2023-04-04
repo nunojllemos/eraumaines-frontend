@@ -6,12 +6,8 @@ import { useState } from 'react'
 const Nav = () => {
     const [isMenuOpen, setMenuOpen] = useState(false)
 
-    const handleOpenMenuClink = () => {
-        setMenuOpen(true)
-    }
-
-    const handleCloseMenuClink = () => {
-        setMenuOpen(false)
+    const handleMenuClink = () => {
+        setMenuOpen(!isMenuOpen)
     }
 
     const navLinks = [
@@ -30,20 +26,20 @@ const Nav = () => {
     ]
 
     return (
-        <nav className='flex w-auto h-auto text-white text-45'>
+        <nav className='flex justify-end w-full h-full text-white text-45 '>
             <div className='z-1'>
                 <button className='h-full bg-transparent border-none w-14 1024:hidden'>
                     {/* retirar z-1 e meter no CloseMenu quando aberto menu */}
-                    <div onClick={handleOpenMenuClink} className={`${isMenuOpen ? 'hidden' : 'flex'}`}>
+                    <div onClick={handleMenuClink} className={`${isMenuOpen ? 'hidden' : 'flex'}`}>
                         <OpenMenu />
                     </div>
-                    <div onClick={handleCloseMenuClink} className={`${isMenuOpen ? 'flex' : 'hidden'}`}>
+                    <div onClick={handleMenuClink} className={`${isMenuOpen ? 'flex' : 'hidden'}`}>
                         <CloseMenu />
                     </div>
                 </button>
             </div>
             <div
-                className={`absolute top-0 right-0 flex items-center justify-center w-full h-full text-center bg-primary 1024:bg-transparent 1024:relative 
+                className={`absolute top-0 right-0 flex items-center justify-center w-screen h-screen text-center bg-primary 1024:bg-transparent 1024:relative 
                 ${isMenuOpen ? 'flex' : 'hidden'}`}
             >
                 <ul className='1024:flex 1024:items-center 1024:text-28'>
@@ -70,7 +66,7 @@ const Nav = () => {
                     </li>
                     <li className='flex justify-center pt-4 pb-8'>
                         <button className='flex px-12 py-2 border-none rounded-md font-power-grotesk text-45 1024:text-28'>
-                            <p>Alô</p>
+                            <p>alô</p>
                             <div className='w-16 ml-8 picture shrink-0 1024:ml-4 1024:w-12'>
                                 <Envelope />
                             </div>
