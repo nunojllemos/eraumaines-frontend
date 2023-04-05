@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
                 <Favicon />
             </Head>
-            <div className='flex flex-col min-h-screen'>
+            <div className='flex flex-col min-h-screen overflow-hidden'>
                 <Header />
                 <PageTransition>
                     <Component {...pageProps} />

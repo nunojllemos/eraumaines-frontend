@@ -6,11 +6,10 @@ import Headroom from 'react-headroom'
 const Header = () => {
     return (
         <Headroom>
-            <header className='w-full h-auto py-5'>
+            <header className='w-full h-auto py-5 bg-[tomato] text-white text-45 relative  '>
                 <Container>
-                    <div className='flex items-center justify-between'>
+                    <div className='flex items-center justify-between 1024:w-full '>
                         <div className='w-40 z-1'>
-                            {/* [ ] verificar se este text-color está certo em relação ao logo*/}
                             <Logo />
                         </div>
                         <Nav />

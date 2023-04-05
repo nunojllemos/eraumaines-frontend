@@ -6,7 +6,7 @@ const AnimatedTitleText = ({ isPrimary, children }) => {
     const [scrollValue, setScrollValue] = useState(0)
 
     useEffect(() => {
-        console.log(scrollYProgress)
+        // console.log(scrollYProgress)
         // setScrollValue(scrollY.get())
         // console.log('s: ', scrollValue)
     }, [scrollValue, scrollY])
