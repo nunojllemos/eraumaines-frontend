@@ -9,7 +9,7 @@ const Header = () => {
             <header className='w-full h-auto py-5'>
                 <Container>
                     <div className='flex items-center justify-between'>
-                        <div className='text-white w-28 z-1'>
+                        <div className='w-40 z-1'>
                             {/* [ ] verificar se este text-color está certo em relação ao logo*/}
                             <Logo />
                         </div>
