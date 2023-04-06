@@ -42,6 +42,9 @@ html {
 
 body {
     font-family: 'Subjectivity';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
 }
 
 button {

@@ -3,6 +3,7 @@
 //import Col from '@/layout/Col'
 //import Grid from '@/layout/Grid'
 import Seo from '@/components/atoms/Seo'
+import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import Hero from '@/components/organisms/Hero'
 
 export default function Home({ data }) {
@@ -13,6 +14,7 @@ export default function Home({ data }) {
             <Seo title='Era Uma Inês - Home' />
             <main className=''>
                 <Hero />
+                <AnimatedTitle isPrimary>storytellers . storytellers . storytellers </AnimatedTitle>
                 {/* <Container>
                     <Main />
                     <h1>{hero_title}</h1>
