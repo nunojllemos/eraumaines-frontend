@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Container from '@/layout/Container'
-import Col from '@/layout/Col'
-import Grid from '@/layout/Grid'
+//import Head from 'next/head'
+//import Container from '@/layout/Container'
+//import Col from '@/layout/Col'
+//import Grid from '@/layout/Grid'
 import Seo from '@/components/atoms/Seo'
-import Main from '@/components/organisms/Main'
+import Hero from '@/components/organisms/Hero'
 
 export default function Home({ data }) {
     // const { hero_title } = data.attributes
@@ -12,7 +12,7 @@ export default function Home({ data }) {
         <>
             <Seo title='Era Uma Inês - Home' />
             <main className=''>
-                <Main />
+                <Hero />
                 {/* <Container>
                     <Main />
                     <h1>{hero_title}</h1>
@@ -20,10 +20,10 @@ export default function Home({ data }) {
                         <Col>1</Col>
                     </Grid>
                 </Container>
-                 <p>
+                <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad esse animi vel tempora laboriosam doloribus in, quod assumenda fugit rerum
                     praesentium, unde maiores nisi voluptatem eveniet officia voluptas rem. Ipsam?
-                </p>  */}
+                </p> */}
             </main>
         </>
     )
