@@ -9,15 +9,16 @@ const AboutSection = () => {
             <AnimatedTitle isPrimary>storytellers . storytellers . storytellers </AnimatedTitle>
             <Container>
                 <Grid>
-                    <div className='mb-12'>
-                        <h2 className='font-power-grotesk text-50 leading-none mb-1'>Inês</h2>
-                        <p className='font-subjectivity text-16'>Fotografia</p>
+                    <div className='mb-12 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1'>
+                        <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90  leading-none mb-1'>Inês</h2>
+                        <p className='font-subjectivity default-text'>Fotografia & Edição</p>
                     </div>
-                    <div className='col-span-2 row-start-2 '>
-                        <div className='aspect-[9/16] relative'>
+                    <div className='col-span-2 row-start-2 768:col-start-1 768:row-start-1 768:col-span-6 768:row-span-2'>
+                        <div className='aspect-[2/3] relative'>
                             <img className='w-full h-full object-cover' src='https://source.unsplash.com/random?random' alt='Foto Inês' />
                             <div className='absolute bottom-1 flex'>
                                 <p className='default-text text-white  uppercase '>
+                                    {/* TODO: retirar o default-text e saber qual é o font-size para cada breakpoint! */}
                                     Mais sobre a <span className='text-black'>Inês</span>
                                 </p>
                                 <div className='ml-2 w-7 h-max -rotate-45'>
@@ -26,8 +27,10 @@ const AboutSection = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='row-start-3 mt-12 mb-12  col-span-2'>
-                        <p className='text-32'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti inventore est unde quibusdam distinctio?</p>
+                    <div className='row-start-3 mt-12 mb-12 col-span-2 768:col-start-7 768:col-span-6 768:row-start-2'>
+                        <p className='text-32 768:text-44 1280:text-60 '>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti inventore est unde quibusdam distinctio?
+                        </p>
                     </div>
                 </Grid>
             </Container>
