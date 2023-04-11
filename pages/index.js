@@ -3,8 +3,8 @@
 //import Col from '@/layout/Col'
 //import Grid from '@/layout/Grid'
 import Seo from '@/components/atoms/Seo'
-import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import Hero from '@/components/organisms/Hero'
+import AboutSection from '@/components/organisms/AboutSection'
 
 export default function Home({ data }) {
     // const { hero_title } = data.attributes
@@ -12,9 +12,9 @@ export default function Home({ data }) {
     return (
         <>
             <Seo title='Era Uma Inês - Home' />
-            <main className=''>
+            <main>
                 <Hero />
-                <AnimatedTitle isPrimary>storytellers . storytellers . storytellers </AnimatedTitle>
+                <AboutSection />
                 {/* <Container>
                     <Main />
                     <h1>{hero_title}</h1>
