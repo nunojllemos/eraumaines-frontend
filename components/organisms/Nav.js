@@ -3,7 +3,7 @@ import { Instagram, Facebook } from '@/components/atoms/Icons'
 import { Envelope } from '@/components/atoms/Icons'
 import Hamburger from '@/molecules/Hamburger'
 
-const Nav = ({ isMenuOpen, handleMenuClink }) => {
+const Nav = ({ isMenuOpen, isHomepage, handleMenuClink }) => {
     const navLinks = [
         {
             title: 'nós',
@@ -47,7 +47,11 @@ const Nav = ({ isMenuOpen, handleMenuClink }) => {
                         </Link>
                     </li>
                     <li className='pb-8 768:pb-0 768:pl-8'>
-                        <button className='contact-button transition-colors text-black w-full flex items-center justify-between bg-white px-11 py-2 border-none rounded-md font-power-grotesk text-45 768:text-28 768:px-14 768:py-4 1280:text-32 1280:py-3 1280:px-12'>
+                        <button
+                            className={`contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk text-45 768:text-28 768:px-14 768:py-4 1280:text-32 1280:py-3 1280:px-12 ${
+                                isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
+                            } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
+                        >
                             <p className='text-current'>alô</p>
                             <div className='w-16 shrink-0 768:ml-4 768:w-12'>
                                 <Envelope />

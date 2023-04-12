@@ -19,8 +19,14 @@ const Header = () => {
         setMenuOpen(!isMenuOpen)
     }
 
+    const headroomOptions = {
+        downTolerance: 15,
+        upTolerance: 15,
+        pinStart: 10,
+    }
+
     return (
-        <Headroom>
+        <Headroom {...headroomOptions}>
             <header className={`w-full h-auto py-5 bg-transparent text-45 relative ${isHomepage ? 'text-white' : 'text-black'}`}>
                 <Container>
                     <div className='flex items-center justify-between 768:w-full '>
@@ -29,7 +35,7 @@ const Header = () => {
                                 <Logo />
                             </div>
                         </Link>
-                        <Nav isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} />
+                        <Nav isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} isHomepage={isHomepage} />
                     </div>
                 </Container>
             </header>

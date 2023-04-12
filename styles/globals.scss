@@ -78,6 +78,18 @@ li {
 .headroom--unfixed {
     position: relative;
     transform: translateY(0);
+
+    header {
+        .contact-button {
+            background-color: $black;
+            color: #fff;
+
+            &.is-home {
+                background-color: #fff;
+                color: $black;
+            }
+        }
+    }
 }
 
 .headroom--scrolled {
@@ -254,5 +266,26 @@ li {
     }
     100% {
         transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.terms-content {
+    h2 {
+        @apply default-text;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+        margin-bottom: 1em;
+        line-height: 1.45;
+
+        @include min-991 {
+            font-size: 1.8rem;
+        }
+
+        & + h2 {
+            margin-top: 4rem;
+        }
     }
 }
