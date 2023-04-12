@@ -18,7 +18,12 @@ const AboutSection = () => {
                         </div>
                         <div className='col-span-2 row-start-2 768:col-start-1 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5'>
                             <div className='relative'>
-                                <ImageContainer src='https://source.unsplash.com/random?girl' aspectRatio='2/3' sizes='100vw, (min-width: 768px) 45vw' />
+                                <ImageContainer
+                                    src='https://source.unsplash.com/random?girl'
+                                    alt='foto Inês'
+                                    aspectRatio='2/3'
+                                    sizes='100vw, (min-width: 768px) 45vw'
+                                />
                                 <div className='absolute bottom-1 flex 768:hidden '>
                                     <p className='default-text text-white  uppercase '>
                                         {/* TODO: retirar o default-text e saber qual é o font-size para cada breakpoint! */}
@@ -48,7 +53,12 @@ const AboutSection = () => {
                         </div>
                         <div className='col-span-2 row-start-2 768:col-start-7 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 1280:col-start-8'>
                             <div className='relative'>
-                                <ImageContainer src='https://source.unsplash.com/random?man' aspectRatio='2/3' alt='Foto Diogo' />
+                                <ImageContainer
+                                    src='https://source.unsplash.com/random?man'
+                                    aspectRatio='2/3'
+                                    sizes='100vw, (min-width: 768px) 45vw'
+                                    alt='Foto Diogo'
+                                />
                                 <div className='absolute bottom-1 flex 768:hidden'>
                                     <p className='default-text text-white  uppercase '>
                                         {/* TODO: retirar o default-text e saber qual é o font-size para cada breakpoint! */}

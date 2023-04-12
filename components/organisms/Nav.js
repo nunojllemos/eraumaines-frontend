@@ -34,14 +34,14 @@ const Nav = ({ isMenuOpen, handleMenuClink }) => {
                             </Link>
                         </li>
                     ))}
-                    <li className='flex gap-8 justify-center items-center order-last 768:order-none'>
+                    <li className='flex gap-8 justify-center items-center order-last 768:order-none '>
                         <Link href={'https://www.instagram.com/'}>
-                            <div className='w-14 768:w-11 1280:w-[32px] '>
+                            <div className='w-14 768:w-11 1280:w-[32px] hover:opacity-60 duration-200'>
                                 <Instagram />
                             </div>
                         </Link>
                         <Link href={'https://www.facebook.com/'}>
-                            <div className='w-8 768:w-7 1280:w-[16px]'>
+                            <div className='w-8 768:w-7 1280:w-[16px] hover:opacity-60 duration-200'>
                                 <Facebook />
                             </div>
                         </Link>
