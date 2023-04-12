@@ -1,5 +1,7 @@
+import ImageContainer from './ImageContainer'
+
 const Video = () => {
-    return <img src='https://source.unsplash.com/random?random' alt='video' className='w-full h-full object-cover' />
+    return <ImageContainer src='/images/heroimg.png' alt='video' />
 }
 
 export default Video
