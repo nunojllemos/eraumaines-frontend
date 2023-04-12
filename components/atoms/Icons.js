@@ -257,6 +257,12 @@ export const ExternalLink = () => {
     )
 }
 
+export const FaqArrow = () => (
+    <svg viewBox='0 0 29 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M27.2467 12.9133L0.580038 12.9133M27.2467 12.9133L15.2467 0.91333M27.2467 12.9133L15.2467 24.9133' stroke='currentColor' stroke-width='2' />
+    </svg>
+)
+
 export const Arrow = () => {
     return (
         <svg

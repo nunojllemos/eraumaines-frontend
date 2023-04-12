@@ -3,7 +3,7 @@ import FooterText from '@/atoms/FooterText'
 
 const FooterLink = ({ href, children }) => {
     return (
-        <Link href={href} scroll={false}>
+        <Link href={href}>
             <FooterText>{children}</FooterText>
         </Link>
     )

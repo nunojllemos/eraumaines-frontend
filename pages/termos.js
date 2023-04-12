@@ -7,7 +7,7 @@ import Grid from '@/components/styled-components/layout/Grid'
 const termos = () => {
     return (
         <main className='pb-16'>
-            <AnimatedTitle>termos contratuais . termos contratuais . termos contratuais . termos contratuais . </AnimatedTitle>
+            <AnimatedTitle>termos . termos . termos . termos . termos . termos . termos . </AnimatedTitle>
             <Container>
                 <Grid tablet={800}>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>

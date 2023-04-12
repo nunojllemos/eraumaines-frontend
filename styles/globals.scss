@@ -270,6 +270,10 @@ li {
 }
 
 .terms-content {
+    @media only screen and (max-width: 800px) {
+        margin-top: 4rem;
+    }
+
     h2 {
         @apply default-text;
         margin-bottom: 2rem;
