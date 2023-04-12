@@ -3,63 +3,42 @@ import { CloseMenu, OpenMenu, Instagram, Facebook } from '@/components/atoms/Ico
 import { Envelope } from '@/components/atoms/Icons'
 import { useState } from 'react'
 
-const Nav = () => {
-    const [isMenuOpen, setMenuOpen] = useState(false)
-
-    const handleMenuClink = () => {
-        setMenuOpen(!isMenuOpen)
-    }
-
+const Nav = ({ isMenuOpen, handleMenuClink }) => {
     const navLinks = [
         {
             title: 'nós',
-            url: '/',
+            url: '/nos',
         },
         {
             title: 'histórias',
-            url: '/',
+            url: '/historias',
         },
         {
             title: 'diário',
-            url: '/',
+            url: '/diario',
         },
     ]
 
     return (
         <nav className='flex justify-end w-full h-full 768:w-auto '>
-            <button className='z-1 border-none w-14 transition-opacity h-14 768:hidden relative'>
-                <div
-                    onClick={handleMenuClink}
-                    className={`${
-                        isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
-                    } transition-opacity absolute w-full h-full top-0 left-0`}
-                >
-                    <OpenMenu />
-                </div>
-                <div
-                    onClick={handleMenuClink}
-                    className={`${
-                        isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                    } transition-opacity absolute w-full h-full top-0 left-0 p-1`}
-                >
-                    <CloseMenu />
-                </div>
+            <button onClick={handleMenuClink} className='hamburger z-1 border-none w-14 aspect-square transition-opacity 768:hidden relative'>
+                <span className={isMenuOpen ? 'is-open' : ''}></span>
+                <span className={isMenuOpen ? 'is-open' : ''}></span>
+                <span className={isMenuOpen ? 'is-open' : ''}></span>
             </button>
 
             <div
                 className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center bg-primary/80 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
                 ${isMenuOpen ? 'left-0' : 'left-full'}`}
             >
-                <ul className='flex flex-col 768:flex-row 768:items-center 768:text-28 1280:text-32'>
-                    {navLinks.map((navLink, i) => {
-                        return (
-                            <li className='pb-8 768:pr-8 768:py-0' key={i}>
-                                <Link prefetch={false} className='font-power-grotesk' href={navLink.url}>
-                                    <p>{navLink.title}</p>
-                                </Link>
-                            </li>
-                        )
-                    })}
+                <ul className={`flex flex-col 768:flex-row 768:items-center 768:text-28 1280:text-32 ${isMenuOpen ? 'text-white' : 'text-current'}`}>
+                    {navLinks.map((navLink, i) => (
+                        <li className='pb-8 768:pr-8 768:py-0' key={i}>
+                            <Link prefetch={false} className='font-power-grotesk' href={navLink.url}>
+                                <p>{navLink.title}</p>
+                            </Link>
+                        </li>
+                    ))}
                     <li className='flex gap-8 justify-center items-center order-last 768:order-none'>
                         <Link href={'https://www.instagram.com/'}>
                             <div className='w-14 768:w-11 1280:w-[32px] '>
