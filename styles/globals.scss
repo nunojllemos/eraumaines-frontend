@@ -96,6 +96,11 @@ li {
 
     header {
         color: $black;
+
+        .contact-button {
+            background-color: $black;
+            color: #fff;
+        }
     }
 }
 
