@@ -7,7 +7,7 @@
 
 $black: #1c1c1c;
 $red: #ff0000;
-$easing: cubic-bezier(0.24, 0.16, 0, 0.95);
+$easing: cubic-bezier(0.19, 1, 0.22, 1);
 $duration: 250ms;
 $transition: $easing $duration;
 
@@ -25,14 +25,15 @@ $transition: $easing $duration;
 
 @font-face {
     font-family: 'Subjectivity';
-    font-weight: 400;
-    src: url('/fonts/Subjectivity-Regular.otf') format('opentype');
+    font-weight: 300;
+    src: url('/fonts/Subjectivity-Light.woff2') format('woff2');
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition-timing-function: $easing;
 }
 
 html {
