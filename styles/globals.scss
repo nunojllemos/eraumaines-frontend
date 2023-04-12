@@ -68,6 +68,8 @@ li {
 }
 
 .headroom {
+    position: fixed !important;
+    transition: $transition !important;
     top: 0;
     left: 0;
     right: 0;
@@ -76,7 +78,6 @@ li {
 .headroom--unfixed {
     position: relative;
     transform: translateY(0);
-    // background-color: #ff0000;
 }
 
 .headroom--scrolled {
@@ -86,13 +87,16 @@ li {
 .headroom--unpinned {
     position: fixed;
     transform: translateY(-100%);
-    background-color: greenyellow;
 }
 
 .headroom--pinned {
     position: fixed;
     transform: translateY(0%);
-    background-color: teal;
+    background-color: rgba(255, 255, 255, 0.95);
+
+    header {
+        color: $black;
+    }
 }
 
 .default-text {
@@ -144,5 +148,106 @@ li {
                 opacity: 0.5;
             }
         }
+    }
+}
+
+.hamburger {
+    span {
+        display: block;
+        height: 2px;
+        background-color: currentColor;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        transition: $transition;
+
+        &.is-open {
+            background-color: #fff;
+        }
+
+        &:nth-child(1),
+        &:nth-child(3) {
+            animation-duration: $duration * 2;
+            animation-fill-mode: forwards;
+
+            &:not(.is-open) {
+                width: 72%;
+            }
+        }
+
+        &:nth-child(1) {
+            animation-name: animate-reverse-hamburger-bar-1;
+
+            &.is-open {
+                animation-name: animate-hamburger-bar-1;
+            }
+        }
+
+        &:nth-child(2) {
+            transition: opacity $transition $duration, background-color $transition 0ms;
+
+            &.is-open {
+                opacity: 0;
+            }
+        }
+
+        &:nth-child(3) {
+            &:not(.is-open) {
+                animation-name: animate-reverse-hamburger-bar-3;
+                margin-left: auto;
+            }
+
+            &.is-open {
+                animation-name: animate-hamburger-bar-3;
+            }
+        }
+    }
+}
+
+@keyframes animate-hamburger-bar-3 {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+    100% {
+        width: 100%;
+        transform: translateY(-12px) rotate(45deg);
+    }
+}
+@keyframes animate-reverse-hamburger-bar-3 {
+    0% {
+        transform: translateY(-12px) rotate(45deg);
+        width: 72%;
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+@keyframes animate-hamburger-bar-1 {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(12px);
+    }
+    100% {
+        width: 100%;
+        transform: translateY(12px) rotate(-45deg);
+    }
+}
+@keyframes animate-reverse-hamburger-bar-1 {
+    0% {
+        transform: translateY(12px) rotate(-45deg);
+        width: 72%;
+    }
+    50% {
+        transform: translateY(12px);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
     }
 }
