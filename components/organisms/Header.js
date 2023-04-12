@@ -29,7 +29,7 @@ const Header = () => {
                                 <Logo />
                             </div>
                         </Link>
-                        <Nav isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} />
+                        <Nav isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} isHomepage={isHomepage} />
                     </div>
                 </Container>
             </header>

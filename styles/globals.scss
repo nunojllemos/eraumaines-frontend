@@ -78,6 +78,18 @@ li {
 .headroom--unfixed {
     position: relative;
     transform: translateY(0);
+
+    header {
+        .contact-button {
+            background-color: $black;
+            color: #fff;
+
+            &.is-home {
+                background-color: #fff;
+                color: $black;
+            }
+        }
+    }
 }
 
 .headroom--scrolled {
