@@ -47,8 +47,8 @@ const AboutSection = () => {
                             <p className='font-subjectivity default-text'>Video & Edição</p>
                         </div>
                         <div className='col-span-2 row-start-2 768:col-start-7 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 1280:col-start-8'>
-                            <div className='aspect-[2/3] relative'>
-                                <img className='w-full h-full object-cover' src='https://source.unsplash.com/random?random' alt='Foto Inês' />
+                            <div className='relative'>
+                                <ImageContainer src='https://source.unsplash.com/random?man' aspectRatio='2/3' alt='Foto Diogo' />
                                 <div className='absolute bottom-1 flex 768:hidden'>
                                     <p className='default-text text-white  uppercase '>
                                         {/* TODO: retirar o default-text e saber qual é o font-size para cada breakpoint! */}
