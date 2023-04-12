@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { CloseMenu, OpenMenu, Instagram, Facebook } from '@/components/atoms/Icons'
+import { Instagram, Facebook } from '@/components/atoms/Icons'
 import { Envelope } from '@/components/atoms/Icons'
-import { useState } from 'react'
+import Hamburger from '@/molecules/Hamburger'
 
 const Nav = ({ isMenuOpen, handleMenuClink }) => {
     const navLinks = [
@@ -21,12 +21,7 @@ const Nav = ({ isMenuOpen, handleMenuClink }) => {
 
     return (
         <nav className='flex justify-end w-full h-full 768:w-auto '>
-            <button onClick={handleMenuClink} className='hamburger z-1 border-none w-14 aspect-square transition-opacity 768:hidden relative'>
-                <span className={isMenuOpen ? 'is-open' : ''}></span>
-                <span className={isMenuOpen ? 'is-open' : ''}></span>
-                <span className={isMenuOpen ? 'is-open' : ''}></span>
-            </button>
-
+            <Hamburger handleMenuClink={handleMenuClink} isMenuOpen={isMenuOpen} />
             <div
                 className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center bg-primary/80 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
                 ${isMenuOpen ? 'left-0' : 'left-full'}`}
