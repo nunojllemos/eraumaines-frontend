@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const StyledImageContainer = styled.div`
     position: relative;
     width: 100%;
+    height: 100%;
     aspect-ratio: ${p => p.aspectRatio || 'unset'};
 `
 
