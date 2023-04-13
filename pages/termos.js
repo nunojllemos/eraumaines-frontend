@@ -7,12 +7,12 @@ import Grid from '@/components/styled-components/layout/Grid'
 const termos = () => {
     return (
         <main className='pb-16'>
-            <AnimatedTitle>termos contratuais . termos contratuais . termos contratuais . termos contratuais . </AnimatedTitle>
+            <AnimatedTitle>termos . termos . termos . termos . termos . termos . termos . </AnimatedTitle>
             <Container>
                 <Grid tablet={800}>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
                         <div className='sticky top-8'>
-                            <ImageContainer src='https://source.unsplash.com/random?document' aspectRatio='2/2' sizes='50vw' quality={100} />
+                            <ImageContainer src='/images/terms-banner.jpg' aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />
                         </div>
                     </Col>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
