@@ -243,8 +243,8 @@ export const Facebook = () => {
 
 export const Mute = () => {
     return (
-        <svg viewBox='0 0 22 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M15 9L21 15M21 9L15 15M1 8V16H6.09902L12 21V3L6 8H1Z' stroke='#1C1C1C' strokeWidth='2' />
+        <svg viewBox='0 0 22 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M15 9L21 15M21 9L15 15M1 8V16H6.09902L12 21V3L6 8H1Z' stroke='currentColor' strokeWidth='2' />
         </svg>
     )
 }

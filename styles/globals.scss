@@ -289,3 +289,38 @@ li {
         }
     }
 }
+
+.hover-menu {
+    position: relative;
+}
+
+.hover-menu:before {
+    content: '';
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-menu:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.hover-button:hover {
+    background: red;
+}
+
+.hover-mute {
+    transition: 0.2s;
+}
+
+.hover-mute:hover {
+    background: black;
+    color: white;
+}

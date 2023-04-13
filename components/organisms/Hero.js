@@ -14,8 +14,8 @@ const Hero = () => {
                     <h1 className='font-maginia w-[300px] text-80 768:text-100 1280:text-130 leading-none'>histórias com arte.</h1>
                     <div className='flex items-center justify-between mt-20'>
                         <InternalLink href='/' text='ver mais histórias' />
-                        <button className='flex items-center justify-center bg-white w-14 h-14 rounded-full'>
-                            <div className='w-8 '>
+                        <button className='hover-mute flex items-center justify-center bg-white text-black w-14 h-14 rounded-full'>
+                            <div className='w-8'>
                                 <Mute />
                             </div>
                         </button>
