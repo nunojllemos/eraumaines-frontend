@@ -33,7 +33,7 @@ const Header = () => {
             <header className={`w-full h-auto py-5 bg-transparent text-45 relative ${isHomepage ? 'text-white' : 'text-black'}`}>
                 <Container>
                     <div className='flex items-center justify-between 768:w-full '>
-                        <Link href='/'>
+                        <Link href='/' scroll={false} prefetch={false}>
                             <div className={`w-32 transition-colors 1280:w-40 shrink-0 h-max relative z-1 ${isMenuOpen ? 'text-white' : ''}`}>
                                 <Logo />
                             </div>

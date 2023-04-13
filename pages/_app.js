@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import '@/styles/globals.scss'
 import Header from '@/organisms/Header'
 import Head from 'next/head'
@@ -7,9 +8,21 @@ import Favicon from '@/molecules/Favicon'
 import PageTransition from '@/molecules/PageTransition'
 
 export default function App({ Component, pageProps }) {
+    const router = useRouter()
+
     useEffect(() => {
         console.log('Development branch')
     }, [])
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'instant',
+            })
+        }, 1000)
+    }, [router.asPath])
 
     return (
         <>

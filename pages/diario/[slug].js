@@ -9,18 +9,21 @@ import DiaryCard from '@/components/molecules/DiaryCard'
 const SlugDiary = () => {
     return (
         <main className='pb-16'>
-            <div className='pb-32'>
+            <div className='pb-16 768:pb-32'>
                 <Container>
                     <Grid>
-                        <Col tabletCols={8} offsetTablet={2}>
-                            <ImageContainer src='/images/diary-card-1.png' aspectRatio='16/9' />
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
+                            <figure>
+                                <ImageContainer src='/images/diary-card-1.png' aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
+                                <figcaption className='text-12 mt-2'>This is a caption</figcaption>
+                            </figure>
                         </Col>
-                        <Col tabletCols={6} offsetTablet={2}>
-                            <div className='my-16'>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
+                            <div className='my-12 768:my-16'>
                                 <DiaryTitle title='Imprimir as fotografias. Sim ou não?' />
                             </div>
                         </Col>
-                        <Col tabletCols={8} offsetTablet={2}>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <div className='diary-content'>
                                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores eligendi non fugit nobis perferendis neque quae inventore?
                                 Laboriosam, dolorum enim id harum voluptatum accusantium maiores architecto consequuntur odio, illum dolor?
