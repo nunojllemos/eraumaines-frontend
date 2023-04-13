@@ -34,7 +34,7 @@ const Alo = () => {
                 <Grid tablet={800}>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
                         <div className='sticky top-8'>
-                            <ImageContainer src='/images/contact-banner.jpg' aspectRatio='1/1' sizes='50vw' quality={100} />
+                            <ImageContainer src='/images/contact-banner.jpg' aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />
                         </div>
                     </Col>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
