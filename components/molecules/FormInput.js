@@ -1,9 +1,9 @@
-const FormInput = ({ type = 'text', name, placeholder, required = false, errorMessage = 'Este campo é de preenchimento obrigatório' }) => {
+const FormInput = ({ type = 'text', name, placeholder, required = false }) => {
     return (
         <div className='default-text relative w-full pt-8'>
             <input
                 required={required}
-                className='peer w-full bg-transparent border-b outline-none py-2 px-4'
+                className='peer w-full bg-transparent border-b outline-black/80 py-2 px-4'
                 type={type}
                 id={name}
                 placeholder=' '
@@ -16,11 +16,6 @@ const FormInput = ({ type = 'text', name, placeholder, required = false, errorMe
                 {placeholder}
                 {required && <sup>*</sup>}
             </label>
-            {required && (
-                <span className='transition-all opacity-0 text-10 -translate-y-3 block mt-3 peer-invalid:opacity-100 peer-invalid:translate-y-0 text-[red]/70'>
-                    {errorMessage}
-                </span>
-            )}
         </div>
     )
 }
