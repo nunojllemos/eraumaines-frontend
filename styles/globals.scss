@@ -301,6 +301,7 @@ li {
     position: absolute;
     height: 3px;
     width: 100%;
+    border-radius: 4px;
     background-color: white;
     transform-origin: right;
     transform: scaleX(0);
@@ -313,15 +314,23 @@ li {
 }
 
 .hover-button:hover {
-    background: black !important;
+    background: $black !important;
     color: #fff !important;
 }
 
 .hover-mute {
-    transition: 0.2s;
+    transition: $transition;
 }
 
 .hover-mute:hover {
-    background: black;
+    background: $black;
     color: white;
+}
+
+.hover-arrow:hover div {
+    rotate: -45deg;
+    transform: translateY(10px);
+    transform: translateX(10px);
+    transform: $transition;
+    transform: $duration;
 }
