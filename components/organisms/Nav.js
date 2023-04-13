@@ -48,7 +48,7 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink }) => {
                     </li>
                     <li className='pb-8 768:pb-0 768:pl-8 '>
                         <button
-                            className={` contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk text-45 768:text-28 768:px-14 768:py-4 1280:text-32 1280:py-3 1280:px-12 ${
+                            className={` hover-button contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk text-45 768:text-28 768:px-14 768:py-4 1280:text-32 1280:py-3 1280:px-12 ${
                                 isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
                             } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                         >
