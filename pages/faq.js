@@ -88,7 +88,7 @@ const faq = () => {
                 <Grid tablet={800}>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
                         <div className='sticky top-8'>
-                            <ImageContainer src='https://source.unsplash.com/random' aspectRatio='2/2' sizes='100vw, (min-width: 800px) 50vw' />
+                            <ImageContainer src='https://source.unsplash.com/random' aspectRatio='1/1' sizes='100vw, (min-width: 800px) 50vw' />
                         </div>
                     </Col>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>

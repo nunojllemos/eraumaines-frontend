@@ -35,28 +35,30 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink }) => {
                         </li>
                     ))}
                     <li className='flex gap-8 justify-center items-center order-last 768:order-none '>
-                        <Link href={'https://www.instagram.com/'}>
+                        <a href='https://www.instagram.com/' rel='noreferrer' target='_blank'>
                             <div className='w-14 768:w-11 1280:w-[32px] hover:opacity-60 duration-200'>
                                 <Instagram />
                             </div>
-                        </Link>
-                        <Link href={'https://www.facebook.com/'}>
+                        </a>
+                        <a href='https://www.facebook.com/' rel='noreferrer' target='_blank'>
                             <div className='w-8 768:w-7 1280:w-[16px] hover:opacity-60 duration-200'>
                                 <Facebook />
                             </div>
-                        </Link>
+                        </a>
                     </li>
                     <li className='pb-8 768:pb-0 768:pl-8'>
-                        <button
-                            className={`contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk text-45 768:text-28 768:px-14 768:py-4 1280:text-32 1280:py-3 1280:px-12 ${
-                                isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
-                            } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
-                        >
-                            <p className='text-current'>alô</p>
-                            <div className='w-16 shrink-0 768:ml-4 768:w-12'>
-                                <Envelope />
-                            </div>
-                        </button>
+                        <Link href='/alo'>
+                            <button
+                                className={`contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk text-45 768:text-28 768:px-14 768:py-4 1280:text-32 1280:py-3 1280:px-12 ${
+                                    isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
+                                } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
+                            >
+                                <p className='text-current'>alô</p>
+                                <div className='w-16 shrink-0 768:ml-4 768:w-12'>
+                                    <Envelope />
+                                </div>
+                            </button>
+                        </Link>
                     </li>
                 </ul>
             </div>

@@ -20,8 +20,8 @@ const Header = () => {
     }
 
     const headroomOptions = {
-        downTolerance: 15,
-        upTolerance: 15,
+        downTolerance: 10,
+        upTolerance: 10,
         pinStart: 10,
     }
 
