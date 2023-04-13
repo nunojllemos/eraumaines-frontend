@@ -13,7 +13,10 @@ const Header = () => {
 
     useEffect(() => {
         setIsHomepage(router.asPath === '/')
+        closeMenu()
     }, [router.asPath])
+
+    const closeMenu = () => setMenuOpen(false)
 
     const handleMenuClink = () => {
         setMenuOpen(!isMenuOpen)

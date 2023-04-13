@@ -48,7 +48,7 @@ const Diario = () => {
                     <Col mobileCols={2} tabletCols={6}>
                         <div className='flex flex-col gap-8 h-full'>
                             <div className='aspect-[4/3] bg-[blue]/30'>3</div>
-                            <div className='aspect-square 768:flex-1 bg-[green]/50'>4</div>
+                            <div className='aspect-square 768:aspect-auto 768:flex-1 bg-[green]/50'>4</div>
                         </div>
                     </Col>
                 </Grid>

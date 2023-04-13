@@ -3,7 +3,7 @@ import DiaryCardTitle from '../atoms/DiaryCardTitle'
 import DiaryCardDescription from '../atoms/DiaryCardDescription'
 import Link from 'next/link'
 
-const DiaryCard = ({ src, aspectRatio, title, description, href = '' }) => {
+const DiaryCard = ({ src, aspectRatio, title, description, href = '/diario/slug-example' }) => {
     return (
         <Link href={href} className='group'>
             <article className=' relative overflow-hidden'>
