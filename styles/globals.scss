@@ -347,13 +347,23 @@ input[type='search'] {
     }
 }
 
-.hover-arrow:hover div {
-    rotate: -45deg;
-    transform: translateY(10px);
-    transform: translateX(10px);
-    transform: $transition;
-    transform: $duration;
+.hover-arrow {
+    span:nth-child(2) {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        left: -170%;
+        top: 0;
+    }
+
+    @include hover {
+        &:hover div {
+            rotate: -45deg;
+            transform: translateX(25px);
+        }
+    }
 }
+
 .ellipsis-text {
     display: -webkit-box;
     -webkit-line-clamp: 2;
