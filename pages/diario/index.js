@@ -1,12 +1,16 @@
+import { useEffect } from 'react'
+import Image from 'next/image'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import DiaryCard from '@/components/molecules/DiaryCard'
-import ImageContainer from '@/components/atoms/ImageContainer'
-import Image from 'next/image'
 
-const Diario = () => {
+const Diario = ({ data }) => {
+    useEffect(() => {
+        console.log(data)
+    }, [])
+
     return (
         <main className='pb-16'>
             <AnimatedTitle>diário . diário . diário . diário . diário . </AnimatedTitle>
@@ -14,12 +18,14 @@ const Diario = () => {
                 <Grid rowGap={2}>
                     <Col mobileCols={2} tabletCols={8}>
                         <div className='flex flex-col gap-8'>
-                            <DiaryCard
-                                src='/images/diary-card-1.png'
-                                aspectRatio='16/9'
-                                title='Imprimir as fotografias. Sim ou não?'
-                                description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
-                            />
+                            {data[0] && (
+                                <DiaryCard
+                                    src={data[0].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='16/9'
+                                    title='Imprimir as fotografias. Sim ou não?'
+                                    description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
+                                />
+                            )}
                             <DiaryCard
                                 src='/images/diary-card-3.png'
                                 aspectRatio='16/9'
@@ -57,3 +63,12 @@ const Diario = () => {
     )
 }
 export default Diario
+
+export async function getStaticProps(context) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?populate=*`)
+    const data = await res.json()
+
+    return {
+        props: data,
+    }
+}

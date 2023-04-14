@@ -53,7 +53,7 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink }) => {
                                     isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
                                 } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                             >
-                                <span className='text-current'>alô</span>
+                                <span className='transition-colors text-current'>alô</span>
                                 <div className='w-16 shrink-0 768:ml-4 768:w-12'>
                                     <Envelope />
                                 </div>

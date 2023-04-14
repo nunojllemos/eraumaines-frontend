@@ -1,43 +1,31 @@
-//import Head from 'next/head'
-//import Container from '@/layout/Container'
-//import Col from '@/layout/Col'
-//import Grid from '@/layout/Grid'
+import { useEffect } from 'react'
 import Seo from '@/components/atoms/Seo'
 import Hero from '@/components/organisms/Hero'
 import AboutSection from '@/components/organisms/AboutSection'
 
 export default function Home({ data }) {
-    // const { hero_title } = data.attributes
+    const { hero_title } = data.attributes
+
+    useEffect(() => {
+        console.log(hero_title)
+    }, [])
 
     return (
         <>
             <Seo title='Era Uma Inês - Home' />
             <main>
-                <Hero />
+                <Hero title={hero_title} />
                 <AboutSection />
-                {/* <Container>
-                    <Main />
-                    <h1>{hero_title}</h1>
-                    <Grid mobileCols={2} tabletCols={12} desktopCols={12}>
-                        <Col>1</Col>
-                    </Grid>
-                </Container>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad esse animi vel tempora laboriosam doloribus in, quod assumenda fugit rerum
-                    praesentium, unde maiores nisi voluptatem eveniet officia voluptas rem. Ipsam?
-                </p> */}
             </main>
         </>
     )
 }
 
 export async function getStaticProps(context) {
-    // const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home`)
-    //     .then(res => res.json())
-    //     .then(data => data)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/home`)
+    const data = await res.json()
 
     return {
-        // props: data,
-        props: {},
+        props: data,
     }
 }
