@@ -309,6 +309,50 @@ input[type='search'] {
     }
 }
 
+.hover-menu {
+    position: relative;
+}
+
+.hover-menu:before {
+    content: '';
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: white;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-menu:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.hover-button:hover {
+    background: $black !important;
+    color: #fff !important;
+}
+
+.hover-mute {
+    transition: $transition;
+}
+
+.hover-mute:hover {
+    background: $black;
+    color: white;
+}
+
+.hover-arrow:hover div {
+    rotate: -45deg;
+    transform: translateY(10px);
+    transform: translateX(10px);
+    transform: $transition;
+    transform: $duration;
+}
 .ellipsis-text {
     display: -webkit-box;
     -webkit-line-clamp: 2;
