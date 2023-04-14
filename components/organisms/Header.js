@@ -30,11 +30,11 @@ const Header = () => {
 
     return (
         <Headroom {...headroomOptions}>
-            <header className={`w-full h-auto py-5 bg-transparent text-45 relative ${isHomepage ? 'text-white' : 'text-black'}`}>
+            <header className={`transition-all w-full h-auto py-5 bg-transparent relative ${isHomepage ? 'text-white' : 'text-black'}`}>
                 <Container>
                     <div className='flex items-center justify-between 768:w-full '>
                         <Link href='/' scroll={false} prefetch={false}>
-                            <div className={`w-32 transition-colors 1280:w-40 shrink-0 h-max relative z-1 ${isMenuOpen ? 'text-white' : ''}`}>
+                            <div className={`w-24 transition-colors 1280:w-28 shrink-0 h-max relative z-1 ${isMenuOpen ? 'text-white' : ''}`}>
                                 <Logo />
                             </div>
                         </Link>

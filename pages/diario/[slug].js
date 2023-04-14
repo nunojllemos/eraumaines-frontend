@@ -8,7 +8,7 @@ import DiaryCard from '@/components/molecules/DiaryCard'
 
 const SlugDiary = () => {
     return (
-        <main className='pb-16'>
+        <main className='py-16'>
             <div className='pb-16 768:pb-32'>
                 <Container>
                     <Grid>

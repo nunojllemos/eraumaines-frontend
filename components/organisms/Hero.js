@@ -5,7 +5,7 @@ import Container from '../styled-components/layout/Container'
 
 const Hero = () => {
     return (
-        <div className='h-screen mt-[-107px] 1280:mt-[-128px] relative'>
+        <div className='h-screen mt-[-87px] 1280:mt-[-97px] relative'>
             <div className='absolute top-0 h-full w-full z-[-1]'>
                 <HeroVideo />
             </div>
