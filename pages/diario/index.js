@@ -8,7 +8,7 @@ import DiaryCard from '@/components/molecules/DiaryCard'
 
 const Diario = ({ data }) => {
     useEffect(() => {
-        console.log(data)
+        // console.log(data)
     }, [])
 
     return (
@@ -22,22 +22,34 @@ const Diario = ({ data }) => {
                                 <DiaryCard
                                     src={data[0].attributes?.cover?.data?.attributes?.url}
                                     aspectRatio='16/9'
-                                    title='Imprimir as fotografias. Sim ou não?'
-                                    description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
+                                    title={data[0].attributes?.title}
+                                    description={data[0].attributes?.description}
+                                    href={data[0].attributes?.slug}
                                 />
                             )}
-                            <DiaryCard
-                                src='/images/diary-card-3.png'
-                                aspectRatio='16/9'
-                                title='Sessões de Natal 🎄'
-                                description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
-                            />
+                            {data[1] && (
+                                <DiaryCard
+                                    src={data[1].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='16/9'
+                                    title={data[1].attributes?.title}
+                                    description={data[1].attributes?.description}
+                                    href={data[1].attributes?.slug}
+                                />
+                            )}
                         </div>
                     </Col>
 
                     <Col mobileCols={2} tabletCols={4}>
                         <div className='flex flex-col gap-8 h-full'>
-                            <DiaryCard src='/images/diary-card-2.png' aspectRatio='4/3' title='Imprimir as fotografias.' />
+                            {data[2] && (
+                                <DiaryCard
+                                    src={data[2].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='4/3'
+                                    title={data[2].attributes?.title}
+                                    description={data[2].attributes?.description}
+                                    href={data[2].attributes?.slug}
+                                />
+                            )}
                             <div className='aspect-square 768:flex-1 relative'>
                                 <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
                             </div>
@@ -46,15 +58,47 @@ const Diario = ({ data }) => {
 
                     <Col mobileCols={2} tabletCols={6}>
                         <div className='flex flex-col gap-8'>
-                            <div className='aspect-video bg-[gold]/50'>1</div>
-                            <div className='aspect-[4/3] bg-[grey]/30'>2</div>
+                            {data[3] && (
+                                <DiaryCard
+                                    src={data[3].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='16/9'
+                                    title={data[3].attributes?.title}
+                                    description={data[3].attributes?.description}
+                                    href={data[3].attributes?.slug}
+                                />
+                            )}
+                            {data[4] && (
+                                <DiaryCard
+                                    src={data[4].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='4/3'
+                                    title={data[4].attributes?.title}
+                                    description={data[4].attributes?.description}
+                                    href={data[4].attributes?.slug}
+                                />
+                            )}
                         </div>
                     </Col>
 
                     <Col mobileCols={2} tabletCols={6}>
                         <div className='flex flex-col gap-8 h-full'>
-                            <div className='aspect-[4/3] bg-[blue]/30'>3</div>
-                            <div className='aspect-square 768:aspect-auto 768:flex-1 bg-[green]/50'>4</div>
+                            {data[5] && (
+                                <DiaryCard
+                                    src={data[5].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='4/3'
+                                    title={data[5].attributes?.title}
+                                    description={data[5].attributes?.description}
+                                    href={data[5].attributes?.slug}
+                                />
+                            )}
+                            {data[6] && (
+                                <DiaryCard
+                                    src={data[6].attributes?.cover?.data?.attributes?.url}
+                                    aspectRatio='1/1'
+                                    title={data[6].attributes?.title}
+                                    description={data[6].attributes?.description}
+                                    href={data[6].attributes?.slug}
+                                />
+                            )}
                         </div>
                     </Col>
                 </Grid>

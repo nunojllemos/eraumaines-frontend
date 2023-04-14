@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['source.unsplash.com', 'https://res.cloudinary.com/'],
+        domains: ['source.unsplash.com', 'res.cloudinary.com'],
         deviceSizes: [380, 640, 750, 1080, 1920, 3840],
     },
     compiler: {

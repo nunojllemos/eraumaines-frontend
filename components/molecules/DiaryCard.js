@@ -3,9 +3,9 @@ import DiaryCardTitle from '../atoms/DiaryCardTitle'
 import DiaryCardDescription from '../atoms/DiaryCardDescription'
 import Link from 'next/link'
 
-const DiaryCard = ({ src, aspectRatio, sizes, title, description, href = '/diario/slug-example' }) => {
+const DiaryCard = ({ src, aspectRatio, sizes, title, description, href = 'slug-example' }) => {
     return (
-        <Link href={href} className='group' scroll={false}>
+        <Link href={`diario/${href}`} className='group' scroll={false}>
             <article className=' relative overflow-hidden'>
                 <div className='transition-all scale-110 origin-left fix-hover:group-hover:origin-right'>
                     <ImageContainer src={src} aspectRatio={aspectRatio} sizes={sizes} />

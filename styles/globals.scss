@@ -348,18 +348,37 @@ input[type='search'] {
 }
 
 .hover-arrow {
-    span:nth-child(2) {
+    // span:nth-child(2) {
+    //     position: absolute;
+    //     width: 18px;
+    //     height: 18px;
+    //     left: -170%;
+    //     top: 0;
+    // }
+
+    span {
         position: absolute;
-        width: 18px;
-        height: 18px;
-        left: -170%;
-        top: 0;
+        top: 0px;
+        transition: transform $easing 450ms;
+
+        svg {
+            transform: rotate(135deg);
+        }
+
+        &:nth-child(2) {
+            transform: translate(-2rem, 2rem);
+        }
     }
 
     @include hover {
-        &:hover div {
-            rotate: -45deg;
-            transform: translateX(25px);
+        &:hover {
+            & span:nth-child(1) {
+                transform: translate(2rem, -2rem);
+            }
+
+            & span:nth-child(2) {
+                transform: translate(0, 0);
+            }
         }
     }
 }
