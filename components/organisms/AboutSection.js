@@ -7,7 +7,7 @@ import ImageContainer from '../atoms/ImageContainer'
 const AboutSection = () => {
     return (
         <div className='pt-12'>
-            <AnimatedTitle isPrimary>storytellers . storytellers . storytellers </AnimatedTitle>
+            <AnimatedTitle isPrimary={false}>storytellers . storytellers . storytellers </AnimatedTitle>
             <Container>
                 <div className='768:mb-20 grid grid-cols-2 gap-x-8 768:grid-cols-12'>
                     {/* Inês */}

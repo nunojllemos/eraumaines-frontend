@@ -12,8 +12,8 @@ const AnimatedTitleText = ({ isPrimary, children }) => {
     return (
         <motion.div
             ref={targetRef}
-            style={{ translateY: '-10%', x }}
-            className='leading-[1.3] text-50 414:text-60 768:text-80 991:text-100 1280:text-130 font-maginia whitespace-nowrap'
+            style={{ x }}
+            className='leading-[1.3] text-50 414:text-60 768:text-80 991:text-100 1280:text-130 font-maginia whitespace-nowrap mb-6'
         >
             {isPrimary ? <h1>{children}</h1> : <h2>{children}</h2>}
         </motion.div>
