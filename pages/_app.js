@@ -11,10 +11,6 @@ export default function App({ Component, pageProps }) {
     const router = useRouter()
 
     useEffect(() => {
-        console.log('Development branch')
-    }, [])
-
-    useEffect(() => {
         setTimeout(() => {
             window.scrollTo({
                 top: 0,

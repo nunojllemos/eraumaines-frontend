@@ -8,12 +8,13 @@ import Headroom from 'react-headroom'
 
 const Header = () => {
     const router = useRouter()
+    const { locale, locales } = useRouter()
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [isHomepage, setIsHomepage] = useState(router.asPath === '/')
 
     useEffect(() => {
         setIsHomepage(router.asPath === '/')
-        isMenuOpen && closeMenu()
+        closeMenu()
     }, [router.asPath])
 
     const closeMenu = () => setMenuOpen(false)
@@ -40,7 +41,7 @@ const Header = () => {
                                 <Logo />
                             </div>
                         </Link>
-                        <Nav isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} isHomepage={isHomepage} />
+                        <Nav locale={locale} locales={locales} isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} isHomepage={isHomepage} />
                     </div>
                 </Container>
             </header>

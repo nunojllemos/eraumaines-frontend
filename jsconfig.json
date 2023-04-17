@@ -1,16 +1,18 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		// Paths Aliases
-		"paths": {
-			"@/components/*": ["components/*"],
-			"@/styles/*": ["styles/*"],
-			"@/layout/*": ["components/styled-components/layout/*"],
-			"@/atoms/*": ["components/atoms/*"],
-			"@/organisms/*": ["components/organisms/*"],
-			"@/molecules/*": ["components/molecules/*"],
-			"@/pages/*": ["components/pages/*"],
-			"@/templates/*": ["components/templates/*"]
-		}
-	}
+    "compilerOptions": {
+        "baseUrl": ".",
+        // Paths Aliases
+        "paths": {
+            "@/components/*": ["components/*"],
+            "@/styles/*": ["styles/*"],
+            "@/layout/*": ["components/styled-components/layout/*"],
+            "@/atoms/*": ["components/atoms/*"],
+            "@/organisms/*": ["components/organisms/*"],
+            "@/molecules/*": ["components/molecules/*"],
+            "@/pages/*": ["components/pages/*"],
+            "@/templates/*": ["components/templates/*"],
+            "@/dictionaries/*": ["dictionaries/*"],
+            "@/hooks/*": ["hooks/*"]
+        }
+    }
 }

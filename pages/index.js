@@ -18,7 +18,14 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps(context) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/home`)
+    const { locale } = context
+
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/home?locale=${strapiLocale}`)
     const data = await res.json()
 
     return {
