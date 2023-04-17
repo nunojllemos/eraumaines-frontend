@@ -11,7 +11,7 @@ const AboutSection = () => {
             <Container>
                 <div className='768:mb-20 grid grid-cols-2 gap-x-8 768:grid-cols-12'>
                     {/* Inês */}
-                    <div className='mb-12 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1 1280:col-start-6 768:mb-0'>
+                    <div className='test mb-12 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1 1280:col-start-6 768:mb-0'>
                         <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none mb-3'>Inês</h2>
                         <p className='font-subjectivity default-text'>Fotografia & Edição</p>
                     </div>
@@ -41,7 +41,7 @@ const AboutSection = () => {
                     </div>
                 </div>
 
-                <div className='768:mb-20'>
+                <div className='768:mb-20 person-grid'>
                     <Grid>
                         {/* Diogo */}
 

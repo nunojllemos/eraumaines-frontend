@@ -78,7 +78,7 @@ module.exports = {
             },
 
             transitionDuration: {
-                DEFAULT: '250ms',
+                DEFAULT: '450ms',
                 400: '400ms',
             },
 

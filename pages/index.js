@@ -6,10 +6,6 @@ import AboutSection from '@/components/organisms/AboutSection'
 export default function Home({ data }) {
     const { hero_title } = data.attributes
 
-    useEffect(() => {
-        console.log(hero_title)
-    }, [])
-
     return (
         <>
             <Seo title='Era Uma Inês - Home' />

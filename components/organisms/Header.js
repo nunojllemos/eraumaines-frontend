@@ -13,7 +13,7 @@ const Header = () => {
 
     useEffect(() => {
         setIsHomepage(router.asPath === '/')
-        closeMenu()
+        isMenuOpen && closeMenu()
     }, [router.asPath])
 
     const closeMenu = () => setMenuOpen(false)
@@ -23,14 +23,16 @@ const Header = () => {
     }
 
     const headroomOptions = {
+        className: isHomepage ? 'is-home' : '',
         downTolerance: 10,
         upTolerance: 10,
         pinStart: 10,
+        disable: isMenuOpen ? true : false,
     }
 
     return (
         <Headroom {...headroomOptions}>
-            <header className={`transition-all w-full h-auto py-5 bg-transparent relative ${isHomepage ? 'text-white' : 'text-black'}`}>
+            <header className={`transition-all w-full h-auto py-5 relative ${isHomepage ? 'text-white bg-transparent' : 'text-black bg-white/95'}`}>
                 <Container>
                     <div className='flex items-center justify-between 768:w-full '>
                         <Link href='/' scroll={false} prefetch={false}>

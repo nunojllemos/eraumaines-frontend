@@ -4,9 +4,9 @@ import { Arrow } from '@/atoms/Icons'
 
 const InternalLink = props => {
     return (
-        <Link className='flex items-center hover-arrow' href={props.href}>
+        <Link className='flex items-center' href={props.href}>
             <LinkText text={props.text} />
-            <div className='w-8 aspect-square duration-700 relative overflow-hidden'>
+            <div className='w-8 aspect-square duration-700 relative overflow-hidden arrow-container'>
                 <span className='block w-8'>
                     <Arrow />
                 </span>

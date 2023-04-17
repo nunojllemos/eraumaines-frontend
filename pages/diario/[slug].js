@@ -7,6 +7,7 @@ import DiaryTitle from '@/components/atoms/DiaryTitle'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import DiaryCard from '@/components/molecules/DiaryCard'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const SlugDiary = ({ data }) => {
     const { title, cover, content } = data[0]?.attributes
@@ -33,7 +34,7 @@ const SlugDiary = ({ data }) => {
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <div className='diary-content'>
-                                <ReactMarkdown>{content}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                             </div>
                         </Col>
                     </Grid>
