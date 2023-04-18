@@ -1,6 +1,5 @@
 import AnimatedTitle from '../molecules/AnimatedTitle'
 import Container from '../styled-components/layout/Container'
-import Grid from '../styled-components/layout/Grid'
 import { Arrow } from '../atoms/Icons'
 import ImageContainer from '../atoms/ImageContainer'
 
@@ -9,9 +8,9 @@ const AboutSection = () => {
         <div className='pt-12'>
             <AnimatedTitle isPrimary={false}>storytellers . storytellers . storytellers </AnimatedTitle>
             <Container>
-                <div className='768:mb-20 grid grid-cols-2 gap-x-8 768:grid-cols-12'>
+                <div className='768:mb-20 grid grid-cols-2 gap-x-8 768:grid-cols-12 768:grid-rows-[auto_1fr] '>
                     {/* Inês */}
-                    <div className='test mb-12 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1 1280:col-start-6 768:mb-0'>
+                    <div className='test mb-24 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1 1280:col-start-6'>
                         <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none mb-3'>Inês</h2>
                         <p className='font-subjectivity default-text'>Fotografia & Edição</p>
                     </div>
@@ -42,10 +41,10 @@ const AboutSection = () => {
                 </div>
 
                 <div className='768:mb-20 person-grid'>
-                    <Grid>
+                    <div className='768:mb-20 grid grid-cols-2 gap-x-8 768:grid-cols-12 768:grid-rows-[auto_1fr] '>
                         {/* Diogo */}
 
-                        <div className='mb-12 col-span-2 768:col-start-1 768:col-span-4 768:row-start-1 768:mb-0'>
+                        <div className='mb-24 col-span-2 768:col-start-1 768:col-span-4 768:row-start-1'>
                             <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none mb-3'>Diogo</h2>
                             <p className='font-subjectivity default-text'>Video & Edição</p>
                         </div>
@@ -73,7 +72,7 @@ const AboutSection = () => {
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab accusantium alias saepe.
                             </p>
                         </div>
-                    </Grid>
+                    </div>
                 </div>
             </Container>
         </div>
