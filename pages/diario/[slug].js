@@ -7,13 +7,14 @@ import DiaryTitle from '@/components/atoms/DiaryTitle'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import DiaryCard from '@/components/molecules/DiaryCard'
 import ReactMarkdown from 'react-markdown'
+import useTranslation from '@/hooks/useTranslation'
+import remarkGfm from 'remark-gfm'
 
 const SlugDiary = ({ data }) => {
     const { title, cover, content } = data[0]?.attributes
     const image = cover?.data?.attributes?.url
     const caption = cover?.data?.attributes?.caption
-
-    useEffect(() => {}, [])
+    const t = useTranslation()
 
     return (
         <main className='py-16'>
@@ -33,13 +34,13 @@ const SlugDiary = ({ data }) => {
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <div className='diary-content'>
-                                <ReactMarkdown>{content}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                             </div>
                         </Col>
                     </Grid>
                 </Container>
             </div>
-            <AnimatedTitle>outros artigos . outros artigos . outros artigos . outros artigos . </AnimatedTitle>
+            <AnimatedTitle>{`${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . `}</AnimatedTitle>
             <Container>
                 <Grid>
                     <Col mobileCols={2} tabletCols={4}>
@@ -87,8 +88,17 @@ export async function getStaticPaths(context) {
 }
 
 export async function getStaticProps(context) {
+    const { locale } = context
+
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
     const slug = context.params.slug
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?filters[slug][$eq]=${slug}&populate=*`)
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?filters[slug][$eq]=${slug}&populate=*&locale=${strapiLocale}`
+    )
     const data = await res.json()
 
     return {

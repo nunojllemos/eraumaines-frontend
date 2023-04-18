@@ -8,7 +8,7 @@
 $black: #1c1c1c;
 $red: #ff0000;
 $easing: cubic-bezier(0.19, 1, 0.22, 1);
-$duration: 250ms;
+$duration: 450ms;
 $transition: $easing $duration;
 
 @font-face {
@@ -93,6 +93,10 @@ input[type='search'] {
     position: relative;
     transform: translateY(0);
 
+    &.is-home {
+        // background-color: rgba(255, 255, 255, 0.95);
+    }
+
     header {
         .contact-button {
             background-color: $black;
@@ -115,10 +119,14 @@ input[type='search'] {
     transform: translateY(-100%);
 }
 
+.is-home {
+    & .headroom--pinned {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+}
 .headroom--pinned {
     position: fixed;
     transform: translateY(0%);
-    background-color: rgba(255, 255, 255, 0.95);
 
     header {
         color: $black;
@@ -132,15 +140,7 @@ input[type='search'] {
 }
 
 .default-text {
-    font-size: 2rem;
-
-    @include min-768 {
-        font-size: 2.2rem;
-    }
-
-    @include min-1280 {
-        font-size: 2.6rem;
-    }
+    @apply text-20 768:text-22 1280:text-26;
 }
 
 .animated-title-container {
@@ -348,35 +348,29 @@ input[type='search'] {
 }
 
 .hover-arrow {
-    // span:nth-child(2) {
-    //     position: absolute;
-    //     width: 18px;
-    //     height: 18px;
-    //     left: -170%;
-    //     top: 0;
-    // }
+    .arrow-container {
+        span {
+            position: absolute;
+            top: 0px;
+            transition: transform $easing 450ms;
 
-    span {
-        position: absolute;
-        top: 0px;
-        transition: transform $easing 450ms;
+            svg {
+                transform: rotate(135deg);
+            }
 
-        svg {
-            transform: rotate(135deg);
-        }
-
-        &:nth-child(2) {
-            transform: translate(-2rem, 2rem);
+            &:nth-child(2) {
+                transform: translate(-2rem, 2rem);
+            }
         }
     }
 
     @include hover {
         &:hover {
-            & span:nth-child(1) {
+            & .arrow-container span:nth-child(1) {
                 transform: translate(2rem, -2rem);
             }
 
-            & span:nth-child(2) {
+            & .arrow-container span:nth-child(2) {
                 transform: translate(0, 0);
             }
         }
@@ -395,5 +389,147 @@ input[type='search'] {
     svg {
         width: 100%;
         height: 100%;
+    }
+}
+
+.diary-card {
+    a {
+        span {
+            font-size: 1.4rem;
+        }
+    }
+
+    .arrow-container {
+        width: 1.2rem;
+
+        & > span {
+            width: 1.2rem;
+        }
+    }
+}
+
+.diary-content {
+    @apply default-text;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 500;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+    h3 {
+        font-size: 1.15em;
+    }
+    h4 {
+        font-size: 1em;
+    }
+    h5 {
+        font-size: 0.8em;
+    }
+    h6 {
+        font-size: 0.7em;
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: 1.5rem;
+
+        li {
+            list-style: inherit;
+        }
+    }
+
+    ol {
+        list-style: decimal;
+        padding-left: 1.5rem;
+
+        li {
+            list-style: inherit;
+        }
+    }
+
+    a {
+        display: inline-block;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            transform: scaleX(1);
+            height: 2px;
+            background-color: currentColor;
+            transform-origin: left;
+            transition: transform $transition;
+        }
+
+        @include hover {
+            &:hover {
+                &::after {
+                    transform: scaleX(0);
+                }
+            }
+        }
+    }
+
+    p {
+        margin-top: 1.5em;
+
+        &:has(img) {
+            margin-top: 3em;
+            display: flex;
+            gap: 6px;
+            // flex-direction: column;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.5;
+            color: rgba(0, 0, 0, 0.8);
+
+            img {
+                flex-shrink: 1;
+                flex-basis: 100%;
+            }
+        }
+    }
+
+    blockquote {
+        display: block;
+        font-size: 0.8em;
+        padding-block: 1em;
+        padding-inline: 0.75em;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        position: relative;
+        max-width: 95%;
+        margin: 2em auto 0 auto;
+
+        p {
+            margin: 0;
+        }
+
+        &::before {
+            content: '';
+            width: 2px;
+            height: 100%;
+            flex-shrink: 0;
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: block;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    img {
+        margin: 0 auto;
+        max-width: 75%;
     }
 }

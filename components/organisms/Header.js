@@ -8,6 +8,7 @@ import Headroom from 'react-headroom'
 
 const Header = () => {
     const router = useRouter()
+    const { locale, locales } = useRouter()
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [isHomepage, setIsHomepage] = useState(router.asPath === '/')
 
@@ -23,14 +24,16 @@ const Header = () => {
     }
 
     const headroomOptions = {
+        className: isHomepage ? 'is-home' : '',
         downTolerance: 10,
         upTolerance: 10,
         pinStart: 10,
+        disable: isMenuOpen ? true : false,
     }
 
     return (
         <Headroom {...headroomOptions}>
-            <header className={`transition-all w-full h-auto py-5 bg-transparent relative ${isHomepage ? 'text-white' : 'text-black'}`}>
+            <header className={`transition-all w-full h-auto py-5 relative ${isHomepage ? 'text-white bg-transparent' : 'text-black bg-white/95'}`}>
                 <Container>
                     <div className='flex items-center justify-between 768:w-full '>
                         <Link href='/' scroll={false} prefetch={false}>
@@ -38,7 +41,7 @@ const Header = () => {
                                 <Logo />
                             </div>
                         </Link>
-                        <Nav isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} isHomepage={isHomepage} />
+                        <Nav locale={locale} locales={locales} isMenuOpen={isMenuOpen} handleMenuClink={handleMenuClink} isHomepage={isHomepage} />
                     </div>
                 </Container>
             </header>

@@ -6,10 +6,6 @@ import AboutSection from '@/components/organisms/AboutSection'
 export default function Home({ data }) {
     const { hero_title } = data.attributes
 
-    useEffect(() => {
-        console.log(hero_title)
-    }, [])
-
     return (
         <>
             <Seo title='Era Uma Inês - Home' />
@@ -22,7 +18,14 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps(context) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/home`)
+    const { locale } = context
+
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/home?locale=${strapiLocale}`)
     const data = await res.json()
 
     return {

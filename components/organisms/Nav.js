@@ -1,20 +1,25 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Instagram, Facebook } from '@/components/atoms/Icons'
 import { Envelope } from '@/components/atoms/Icons'
 import Hamburger from '@/molecules/Hamburger'
+import useTranslation from '@/hooks/useTranslation'
 
-const Nav = ({ isMenuOpen, isHomepage, handleMenuClink }) => {
+const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
+    const t = useTranslation()
+    const router = useRouter()
+
     const navLinks = [
         {
-            title: 'nós',
+            title: t.nav.us,
             url: '/nos',
         },
         {
-            title: 'histórias',
+            title: t.nav.histories,
             url: '/historias',
         },
         {
-            title: 'diário',
+            title: t.nav.diary,
             url: '/diario',
         },
     ]
@@ -53,12 +58,36 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink }) => {
                                     isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
                                 } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                             >
-                                <span className='transition-colors text-current'>alô</span>
+                                <span className='transition-colors text-current'>{t.nav.contact}</span>
                                 <div className='w-16 shrink-0 768:ml-4 768:w-12'>
                                     <Envelope />
                                 </div>
                             </button>
                         </Link>
+                    </li>
+                    <li className='pb-8 768:pl-8 768:py-0 relative'>
+                        <div
+                            className={`w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-power-grotesk relative group ${
+                                isHomepage && !isMenuOpen ? 'bg-white text-black' : 'bg-black text-white'
+                            } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
+                        >
+                            {locales?.map((loc, index) => (
+                                <Link
+                                    scroll={false}
+                                    locale={false}
+                                    key={index}
+                                    href={`/${loc}/${router.pathname.split('/')[1]}`}
+                                    className={`transition-all w-full h-full flex items-center justify-center absolute ${
+                                        locale === loc.slice(0, 2) ? 'left-0 fix-hover:group-hover:-left-full' : 'left-full fix-hover:group-hover:left-0 z-1'
+                                    }`}
+                                >
+                                    {loc.slice(0, 2)}
+                                </Link>
+                            ))}
+                        </div>
+                        {/* <div className='transition-all flex flex-col absolute bg-white border border-black -right-1 top-[calc(100%_+_4px)] shadow-lg pointer-events-none opacity-0 -translate-y-4 fix-hover:peer-hover:opacity-100 fix-hover:peer-hover:translate-y-0 fix-hover:peer-hover:pointer-events-auto fix-hover:hover:opacity-100 fix-hover:hover:translate-y-0 fix-hover:hover:pointer-events-auto'>
+                            
+                        </div> */}
                     </li>
                 </ul>
             </div>

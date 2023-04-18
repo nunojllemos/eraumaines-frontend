@@ -5,15 +5,14 @@ import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import DiaryCard from '@/components/molecules/DiaryCard'
+import useTranslation from '@/hooks/useTranslation'
 
 const Diario = ({ data }) => {
-    useEffect(() => {
-        // console.log(data)
-    }, [])
+    const t = useTranslation()
 
     return (
         <main className='pb-16'>
-            <AnimatedTitle>diário . diário . diário . diário . diário . </AnimatedTitle>
+            <AnimatedTitle>{`${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} . `}</AnimatedTitle>
             <Container>
                 <Grid rowGap={2}>
                     <Col mobileCols={2} tabletCols={8}>
@@ -109,8 +108,17 @@ const Diario = ({ data }) => {
 export default Diario
 
 export async function getStaticProps(context) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?populate=*`)
+    const { locale } = context
+
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?locale=${strapiLocale}&populate=*`)
     const data = await res.json()
+
+    console.log(data)
 
     return {
         props: data,

@@ -1,8 +1,11 @@
 import Container from '@/layout/Container'
 import FooterText from '@/atoms/FooterText'
 import FooterLink from '@/molecules/FooterLink'
+import useTranslation from '@/hooks/useTranslation'
 
 const Footer = () => {
+    const t = useTranslation()
+
     return (
         <footer className='z-1 mt-auto'>
             <Container>
@@ -11,8 +14,8 @@ const Footer = () => {
                         <FooterText>&copy; Era uma Inês, 2023</FooterText>
                     </div>
                     <div className='flex gap-12 768:gap-6'>
-                        <FooterLink href='/faq'>FAQ&apos;s</FooterLink>
-                        <FooterLink href='/termos'>Termos contratuais</FooterLink>
+                        <FooterLink href='/faq'>{t.footer.faqs}</FooterLink>
+                        <FooterLink href='/termos'>{t.footer.terms}</FooterLink>
                     </div>
                 </div>
             </Container>
