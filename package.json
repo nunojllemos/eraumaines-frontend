@@ -21,6 +21,7 @@
 		"react-dom": "18.2.0",
 		"react-headroom": "^3.2.1",
 		"react-markdown": "^8.0.7",
+		"react-scroll-parallax": "^3.4.2",
 		"remark-gfm": "^3.0.1",
 		"sass": "^1.57.1",
 		"styled-components": "^5.3.8"
