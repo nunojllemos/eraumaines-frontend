@@ -33,7 +33,7 @@ const Header = () => {
 
     return (
         <Headroom {...headroomOptions}>
-            <header className={`transition-all w-full h-auto py-5 relative ${isHomepage ? 'text-white bg-transparent' : 'text-black bg-white/95'}`}>
+            <header className={`w-full h-auto py-5 relative ${isHomepage ? 'text-white bg-transparent' : 'text-black bg-white/95'}`}>
                 <Container>
                     <div className='flex items-center justify-between 768:w-full '>
                         <Link href='/' scroll={false} prefetch={false}>

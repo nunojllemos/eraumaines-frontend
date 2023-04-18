@@ -19,7 +19,11 @@ export const pt = {
             related: {
                 title: 'outros artigos',
             },
+            published: 'Publicado em',
         },
+    },
+    contacts: {
+        title: 'alô',
     },
     footer: {
         terms: 'Termos contratuais',

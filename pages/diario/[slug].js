@@ -10,17 +10,26 @@ import ReactMarkdown from 'react-markdown'
 import useTranslation from '@/hooks/useTranslation'
 import remarkGfm from 'remark-gfm'
 
-const SlugDiary = ({ data }) => {
-    const { title, cover, content } = data[0]?.attributes
+const SlugDiary = ({ data, relatedPosts }) => {
+    const { title, cover, content, publishedAt } = data[0]?.attributes
     const image = cover?.data?.attributes?.url
-    const caption = cover?.data?.attributes?.caption
+    const { caption } = cover?.data?.attributes
     const t = useTranslation()
+    const publishedDate = new Date(publishedAt)
+    const day = publishedDate.getDate()
+    const month = publishedDate.getMonth() + 1
+    const year = publishedDate.getFullYear()
+
+    useEffect(() => {}, [])
 
     return (
         <main className='py-16'>
             <div className='pb-16 768:pb-32'>
                 <Container>
                     <Grid>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
+                            <div className='text-14 text-black/50 mb-3'>{`${t.diary.single.published} ${day}-${month < 10 ? `0${month}` : month}-${year}`}</div>
+                        </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <figure>
                                 <ImageContainer src={image} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
@@ -40,35 +49,26 @@ const SlugDiary = ({ data }) => {
                     </Grid>
                 </Container>
             </div>
-            <AnimatedTitle>{`${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . `}</AnimatedTitle>
-            <Container>
-                <Grid>
-                    <Col mobileCols={2} tabletCols={4}>
-                        <DiaryCard
-                            src='/images/diary-card-4.png'
-                            aspectRatio='4/3'
-                            title='Um dia na minha vida'
-                            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
-                        />
-                    </Col>
-                    <Col mobileCols={2} tabletCols={4}>
-                        <DiaryCard
-                            src='/images/diary-card-2.png'
-                            aspectRatio='4/3'
-                            title='Um título qualquer com duas linhas.'
-                            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
-                        />
-                    </Col>
-                    <Col mobileCols={2} tabletCols={4}>
-                        <DiaryCard
-                            src='/images/diary-card-3.png'
-                            aspectRatio='4/3'
-                            title='Um dia na minha vida'
-                            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident doloribus repellendus architecto. Quidem, distinctio temps? Iusto nisi. Esse rem doloribus eum laborum quia, perferendis earum ea praesentium saepe. Vero, unde?'
-                        />
-                    </Col>
-                </Grid>
-            </Container>
+            {relatedPosts.length > 0 && (
+                <>
+                    <AnimatedTitle>{`${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . `}</AnimatedTitle>
+                    <Container>
+                        <Grid rowGap={3}>
+                            {relatedPosts?.map(post => {
+                                const { id, attributes } = post.data[0]
+                                const { title, description, cover } = attributes
+                                const { url } = cover?.data?.attributes
+
+                                return (
+                                    <Col key={id} mobileCols={2} tabletCols={4}>
+                                        <DiaryCard src={url} aspectRatio='4/3' title={title} description={description} />
+                                    </Col>
+                                )
+                            })}
+                        </Grid>
+                    </Container>
+                </>
+            )}
         </main>
     )
 }
@@ -101,7 +101,24 @@ export async function getStaticProps(context) {
     )
     const data = await res.json()
 
+    const { posts } = data?.data[0].attributes
+    const slugs = posts?.data?.map(post => post.attributes.slug)
+
+    const relatedPosts = await Promise.all(
+        slugs?.map(async slug => {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?filters[slug][$eq]=${slug}&populate=*&locale=${strapiLocale}`
+            )
+            const relatedPost = await res.json()
+
+            return relatedPost
+        })
+    )
+
     return {
-        props: data,
+        props: {
+            data: data.data,
+            relatedPosts,
+        },
     }
 }
