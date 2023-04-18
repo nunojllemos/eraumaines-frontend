@@ -32,13 +32,22 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                 ${isMenuOpen ? 'left-0' : 'left-full'}`}
             >
                 <ul className={`flex flex-col 768:flex-row 768:items-center ${isMenuOpen ? 'text-white' : 'text-current'}`}>
-                    {navLinks.map((navLink, i) => (
-                        <li className='pb-8 768:pr-8 768:py-0' key={i}>
-                            <Link prefetch={false} scroll={false} className='font-power-grotesk hover-menu' href={navLink.url}>
-                                {navLink.title}
-                            </Link>
-                        </li>
-                    ))}
+                    {navLinks.map((navLink, i) => {
+                        return (
+                            <li className='pb-8 768:pr-8 768:py-0' key={i}>
+                                <Link
+                                    prefetch={false}
+                                    scroll={false}
+                                    className={`font-power-grotesk hover-menu ${
+                                        router.asPath !== '/' && navLink.url.toLowerCase().includes(router.asPath.split('/')[1]?.toLowerCase()) ? 'active' : ''
+                                    }`}
+                                    href={navLink.url}
+                                >
+                                    {navLink.title}
+                                </Link>
+                            </li>
+                        )
+                    })}
                     <li className='flex gap-8 justify-center items-center order-last 768:order-none '>
                         <a href='https://www.instagram.com/' rel='noreferrer' target='_blank'>
                             <div className='w-14 768:w-10 hover:opacity-60 duration-200 aspect-square social-link'>

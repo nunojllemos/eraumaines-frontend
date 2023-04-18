@@ -81,6 +81,10 @@ input[type='search'] {
     -webkit-appearance: none;
 }
 
+header {
+    transition: background-color $transition 1s, color $transition 1s;
+}
+
 .headroom {
     position: fixed !important;
     transition: all $easing 350ms !important;
@@ -325,6 +329,13 @@ input[type='search'] {
         transition: transform $easing 350ms;
     }
 
+    &.active {
+        &:before {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+    }
+
     @include hover {
         &:before {
             transform-origin: left;
@@ -336,15 +347,6 @@ input[type='search'] {
 .hover-button:hover {
     background: $black !important;
     color: #fff !important;
-}
-
-.hover-mute {
-    transition: $transition;
-
-    @include hover {
-        background: $black;
-        color: white;
-    }
 }
 
 .hover-arrow {
@@ -482,20 +484,32 @@ input[type='search'] {
     p {
         margin-top: 1.5em;
 
+        img {
+            & + img {
+                margin-top: 1.5em;
+            }
+        }
+
         &:has(img) {
             margin-top: 3em;
-            display: flex;
-            gap: 6px;
-            // flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
             font-size: 1.2rem;
             text-align: center;
             line-height: 1.5;
             color: rgba(0, 0, 0, 0.8);
 
             img {
-                flex-shrink: 1;
-                flex-basis: 100%;
+                width: 100%;
+                max-width: 100%;
+                margin-top: 0;
             }
+        }
+
+        &:has(img:only-of-type) {
+            display: grid;
+            grid-template-columns: 1fr;
         }
     }
 
@@ -526,10 +540,5 @@ input[type='search'] {
             display: block;
             background-color: rgba(0, 0, 0, 0.2);
         }
-    }
-
-    img {
-        margin: 0 auto;
-        max-width: 75%;
     }
 }

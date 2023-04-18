@@ -19,7 +19,11 @@ export const en = {
             related: {
                 title: 'other articles',
             },
+            published: 'Published at',
         },
+    },
+    contacts: {
+        title: 'hello',
     },
     footer: {
         terms: 'Terms & Conditions',
