@@ -1,6 +1,4 @@
-import InternalLink from './InternalLink'
-import { Arrow } from '../atoms/Icons'
-import Link from 'next/link'
+import Arrows from './Arrows'
 
 const AboutSectionLink = props => {
     return [1, 2, 3, 4].map(number => {
@@ -9,14 +7,7 @@ const AboutSectionLink = props => {
                 <p className='text-28 768:text-36 1024:text-40 1280:text-52 text-white uppercase 768:text-[#898989]'>
                     Mais sobre {props.gender} <span className='text-black'>{props.name}</span>
                 </p>
-                <div className='w-8 ml-2 aspect-square duration-700 relative overflow-hidden arrow-container'>
-                    <span className='block w-8'>
-                        <Arrow />
-                    </span>
-                    <span className='block w-8'>
-                        <Arrow />
-                    </span>
-                </div>
+                <Arrows />
             </div>
         )
     })

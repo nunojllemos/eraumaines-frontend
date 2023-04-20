@@ -1,19 +1,12 @@
 import Link from 'next/link'
 import LinkText from '@/atoms/LinkText'
-import { Arrow } from '@/atoms/Icons'
+import Arrows from './Arrows'
 
 const InternalLink = props => {
     return (
         <Link className='flex items-center' href={props.href}>
             <LinkText text={props.text} />
-            <div className='w-8 aspect-square duration-700 relative overflow-hidden arrow-container'>
-                <span className='block w-8'>
-                    <Arrow />
-                </span>
-                <span className='block w-8'>
-                    <Arrow />
-                </span>
-            </div>
+            <Arrows />
         </Link>
     )
 }
