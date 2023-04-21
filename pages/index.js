@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import Seo from '@/components/atoms/Seo'
 import Hero from '@/components/organisms/Hero'
 import AboutSection from '@/components/organisms/AboutSection'
+import WorkSection from '@/components/organisms/WorkSection'
 
 export default function Home({ data }) {
     const { hero_title, hero_media } = data.attributes
@@ -18,6 +19,7 @@ export default function Home({ data }) {
             <main>
                 <Hero title={hero_title} media={url} typeOfMedia={resource_type} />
                 <AboutSection />
+                <WorkSection />
             </main>
         </>
     )
