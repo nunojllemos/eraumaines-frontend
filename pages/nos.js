@@ -1,10 +1,107 @@
+import { useState, useEffect, useRef } from 'react'
+import AboutText from '@/components/atoms/AboutText'
 import ImageContainer from '@/components/atoms/ImageContainer'
+import AboutPersonDetails from '@/components/molecules/AboutPersonDetails'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import Col from '@/components/styled-components/layout/Col'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
+/* import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
+ */ import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/autoplay'
+import 'swiper/css/mousewheel'
+import { Autoplay, FreeMode, Mousewheel } from 'swiper'
 
 const Nos = () => {
+    const [activeSlide, setActiveSlide] = useState(0)
+    const namesSwiperRef = useRef(null)
+    const contentSwiperRef = useRef(null)
+
+    const dummySlides = [
+        {
+            name: 'Nuno e Ana',
+            content:
+                'N&A: Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor. Ipsum dolor sit amet, sectetur adipisu ding elit, sed do eiusm od tempor. Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor. Ipsum dolor sit amet, sectetur adipisu ding elit, sed do eiusm od tempor.',
+        },
+        {
+            name: 'Diogo e Inês',
+            content: 'D&I: Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor.',
+        },
+        {
+            name: 'Ricardo e Carolina',
+            content:
+                'R&C: Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor. Ipsum dolor sit amet, sectetur adipisu ding elit, sed do eiusm od tempor.',
+        },
+        {
+            name: 'Simão e Tomás',
+            content: 'S&T: Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor. ',
+        },
+        {
+            name: 'Liliana e Vera',
+            content:
+                'L&V: Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor. Ipsum dolor sit amet, sectetur adipisu ding elit, sed do eiusm od tempor.',
+        },
+        {
+            name: 'Pedro',
+            content:
+                'P: Lorem ipsum dolor sit amet, consectetur adipisu ding elit, sed do eiusmod tempor. Ipsum dolor sit amet, sectetur adipisu ding elit, sed do eiusm od tempor.',
+        },
+    ]
+
+    const namesSwiperOptions = {
+        ref: namesSwiperRef,
+        className: 'max-h-[3em] text-[4.8rem] font-power-grotesk swiper-names',
+        direction: 'vertical',
+        slidesPerView: 3,
+        spaceBetween: 0,
+        mousewheel: true,
+        // longSwipesRatio: 1,
+        // speed: 800,
+        freeMode: {
+            enabled: true,
+            sticky: true,
+            minimumVelocity: 0.5,
+        },
+        autoplay: {
+            enabled: false,
+            invert: true,
+        },
+        loop: true,
+        modules: [Autoplay, Mousewheel, FreeMode],
+        onSlideChange: swiper => {
+            if (swiper.realIndex !== activeSlide) {
+                contentSwiperRef.current.swiper.slideTo(swiper.realIndex)
+                contentSwiperRef.current.swiper.update()
+                setActiveSlide(swiper.realIndex)
+            }
+        },
+    }
+
+    const contentSwiperOptions = {
+        ref: contentSwiperRef,
+        className: 'text-[4.8rem]',
+        direction: 'vertical',
+        autoHeight: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        mousewheel: true,
+        freeMode: {
+            enabled: true,
+            sticky: true,
+            minimumVelocity: 0.5,
+        },
+        loop: true,
+        modules: [Autoplay, Mousewheel, FreeMode],
+        onSlideChange: swiper => {
+            if (swiper.realIndex !== activeSlide) {
+                namesSwiperRef.current.swiper.slideTo(swiper.realIndex)
+                contentSwiperRef.current.swiper.update()
+                setActiveSlide(swiper.realIndex)
+            }
+        },
+    }
+
     return (
         <>
             {/* <ParallaxProvider>
