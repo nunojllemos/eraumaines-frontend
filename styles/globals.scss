@@ -542,3 +542,30 @@ header {
         }
     }
 }
+
+.his-section {
+    div[class*='Grid'] {
+        & > div[class*='Col']:nth-child(1) {
+            grid-row-start: 2;
+
+            @include min-1280 {
+                grid-row-start: 1;
+            }
+        }
+    }
+}
+
+.swiper-names {
+    &::after {
+        content: '';
+        display: block;
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.6);
+        width: 100%;
+        height: 2em;
+        z-index: 1;
+    }
+}
