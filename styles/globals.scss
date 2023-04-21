@@ -555,6 +555,28 @@ header {
     }
 }
 
+.person-details {
+    @include hover {
+        &:hover {
+            & ~ .person-image {
+                .person-marquee {
+                    opacity: 100;
+                    pointer-events: all;
+                }
+            }
+        }
+    }
+}
+
+.marquee {
+    min-width: 0 !important;
+    gap: 5.5rem;
+}
+
+.marquee-container {
+    gap: 5.5rem;
+}
+
 .swiper-names {
     &::after {
         content: '';
