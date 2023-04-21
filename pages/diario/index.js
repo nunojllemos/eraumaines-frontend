@@ -10,6 +10,8 @@ import useTranslation from '@/hooks/useTranslation'
 const Diario = ({ data }) => {
     const t = useTranslation()
 
+    console.log('hello')
+
     return (
         <main className='pb-16'>
             <AnimatedTitle>{`${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} .`}</AnimatedTitle>
