@@ -15,15 +15,19 @@ const WorkSection = () => {
                 <Grid rowGap={2}>
                     <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                         <WorkSectionCard />
-                    </Col>
-                    <Col mobileCols={2} tabletCols={4} desktopCols={3}>
-                        <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='2/3' alt='wedding' />
-                    </Col>
-                    <Col mobileCols={2} tabletCols={4} desktopCols={3}>
+                        <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
                         <WorkSectionTestimonialsCard />
                     </Col>
-                    <Col mobileCols={2} tabletCols={4} desktopCols={3}>
-                        <WorkSectionInfoCard />
+                    <Col mobileCols={2} tabletCols={4} desktopCols={4}>
+                        <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='2/3' alt='wedding' />
+                        <WorkSectionInfoCard engaged='Ana e Nuno' local='Vila do Conde' work='Casamento' />
+                        <WorkSectionMediaCard src='/images/work-section-card-6.png' aspectRatio='2/3' alt='wedding' />
+                    </Col>
+                    <Col mobileCols={2} tabletCols={4} desktopCols={5}>
+                        <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
+                        <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='2/3' alt='wedding' />
+                        <WorkSectionTestimonialsCard />
+                        <WorkSectionMediaCard src='/images/work-section-card-2.png' aspectRatio='2/3' alt='wedding' />
                     </Col>
                 </Grid>
             </Container>
