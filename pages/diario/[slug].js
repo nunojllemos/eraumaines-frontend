@@ -11,16 +11,15 @@ import useTranslation from '@/hooks/useTranslation'
 import remarkGfm from 'remark-gfm'
 
 const SlugDiary = ({ data, relatedPosts }) => {
-    const { title, cover, content, publishedAt } = data[0]?.attributes
-    const image = cover?.data?.attributes?.url
-    const { caption } = cover?.data?.attributes
-    const t = useTranslation()
-    const publishedDate = new Date(publishedAt)
-    const day = publishedDate.getDate()
-    const month = publishedDate.getMonth() + 1
-    const year = publishedDate.getFullYear()
+    // const { title, cover, content, publishedAt } = data && data?.attributes
+    // const image = data?.attributes?.cover?.data?.attributes?.url
+    // const { caption } = data?.attributes?.cover?.data?.attributes?.caption
+    const publishedDate = new Date(data?.attributes?.publishedAt)
+    const day = publishedDate?.getDate()
+    const month = publishedDate?.getMonth() + 1
+    const year = publishedDate?.getFullYear()
 
-    useEffect(() => {}, [])
+    const t = useTranslation()
 
     return (
         <main className='py-16'>
@@ -28,40 +27,53 @@ const SlugDiary = ({ data, relatedPosts }) => {
                 <Container>
                     <Grid>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                            <div className='text-14 text-black/50 mb-3'>{`${t.diary.single.published} ${day}-${month < 10 ? `0${month}` : month}-${year}`}</div>
+                            {data && (
+                                <div className='text-14 text-black/50 mb-3'>{`${t.diary.single.published} ${day && day}-${
+                                    month && month < 10 ? `0${month}` : month
+                                }-${year && year}`}</div>
+                            )}
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <figure>
-                                <ImageContainer src={image} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
-                                <figcaption className='text-12 mt-2'>{caption}</figcaption>
+                                {data && (
+                                    <ImageContainer
+                                        src={data?.attributes?.cover?.data?.attributes?.url}
+                                        aspectRatio='16/9'
+                                        sizes='(min-width: 991px) 70vw, 100vw'
+                                    />
+                                )}
+                                {data && <figcaption className='text-12 mt-2'>{data?.attributes?.cover?.data?.attributes?.caption}</figcaption>}
                             </figure>
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
-                            <div className='my-12 768:my-16'>
-                                <DiaryTitle title={title} />
-                            </div>
+                            <div className='my-12 768:my-16'>{data && <DiaryTitle title={data?.attributes?.title} />}</div>
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <div className='diary-content'>
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+                                {data && <ReactMarkdown remarkPlugins={[remarkGfm]}>{data?.attributes?.content}</ReactMarkdown>}
                             </div>
                         </Col>
                     </Grid>
                 </Container>
             </div>
-            {relatedPosts.length > 0 && (
+            {relatedPosts?.length > 0 && (
                 <>
                     <AnimatedTitle>{`${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . `}</AnimatedTitle>
                     <Container>
                         <Grid rowGap={3}>
                             {relatedPosts?.map(post => {
-                                const { id, attributes } = post.data[0]
-                                const { title, description, cover } = attributes
-                                const { url } = cover?.data?.attributes
+                                // const { id, attributes } = post?.data[0]
+                                // const { title, description, cover } = attributes
+                                // const { url } = cover?.data?.attributes
 
                                 return (
-                                    <Col key={id} mobileCols={2} tabletCols={4}>
-                                        <DiaryCard src={url} aspectRatio='4/3' title={title} description={description} />
+                                    <Col key={post?.data[0]?.id} mobileCols={2} tabletCols={4}>
+                                        <DiaryCard
+                                            src={post?.data[0]?.attributes?.cover?.url}
+                                            aspectRatio='4/3'
+                                            title={post?.data[0]?.attribuest?.title}
+                                            description={post?.data[0]?.attributes?.description}
+                                        />
                                     </Col>
                                 )
                             })}
@@ -72,18 +84,30 @@ const SlugDiary = ({ data, relatedPosts }) => {
         </main>
     )
 }
-export default SlugDiary
 
 export async function getStaticPaths(context) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?populate=*`)
     const data = await res.json()
     const posts = await data.data
 
-    const paths = posts.map(element => ({ params: { slug: element.attributes.slug } }))
+    const paths = posts.map(element => {
+        // const { slug } = element.attributes
+        // const { slug: enSlug } = element.attributes.localizations.data[0].attributes
+
+        return {
+            ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+            enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+        }
+    })
+
+    const enPost = paths[0].enPost
+    const ptPost = paths[0].ptPost
+
+    console.log([ptPost, enPost])
 
     return {
-        paths,
-        fallback: false,
+        paths: [ptPost, enPost],
+        fallback: true,
     }
 }
 
@@ -101,8 +125,7 @@ export async function getStaticProps(context) {
     )
     const data = await res.json()
 
-    const { posts } = data?.data[0].attributes
-    const slugs = posts?.data?.map(post => post.attributes.slug)
+    const slugs = data?.data[0]?.attributes?.posts?.data?.map(post => post?.attributes?.slug)
 
     const relatedPosts = await Promise.all(
         slugs?.map(async slug => {
@@ -117,8 +140,10 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            data: data.data,
+            data: data.data[0],
             relatedPosts,
         },
     }
 }
+
+export default SlugDiary
