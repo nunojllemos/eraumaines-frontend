@@ -26,7 +26,7 @@ const WorkSection = () => {
                     <Col mobileCols={2} tabletCols={4} desktopCols={5}>
                         <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
                         <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='2/3' alt='wedding' />
-                        <WorkSectionTestimonialsCard />
+                        <WorkSectionTestimonialsCard invertColors={true} />
                         <WorkSectionMediaCard src='/images/work-section-card-2.png' aspectRatio='2/3' alt='wedding' />
                     </Col>
                 </Grid>
