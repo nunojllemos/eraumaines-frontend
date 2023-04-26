@@ -3,6 +3,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import { Navigation } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
+import Link from 'next/link'
 
 const WorkSectionTestimonialsCard = props => {
     const testemonials = [
@@ -24,7 +25,7 @@ const WorkSectionTestimonialsCard = props => {
     ]
 
     return (
-        <>
+        <div className='mb-8'>
             <Swiper
                 navigation={{
                     nextEl: '.button-next-slide',
@@ -44,7 +45,9 @@ const WorkSectionTestimonialsCard = props => {
                                     <p>{`"${testemonial.comment}"`}</p>
                                     <div>
                                         <p>{testemonial.year}</p>
-                                        <p>{testemonial.engaged}</p>
+                                        <Link href='/' className='hover:fix-hover:opacity-60'>
+                                            {testemonial.engaged}
+                                        </Link>
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -52,15 +55,15 @@ const WorkSectionTestimonialsCard = props => {
                     )
                 })}
                 <div className={`flex ${props.invertColors ? 'text-black' : 'text-white'} text-white absolute bottom-6 z-1 right-5`}>
-                    <div className='button-prev-slide w-8 rotate-180'>
+                    <div className='button-prev-slide w-8 rotate-180 hover:fix-hover:opacity-60 cursor-pointer'>
                         <FaqArrow />
                     </div>
-                    <div className='button-next-slide w-8 ml-12 768:ml-10'>
+                    <div className='button-next-slide w-8 ml-12 768:ml-10 hover:fix-hover:opacity-60 cursor-pointer'>
                         <FaqArrow />
                     </div>
                 </div>
             </Swiper>
-        </>
+        </div>
     )
 }
 export default WorkSectionTestimonialsCard

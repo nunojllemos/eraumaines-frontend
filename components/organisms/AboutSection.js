@@ -13,13 +13,13 @@ const AboutSection = () => {
             <Container>
                 {/* Inês */}
                 <div className='768:relative 768:mb-20 grid grid-cols-2 gap-x-8 768:grid-cols-12 768:grid-rows-[auto_1fr] '>
-                    <div className='mb-24 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1 1280:col-start-6 person-details  '>
+                    <Link href='/nos' className='mb-24 col-span-2 768:col-start-7 768:col-span-4 768:row-start-1 1280:col-start-6 person-details  '>
                         <div className='flex hover-arrow items-baseline'>
                             <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none mb-3 '>Inês</h2>
                             <Arrows />
                         </div>
                         <p className='font-subjectivity default-text'>Fotografia & Edição</p>
-                    </div>
+                    </Link>
                     <div className='person-image overflow-hidden 768:overflow-visible max-h-[90vh] relative 768:static col-span-2 row-start-2 768:col-start-1 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 hover-arrow'>
                         <ImageContainer
                             src='https://source.unsplash.com/random?girls'
