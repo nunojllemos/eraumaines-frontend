@@ -145,7 +145,7 @@ const Nos = () => {
                     <AnimatedTitle>aos olhos da inês . aos olhos da inês . aos olhos da inês . </AnimatedTitle>
                     <Container>
                         <div className='relative'>
-                            <Grid>
+                            <Grid className='Grid'>
                                 <Col className='Col' mobileCols={2} tabletCols={4}>
                                     <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>Diogo</h2>
                                     <span className='block default-text font-light mb-12 768:mb-0'>Vídeo & Edição</span>
