@@ -14,9 +14,11 @@ const WorkSection = () => {
             <Container>
                 <Grid>
                     <Col mobileCols={2} tabletCols={4} desktopCols={3}>
-                        <WorkSectionCard />
-                        <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
-                        <WorkSectionTestimonialsCard />
+                        <div className='flex flex-col mb-8 h-full'>
+                            <WorkSectionCard />
+                            <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
+                            <WorkSectionTestimonialsCard />
+                        </div>
                     </Col>
                     <Col mobileCols={2} tabletCols={4} desktopCols={4}>
                         <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='2/3' alt='wedding' />
