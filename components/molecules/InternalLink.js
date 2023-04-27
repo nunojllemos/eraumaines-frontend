@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import LinkText from '@/atoms/LinkText'
-import Arrows from './Arrows'
+import Arrows from '@/molecules/Arrows'
 
 const InternalLink = props => {
     return (

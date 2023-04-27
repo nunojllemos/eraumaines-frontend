@@ -8,7 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
-import { Autoplay, FreeMode, Mousewheel } from 'swiper'
+import 'swiper/css/effect-fade'
+import { Autoplay, FreeMode, Mousewheel, EffectFade } from 'swiper'
 import { MouseParallax, ScrollParallax } from 'react-just-parallax'
 
 const Nos = () => {
@@ -86,6 +87,11 @@ const Nos = () => {
         mousewheel: false,
         loop: true,
         rewind: false,
+        modules: [EffectFade],
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true,
+        },
     }
 
     return (
