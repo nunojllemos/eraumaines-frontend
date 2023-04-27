@@ -27,10 +27,12 @@ const WorkSectionTestimonialsCard = props => {
     return (
         <div className='mb-8 flex-1'>
             <Swiper
+                className='h-full'
                 navigation={{
                     nextEl: '.button-next-slide',
                     prevEl: '.button-prev-slide',
                 }}
+                loop={true}
                 modules={[Navigation]}
             >
                 {testemonials.map((testemonial, i) => {
@@ -40,7 +42,7 @@ const WorkSectionTestimonialsCard = props => {
                                 <div
                                     className={`${
                                         props.invertColors ? `bg-white text-black` : `bg-black text-white`
-                                    } p-4 flex flex-col justify-between h-[355px] 768:h-[315px] 1024:h-[335px] text-20 1024:text-26 font-subjectivity swiper-custom`}
+                                    } p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom`}
                                 >
                                     <p>{`"${testemonial.comment}"`}</p>
                                     <div>
