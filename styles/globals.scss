@@ -596,16 +596,16 @@ header {
     z-index: 0 !important;
 }
 
-.person-section {
-    [class*='Grid'] {
-        [class*='Col']:nth-child(1) {
-            grid-row-start: 2;
-            margin-block: 3rem;
+// .person-section {
+//     [class*='Grid'] {
+//         [class*='Col']:nth-child(1) {
+//             grid-row-start: 2;
+//             margin-block: 3rem;
 
-            @include min-768 {
-                grid-row-start: 1;
-                margin-block: 0;
-            }
-        }
-    }
-}
+//             @include min-768 {
+//                 grid-row-start: 1;
+//                 margin-block: 0;
+//             }
+//         }
+//     }
+// }

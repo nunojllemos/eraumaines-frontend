@@ -120,14 +120,14 @@ const Nos = () => {
                 <section className='mt-14'>
                     <AnimatedTitle>aos olhos do diogo . aos olhos do diogo . aos olhos do diogo . </AnimatedTitle>
                     <Container>
-                        <div className='relative person-section pb-4'>
+                        <div className='relative pb-4'>
                             <Grid>
-                                <Col mobileCols={2} tabletCols={8}>
+                                <Col className='row-start-2 768:row-start-1 my-12 768:my-0' mobileCols={2} tabletCols={8}>
                                     <MouseParallax strength={0.04}>
                                         <ImageContainer src='/images/her-image.png' aspectRatio='16/9' />
                                     </MouseParallax>
                                 </Col>
-                                <Col className='Col' mobileCols={2} tabletCols={4}>
+                                <Col mobileCols={2} tabletCols={4}>
                                     <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>Inês</h2>
                                     <span className='default-text font-light'>Fotografia & Edição</span>
                                 </Col>
@@ -145,17 +145,17 @@ const Nos = () => {
                     <AnimatedTitle>aos olhos da inês . aos olhos da inês . aos olhos da inês . </AnimatedTitle>
                     <Container>
                         <div className='relative'>
-                            <Grid className='Grid'>
-                                <Col className='Col' mobileCols={2} tabletCols={4}>
+                            <Grid>
+                                <Col mobileCols={2} tabletCols={4}>
                                     <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>Diogo</h2>
-                                    <span className='block default-text font-light mb-12 768:mb-0'>Vídeo & Edição</span>
+                                    <span className='block default-text font-light'>Vídeo & Edição</span>
                                 </Col>
-                                <Col mobileCols={2} tabletCols={8}>
+                                <Col className='my-12 768:my-0' mobileCols={2} tabletCols={8}>
                                     <MouseParallax strength={0.04}>
                                         <ImageContainer src='/images/him-image.png' aspectRatio='16/9' />
                                     </MouseParallax>
                                 </Col>
-                                <div className='col-span-2 768:w-3/4 1024:w-1/2 768:absolute left-0 top-44 1280:bottom-0 1280:top-[unset] mt-12 768:mt-0'>
+                                <div className='col-span-2 768:w-3/4 1024:w-1/2 768:absolute left-0 top-44 1280:bottom-0 1280:top-[unset]'>
                                     <p className='text-24 768:text-32 1280:text-50 font-light'>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                                     </p>
