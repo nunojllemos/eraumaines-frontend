@@ -1,13 +1,13 @@
 export const en = {
     nav: {
         us: 'us',
-        histories: 'histories',
+        histories: 'stories',
         diary: 'diary',
         contact: 'hello',
     },
     homepage: {
         hero: {
-            link: 'see more histories',
+            link: 'see more stories',
         },
     },
     diary: {

@@ -20,7 +20,7 @@ const AboutSection = () => {
                         </div>
                         <p className='font-subjectivity default-text'>Fotografia & Edição</p>
                     </Link>
-                    <div className='person-image overflow-hidden 768:overflow-visible max-h-[90vh] relative 768:static col-span-2 row-start-2 768:col-start-1 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 hover-arrow'>
+                    <div className='person-image overflow-hidden 768:overflow-visible max-h-[90vh] relative col-span-2 row-start-2 768:col-start-1 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 hover-arrow 768:sticky top-8'>
                         <ImageContainer
                             src='https://source.unsplash.com/random?girls'
                             alt='foto Inês'
@@ -53,7 +53,7 @@ const AboutSection = () => {
                         </div>
                         <p className='font-subjectivity default-text'>Fotografia & Edição</p>
                     </div>
-                    <div className='person-image overflow-hidden 768:overflow-visible max-h-[90vh] 768:static relative col-span-2 row-start-2 768:col-start-7 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 1280:col-start-8 hover-arrow'>
+                    <div className='person-image overflow-hidden 768:overflow-visible max-h-[90vh] 768:sticky top-8 relative col-span-2 row-start-2 768:col-start-7 768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5 1280:col-start-8 hover-arrow'>
                         <ImageContainer
                             src='https://source.unsplash.com/random?man'
                             aspectRatio='2/3'
