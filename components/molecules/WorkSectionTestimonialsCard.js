@@ -25,7 +25,7 @@ const WorkSectionTestimonialsCard = props => {
     ]
 
     return (
-        <div className='mb-8'>
+        <div className='mb-8 flex-1'>
             <Swiper
                 navigation={{
                     nextEl: '.button-next-slide',

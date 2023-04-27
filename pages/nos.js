@@ -12,7 +12,7 @@ import { Autoplay, FreeMode, Mousewheel } from 'swiper'
 import { MouseParallax, ScrollParallax } from 'react-just-parallax'
 
 const Nos = () => {
-    const [activeSlide, setActiveSlide] = useState(0)
+    const [isFirstSwipe, setIsFirstSwipe] = useState(true)
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
 
@@ -49,55 +49,43 @@ const Nos = () => {
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
-        className: 'max-h-[3em] text-[4.8rem] font-power-grotesk swiper-names',
+        className: 'max-h-[3em] text-24 768:text-28 1280:text-50 font-power-grotesk swiper-names mb-12',
         direction: 'vertical',
         slidesPerView: 3,
         spaceBetween: 0,
         mousewheel: true,
-        // longSwipesRatio: 1,
-        // speed: 800,
+        speed: 800,
         freeMode: {
             enabled: true,
             sticky: true,
             minimumVelocity: 0.5,
         },
         autoplay: {
-            enabled: false,
+            enabled: true,
+            reverseDirection: true,
+            disableOnInteraction: false,
             invert: true,
         },
         loop: true,
         modules: [Autoplay, Mousewheel, FreeMode],
-        onSlideChange: swiper => {
-            if (swiper.realIndex !== activeSlide) {
-                contentSwiperRef.current.swiper.slideTo(swiper.realIndex)
-                contentSwiperRef.current.swiper.update()
-                setActiveSlide(swiper.realIndex)
-            }
+        onSlideChange: () => {
+            contentSwiperRef.current.swiper.slideNext()
+            setIsFirstSwipe(false)
         },
     }
 
     const contentSwiperOptions = {
+        key: isFirstSwipe,
         ref: contentSwiperRef,
-        className: 'text-[4.8rem]',
+        className: 'text-24 768:text-32 1280:text-50 max-h-[18em] 768:max-h-[12em]',
         direction: 'vertical',
         autoHeight: true,
         slidesPerView: 1,
         spaceBetween: 0,
-        mousewheel: true,
-        freeMode: {
-            enabled: true,
-            sticky: true,
-            minimumVelocity: 0.5,
-        },
+        speed: 800,
+        mousewheel: false,
         loop: true,
-        modules: [Autoplay, Mousewheel, FreeMode],
-        onSlideChange: swiper => {
-            if (swiper.realIndex !== activeSlide) {
-                namesSwiperRef.current.swiper.slideTo(swiper.realIndex)
-                contentSwiperRef.current.swiper.update()
-                setActiveSlide(swiper.realIndex)
-            }
-        },
+        rewind: false,
     }
 
     return (
@@ -164,14 +152,27 @@ const Nos = () => {
                         </div>
                     </Container>
                 </section>
-                <section className='mt-32'>
+                <section className='mt-14 768:mt-32'>
+                    <AnimatedTitle>testemunhos . testemunhos . testemunhos . </AnimatedTitle>
                     <Container>
                         <Grid>
-                            <Col mobileCols={2} tabletCols={4}>
-                                1
+                            <Col mobileCols={2} tabletCols={5} desktopCols={4}>
+                                <Swiper {...namesSwiperOptions}>
+                                    {dummySlides.map((slide, index) => (
+                                        <SwiperSlide key={index}>{slide.name}</SwiperSlide>
+                                    ))}
+                                </Swiper>
                             </Col>
-                            <Col mobileCols={2} tabletCols={8}>
-                                2
+                            <Col mobileCols={2} tabletCols={7} desktopCols={8}>
+                                <Swiper {...contentSwiperOptions}>
+                                    {isFirstSwipe && <SwiperSlide>{dummySlides[0].content}</SwiperSlide>}
+                                    {dummySlides
+                                        .slice(0)
+                                        .reverse()
+                                        .map((slide, index) => (
+                                            <SwiperSlide key={index}>{slide.content}</SwiperSlide>
+                                        ))}
+                                </Swiper>
                             </Col>
                         </Grid>
                     </Container>

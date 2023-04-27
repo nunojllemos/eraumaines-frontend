@@ -9,9 +9,7 @@ export default function Home({ data }) {
     const { url, provider_metadata } = hero_media?.data?.attributes
     const { resource_type } = provider_metadata
 
-    useEffect(() => {
-        console.log(data)
-    }, [])
+    useEffect(() => {}, [])
 
     return (
         <>
