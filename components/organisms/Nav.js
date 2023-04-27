@@ -74,9 +74,9 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                             </button>
                         </Link>
                     </li>
-                    <li className='pb-8 768:pl-8 768:py-0 relative'>
+                    <li className='pb-8 768:pl-8 768:py-0 relative flex justify-center'>
                         <div
-                            className={`w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-power-grotesk relative group ${
+                            className={`w-20 768:w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-power-grotesk relative group ${
                                 isHomepage && !isMenuOpen ? 'bg-white text-black' : 'bg-black text-white'
                             } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                         >
