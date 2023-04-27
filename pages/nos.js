@@ -127,7 +127,7 @@ const Nos = () => {
                                         <ImageContainer src='/images/her-image.png' aspectRatio='16/9' />
                                     </MouseParallax>
                                 </Col>
-                                <Col mobileCols={2} tabletCols={4}>
+                                <Col className='Col' mobileCols={2} tabletCols={4}>
                                     <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>Inês</h2>
                                     <span className='default-text font-light'>Fotografia & Edição</span>
                                 </Col>
@@ -146,7 +146,7 @@ const Nos = () => {
                     <Container>
                         <div className='relative'>
                             <Grid>
-                                <Col mobileCols={2} tabletCols={4}>
+                                <Col className='Col' mobileCols={2} tabletCols={4}>
                                     <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>Diogo</h2>
                                     <span className='block default-text font-light mb-12 768:mb-0'>Vídeo & Edição</span>
                                 </Col>
