@@ -74,8 +74,7 @@ const Nos = () => {
 
     const contentSwiperOptions = {
         ref: contentSwiperRef,
-        className: 'text-24 768:text-32 1280:text-50 max-h-[18em] 768:max-h-[12em]',
-        direction: 'vertical',
+        className: 'text-24 768:text-32 1280:text-50',
         autoHeight: true,
         slidesPerView: 1,
         spaceBetween: 0,
