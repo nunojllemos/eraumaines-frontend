@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
@@ -6,9 +7,23 @@ import Col from '@/components/styled-components/layout/Col'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import DiaryCard from '@/components/molecules/DiaryCard'
 import useTranslation from '@/hooks/useTranslation'
+import PageLink from '@/components/molecules/PageLink'
 
-const Diario = ({ data }) => {
+const Diario = ({ data, currentPage }) => {
     const t = useTranslation()
+    const TOTAL_PAGES = data.meta.pagination.pageCount
+    let pages = []
+
+    const populatePagesArray = () => {
+        for (let index = 1; index <= TOTAL_PAGES; index++) {
+            pages.push(index)
+        }
+    }
+    populatePagesArray()
+
+    useEffect(() => {
+        console.log(currentPage)
+    }, [])
 
     return (
         <main className='pb-16'>
@@ -18,22 +33,22 @@ const Diario = ({ data }) => {
                     <Grid rowGap={2}>
                         <Col mobileCols={2} tabletCols={8}>
                             <div className='flex flex-col gap-8'>
-                                {data[0] && (
+                                {data.data[0] && (
                                     <DiaryCard
-                                        src={data[0].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[0].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='16/9'
-                                        title={data[0].attributes?.title}
-                                        description={data[0].attributes?.description}
-                                        href={data[0].attributes?.slug}
+                                        title={data.data[0].attributes?.title}
+                                        description={data.data[0].attributes?.description}
+                                        href={data.data[0].attributes?.slug}
                                     />
                                 )}
-                                {data[1] && (
+                                {data.data[1] && (
                                     <DiaryCard
-                                        src={data[1].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[1].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='16/9'
-                                        title={data[1].attributes?.title}
-                                        description={data[1].attributes?.description}
-                                        href={data[1].attributes?.slug}
+                                        title={data.data[1].attributes?.title}
+                                        description={data.data[1].attributes?.description}
+                                        href={data.data[1].attributes?.slug}
                                     />
                                 )}
                             </div>
@@ -41,39 +56,42 @@ const Diario = ({ data }) => {
 
                         <Col mobileCols={2} tabletCols={4}>
                             <div className='flex flex-col gap-8 h-full'>
-                                {data[2] && (
+                                {data.data[2] && (
                                     <DiaryCard
-                                        src={data[2].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[2].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='4/3'
-                                        title={data[2].attributes?.title}
-                                        description={data[2].attributes?.description}
-                                        href={data[2].attributes?.slug}
+                                        title={data.data[2].attributes?.title}
+                                        description={data.data[2].attributes?.description}
+                                        href={data.data[2].attributes?.slug}
                                     />
                                 )}
-                                <div className='aspect-square 768:flex-1 relative'>
-                                    <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
+                                <div className='aspect-square 768:flex-1 relative bg-black/80'>
+                                    {/* <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} /> */}
                                 </div>
                             </div>
                         </Col>
 
                         <Col mobileCols={2} tabletCols={6}>
                             <div className='flex flex-col gap-8'>
-                                {data[3] && (
+                                {/* {data.data[3] && (
                                     <DiaryCard
-                                        src={data[3].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[3].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='16/9'
-                                        title={data[3].attributes?.title}
-                                        description={data[3].attributes?.description}
-                                        href={data[3].attributes?.slug}
+                                        title={data.data[3].attributes?.title}
+                                        description={data.data[3].attributes?.description}
+                                        href={data.data[3].attributes?.slug}
                                     />
-                                )}
-                                {data[4] && (
+                                )} */}
+                                <div className='aspect-[3/2] 768:flex-1 relative bg-black/30'>
+                                    {/* <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} /> */}
+                                </div>
+                                {data.data[3] && (
                                     <DiaryCard
-                                        src={data[4].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[3].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='4/3'
-                                        title={data[4].attributes?.title}
-                                        description={data[4].attributes?.description}
-                                        href={data[4].attributes?.slug}
+                                        title={data.data[3].attributes?.title}
+                                        description={data.data[3].attributes?.description}
+                                        href={data.data[3].attributes?.slug}
                                     />
                                 )}
                             </div>
@@ -81,47 +99,80 @@ const Diario = ({ data }) => {
 
                         <Col mobileCols={2} tabletCols={6}>
                             <div className='flex flex-col gap-8 h-full'>
-                                {data[5] && (
+                                {data.data[4] && (
                                     <DiaryCard
-                                        src={data[5].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[4].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='4/3'
-                                        title={data[5].attributes?.title}
-                                        description={data[5].attributes?.description}
-                                        href={data[5].attributes?.slug}
+                                        title={data.data[4].attributes?.title}
+                                        description={data.data[4].attributes?.description}
+                                        href={data.data[4].attributes?.slug}
                                     />
                                 )}
-                                {data[6] && (
+                                {/* {data.data[6] && (
                                     <DiaryCard
-                                        src={data[6].attributes?.cover?.data?.attributes?.url}
+                                        src={data.data[6].attributes?.cover?.data?.attributes?.url}
                                         aspectRatio='1/1'
-                                        title={data[6].attributes?.title}
-                                        description={data[6].attributes?.description}
-                                        href={data[6].attributes?.slug}
+                                        title={data.data[6].attributes?.title}
+                                        description={data.data[6].attributes?.description}
+                                        href={data.data[6].attributes?.slug}
                                     />
-                                )}
+                                )} */}
+                                <div className='768:flex-1 relative bg-black/50'>
+                                    {/* <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} /> */}
+                                </div>
                             </div>
                         </Col>
                     </Grid>
                 )}
+                <div className='text-18 mt-24'>
+                    <div className='flex justify-end'>
+                        <ul className='flex gap-4'>
+                            {currentPage > 1 && (
+                                <PageLink currentPage={currentPage} page={0} toPage={Number(currentPage) - 1}>
+                                    &lt;
+                                </PageLink>
+                            )}
+                            {pages.map(page => (
+                                <PageLink key={page} currentPage={currentPage} page={page} toPage={page}>
+                                    {page}
+                                </PageLink>
+                            ))}
+                            {currentPage < TOTAL_PAGES && (
+                                <PageLink currentPage={currentPage} page={0} toPage={Number(currentPage) + 1}>
+                                    &gt;
+                                </PageLink>
+                            )}
+                        </ul>
+                    </div>
+                </div>
             </Container>
         </main>
     )
 }
 export default Diario
 
-export async function getStaticProps(context) {
-    const { locale } = context
+export async function getServerSideProps(context) {
+    const { locale, query } = context
+    const NUMBER_OF_POSTS_PER_PAGE = 5
+    const CURRENT_PAGE = query.page || 1
+
+    const paginationQuery = `pagination[pageSize]=${NUMBER_OF_POSTS_PER_PAGE}`
+    const pageQuery = `pagination[page]=${CURRENT_PAGE}`
+    const populateQuery = 'populate=*'
 
     let strapiLocale
 
     if (locale === 'pt') strapiLocale = 'pt-PT'
     if (locale === 'en') strapiLocale = 'en'
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?locale=${strapiLocale}&populate=*`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?locale=${strapiLocale}&${populateQuery}&${paginationQuery}&${pageQuery}`)
     const data = await res.json()
 
     return {
-        props: data,
-        revalidate: 10,
+        props: {
+            data,
+            currentPage: CURRENT_PAGE,
+        },
+        // revalidate: 10,
     }
 }

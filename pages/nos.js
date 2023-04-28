@@ -13,7 +13,6 @@ import { Autoplay, FreeMode, Mousewheel, EffectFade } from 'swiper'
 import { MouseParallax, ScrollParallax } from 'react-just-parallax'
 
 const Nos = () => {
-    const [isFirstSwipe, setIsFirstSwipe] = useState(true)
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
 
@@ -69,14 +68,11 @@ const Nos = () => {
         },
         loop: true,
         modules: [Autoplay, Mousewheel, FreeMode],
-        onSlideChange: () => {
-            contentSwiperRef.current.swiper.slideNext()
-            setIsFirstSwipe(false)
-        },
+        // onSlideChange: () => contentSwiperRef.current.swiper.slidePrev(),
+        onTransitionEnd: swiper => contentSwiperRef.current.swiper.slideTo(swiper.realIndex),
     }
 
     const contentSwiperOptions = {
-        key: isFirstSwipe,
         ref: contentSwiperRef,
         className: 'text-24 768:text-32 1280:text-50 max-h-[18em] 768:max-h-[12em]',
         direction: 'vertical',
@@ -85,6 +81,7 @@ const Nos = () => {
         spaceBetween: 0,
         speed: 800,
         mousewheel: false,
+        allowTouchMove: false,
         loop: true,
         rewind: false,
         modules: [EffectFade],
@@ -171,13 +168,9 @@ const Nos = () => {
                             </Col>
                             <Col mobileCols={2} tabletCols={7} desktopCols={8}>
                                 <Swiper {...contentSwiperOptions}>
-                                    {isFirstSwipe && <SwiperSlide>{dummySlides[0].content}</SwiperSlide>}
-                                    {dummySlides
-                                        .slice(0)
-                                        .reverse()
-                                        .map((slide, index) => (
-                                            <SwiperSlide key={index}>{slide.content}</SwiperSlide>
-                                        ))}
+                                    {dummySlides.map((slide, index) => (
+                                        <SwiperSlide key={index}>{slide.content}</SwiperSlide>
+                                    ))}
                                 </Swiper>
                             </Col>
                         </Grid>

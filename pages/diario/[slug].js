@@ -62,18 +62,13 @@ const SlugDiary = ({ data, relatedPosts }) => {
                     <Container>
                         <Grid rowGap={3}>
                             {relatedPosts?.map(post => {
-                                // const { id, attributes } = post?.data[0]
-                                // const { title, description, cover } = attributes
-                                // const { url } = cover?.data?.attributes
+                                const { id, attributes } = post?.data[0]
+                                const { title, description, cover } = attributes
+                                const { url } = cover?.data?.attributes
 
                                 return (
-                                    <Col key={post?.data[0]?.id} mobileCols={2} tabletCols={4}>
-                                        <DiaryCard
-                                            src={post?.data[0]?.attributes?.cover?.url}
-                                            aspectRatio='4/3'
-                                            title={post?.data[0]?.attribuest?.title}
-                                            description={post?.data[0]?.attributes?.description}
-                                        />
+                                    <Col key={id} mobileCols={2} tabletCols={4}>
+                                        <DiaryCard src={url} aspectRatio='4/3' title={title} description={description} />
                                     </Col>
                                 )
                             })}
@@ -91,22 +86,23 @@ export async function getStaticPaths(context) {
     const posts = await data.data
 
     const paths = posts.map(element => {
-        // const { slug } = element.attributes
-        // const { slug: enSlug } = element.attributes.localizations.data[0].attributes
-
-        return {
-            ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-            enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+        if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
+            return {
+                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+            }
+        } else {
+            return {
+                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+            }
         }
     })
 
-    const enPost = paths[0].enPost
+    const enPost = paths[0]?.enPost
     const ptPost = paths[0].ptPost
 
-    console.log([ptPost, enPost])
-
     return {
-        paths: [ptPost, enPost],
+        paths: enPost ? [ptPost, enPost] : [ptPost],
         fallback: true,
     }
 }

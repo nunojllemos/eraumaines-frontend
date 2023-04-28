@@ -76,27 +76,26 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                     </li>
                     <li className='pb-8 768:pl-8 768:py-0 relative flex justify-center'>
                         <div
-                            className={`w-20 768:w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-power-grotesk relative group ${
+                            className={`locale-button w-20 768:w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-power-grotesk relative group ${
                                 isHomepage && !isMenuOpen ? 'bg-white text-black' : 'bg-black text-white'
                             } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                         >
-                            {locales?.map((loc, index) => (
+                            {locales?.map(loc => (
                                 <Link
                                     scroll={false}
                                     locale={false}
-                                    key={index}
+                                    key={loc.slice(0, 2)}
                                     href={`/${loc}/${router.pathname.split('/')[1]}`}
                                     className={`transition-all w-full h-full flex items-center justify-center absolute ${
-                                        locale === loc.slice(0, 2) ? 'left-0 fix-hover:group-hover:-left-full' : 'left-full fix-hover:group-hover:left-0 z-1'
+                                        locale === loc.slice(0, 2)
+                                            ? '-left-full 768:left-0 fix-hover:group-hover:-left-full'
+                                            : 'left-0 768:left-full fix-hover:group-hover:left-0 z-1'
                                     }`}
                                 >
                                     {loc.slice(0, 2)}
                                 </Link>
                             ))}
                         </div>
-                        {/* <div className='transition-all flex flex-col absolute bg-white border border-black -right-1 top-[calc(100%_+_4px)] shadow-lg pointer-events-none opacity-0 -translate-y-4 fix-hover:peer-hover:opacity-100 fix-hover:peer-hover:translate-y-0 fix-hover:peer-hover:pointer-events-auto fix-hover:hover:opacity-100 fix-hover:hover:translate-y-0 fix-hover:hover:pointer-events-auto'>
-                            
-                        </div> */}
                     </li>
                 </ul>
             </div>
