@@ -9,6 +9,9 @@ export const en = {
         hero: {
             link: 'see more stories',
         },
+        about: {
+            ticker: 'more about',
+        },
     },
     diary: {
         title: 'diary',

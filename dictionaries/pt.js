@@ -9,6 +9,9 @@ export const pt = {
         hero: {
             link: 'ver mais histórias',
         },
+        about: {
+            ticker: 'mais sobre',
+        },
     },
     diary: {
         title: 'diário',
