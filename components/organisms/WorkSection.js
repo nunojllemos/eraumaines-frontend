@@ -7,7 +7,9 @@ import WorkSectionMediaCard from '../molecules/WorkSectionMediaCard'
 import WorkSectionTestimonialsCard from '../molecules/WorkSectionTestimonialsCard'
 import WorkSectionInfoCard from '../molecules/WorkSectionInfoCard'
 
-const WorkSection = () => {
+const WorkSection = testemonials => {
+    console.log('teste workSection', testemonials)
+
     return (
         <div>
             <AnimatedTitle>memory seekers . memory seekers . memory seekers</AnimatedTitle>
@@ -17,7 +19,7 @@ const WorkSection = () => {
                         <div className='flex flex-col  h-full'>
                             <WorkSectionCard />
                             <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
-                            <WorkSectionTestimonialsCard invertColors={true} />
+                            <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} />
                         </div>
                     </Col>
                     <Col mobileCols={2} tabletCols={4} desktopCols={4}>
@@ -37,7 +39,7 @@ const WorkSection = () => {
                         <div className='flex flex-col h-full'>
                             <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='16/9' alt='wedding' />
                             <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='4/3' alt='wedding' />
-                            <WorkSectionTestimonialsCard invertColors={true} />
+                            <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} />
                             <WorkSectionMediaCard src='/images/work-section-card-2.png' aspectRatio='4/3' alt='wedding' />
                         </div>
                     </Col>

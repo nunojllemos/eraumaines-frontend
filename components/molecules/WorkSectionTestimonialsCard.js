@@ -5,27 +5,11 @@ import { Navigation, Autoplay } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
 import Link from 'next/link'
 
-const WorkSectionTestimonialsCard = props => {
-    const testemonials = [
-        {
-            year: '2023',
-            engaged: 'Ana & Nuno',
-            comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae maxime, velit sed deserunt pariatur.',
-        },
-        {
-            year: '2022',
-            engaged: 'José & Paula',
-            comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae maxime, velit sed deserunt pariatur.',
-        },
-        {
-            year: '2023',
-            engaged: 'Joana & Miguel',
-            comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae maxime, velit sed deserunt pariatur.',
-        },
-    ]
+const WorkSectionTestimonialsCard = ({ testemonials, invertColors }) => {
+    console.log('teste...', testemonials)
 
     return (
-        <div className={`mb-8 flex-1 aspect-square 768:aspect-auto ${props.invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
+        <div className={`mb-8 flex-1 aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
             <Swiper
                 className='h-full'
                 navigation={{
@@ -36,7 +20,7 @@ const WorkSectionTestimonialsCard = props => {
                 loop={true}
                 modules={[Navigation, Autoplay]}
             >
-                {testemonials.map((testemonial, i) => {
+                {testemonials.testemonials.map((testemonial, i) => {
                     return (
                         <div key={i}>
                             <SwiperSlide>
@@ -53,7 +37,7 @@ const WorkSectionTestimonialsCard = props => {
                         </div>
                     )
                 })}
-                <div className={`flex ${props.invertColors ? 'text-black' : 'text-white'} text-white absolute bottom-6 z-1 right-5`}>
+                <div className={`flex ${invertColors ? 'text-black' : 'text-white'} text-white absolute bottom-6 z-1 right-5`}>
                     <div className='button-prev-slide w-8 rotate-180 hover:fix-hover:opacity-60 cursor-pointer'>
                         <FaqArrow />
                     </div>
