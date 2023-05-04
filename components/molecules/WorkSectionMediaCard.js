@@ -3,7 +3,7 @@ import ImageContainer from '../atoms/ImageContainer'
 const WorkSectionMediaCard = props => {
     return (
         <div className='mb-8'>
-            <ImageContainer src={props.src} aspectRatio={props.aspectRatio} alt={props.alt} />
+            <ImageContainer sizes='100vw, (min-width: 768px) 45vw' src={props.src} aspectRatio={props.aspectRatio} alt={props.alt} />
         </div>
     )
 }

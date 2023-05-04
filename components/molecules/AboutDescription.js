@@ -7,10 +7,7 @@ const AboutDescription = props => {
                 props.rightPerson ? `768:col-start-1` : ''
             }`}
         >
-            <HomePersonDescription
-                description='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, autem ex! Esse quod fugiat ea illo mollitia, consequatur deserunt
-                    impedit vitae repellat odit sit labore quas, consectetur rerum beatae nulla.'
-            />
+            <HomePersonDescription description={props.description} />
         </div>
     )
 }

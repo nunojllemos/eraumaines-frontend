@@ -8,8 +8,8 @@ const AboutPersonImage = props => {
                 props.leftPerson ? `768:col-start-1` : ''
             } ${props.rightPerson ? `768:col-start-7 1280:col-start-8` : ''}`}
         >
-            <ImageContainer src='https://source.unsplash.com/random?girls' alt='foto Inês' aspectRatio='2/3' sizes='100vw, (min-width: 768px) 45vw' />
-            <HomePersonMarqueeSection name='Inês' href='/nos' />
+            <ImageContainer src={props.image} alt={props.alt} aspectRatio='2/3' sizes='100vw, (min-width: 768px) 45vw' />
+            <HomePersonMarqueeSection name={props.name} href={props.href} />
         </div>
     )
 }

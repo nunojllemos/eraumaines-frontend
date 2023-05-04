@@ -25,7 +25,7 @@ const WorkSectionTestimonialsCard = props => {
     ]
 
     return (
-        <div className={`mb-8 flex-1 aspect-square ${props.invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
+        <div className={`mb-8 flex-1 aspect-square 768:aspect-auto ${props.invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
             <Swiper
                 className='h-full'
                 navigation={{
