@@ -6,8 +6,8 @@ const WorkSectionInfoCard = props => {
         <article>
             <Link href='/' className='relative block font-light overflow-hidden cursor-pointer group  mb-8 group'>
                 <ImageContainer src={props.src} aspectRatio={props.aspectRatio} />
-                <div className='bg-black/40 h-full w-full absolute opacity-0 fix-hover:group-hover:opacity-100 transition-opacity top-0 left-0'></div>
-                <div className='absolute bottom-0 768:-bottom-full text-white p-4 768:fix-hover:group-hover:bottom-0 transition-[bottom] '>
+                <div className='bg-black/40 h-full w-full absolute 768:fix-hover:opacity-0 fix-hover:group-hover:opacity-100 transition-opacity top-0 left-0'></div>
+                <div className='absolute bottom-0 768:fix-hover:-bottom-full text-white p-4 768:fix-hover:group-hover:bottom-0 transition-[bottom] '>
                     <p className='font-power-grotesk text-26 mb-2'>{props.engaged}</p>
                     <div className='text-14 mb-8'>
                         <p>{props.work}</p>

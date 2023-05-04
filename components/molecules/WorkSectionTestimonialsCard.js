@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { Navigation } from 'swiper'
+import { Navigation, Autoplay } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
 import Link from 'next/link'
 
@@ -25,25 +25,22 @@ const WorkSectionTestimonialsCard = props => {
     ]
 
     return (
-        <div className='mb-8 flex-1'>
+        <div className={`mb-8 flex-1 aspect-square ${props.invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
             <Swiper
                 className='h-full'
                 navigation={{
                     nextEl: '.button-next-slide',
                     prevEl: '.button-prev-slide',
                 }}
+                autoplay={{ delay: 7000, disableOnInteraction: false }}
                 loop={true}
-                modules={[Navigation]}
+                modules={[Navigation, Autoplay]}
             >
                 {testemonials.map((testemonial, i) => {
                     return (
                         <div key={i}>
                             <SwiperSlide>
-                                <div
-                                    className={`${
-                                        props.invertColors ? `bg-white text-black` : `bg-black text-white`
-                                    } p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom`}
-                                >
+                                <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom'>
                                     <p>{`"${testemonial.comment}"`}</p>
                                     <div>
                                         <p>{testemonial.year}</p>

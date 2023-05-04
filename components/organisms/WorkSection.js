@@ -17,7 +17,7 @@ const WorkSection = () => {
                         <div className='flex flex-col  h-full'>
                             <WorkSectionCard />
                             <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
-                            <WorkSectionTestimonialsCard />
+                            <WorkSectionTestimonialsCard invertColors={true} />
                         </div>
                     </Col>
                     <Col mobileCols={2} tabletCols={4} desktopCols={4}>

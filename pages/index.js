@@ -40,7 +40,7 @@ export async function getStaticProps(context) {
     return {
         props: {
             data: data,
-            persons: persons.data.attributes.persons,
+            persons: persons?.data?.attributes?.persons,
         },
         revalidate: 10,
     }
