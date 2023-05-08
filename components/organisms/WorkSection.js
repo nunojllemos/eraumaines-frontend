@@ -16,7 +16,7 @@ const WorkSection = testemonials => {
             <Container>
                 <Grid>
                     <Col mobileCols={2} tabletCols={4} desktopCols={3}>
-                        <div className='flex flex-col  h-full'>
+                        <div className='flex flex-col h-full'>
                             <WorkSectionCard />
                             <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
                             <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} />
