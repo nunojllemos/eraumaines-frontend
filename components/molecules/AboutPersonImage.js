@@ -1,5 +1,6 @@
-import ImageContainer from '../atoms/ImageContainer'
-import HomePersonMarqueeSection from './HomePersonMarqueeSection'
+import ImageContainer from '@/atoms/ImageContainer'
+import HomePersonMarqueeSection from '@/molecules/HomePersonMarqueeSection'
+import { getImage } from '@/utils/utils'
 
 const AboutPersonImage = props => {
     return (
@@ -8,7 +9,7 @@ const AboutPersonImage = props => {
                 props.leftPerson ? `768:col-start-1` : ''
             } ${props.rightPerson ? `768:col-start-7 1280:col-start-8` : ''}`}
         >
-            <ImageContainer src={props.image} alt={props.alt} aspectRatio='2/3' sizes='100vw, (min-width: 768px) 45vw' />
+            <ImageContainer src={getImage(props.image)} alt={props.alt} aspectRatio='2/3' sizes='100vw, (min-width: 768px) 45vw' />
             <HomePersonMarqueeSection name={props.name} href={props.href} />
         </div>
     )

@@ -23,17 +23,13 @@ const Alo = () => {
 
         emailjs.sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, form.current, process.env.NEXT_PUBLIC_PUBLIC_KEY).then(
             result => {
-                console.log(result)
                 setFormStatus(result.status)
                 setIsSending(false)
                 form.current.reset()
 
                 setTimeout(() => setFormStatus(0), 5000)
             },
-            error => {
-                console.log(error)
-                setIsSending(false)
-            }
+            error => setIsSending(false)
         )
     }
 
