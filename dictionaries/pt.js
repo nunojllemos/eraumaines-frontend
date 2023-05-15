@@ -25,6 +25,18 @@ export const pt = {
             published: 'Publicado em',
         },
     },
+    history: {
+        title: 'história',
+        card: {
+            link: 'ler mais',
+        },
+        single: {
+            related: {
+                title: 'outros artigos',
+            },
+            published: 'Publicado em',
+        },
+    },
     contacts: {
         title: 'alô',
     },
