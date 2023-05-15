@@ -6,7 +6,7 @@ import { FaqArrow } from '../atoms/Icons'
 import Link from 'next/link'
 
 const WorkSectionTestimonialsCard = ({ testemonials, invertColors }) => {
-    console.log('teste...', testemonials)
+    // console.log('teste...', testemonials)
 
     return (
         <div className={`mb-8 flex-1 aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>

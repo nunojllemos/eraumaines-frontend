@@ -22,7 +22,7 @@ const Diario = ({ data, currentPage }) => {
     populatePagesArray()
 
     useEffect(() => {
-        console.log(currentPage)
+        // console.log(currentPage)
     }, [])
 
     return (

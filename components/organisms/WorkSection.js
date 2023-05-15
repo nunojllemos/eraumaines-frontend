@@ -1,25 +1,24 @@
-import Container from '../styled-components/layout/Container'
-import AnimatedTitle from '../molecules/AnimatedTitle'
-import WorkSectionCard from '../molecules/WorkSectionCard'
-import Col from '../styled-components/layout/Col'
-import Grid from '../styled-components/layout/Grid'
-import WorkSectionMediaCard from '../molecules/WorkSectionMediaCard'
-import WorkSectionTestimonialsCard from '../molecules/WorkSectionTestimonialsCard'
-import WorkSectionInfoCard from '../molecules/WorkSectionInfoCard'
+import Container from '@/layout/Container'
+import Col from '@/layout/Col'
+import Grid from '@/layout/Grid'
+import AnimatedTitle from '@/molecules/AnimatedTitle'
+import WorkSectionCard from '@/molecules/WorkSectionCard'
+import WorkSectionMediaCard from '@/molecules/WorkSectionMediaCard'
+import WorkSectionTestimonialsCard from '@/molecules/WorkSectionTestimonialsCard'
+import WorkSectionInfoCard from '@/molecules/WorkSectionInfoCard'
 
-const WorkSection = testemonials => {
-    console.log('teste workSection', testemonials)
-
+const WorkSection = ({ stories, title }) => {
     return (
         <div>
-            <AnimatedTitle>memory seekers . memory seekers . memory seekers</AnimatedTitle>
+            <AnimatedTitle>{`${title} . ${title} . ${title} . ${title} .`}</AnimatedTitle>
             <Container>
                 <Grid>
                     <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                         <div className='flex flex-col h-full'>
                             <WorkSectionCard />
                             <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
-                            <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} />
+                            {/* <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} /> */}
+                            <div>1</div>
                         </div>
                     </Col>
                     <Col mobileCols={2} tabletCols={4} desktopCols={4}>
@@ -39,7 +38,8 @@ const WorkSection = testemonials => {
                         <div className='flex flex-col h-full'>
                             <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='16/9' alt='wedding' />
                             <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='4/3' alt='wedding' />
-                            <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} />
+                            {/* <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} /> */}
+                            <div>2</div>
                             <WorkSectionMediaCard src='/images/work-section-card-2.png' aspectRatio='4/3' alt='wedding' />
                         </div>
                     </Col>

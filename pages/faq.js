@@ -4,104 +4,55 @@ import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import Col from '@/components/styled-components/layout/Col'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
+import { getImage } from '@/utils/utils'
 
-const faq = () => {
-    const dummy_faqs = [
-        {
-            title: 'Posso ser reembolsado por algum motivo?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Trabalham em todo o país?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Fazem sessões de solteiro?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Já não sei mais o que perguntar?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Facilisis sed odio morbi quis',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor fort',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Posso ser reembolsado por algum motivo?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Trabalham em todo o país?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Fazem sessões de solteiro?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Já não sei mais o que perguntar?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Facilisis sed odio morbi quis',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor fort',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Posso ser reembolsado por algum motivo?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Trabalham em todo o país?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Fazem sessões de solteiro?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Já não sei mais o que perguntar?',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Facilisis sed odio morbi quis',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-        {
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor fort',
-            text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam incidunt, magnam laudantium modi a eligendi blanditiis ea ad, quo labore pariatur illo cupiditate maxime fuga, perferendis assumenda similique suscipit eveniet.',
-        },
-    ]
+const Faq = ({ data }) => {
+    const { title, media, faqs } = data?.data?.attributes
+    const { url } = media?.data?.attributes
 
     return (
         <main className='pb-16'>
-            <AnimatedTitle>faq . faq . faq . faq . faq . faq . faq . faq . faq .</AnimatedTitle>
+            <AnimatedTitle>{`${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} .`}</AnimatedTitle>
             <Container>
                 <Grid tablet={800}>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
                         <div className='sticky top-8'>
-                            <ImageContainer src='/images/faq-banner.jpg' aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />
+                            <ImageContainer src={getImage(url)} aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />
                         </div>
                     </Col>
-                    <Col tablet={800} mobileCols={2} tabletCols={6}>
-                        <div className='flex flex-col'>
-                            {dummy_faqs.map((faq, index) => {
-                                const { title, text } = faq
-                                return <AccordionItem key={index} title={title} content={text} />
-                            })}
-                        </div>
-                    </Col>
+                    {faqs.length > 0 && (
+                        <Col tablet={800} mobileCols={2} tabletCols={6}>
+                            <div className='flex flex-col'>
+                                {faqs.map(faq => {
+                                    const { id, question, answer } = faq
+                                    return <AccordionItem key={`faq-${id}`} title={question} content={answer} />
+                                })}
+                            </div>
+                        </Col>
+                    )}
                 </Grid>
             </Container>
         </main>
     )
 }
-export default faq
+export default Faq
+
+export async function getStaticProps(context) {
+    const { locale } = context
+    const populateQuery = 'populate=*'
+
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faq?locale=${strapiLocale}&${populateQuery}`)
+    const data = await res.json()
+
+    return {
+        props: {
+            data: data,
+        },
+        revalidate: 10,
+    }
+}

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Collapsible from 'react-collapsible'
 import AccordionHeader from '@/molecules/AccordionHeader'
+import remarkGfm from 'remark-gfm'
+import ReactMarkdown from 'react-markdown'
 
 const AccordionItem = ({ content, title }) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +22,7 @@ const AccordionItem = ({ content, title }) => {
     return (
         <Collapsible {...collapsibleOptions}>
             <div onClick={closeAccordion} className='cursor-pointer text-16 1024:text-18'>
-                {content}
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                 <p></p>
             </div>
         </Collapsible>

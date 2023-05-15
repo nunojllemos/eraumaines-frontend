@@ -1,6 +1,6 @@
-import AboutSectioNameLink from '../molecules/AboutSectionNameLink'
-import AboutDescription from '../molecules/AboutDescription'
-import AboutPersonImage from '../molecules/AboutPersonImage'
+import AboutSectioNameLink from '@/molecules/AboutSectionNameLink'
+import AboutDescription from '@/molecules/AboutDescription'
+import AboutPersonImage from '@/molecules/AboutPersonImage'
 
 const HomePersonRight = ({ name, role, description, image, alt = '', href = '/nos' }) => {
     return (

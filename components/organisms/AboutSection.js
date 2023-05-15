@@ -1,7 +1,7 @@
 import Container from '@/layout/Container'
 import AnimatedTitle from '@/molecules/AnimatedTitle'
-import HomePersonLeft from './HomePersonLeft'
-import HomePersonRight from './HomePersonRight'
+import HomePersonLeft from '@/organisms/HomePersonLeft'
+import HomePersonRight from '@/organisms/HomePersonRight'
 
 const AboutSection = ({ title, persons }) => {
     //    console.log(persons)

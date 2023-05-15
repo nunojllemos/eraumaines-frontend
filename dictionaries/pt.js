@@ -5,6 +5,9 @@ export const pt = {
         diary: 'diário',
         contact: 'alô',
     },
+    about: {
+        reviews: 'testemunhos',
+    },
     homepage: {
         hero: {
             link: 'ver mais histórias',
