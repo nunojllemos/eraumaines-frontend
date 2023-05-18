@@ -92,6 +92,7 @@ const Nos = ({ data, persons, reviews }) => {
                         )
                     })}
                 <section className='mt-14 768:mt-32'>
+                    <div></div>
                     <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
                     <Container>
                         <Grid>
