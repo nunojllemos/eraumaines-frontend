@@ -3,8 +3,8 @@ import Hero from '@/components/organisms/Hero'
 import AboutSection from '@/components/organisms/AboutSection'
 import WorkSection from '@/components/organisms/WorkSection'
 
-export default function Home({ data, persons, stories }) {
-    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title } = data.data.attributes
+export default function Home({ data }) {
+    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories } = data
     const { url, mime } = hero_media?.data?.attributes
     const { resource_type } = mime
 
@@ -24,9 +24,7 @@ export default function Home({ data, persons, stories }) {
 
 export async function getStaticProps(context) {
     const { locale } = context
-    const populateQuery = 'populate=*'
-    const populatePersonsQuery = 'populate[persons][populate]=*'
-    const populateStoriesQuery = 'populate[stories][populate]=*'
+    const populateQuery = 'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover'
 
     let strapiLocale
 
@@ -36,17 +34,9 @@ export async function getStaticProps(context) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home?locale=${strapiLocale}&${populateQuery}`)
     const data = await res.json()
 
-    const resPersons = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home?locale=${strapiLocale}&${populatePersonsQuery}`)
-    const persons = await resPersons.json()
-
-    const resStories = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home?locale=${strapiLocale}&${populateStoriesQuery}`)
-    const stories = await resStories.json()
-
     return {
         props: {
-            data: data,
-            persons: persons?.data?.attributes?.persons,
-            stories: stories?.data?.attributes?.stories,
+            data: data?.data?.attributes,
         },
         revalidate: 10,
     }

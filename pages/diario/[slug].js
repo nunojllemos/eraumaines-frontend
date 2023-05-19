@@ -9,12 +9,19 @@ import DiaryCard from '@/components/molecules/DiaryCard'
 import ReactMarkdown from 'react-markdown'
 import useTranslation from '@/hooks/useTranslation'
 import remarkGfm from 'remark-gfm'
+import { getImage } from '@/utils/utils'
 
-const SlugDiary = ({ data, relatedPosts }) => {
-    // const { title, cover, content, publishedAt } = data && data?.attributes
-    // const image = data?.attributes?.cover?.data?.attributes?.url
-    // const { caption } = data?.attributes?.cover?.data?.attributes?.caption
-    const publishedDate = new Date(data?.attributes?.publishedAt)
+const SlugDiary = ({ data }) => {
+    // console.log(data.attributes)
+    const {
+        publishedAt,
+        title,
+        cover,
+        content,
+        posts: { data: relatedPosts },
+    } = data.attributes
+    const { url, caption } = cover?.data?.attributes
+    const publishedDate = new Date(publishedAt)
     const day = publishedDate?.getDate()
     const month = publishedDate?.getMonth() + 1
     const year = publishedDate?.getFullYear()
@@ -27,7 +34,7 @@ const SlugDiary = ({ data, relatedPosts }) => {
                 <Container>
                     <Grid>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                            {data && (
+                            {publishedAt && (
                                 <div className='text-14 text-black/50 mb-3'>{`${t.diary.single.published} ${day && day}-${
                                     month && month < 10 ? `0${month}` : month
                                 }-${year && year}`}</div>
@@ -35,23 +42,15 @@ const SlugDiary = ({ data, relatedPosts }) => {
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
                             <figure>
-                                {data && (
-                                    <ImageContainer
-                                        src={data?.attributes?.cover?.data?.attributes?.url}
-                                        aspectRatio='16/9'
-                                        sizes='(min-width: 991px) 70vw, 100vw'
-                                    />
-                                )}
-                                {data && <figcaption className='text-12 mt-2'>{data?.attributes?.cover?.data?.attributes?.caption}</figcaption>}
+                                {url && <ImageContainer src={getImage(url)} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />}
+                                {caption && <figcaption className='text-12 mt-2'>{caption}</figcaption>}
                             </figure>
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
-                            <div className='my-12 768:my-16'>{data && <DiaryTitle title={data?.attributes?.title} />}</div>
+                            <div className='my-12 768:my-16'>{title && <DiaryTitle title={title} />}</div>
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                            <div className='diary-content'>
-                                {data && <ReactMarkdown remarkPlugins={[remarkGfm]}>{data?.attributes?.content}</ReactMarkdown>}
-                            </div>
+                            <div className='diary-content'>{content && <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>}</div>
                         </Col>
                     </Grid>
                 </Container>
@@ -62,13 +61,18 @@ const SlugDiary = ({ data, relatedPosts }) => {
                     <Container>
                         <Grid rowGap={3}>
                             {relatedPosts?.map(post => {
-                                const { id, attributes } = post?.data[0]
+                                const { id, attributes } = post
                                 const { title, description, cover } = attributes
-                                const { url } = cover?.data?.attributes
+                                const { data: coverSrc } = cover
 
                                 return (
                                     <Col key={id} mobileCols={2} tabletCols={4}>
-                                        <DiaryCard src={url} aspectRatio='4/3' title={title} description={description} />
+                                        <DiaryCard
+                                            src={coverSrc ? getImage(coverSrc.attributes.url) : ''}
+                                            aspectRatio='4/3'
+                                            title={title}
+                                            description={description}
+                                        />
                                     </Col>
                                 )
                             })}
@@ -99,16 +103,17 @@ export async function getStaticPaths() {
     })
 
     const enPost = paths[0]?.enPost
-    const ptPost = paths[0].ptPost
+    const ptPost = paths[0]?.ptPost
 
     return {
         paths: enPost ? [ptPost, enPost] : [ptPost],
-        fallback: true,
+        fallback: 'blocking',
     }
 }
 
 export async function getStaticProps(context) {
     const { locale } = context
+    const queryParams = 'populate=*,cover,posts.cover'
 
     let strapiLocale
 
@@ -116,29 +121,14 @@ export async function getStaticProps(context) {
     if (locale === 'en') strapiLocale = 'en'
 
     const slug = context.params.slug
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?filters[slug][$eq]=${slug}&populate=*&locale=${strapiLocale}`
-    )
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?filters[slug][$eq]=${slug}&${queryParams}&locale=${strapiLocale}`)
     const data = await res.json()
-
-    const slugs = data?.data[0]?.attributes?.posts?.data?.map(post => post?.attributes?.slug)
-
-    const relatedPosts = await Promise.all(
-        slugs?.map(async slug => {
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?filters[slug][$eq]=${slug}&populate=*&locale=${strapiLocale}`
-            )
-            const relatedPost = await res.json()
-
-            return relatedPost
-        })
-    )
 
     return {
         props: {
             data: data.data[0],
-            relatedPosts,
         },
+        revalidate: 10,
     }
 }
 
