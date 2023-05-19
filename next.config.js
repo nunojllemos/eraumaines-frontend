@@ -2,7 +2,8 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['source.unsplash.com', 'localhost'],
+        domains: ['source.unsplash.com', 'localhost', 'era-uma-ines-cms.onrender.com'],
+
         deviceSizes: [380, 640, 750, 1080, 1920, 3840],
     },
     compiler: {

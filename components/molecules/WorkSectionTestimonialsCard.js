@@ -5,9 +5,7 @@ import { Navigation, Autoplay } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
 import Link from 'next/link'
 
-const WorkSectionTestimonialsCard = ({ testemonials, invertColors }) => {
-    // console.log('teste...', testemonials)
-
+const WorkSectionTestimonialsCard = ({ testimonials, invertColors }) => {
     return (
         <div className={`mb-8 flex-1 aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
             <Swiper
@@ -20,21 +18,19 @@ const WorkSectionTestimonialsCard = ({ testemonials, invertColors }) => {
                 loop={true}
                 modules={[Navigation, Autoplay]}
             >
-                {testemonials.testemonials.map((testemonial, i) => {
+                {testimonials.map(testimonial => {
                     return (
-                        <div key={i}>
-                            <SwiperSlide>
-                                <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom'>
-                                    <p>{`"${testemonial.comment}"`}</p>
-                                    <div>
-                                        <p>{testemonial.year}</p>
-                                        <Link href='/' className='hover:fix-hover:opacity-60'>
-                                            {testemonial.engaged}
-                                        </Link>
-                                    </div>
+                        <SwiperSlide key={testimonial.id}>
+                            <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom'>
+                                <p>{`"${testimonial.text}"`}</p>
+                                <div>
+                                    <p>{testimonial.year}</p>
+                                    <Link href='/' className='hover:fix-hover:opacity-60'>
+                                        {testimonial.names}
+                                    </Link>
                                 </div>
-                            </SwiperSlide>
-                        </div>
+                            </div>
+                        </SwiperSlide>
                     )
                 })}
                 <div className={`flex ${invertColors ? 'text-black' : 'text-white'} text-white absolute bottom-6 z-1 right-5`}>

@@ -80,7 +80,7 @@ const SlugDiary = ({ data, relatedPosts }) => {
     )
 }
 
-export async function getStaticPaths(context) {
+export async function getStaticPaths() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL_DEV || process.env.NEXT_PUBLIC_API_URL}/posts?populate=*`)
     const data = await res.json()
     const posts = await data.data

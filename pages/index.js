@@ -8,6 +8,8 @@ export default function Home({ data, persons, stories }) {
     const { url, mime } = hero_media?.data?.attributes
     const { resource_type } = mime
 
+    console.log(stories)
+
     return (
         <>
             <Seo title={meta_title} description={meta_description} />

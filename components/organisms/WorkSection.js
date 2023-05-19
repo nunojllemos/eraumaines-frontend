@@ -3,9 +3,7 @@ import Col from '@/layout/Col'
 import Grid from '@/layout/Grid'
 import AnimatedTitle from '@/molecules/AnimatedTitle'
 import WorkSectionCard from '@/molecules/WorkSectionCard'
-import WorkSectionMediaCard from '@/molecules/WorkSectionMediaCard'
-import WorkSectionTestimonialsCard from '@/molecules/WorkSectionTestimonialsCard'
-import WorkSectionInfoCard from '@/molecules/WorkSectionInfoCard'
+import StoriesGridElement from './StoriesGridElement'
 
 const WorkSection = ({ stories, title }) => {
     return (
@@ -16,31 +14,23 @@ const WorkSection = ({ stories, title }) => {
                     <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                         <div className='flex flex-col h-full'>
                             <WorkSectionCard />
-                            <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='2/3' alt='wedding' />
-                            {/* <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} /> */}
-                            <div>1</div>
+                            {stories[0] && <StoriesGridElement story={stories[0]} />}
+                            {stories[1] && <StoriesGridElement story={stories[1]} />}
                         </div>
                     </Col>
                     <Col mobileCols={2} tabletCols={4} desktopCols={4}>
                         <div className='flex flex-col h-full'>
-                            <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='2/3' alt='wedding' />
-                            <WorkSectionInfoCard
-                                engaged='Ana e Nuno'
-                                local='Vila do Conde'
-                                work='Casamento'
-                                src='/images/work-section-card-1.png'
-                                aspectRatio='3/4'
-                            />
-                            <WorkSectionMediaCard src='/images/work-section-card-6.png' aspectRatio='16/9' alt='wedding' />
+                            {stories[2] && <StoriesGridElement story={stories[2]} />}
+                            {stories[3] && <StoriesGridElement story={stories[3]} />}
+                            {stories[4] && <StoriesGridElement story={stories[4]} />}
                         </div>
                     </Col>
                     <Col mobileCols={2} tabletCols={4} desktopCols={5}>
                         <div className='flex flex-col h-full'>
-                            <WorkSectionMediaCard src='/images/work-section-card-4.png' aspectRatio='16/9' alt='wedding' />
-                            <WorkSectionMediaCard src='/images/work-section-card-3.png' aspectRatio='4/3' alt='wedding' />
-                            {/* <WorkSectionTestimonialsCard invertColors={true} testemonials={testemonials} /> */}
-                            <div>2</div>
-                            <WorkSectionMediaCard src='/images/work-section-card-2.png' aspectRatio='4/3' alt='wedding' />
+                            {stories[5] && <StoriesGridElement story={stories[5]} />}
+                            {stories[6] && <StoriesGridElement story={stories[6]} />}
+                            {stories[7] && <StoriesGridElement story={stories[7]} />}
+                            {stories[8] && <StoriesGridElement story={stories[8]} />}
                         </div>
                     </Col>
                 </Grid>
