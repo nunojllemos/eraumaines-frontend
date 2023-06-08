@@ -76,8 +76,8 @@ const Nos = ({ data, persons, reviews }) => {
                 </Container>
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
-                        const { id, title, name, role, media, description } = person
-                        const { url } = media.data.attributes
+                        const { id, title, name, role, media, description } = person || {}
+                        const { url } = media.data.attributes || {}
 
                         return (
                             <AboutPersonSection
