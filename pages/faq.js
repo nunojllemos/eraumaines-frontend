@@ -20,7 +20,7 @@ const Faq = ({ data }) => {
                             {url && <ImageContainer src={getImage(url)} aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />}
                         </div>
                     </Col>
-                    {faqs.length > 0 && (
+                    {faqs?.length > 0 && (
                         <Col tablet={800} mobileCols={2} tabletCols={6}>
                             <div className='flex flex-col'>
                                 {faqs.map(faq => {
