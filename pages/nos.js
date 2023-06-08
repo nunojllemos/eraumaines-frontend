@@ -16,7 +16,7 @@ const Nos = ({ data, persons, reviews }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const { description_01, description_02 } = data?.data?.attributes
+    const { description_01, description_02 } = data?.data?.attributes || {}
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -74,7 +74,7 @@ const Nos = ({ data, persons, reviews }) => {
                         </Col>
                     </Grid>
                 </Container>
-                {persons.length > 0 &&
+                {persons?.length > 0 &&
                     persons.map((person, index) => {
                         const { id, title, name, role, media, description } = person
                         const { url } = media.data.attributes
@@ -98,19 +98,21 @@ const Nos = ({ data, persons, reviews }) => {
                         <Grid>
                             <Col mobileCols={2} tabletCols={5} desktopCols={4}>
                                 <Swiper {...namesSwiperOptions}>
-                                    {reviews.map(slide => {
-                                        const { id, names } = slide
-                                        return <SwiperSlide key={`name-slide-${id}`}>{names}</SwiperSlide>
-                                    })}
+                                    {reviews?.length > 0 &&
+                                        reviews.map(slide => {
+                                            const { id, names } = slide
+                                            return <SwiperSlide key={`name-slide-${id}`}>{names}</SwiperSlide>
+                                        })}
                                 </Swiper>
                             </Col>
                             <Col mobileCols={2} tabletCols={7} desktopCols={8}>
                                 <Swiper {...contentSwiperOptions}>
-                                    {reviews.map(slide => {
-                                        const { id, text } = slide
+                                    {reviews?.length > 0 &&
+                                        reviews.map(slide => {
+                                            const { id, text } = slide
 
-                                        return <SwiperSlide key={`content-slide-${id}`}>{text}</SwiperSlide>
-                                    })}
+                                            return <SwiperSlide key={`content-slide-${id}`}>{text}</SwiperSlide>
+                                        })}
                                 </Swiper>
                             </Col>
                         </Grid>
