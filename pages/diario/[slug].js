@@ -12,7 +12,6 @@ import remarkGfm from 'remark-gfm'
 import { getImage } from '@/utils/utils'
 
 const SlugDiary = ({ data }) => {
-    // console.log(data.attributes)
     const {
         publishedAt,
         title,

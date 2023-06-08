@@ -1,21 +1,15 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
-import ImageContainer from '@/components/atoms/ImageContainer'
-import Link from 'next/link'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/autoplay'
-import 'swiper/css/mousewheel'
-import 'swiper/css/effect-fade'
-import { Autoplay, FreeMode, Mousewheel, EffectFade } from 'swiper'
 
 const Historias = () => {
-    const namesInfoSwiperRef = useRef(null)
-    const albumSwiperRef = useRef(null)
+    const imagesDiv = useRef()
+    const titlesDiv = useRef()
+    const [isHoverImagesDiv, setIsHoverImagesDiv] = useState(false)
+    const [isHoverTitlesDiv, setIsHoverTitlesDiv] = useState(false)
 
-    const historias = [
+    const stories = [
         {
             name: 'Nuno e Ana',
             album: '/images/work-section-card-4.png',
@@ -108,85 +102,95 @@ const Historias = () => {
         },
     ]
 
-    const namesInfoSwiperOptions = {
-        ref: namesInfoSwiperRef,
-        className: 'max-h-[9em] text-24 768:text-28 1280:text-50 font-power-grotesk swiper-names-history  ',
-        direction: 'vertical',
-        slidesPerView: 3,
-        spaceBetween: 0,
-        mousewheel: true,
-        speed: 800,
-        freeMode: {
-            enabled: true,
-            sticky: true,
-            minimumVelocity: 0.5,
-        },
-        autoplay: {
-            enabled: false,
-            reverseDirection: true,
-            disableOnInteraction: false,
-            invert: true,
-        },
-        loop: true,
-        modules: [Autoplay, Mousewheel, FreeMode],
-        onInit: swiper => {
-            console.log(swiper)
-            swiper.activeIndex = 2
-            swiper.update()
-        },
-        onTransitionEnd: swiper => albumSwiperRef.current.swiper.slidePrev(),
+    // const storiesReverse = new Array(...stories)
+    // storiesReverse.reverse()
+    // storiesReverse.unshift(stories[0])
+    // storiesReverse.pop()
+
+    const arr = new Array(...stories)
+
+    console.log('stories: ', stories)
+    console.log('stories reverse: ', arr)
+
+    useEffect(() => {
+        titlesDiv.current.scrollTo({
+            top: 9999,
+            left: 0,
+            behavior: 'instant',
+        })
+    }, [])
+
+    const handleImagesScroll = () => {
+        const titlesDivHeight = titlesDiv.current.getBoundingClientRect().height
+        const titlesDivFirstChildHeight = titlesDiv.current.children[0].getBoundingClientRect().height
+        const titlesDivTotalScrollValue = titlesDivFirstChildHeight - titlesDivHeight
+
+        const imagesDivHeight = imagesDiv.current.getBoundingClientRect().height
+        const imagesDivFirstChildHeight = imagesDiv.current.children[0].getBoundingClientRect().height
+        const imagesDivTotalScrollValue = imagesDivFirstChildHeight - imagesDivHeight
+        const imagesDivCurrentScrollTop = imagesDiv.current.scrollTop
+
+        const percentage = imagesDivCurrentScrollTop / imagesDivTotalScrollValue
+
+        !isHoverTitlesDiv && isHoverImagesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
     }
 
-    const contentSwiperOptions = {
-        ref: albumSwiperRef,
-        className: '!h-[calc(100vh_-_130px)]',
-        direction: 'vertical',
-        autoHeight: true,
-        slidesPerView: 'auto',
-        spaceBetween: 30,
-        speed: 800,
-        mousewheel: false,
-        allowTouchMove: false,
-        loop: true,
-        rewind: false,
-        centeredSlides: true,
-        initialSlide: 2,
-        freeMode: {
-            enabled: true,
-        },
-        modules: [FreeMode],
+    const handleTitleScroll = () => {
+        const imagesDivHeight = imagesDiv.current.getBoundingClientRect().height
+        const imagesDivFirstChildHeight = imagesDiv.current.children[0].getBoundingClientRect().height
+        const imagesDivTotalScrollValue = imagesDivFirstChildHeight - imagesDivHeight
+
+        const titlesDivHeight = titlesDiv.current.getBoundingClientRect().height
+        const titlesDivFirstChildHeight = titlesDiv.current.children[0].getBoundingClientRect().height
+        const titlesDivTotalScrollValue = titlesDivFirstChildHeight - titlesDivHeight
+        const titlesDivCurrentScrollTop = titlesDiv.current.scrollTop
+
+        const percentage = titlesDivCurrentScrollTop / titlesDivTotalScrollValue
+
+        !isHoverImagesDiv && isHoverTitlesDiv && imagesDiv.current.scrollTo(0, imagesDivTotalScrollValue - imagesDivTotalScrollValue * percentage)
     }
 
     return (
         <main>
             <Container>
                 <Grid>
-                    <Col mobileCols={1} tabletCols={6} desktopCols={7}>
-                        <Swiper {...namesInfoSwiperOptions}>
-                            {historias.map((historia, i) => (
-                                <SwiperSlide key={i} onClick={() => console.log('clicked')}>
-                                    <div>
-                                        <p>{historia.name}</p>
-                                        <div className='text-18 font-light font-subjectivity'>
-                                            <p>{historia.category}</p>
-                                            <p>{historia.place}</p>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden flex'>
+                        <div
+                            ref={titlesDiv}
+                            className='h-[3em] text-60 font-power-grotesk leading-none overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0'
+                            onScroll={handleTitleScroll}
+                            onMouseEnter={() => setIsHoverTitlesDiv(true)}
+                            onMouseLeave={() => setIsHoverTitlesDiv(false)}
+                        >
+                            <div className='flex flex-col transition-all'>
+                                {stories.map((el, i) => {
+                                    return (
+                                        <p key={i} className='uppercase leading-none flex items-center justify-center bg-black/30 snap-end'>
+                                            {el.name}-{i}
+                                        </p>
+                                    )
+                                })}
+                            </div>
+                        </div>
                     </Col>
-                    <Col mobileCols={1} tabletCols={6} desktopCols={5}>
-                        <Swiper {...contentSwiperOptions}>
-                            {historias.map((historia, i) => (
-                                <SwiperSlide key={i}>
-                                    <Link className='flex flex-col border-[red] border' href={historia.slug}>
-                                        <p className='text-20 absolute top-0 left-0 z-10'>{historia.name}</p>
-                                        <ImageContainer src={historia.album} aspectRatio='16/9' />
-                                    </Link>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden'>
+                        <div
+                            ref={imagesDiv}
+                            className='h-[calc(100vh_-_16rem)] overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory'
+                            onScroll={handleImagesScroll}
+                            onMouseEnter={() => setIsHoverImagesDiv(true)}
+                            onMouseLeave={() => setIsHoverImagesDiv(false)}
+                        >
+                            <div className='flex flex-col gap-12 transition-all'>
+                                {arr.reverse().map((el, i) => {
+                                    return (
+                                        <p key={i} className='text-32 uppercase aspect-video flex items-center justify-center bg-black/10 snap-center'>
+                                            {el.name}-{i}
+                                        </p>
+                                    )
+                                })}
+                            </div>
+                        </div>
                     </Col>
                 </Grid>
             </Container>
