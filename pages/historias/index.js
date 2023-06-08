@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
@@ -100,17 +100,283 @@ const Historias = () => {
             description:
                 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
         },
+        {
+            name: 'Nuno e Ana',
+            album: '/images/work-section-card-4.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-1',
+            date: '14-05-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Miguel e Joana',
+            album: '/images/work-section-card-6.png',
+            place: 'Lisboa',
+            category: 'Photoshoot',
+            slug: 'historias/single-2',
+            date: '23-06-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Paula e José',
+            album: '/images/work-section-card-4.png',
+            place: 'Leiria',
+            category: 'Photoshoot',
+            slug: 'historias/single-3',
+            date: '4-02-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Bruna e Rafael',
+            album: '/images/her-image.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-4',
+            date: '1-2-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Tiago',
+            album: '/images/his-image.png',
+            place: 'Algarve',
+            category: 'Batizado',
+            slug: 'historias/single-5',
+            date: '1-05-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Fábio e Catarina',
+            album: '/images/work-section-card-6.png',
+            place: 'Aves',
+            category: 'Casamento',
+            slug: 'historias/single-6',
+            date: '2-03-2020',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Bruna e Rafael',
+            album: '/images/her-image.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-4',
+            date: '1-2-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Tiago',
+            album: '/images/his-image.png',
+            place: 'Algarve',
+            category: 'Batizado',
+            slug: 'historias/single-5',
+            date: '1-05-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Fábio e Catarina',
+            album: '/images/work-section-card-6.png',
+            place: 'Aves',
+            category: 'Casamento',
+            slug: 'historias/single-6',
+            date: '2-03-2020',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Nuno e Ana',
+            album: '/images/work-section-card-4.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-1',
+            date: '14-05-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Miguel e Joana',
+            album: '/images/work-section-card-6.png',
+            place: 'Lisboa',
+            category: 'Photoshoot',
+            slug: 'historias/single-2',
+            date: '23-06-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Paula e José',
+            album: '/images/work-section-card-4.png',
+            place: 'Leiria',
+            category: 'Photoshoot',
+            slug: 'historias/single-3',
+            date: '4-02-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Bruna e Rafael',
+            album: '/images/her-image.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-4',
+            date: '1-2-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Tiago',
+            album: '/images/his-image.png',
+            place: 'Algarve',
+            category: 'Batizado',
+            slug: 'historias/single-5',
+            date: '1-05-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Fábio e Catarina',
+            album: '/images/work-section-card-6.png',
+            place: 'Aves',
+            category: 'Casamento',
+            slug: 'historias/single-6',
+            date: '2-03-2020',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Bruna e Rafael',
+            album: '/images/her-image.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-4',
+            date: '1-2-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Tiago',
+            album: '/images/his-image.png',
+            place: 'Algarve',
+            category: 'Batizado',
+            slug: 'historias/single-5',
+            date: '1-05-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Fábio e Catarina',
+            album: '/images/work-section-card-6.png',
+            place: 'Aves',
+            category: 'Casamento',
+            slug: 'historias/single-6',
+            date: '2-03-2020',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Nuno e Ana',
+            album: '/images/work-section-card-4.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-1',
+            date: '14-05-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Miguel e Joana',
+            album: '/images/work-section-card-6.png',
+            place: 'Lisboa',
+            category: 'Photoshoot',
+            slug: 'historias/single-2',
+            date: '23-06-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Paula e José',
+            album: '/images/work-section-card-4.png',
+            place: 'Leiria',
+            category: 'Photoshoot',
+            slug: 'historias/single-3',
+            date: '4-02-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Bruna e Rafael',
+            album: '/images/her-image.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-4',
+            date: '1-2-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Tiago',
+            album: '/images/his-image.png',
+            place: 'Algarve',
+            category: 'Batizado',
+            slug: 'historias/single-5',
+            date: '1-05-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Fábio e Catarina',
+            album: '/images/work-section-card-6.png',
+            place: 'Aves',
+            category: 'Casamento',
+            slug: 'historias/single-6',
+            date: '2-03-2020',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Bruna e Rafael',
+            album: '/images/her-image.png',
+            place: 'Porto',
+            category: 'Casamento',
+            slug: 'historias/single-4',
+            date: '1-2-2022',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Tiago',
+            album: '/images/his-image.png',
+            place: 'Algarve',
+            category: 'Batizado',
+            slug: 'historias/single-5',
+            date: '1-05-2023',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
+        {
+            name: 'Fábio e Catarina',
+            album: '/images/work-section-card-6.png',
+            place: 'Aves',
+            category: 'Casamento',
+            slug: 'historias/single-6',
+            date: '2-03-2020',
+            description:
+                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
+        },
     ]
 
-    // const storiesReverse = new Array(...stories)
-    // storiesReverse.reverse()
-    // storiesReverse.unshift(stories[0])
-    // storiesReverse.pop()
-
-    const arr = new Array(...stories)
-
-    console.log('stories: ', stories)
-    console.log('stories reverse: ', arr)
+    const storiesCopy = new Array(...stories)
+    stories.unshift({ name: '' })
+    stories.unshift({ name: '' })
+    stories.unshift({ name: '' })
+    stories.unshift({ name: '' })
 
     useEffect(() => {
         titlesDiv.current.scrollTo({
@@ -133,6 +399,8 @@ const Historias = () => {
         const percentage = imagesDivCurrentScrollTop / imagesDivTotalScrollValue
 
         !isHoverTitlesDiv && isHoverImagesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
+
+        handleScrollEnd()
     }
 
     const handleTitleScroll = () => {
@@ -148,16 +416,30 @@ const Historias = () => {
         const percentage = titlesDivCurrentScrollTop / titlesDivTotalScrollValue
 
         !isHoverImagesDiv && isHoverTitlesDiv && imagesDiv.current.scrollTo(0, imagesDivTotalScrollValue - imagesDivTotalScrollValue * percentage)
+
+        handleScrollEnd()
+    }
+
+    const handleScrollEnd = () => {
+        for (let i = 0; i < titlesDiv.current.children[0].children.length; i++) {
+            const element = titlesDiv.current.children[0].children[i]
+
+            if (element.getBoundingClientRect().top > 300 && element.getBoundingClientRect().top < 350) {
+                element.classList.add('active')
+            } else {
+                element.classList.remove('active')
+            }
+        }
     }
 
     return (
         <main>
             <Container>
                 <Grid>
-                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden flex'>
+                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden flex relative text-50'>
                         <div
                             ref={titlesDiv}
-                            className='h-[3em] text-60 font-power-grotesk leading-none overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0'
+                            className='h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
                             onScroll={handleTitleScroll}
                             onMouseEnter={() => setIsHoverTitlesDiv(true)}
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
@@ -165,9 +447,15 @@ const Historias = () => {
                             <div className='flex flex-col transition-all'>
                                 {stories.map((el, i) => {
                                     return (
-                                        <p key={i} className='uppercase leading-none flex items-center justify-center bg-black/30 snap-end'>
-                                            {el.name}-{i}
-                                        </p>
+                                        <div key={i} className='client-name relative w-max'>
+                                            <p key={i} className='snap-end bg-white z-10 w-max pr-8'>
+                                                {el.name}
+                                            </p>
+                                            <span className='info-drawer text-14 font-subjectivity absolute -z-10 left-full top-6'>
+                                                <span className='block'>{el.place}</span>
+                                                <span className='block'>{el.category}</span>
+                                            </span>
+                                        </div>
                                     )
                                 })}
                             </div>
@@ -176,16 +464,16 @@ const Historias = () => {
                     <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden'>
                         <div
                             ref={imagesDiv}
-                            className='h-[calc(100vh_-_16rem)] overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory'
+                            className='h-[calc(100vh_-_16rem)] overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
                             onScroll={handleImagesScroll}
                             onMouseEnter={() => setIsHoverImagesDiv(true)}
                             onMouseLeave={() => setIsHoverImagesDiv(false)}
                         >
-                            <div className='flex flex-col gap-12 transition-all'>
-                                {arr.reverse().map((el, i) => {
+                            <div className='flex flex-col transition-all'>
+                                {storiesCopy.reverse().map((el, i) => {
                                     return (
-                                        <p key={i} className='text-32 uppercase aspect-video flex items-center justify-center bg-black/10 snap-center'>
-                                            {el.name}-{i}
+                                        <p key={i} className='text-32 my-6 uppercase aspect-video flex items-center justify-center bg-black/10 snap-center'>
+                                            {el.name}
                                         </p>
                                     )
                                 })}
