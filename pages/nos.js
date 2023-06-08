@@ -16,7 +16,7 @@ const Nos = ({ data, persons, reviews }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const { description_01, description_02 } = data?.data?.attributez || {}
+    const { description_01, description_02 } = data?.data?.attributes || {}
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -139,8 +139,8 @@ export async function getStaticProps(context) {
     return {
         props: {
             data: data,
-            reviews: data.data.attributes.reviews,
-            persons: data.data.attributes.persons,
+            reviews: data.attributes.reviews,
+            persons: data.attributes.persons,
         },
         revalidate: 10,
     }
