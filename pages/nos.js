@@ -67,17 +67,17 @@ const Nos = ({ data, persons, reviews }) => {
                 <Container>
                     <Grid>
                         <Col mobileCols={2} tabletCols={9} offsetTablet={3}>
-                            <p className='text-24 768:text-32 1280:text-50 font-light'>{description_01}</p>
+                            {description_01 && <p className='text-24 768:text-32 1280:text-50 font-light'>{description_01}</p>}
                         </Col>
                         <Col mobileCols={2} tabletCols={9}>
-                            <p className='text-24 768:text-32 1280:text-50 mt-16 768:mt-20 1280:mt-32 font-light'>{description_02}</p>
+                            {description_02 && <p className='text-24 768:text-32 1280:text-50 mt-16 768:mt-20 1280:mt-32 font-light'>{description_02}</p>}
                         </Col>
                     </Grid>
                 </Container>
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
-                        const { id, title, name, role, media, description } = person || {}
-                        const { url } = media.data.attributes || {}
+                        const { id, title, name, role, media, description } = person
+                        const { url } = media.data.attributes
 
                         return (
                             <AboutPersonSection
