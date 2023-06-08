@@ -8,8 +8,8 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 const termos = ({ data }) => {
-    const { title, media, content } = data?.data?.attributes
-    const { url } = media?.data?.attributes
+    const { title, media, content } = data?.data?.attributes || {}
+    const { url } = media?.data?.attributes || {}
 
     return (
         <main className='pb-16'>
