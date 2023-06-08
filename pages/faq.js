@@ -7,8 +7,8 @@ import Grid from '@/components/styled-components/layout/Grid'
 import { getImage } from '@/utils/utils'
 
 const Faq = ({ data }) => {
-    const { title, media, faqs } = data?.data?.attributes
-    const { url } = media?.data?.attributes
+    const { title, media, faqs } = data?.data?.attributes || {}
+    const { url } = media?.data?.attributes || {}
 
     return (
         <main className='pb-16'>
