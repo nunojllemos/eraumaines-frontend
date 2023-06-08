@@ -16,7 +16,7 @@ const Nos = ({ data, persons, reviews }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const { description_01, description_02 } = data?.data?.attributes || {}
+    const { description_01, description_02 } = data?.data?.attributez || {}
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -77,7 +77,7 @@ const Nos = ({ data, persons, reviews }) => {
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
                         const { id, title, name, role, media, description } = person
-                        const { url } = media.data.attributez
+                        const { url } = media.data.attributes
 
                         return (
                             <AboutPersonSection
