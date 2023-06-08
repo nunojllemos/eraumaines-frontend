@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
+import { ExternalLink } from '@/components/atoms/Icons'
 
 const Historias = () => {
     const imagesDiv = useRef()
@@ -377,6 +378,7 @@ const Historias = () => {
     stories.unshift({ name: '' })
     stories.unshift({ name: '' })
     stories.unshift({ name: '' })
+    stories.unshift({ name: '' })
 
     useEffect(() => {
         titlesDiv.current.scrollTo({
@@ -467,12 +469,16 @@ const Historias = () => {
                                 {stories.map((el, i) => {
                                     return (
                                         <div key={i} className='client-name relative w-max'>
-                                            <p key={i} className='snap-end bg-white z-10 w-max pr-8'>
+                                            <p key={i} className='snap-end bg-white z-10 w-max pr-2'>
                                                 {el.name}
                                             </p>
-                                            <span className='info-drawer text-14 font-subjectivity absolute -z-10 left-full top-6'>
-                                                <span className='block'>{el.place}</span>
-                                                <span className='block'>{el.category}</span>
+                                            <span className='info-drawer uppercase leading-none text-12 font-subjectivity absolute -z-10 left-full bottom-6 flex items-end gap-10'>
+                                                <span className='block w-10 bg-white relative z-1 pr-2'>
+                                                    <ExternalLink />
+                                                </span>
+                                                <span className='block whitespace-nowrap'>
+                                                    {el.place}, {el.category}
+                                                </span>
                                             </span>
                                         </div>
                                     )
@@ -515,8 +521,8 @@ const Historias = () => {
                                             <span className='768:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16'>
                                                 {el.name}
                                             </span>
-                                            <span className='768:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12'>
-                                                {el.place} | {el.category}
+                                            <span className='768:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12 uppercase'>
+                                                {el.place}, {el.category}
                                             </span>
                                         </div>
                                     )
