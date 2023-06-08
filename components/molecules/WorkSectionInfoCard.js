@@ -13,7 +13,7 @@ const WorkSectionInfoCard = props => {
                         <p>{props.work}</p>
                         <p>{props.local}</p>
                     </div>
-                    <div className='text-22 leading-tight'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</div>
+                    <div className='text-22 leading-tight'>{props.description}</div>
                 </div>
             </Link>
         </article>

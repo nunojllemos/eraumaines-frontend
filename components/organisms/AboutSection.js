@@ -15,7 +15,7 @@ const AboutSection = ({ title, persons }) => {
                     {persons.map((person, i) => {
                         return i % 2 === 0 ? (
                             <HomePersonLeft
-                                key={i}
+                                key={`about-${i}`}
                                 name={person.person_name}
                                 role={person.person_role}
                                 description={person.person_description}
@@ -24,7 +24,7 @@ const AboutSection = ({ title, persons }) => {
                             />
                         ) : (
                             <HomePersonRight
-                                key={i}
+                                key={`about-${i}`}
                                 name={person.person_name}
                                 role={person.person_role}
                                 description={person.person_description}
