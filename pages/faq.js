@@ -17,7 +17,7 @@ const Faq = ({ data }) => {
                 <Grid tablet={800}>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
                         <div className='sticky top-8'>
-                            <ImageContainer src={getImage(url)} aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />
+                            {url && <ImageContainer src={getImage(url)} aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />}
                         </div>
                     </Col>
                     {faqs.length > 0 && (
