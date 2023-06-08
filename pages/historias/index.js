@@ -12,7 +12,7 @@ const Historias = () => {
     const stories = [
         {
             name: 'Nuno e Ana',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-1',
@@ -22,7 +22,7 @@ const Historias = () => {
         },
         {
             name: 'Miguel e Joana',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Lisboa',
             category: 'Photoshoot',
             slug: 'historias/single-2',
@@ -32,7 +32,7 @@ const Historias = () => {
         },
         {
             name: 'Paula e José',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Leiria',
             category: 'Photoshoot',
             slug: 'historias/single-3',
@@ -42,7 +42,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -52,7 +52,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -62,7 +62,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -72,7 +72,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -82,7 +82,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -92,7 +92,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -102,7 +102,7 @@ const Historias = () => {
         },
         {
             name: 'Nuno e Ana',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-1',
@@ -112,7 +112,7 @@ const Historias = () => {
         },
         {
             name: 'Miguel e Joana',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Lisboa',
             category: 'Photoshoot',
             slug: 'historias/single-2',
@@ -122,7 +122,7 @@ const Historias = () => {
         },
         {
             name: 'Paula e José',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Leiria',
             category: 'Photoshoot',
             slug: 'historias/single-3',
@@ -132,7 +132,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -142,7 +142,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -152,7 +152,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -162,7 +162,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -172,7 +172,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -182,7 +182,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -192,7 +192,7 @@ const Historias = () => {
         },
         {
             name: 'Nuno e Ana',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-1',
@@ -202,7 +202,7 @@ const Historias = () => {
         },
         {
             name: 'Miguel e Joana',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Lisboa',
             category: 'Photoshoot',
             slug: 'historias/single-2',
@@ -212,7 +212,7 @@ const Historias = () => {
         },
         {
             name: 'Paula e José',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Leiria',
             category: 'Photoshoot',
             slug: 'historias/single-3',
@@ -222,7 +222,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -232,7 +232,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -242,7 +242,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -252,7 +252,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -262,7 +262,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -272,7 +272,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -282,7 +282,7 @@ const Historias = () => {
         },
         {
             name: 'Nuno e Ana',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-1',
@@ -292,7 +292,7 @@ const Historias = () => {
         },
         {
             name: 'Miguel e Joana',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Lisboa',
             category: 'Photoshoot',
             slug: 'historias/single-2',
@@ -302,7 +302,7 @@ const Historias = () => {
         },
         {
             name: 'Paula e José',
-            album: '/images/work-section-card-4.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Leiria',
             category: 'Photoshoot',
             slug: 'historias/single-3',
@@ -312,7 +312,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -322,7 +322,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -332,7 +332,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -342,7 +342,7 @@ const Historias = () => {
         },
         {
             name: 'Bruna e Rafael',
-            album: '/images/her-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Porto',
             category: 'Casamento',
             slug: 'historias/single-4',
@@ -352,7 +352,7 @@ const Historias = () => {
         },
         {
             name: 'Tiago',
-            album: '/images/his-image.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Algarve',
             category: 'Batizado',
             slug: 'historias/single-5',
@@ -362,7 +362,7 @@ const Historias = () => {
         },
         {
             name: 'Fábio e Catarina',
-            album: '/images/work-section-card-6.png',
+            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
             place: 'Aves',
             category: 'Casamento',
             slug: 'historias/single-6',
@@ -432,11 +432,30 @@ const Historias = () => {
         }
     }
 
+    const playVideo = e => {
+        if (e.currentTarget.children[0]) {
+            const video = e.currentTarget.children[0]
+
+            video.play()
+        }
+    }
+
+    const stopVideo = e => {
+        if (e.currentTarget.children[0]) {
+            const video = e.currentTarget.children[0]
+
+            video.pause()
+            video.currentTime = 0
+        }
+    }
+
+    const isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2)
+
     return (
         <main>
             <Container>
                 <Grid>
-                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden flex relative text-50'>
+                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='hidden 768:flex overflow-x-hidden relative text-50'>
                         <div
                             ref={titlesDiv}
                             className='h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
@@ -461,10 +480,10 @@ const Historias = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='overflow-x-hidden'>
+                    <Col mobileCols={2} tabletCols={6} desktopCols={6} className='overflow-x-hidden'>
                         <div
                             ref={imagesDiv}
-                            className='h-[calc(100vh_-_16rem)] overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
+                            className='h-[calc(100vh_-_16rem)] overflow-y-auto 768:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
                             onScroll={handleImagesScroll}
                             onMouseEnter={() => setIsHoverImagesDiv(true)}
                             onMouseLeave={() => setIsHoverImagesDiv(false)}
@@ -472,9 +491,34 @@ const Historias = () => {
                             <div className='flex flex-col transition-all'>
                                 {storiesCopy.reverse().map((el, i) => {
                                     return (
-                                        <p key={i} className='text-32 my-6 uppercase aspect-video flex items-center justify-center bg-black/10 snap-center'>
-                                            {el.name}
-                                        </p>
+                                        <div
+                                            key={i}
+                                            onMouseEnter={playVideo}
+                                            onMouseLeave={stopVideo}
+                                            className='text-32 my-12 768:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center'
+                                        >
+                                            <video
+                                                onClick={e => {
+                                                    const isPlaying = isVideoPlaying(e.target)
+                                                    if (isPlaying) {
+                                                        e.target.currentTime = 0
+                                                        e.target.pause()
+                                                    } else {
+                                                        e.target.play()
+                                                    }
+                                                }}
+                                                muted
+                                                playsInline
+                                                loop
+                                                src={el.album}
+                                            ></video>
+                                            <span className='768:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16'>
+                                                {el.name}
+                                            </span>
+                                            <span className='768:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12'>
+                                                {el.place} | {el.category}
+                                            </span>
+                                        </div>
                                     )
                                 })}
                             </div>
