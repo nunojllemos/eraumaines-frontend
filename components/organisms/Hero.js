@@ -18,7 +18,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
             </div>
             <div className='h-full w-full absolute flex flex-col justify-end  text-white pb-5'>
                 <Container>
-                    <h1 className='font-maginia w-[300px] text-80 768:text-100 1280:text-130 leading-[0.75] 768:leading-none'>{title}</h1>
+                    {title && <h1 className='font-maginia w-[300px] text-80 768:text-100 1280:text-130 leading-[0.75] 768:leading-none'>{title}</h1>}
                     <div className='flex items-center justify-between mt-20'>
                         <div className='hover-arrow'>
                             <InternalLink href='/historias' text={t.homepage.hero.link} />

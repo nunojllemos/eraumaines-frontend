@@ -374,11 +374,11 @@ const Historias = () => {
     ]
 
     const storiesCopy = new Array(...stories)
+    stories.unshift({ name: ':) scroll back down' })
     stories.unshift({ name: '' })
     stories.unshift({ name: '' })
     stories.unshift({ name: '' })
-    stories.unshift({ name: '' })
-    stories.unshift({ name: '' })
+    // stories.unshift({ name: '' })
 
     useEffect(() => {
         titlesDiv.current.scrollTo({
@@ -456,11 +456,17 @@ const Historias = () => {
     return (
         <main>
             <Container>
-                <Grid>
-                    <Col mobileCols={1} tabletCols={6} desktopCols={6} className='hidden 768:flex overflow-x-hidden relative text-50'>
+                <Grid desktop={1023}>
+                    <Col
+                        desktop={1023}
+                        mobileCols={1}
+                        tabletCols={6}
+                        desktopCols={6}
+                        className='hidden 768:flex flex-col overflow-x-hidden relative text-40 1280:text-50'
+                    >
                         <div
                             ref={titlesDiv}
-                            className='h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
+                            className='h-[7.5em] 1280:h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[6.25em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
                             onScroll={handleTitleScroll}
                             onMouseEnter={() => setIsHoverTitlesDiv(true)}
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
@@ -468,7 +474,7 @@ const Historias = () => {
                             <div className='flex flex-col transition-all'>
                                 {stories.map((el, i) => {
                                     return (
-                                        <div key={i} className='client-name relative w-max'>
+                                        <div key={i} className='client-name relative w-max first:hidden 1280:first:block'>
                                             <p key={i} className='snap-end bg-white z-10 w-max pr-2'>
                                                 {el.name}
                                             </p>
@@ -486,7 +492,7 @@ const Historias = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col mobileCols={2} tabletCols={6} desktopCols={6} className='overflow-x-hidden'>
+                    <Col desktop={1023} mobileCols={2} tabletCols={12} desktopCols={6} className='overflow-x-hidden'>
                         <div
                             ref={imagesDiv}
                             className='h-[calc(100vh_-_16rem)] overflow-y-auto 768:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
