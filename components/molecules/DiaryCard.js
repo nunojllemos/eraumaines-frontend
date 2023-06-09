@@ -4,6 +4,7 @@ import DiaryCardDescription from '../atoms/DiaryCardDescription'
 import Link from 'next/link'
 import useTranslation from '@/hooks/useTranslation'
 import { Arrow } from '@/atoms/Icons'
+import { getImage } from '@/utils/utils'
 
 const DiaryCard = ({ src, aspectRatio, sizes, title, description, href = 'slug-example' }) => {
     const t = useTranslation()
@@ -12,7 +13,7 @@ const DiaryCard = ({ src, aspectRatio, sizes, title, description, href = 'slug-e
         <Link href={`diario/${href}`} className='group hover-arrow' scroll={false}>
             <article className='relative overflow-hidden diary-card'>
                 <div className='transition-all 991:scale-110 origin-top-right 991:fix-hover:group-hover:origin-bottom-left'>
-                    <ImageContainer src={src} aspectRatio={aspectRatio} sizes={sizes} />
+                    <ImageContainer src={getImage(src)} aspectRatio={aspectRatio} sizes={sizes} />
                 </div>
                 <div className='bg-white py-5 991:px-4 991:absolute bottom-8 left-8 max-w-[45rem] 991:w-[calc(100%_-_4rem)]'>
                     <div className='flex flex-col gap-2 768:gap-6 991:gap-8'>
