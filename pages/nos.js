@@ -12,11 +12,11 @@ import { Autoplay, FreeMode, Mousewheel, EffectFade } from 'swiper'
 import useTranslation from '@/hooks/useTranslation'
 import AboutPersonSection from '@/components/organisms/AboutPersonSection'
 
-const Nos = ({ data, persons, reviews }) => {
+const Nos = ({ data }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const { description_01, description_02 } = data?.data?.attributes || {}
+    const { description_01, description_02, persons, reviews } = data?.data?.attributes || {}
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -135,14 +135,9 @@ export async function getStaticProps(context) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/about?locale=${strapiLocale}&${populateQuery}`)
     const data = await res.json()
 
-    const persons = data?.data?.attributes?.persons
-    const reviews = data?.data?.attributes?.reviews
-
     return {
         props: {
             data,
-            reviews,
-            persons,
         },
         revalidate: 10,
     }
