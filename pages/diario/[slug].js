@@ -18,9 +18,9 @@ const SlugDiary = ({ data }) => {
         cover,
         content,
         posts: { data: relatedPosts },
-    } = data.attributes
-    const { url, caption } = cover?.data?.attributes
-    const publishedDate = new Date(publishedAt)
+    } = data.attributes || {}
+    const { url, caption } = cover?.data?.attributes || {}
+    const publishedDate = new Date(publishedAt || '')
     const day = publishedDate?.getDate()
     const month = publishedDate?.getMonth() + 1
     const year = publishedDate?.getFullYear()
