@@ -40,7 +40,7 @@ const Nos = ({ data, persons, reviews }) => {
         loop: true,
         modules: [Autoplay, Mousewheel, FreeMode],
         // onSlideChange: () => contentSwiperRef.current.swiper.slidePrev(),
-        onTransitionEnd: swiper => contentSwiperRef.current.swiper.slideTo(swiper.realIndex),
+        onTransitionEnd: swiper => contentSwiperRef?.current?.swiper?.slideTo(swiper.realIndex),
     }
 
     const contentSwiperOptions = {

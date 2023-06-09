@@ -16,7 +16,7 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                     <Grid>
                         <Col className='row-start-2 768:row-start-1 my-12 768:my-0' mobileCols={2} tabletCols={8}>
                             <MouseParallax strength={0.04}>
-                                <ImageContainer src={`/${getImage(url)}`} aspectRatio='16/9' />
+                                <ImageContainer src={getImage(url)} aspectRatio='16/9' />
                             </MouseParallax>
                         </Col>
                         <Col mobileCols={2} tabletCols={4}>

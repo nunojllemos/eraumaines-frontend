@@ -66,24 +66,15 @@ const Diario = ({ data, currentPage }) => {
                                     />
                                 )}
                                 <div className='aspect-square 768:flex-1 relative bg-black/80'>
-                                    {/* <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} /> */}
+                                    <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
                                 </div>
                             </div>
                         </Col>
 
                         <Col mobileCols={2} tabletCols={6}>
                             <div className='flex flex-col gap-8'>
-                                {/* {data.data[3] && (
-                                    <DiaryCard
-                                        src={data.data[3].attributes?.cover?.data?.attributes?.url}
-                                        aspectRatio='16/9'
-                                        title={data.data[3].attributes?.title}
-                                        description={data.data[3].attributes?.description}
-                                        href={data.data[3].attributes?.slug}
-                                    />
-                                )} */}
                                 <div className='aspect-[3/2] 768:flex-1 relative bg-black/30'>
-                                    {/* <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} /> */}
+                                    <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
                                 </div>
                                 {data.data[3] && (
                                     <DiaryCard
@@ -108,17 +99,8 @@ const Diario = ({ data, currentPage }) => {
                                         href={data.data[4].attributes?.slug}
                                     />
                                 )}
-                                {/* {data.data[6] && (
-                                    <DiaryCard
-                                        src={data.data[6].attributes?.cover?.data?.attributes?.url}
-                                        aspectRatio='1/1'
-                                        title={data.data[6].attributes?.title}
-                                        description={data.data[6].attributes?.description}
-                                        href={data.data[6].attributes?.slug}
-                                    />
-                                )} */}
                                 <div className='768:flex-1 relative bg-black/50'>
-                                    {/* <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} /> */}
+                                    <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
                                 </div>
                             </div>
                         </Col>
