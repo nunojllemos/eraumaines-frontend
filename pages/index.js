@@ -8,6 +8,8 @@ export default function Home({ data }) {
     const { url, mime } = hero_media?.data?.attributes
     const { resource_type } = mime
 
+    console.log(process.env.NEXT_PUBLIC_API_URL)
+
     return (
         <>
             <Seo title={meta_title} description={meta_description} />
