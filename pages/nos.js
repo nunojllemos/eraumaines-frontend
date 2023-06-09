@@ -92,8 +92,7 @@ const Nos = ({ data, persons, reviews }) => {
                         )
                     })}
                 <section className='mt-14 768:mt-32'>
-                    <div></div>
-                    <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
+                    {reviews?.length > 0 && <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>}
                     <Container>
                         <Grid>
                             <Col mobileCols={2} tabletCols={5} desktopCols={4}>
@@ -136,8 +135,8 @@ export async function getStaticProps(context) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/about?locale=${strapiLocale}&${populateQuery}`)
     const data = await res.json()
 
-    const persons = data?.data?.attributes?.persons || []
-    const reviews = data?.data?.attributes?.reviews || []
+    const persons = data?.data?.attributes?.persons
+    const reviews = data?.data?.attributes?.reviews
 
     return {
         props: {
