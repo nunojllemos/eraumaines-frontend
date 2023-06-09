@@ -4,9 +4,9 @@ import AboutSection from '@/components/organisms/AboutSection'
 import WorkSection from '@/components/organisms/WorkSection'
 
 export default function Home({ data }) {
-    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories } = data
-    const { url, mime } = hero_media?.data?.attributes
-    const { resource_type } = mime
+    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories } = data || {}
+    const { url, mime } = hero_media?.data?.attributes || {}
+    const { resource_type } = mime || {}
 
     console.log(process.env.NEXT_PUBLIC_API_URL)
 
