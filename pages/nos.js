@@ -136,8 +136,8 @@ export async function getStaticProps(context) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/about?locale=${strapiLocale}&${populateQuery}`)
     const data = await res.json()
 
-    const persons = data.data.attributes.persons
-    const reviews = data.data.attributes.reviews
+    const persons = await data.data.attributes.persons
+    const reviews = await data.data.attributes.reviews
 
     return {
         props: {
