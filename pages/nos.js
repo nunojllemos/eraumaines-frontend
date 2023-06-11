@@ -76,8 +76,8 @@ const Nos = ({ data }) => {
                 </Container>
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
-                        const { id, title, name, role, media, description } = person
-                        const { url } = media.data.attributes
+                        const { id, title, name, role, media, description } = person || {}
+                        const { url } = media.data.attributes || {}
 
                         return (
                             <AboutPersonSection
@@ -99,7 +99,7 @@ const Nos = ({ data }) => {
                                 <Swiper {...namesSwiperOptions}>
                                     {reviews?.length > 0 &&
                                         reviews.map(slide => {
-                                            const { id, names } = slide
+                                            const { id, names } = slide || {}
                                             return <SwiperSlide key={`name-slide-${id}`}>{names}</SwiperSlide>
                                         })}
                                 </Swiper>
@@ -108,7 +108,7 @@ const Nos = ({ data }) => {
                                 <Swiper {...contentSwiperOptions}>
                                     {reviews?.length > 0 &&
                                         reviews.map(slide => {
-                                            const { id, text } = slide
+                                            const { id, text } = slide || {}
 
                                             return <SwiperSlide key={`content-slide-${id}`}>{text}</SwiperSlide>
                                         })}

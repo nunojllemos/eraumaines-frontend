@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import Link from 'next/link'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
@@ -472,21 +473,21 @@ const Historias = () => {
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
-                                {stories.map((el, i) => {
+                                {stories.map((story, index) => {
                                     return (
-                                        <div key={i} className='client-name relative w-max first:hidden 1280:first:block'>
-                                            <p key={i} className='snap-end bg-white z-10 w-max pr-2'>
-                                                {el.name}
-                                            </p>
-                                            <span className='info-drawer uppercase leading-none text-12 font-subjectivity absolute -z-10 left-full bottom-6 flex items-end gap-10'>
-                                                <span className='block w-10 bg-white relative z-1 pr-2'>
-                                                    <ExternalLink />
+                                        <Link key={`stories-title-${index}`} href='/historias/historia-01' className='client-name'>
+                                            <div className='relative w-max first:hidden 1280:first:block'>
+                                                <p className='snap-end bg-white z-10 w-max pr-2'>{story.name}</p>
+                                                <span className='info-drawer uppercase leading-none text-12 font-subjectivity absolute -z-10 left-full bottom-6 flex items-end gap-10'>
+                                                    <span className='block w-10 bg-white relative z-1 pr-2'>
+                                                        <ExternalLink />
+                                                    </span>
+                                                    <span className='block whitespace-nowrap'>
+                                                        {story.place}, {story.category}
+                                                    </span>
                                                 </span>
-                                                <span className='block whitespace-nowrap'>
-                                                    {el.place}, {el.category}
-                                                </span>
-                                            </span>
-                                        </div>
+                                            </div>
+                                        </Link>
                                     )
                                 })}
                             </div>
