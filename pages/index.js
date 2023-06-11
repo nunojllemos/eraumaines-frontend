@@ -6,13 +6,12 @@ import WorkSection from '@/components/organisms/WorkSection'
 export default function Home({ data }) {
     const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories } = data
     const { url, mime } = hero_media.data.attributes
-    const { resource_type } = mime
 
     return (
         <>
             <Seo title={meta_title} description={meta_description} />
             <main>
-                <Hero title={hero_title} media={url} typeOfMedia={resource_type} />
+                <Hero title={hero_title} media={url} typeOfMedia={mime} />
                 <AboutSection title={about_title} persons={persons} />
                 <WorkSection title={stories_title} stories={stories} />
             </main>

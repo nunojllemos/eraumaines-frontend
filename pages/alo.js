@@ -45,7 +45,7 @@ const Alo = () => {
                     </Col>
                     <Col tablet={800} mobileCols={2} tabletCols={6}>
                         <div className='pb-8 default-text pt-16 768:pt-0'>
-                            <h2 className='font-medium'>Contactos</h2>
+                            <h2 className='font-medium'>{t.contacts.contact}</h2>
                         </div>
                         <div className='flex flex-col gap-4 text-16 768:text-18'>
                             <div>
@@ -55,7 +55,7 @@ const Alo = () => {
                             <div>T: 916373337</div>
                         </div>
                         <div className='pt-32 pb-8 default-text'>
-                            <h2 className='font-medium'>Mais informações</h2>
+                            <h2 className='font-medium'>{t.contacts.more_info}</h2>
                         </div>
                         <form ref={form} onSubmit={sendEmail} className='flex flex-col gap-8 relative'>
                             <div
@@ -66,14 +66,14 @@ const Alo = () => {
                                 A enviar...
                             </div>
                             <FormGroup>
-                                <FormInput name='name-1' placeholder='Nome' required={true} />
-                                <FormInput name='name-2' placeholder='Nome' />
+                                <FormInput name='name-1' placeholder={t.contacts.form.name} required={true} />
+                                <FormInput name='name-2' placeholder={t.contacts.form.name} />
                             </FormGroup>
                             <FormGroup>
-                                <FormInput name='date' placeholder='Data' type='date' />
-                                <FormInput name='local' placeholder='Local' required={true} />
+                                <FormInput name='date' placeholder={t.contacts.form.date} type='date' />
+                                <FormInput name='local' placeholder={t.contacts.form.local} required={true} />
                             </FormGroup>
-                            <FormTextarea name='message' placeholder='Mensagem' required={true} />
+                            <FormTextarea name='message' placeholder={t.contacts.form.message} required={true} />
 
                             <div
                                 className={`transition-all text-18 bg-[#b7eb8f] px-8 py-4 rounded-lg shadow-lg ${
@@ -86,13 +86,13 @@ const Alo = () => {
                                 </div>
                             </div>
                             <ul className='mt-40 768:mt-64 text-12 opacity-50 flex flex-col gap-2'>
-                                <li>* Campos de preenchimento obrigatórios</li>
-                                <li>** Máximo de 650 caracteres</li>
+                                <li>* {t.contacts.form.information_01}</li>
+                                <li>** {t.contacts.form.information_02}</li>
                             </ul>
                             <div>
-                                <button className='default-text flex items-center gap-3 768:gap-6'>
-                                    <span>Enviar</span>
-                                    <div className='w-6 768:w-8 -mt-2'>
+                                <button className='default-text flex items-center gap-3 768:gap-6 group'>
+                                    <span>{t.contacts.form.send}</span>
+                                    <div className='w-6 768:w-8 -mt-2 transition-transform fix-hover:group-hover:translate-x-2'>
                                         <FaqArrow />
                                     </div>
                                 </button>

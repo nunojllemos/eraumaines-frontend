@@ -1,6 +1,8 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
+import useTranslation from '@/hooks/useTranslation'
 
 const FormTextarea = ({ name, placeholder, required = false, maxLength = 650 }) => {
+    const t = useTranslation()
     const [messageLength, setMessageLength] = useState(0)
 
     const handleChange = e => {
@@ -27,7 +29,7 @@ const FormTextarea = ({ name, placeholder, required = false, maxLength = 650 }) 
             </label>
             <div className={`flex justify-between text-12 ${messageLength === maxLength ? 'text-[red]/80' : 'text-black'}`}>
                 <span className={`transition-all ${messageLength === maxLength ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'}`}>
-                    Máximo de {maxLength} caracteres atingido.
+                    {t.contacts.form.maximumMessage}
                 </span>
                 <span className='transition-colors'>
                     {messageLength} / {maxLength}

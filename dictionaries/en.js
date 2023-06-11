@@ -42,6 +42,18 @@ export const en = {
     },
     contacts: {
         title: 'hello',
+        contact: 'Contacts',
+        more_info: 'More information',
+        form: {
+            date: 'Date',
+            name: 'Name',
+            local: 'Local',
+            message: 'Message',
+            maximumMessage: 'Maximum characters reached.',
+            information_01: 'Required field',
+            information_02: 'Maximum 650 characters',
+            send: 'Send',
+        },
     },
     footer: {
         terms: 'Terms & Conditions',

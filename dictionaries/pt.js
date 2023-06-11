@@ -42,6 +42,18 @@ export const pt = {
     },
     contacts: {
         title: 'alô',
+        contact: 'Contactos',
+        more_info: 'Mais informações',
+        form: {
+            date: 'Data',
+            name: 'Nome',
+            local: 'Local',
+            message: 'Mensagem',
+            maximumMessage: 'Máximo de caracteres atingido.',
+            information_01: 'Campo de preenchimento obrigatório',
+            information_02: 'Máximo de 650 caracteres',
+            send: 'Enviar',
+        },
     },
     footer: {
         terms: 'Termos contratuais',
