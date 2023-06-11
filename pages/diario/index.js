@@ -6,14 +6,13 @@ import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import DiaryCard from '@/components/molecules/DiaryCard'
 import useTranslation from '@/hooks/useTranslation'
 import PageLink from '@/components/molecules/PageLink'
+import { getImage } from '@/utils/utils'
 
 const Diario = ({ data, currentPage }) => {
     const t = useTranslation()
     const TOTAL_PAGES = data.meta.pagination.pageCount
     const { data: posts } = data
     let pages = []
-
-    console.log(TOTAL_PAGES)
 
     const populatePagesArray = () => {
         for (let index = 1; index <= TOTAL_PAGES; index++) {
@@ -33,7 +32,7 @@ const Diario = ({ data, currentPage }) => {
                                 <div className='flex flex-col gap-8'>
                                     {posts[0] && (
                                         <DiaryCard
-                                            src={posts[0].attributes?.cover?.data?.attributes?.url}
+                                            src={getImage(posts[0].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='16/9'
                                             title={posts[0].attributes?.title}
                                             description={posts[0].attributes?.description}
@@ -42,7 +41,7 @@ const Diario = ({ data, currentPage }) => {
                                     )}
                                     {posts[1] && (
                                         <DiaryCard
-                                            src={posts[1].attributes?.cover?.data?.attributes?.url}
+                                            src={getImage(posts[1].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='16/9'
                                             title={posts[1].attributes?.title}
                                             description={posts[1].attributes?.description}
@@ -56,7 +55,7 @@ const Diario = ({ data, currentPage }) => {
                                 <div className='flex flex-col gap-8 h-full'>
                                     {posts[2] && (
                                         <DiaryCard
-                                            src={posts[2].attributes?.cover?.data?.attributes?.url}
+                                            src={getImage(posts[2].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='4/3'
                                             title={posts[2].attributes?.title}
                                             description={posts[2].attributes?.description}
@@ -76,7 +75,7 @@ const Diario = ({ data, currentPage }) => {
                                     </div>
                                     {posts[3] && (
                                         <DiaryCard
-                                            src={posts[3].attributes?.cover?.data?.attributes?.url}
+                                            src={getImage(posts[3].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='4/3'
                                             title={posts[3].attributes?.title}
                                             description={posts[3].attributes?.description}
@@ -90,7 +89,7 @@ const Diario = ({ data, currentPage }) => {
                                 <div className='flex flex-col gap-8 h-full'>
                                     {posts[4] && (
                                         <DiaryCard
-                                            src={posts[4].attributes?.cover?.data?.attributes?.url}
+                                            src={getImage(posts[4].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='4/3'
                                             title={posts[4].attributes?.title}
                                             description={posts[4].attributes?.description}
