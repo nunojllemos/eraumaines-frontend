@@ -7,20 +7,22 @@ import Grid from '@/components/styled-components/layout/Grid'
 import { getImage } from '@/utils/utils'
 
 const Faq = ({ data }) => {
-    const { title, media, faqs } = data?.data?.attributes || {}
-    const { url } = media?.data?.attributes || {}
+    const { title, media, faqs } = data
+    const { url } = media.data?.attributes || {}
 
     return (
         <main className='pb-16'>
-            <AnimatedTitle>{`${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} .`}</AnimatedTitle>
+            {title && <AnimatedTitle>{`${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} . ${title} .`}</AnimatedTitle>}
             <Container>
                 <Grid tablet={800}>
-                    <Col tablet={800} mobileCols={2} tabletCols={6}>
-                        <div className='sticky top-8'>
-                            {url && <ImageContainer src={getImage(url)} aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />}
-                        </div>
-                    </Col>
-                    {faqs?.length > 0 && (
+                    {url && (
+                        <Col tablet={800} mobileCols={2} tabletCols={6}>
+                            <div className='sticky top-8'>
+                                <ImageContainer src={getImage(url)} aspectRatio='1/1' sizes='(min-width: 800px) 50vw, 100vw' />
+                            </div>
+                        </Col>
+                    )}
+                    {faqs.length > 0 && (
                         <Col tablet={800} mobileCols={2} tabletCols={6}>
                             <div className='flex flex-col'>
                                 {faqs.map(faq => {
@@ -39,19 +41,24 @@ export default Faq
 
 export async function getStaticProps(context) {
     const { locale } = context
-    const populateQuery = 'populate=*'
-
     let strapiLocale
 
     if (locale === 'pt') strapiLocale = 'pt-PT'
     if (locale === 'en') strapiLocale = 'en'
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faq?locale=${strapiLocale}&${populateQuery}`)
+    const populateQuery = 'populate=*'
+    const baseApi = process.env.NEXT_PUBLIC_API_URL
+    const contentType = 'faq'
+    const localeQuery = `locale=${strapiLocale}`
+
+    const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
+
+    console.log(data.data.attributes)
 
     return {
         props: {
-            data: data,
+            data: data.data.attributes,
         },
         revalidate: 10,
     }

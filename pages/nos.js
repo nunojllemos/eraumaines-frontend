@@ -16,7 +16,7 @@ const Nos = ({ data }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const { description_01, description_02, persons, reviews } = data?.data?.attributes || {}
+    const { description_01, description_02, persons, reviews } = data
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -64,16 +64,18 @@ const Nos = ({ data }) => {
     return (
         <>
             <main className='pb-16'>
-                <Container>
-                    <Grid>
-                        <Col mobileCols={2} tabletCols={9} offsetTablet={3}>
-                            {description_01 && <p className='text-24 768:text-32 1280:text-50 font-light'>{description_01}</p>}
-                        </Col>
-                        <Col mobileCols={2} tabletCols={9}>
-                            {description_02 && <p className='text-24 768:text-32 1280:text-50 mt-16 768:mt-20 1280:mt-32 font-light'>{description_02}</p>}
-                        </Col>
-                    </Grid>
-                </Container>
+                {(description_01 || description_02) && (
+                    <Container>
+                        <Grid>
+                            <Col mobileCols={2} tabletCols={9} offsetTablet={3}>
+                                {description_01 && <p className='text-24 768:text-32 1280:text-50 font-light'>{description_01}</p>}
+                            </Col>
+                            <Col mobileCols={2} tabletCols={9}>
+                                {description_02 && <p className='text-24 768:text-32 1280:text-50 mt-16 768:mt-20 1280:mt-32 font-light'>{description_02}</p>}
+                            </Col>
+                        </Grid>
+                    </Container>
+                )}
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
                         const { id, title, name, role, media, description } = person || {}
@@ -91,32 +93,32 @@ const Nos = ({ data }) => {
                             />
                         )
                     })}
-                <section className='mt-14 768:mt-32'>
-                    {reviews?.length > 0 && <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>}
-                    <Container>
-                        <Grid>
-                            <Col mobileCols={2} tabletCols={5} desktopCols={4}>
-                                <Swiper {...namesSwiperOptions}>
-                                    {reviews?.length > 0 &&
-                                        reviews.map(slide => {
+                {reviews?.length > 0 && (
+                    <section className='mt-14 768:mt-32'>
+                        <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
+                        <Container>
+                            <Grid>
+                                <Col mobileCols={2} tabletCols={5} desktopCols={4}>
+                                    <Swiper {...namesSwiperOptions}>
+                                        {reviews.map(slide => {
                                             const { id, names } = slide || {}
                                             return <SwiperSlide key={`name-slide-${id}`}>{names}</SwiperSlide>
                                         })}
-                                </Swiper>
-                            </Col>
-                            <Col mobileCols={2} tabletCols={7} desktopCols={8}>
-                                <Swiper {...contentSwiperOptions}>
-                                    {reviews?.length > 0 &&
-                                        reviews.map(slide => {
+                                    </Swiper>
+                                </Col>
+                                <Col mobileCols={2} tabletCols={7} desktopCols={8}>
+                                    <Swiper {...contentSwiperOptions}>
+                                        {reviews.map(slide => {
                                             const { id, text } = slide || {}
 
                                             return <SwiperSlide key={`content-slide-${id}`}>{text}</SwiperSlide>
                                         })}
-                                </Swiper>
-                            </Col>
-                        </Grid>
-                    </Container>
-                </section>
+                                    </Swiper>
+                                </Col>
+                            </Grid>
+                        </Container>
+                    </section>
+                )}
             </main>
         </>
     )
@@ -125,19 +127,22 @@ export default Nos
 
 export async function getStaticProps(context) {
     const { locale } = context
-    const populateQuery = 'populate=*,persons,persons.media,reviews'
-
     let strapiLocale
 
     if (locale === 'pt') strapiLocale = 'pt-PT'
     if (locale === 'en') strapiLocale = 'en'
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/about?locale=${strapiLocale}&${populateQuery}`)
+    const populateQuery = 'populate=*,persons,persons.media,reviews'
+    const baseApi = process.env.NEXT_PUBLIC_API_URL
+    const contentType = 'about'
+    const localeQuery = `locale=${strapiLocale}`
+
+    const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
     return {
         props: {
-            data,
+            data: data.data.attributes,
         },
         revalidate: 10,
     }
