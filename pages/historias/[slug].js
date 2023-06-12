@@ -4,119 +4,146 @@ import Col from '@/components/styled-components/layout/Col'
 import ImageContainer from '@/components/atoms/ImageContainer'
 import DiaryTitle from '@/components/atoms/DiaryTitle'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import AnimatedTitle from '@/components/molecules/AnimatedTitle'
 import WorkSectionInfoCard from '@/components/molecules/WorkSectionInfoCard'
+import useTranslation from '@/hooks/useTranslation'
+import { getImage } from '@/utils/utils'
 
-const slugHistorias = () => {
-    const historias = [
-        {
-            name: 'Nuno e Ana',
-            album: '/images/work-section-card-4.png',
-            local: 'Porto',
-            work: 'Casamento',
-            slug: 'historias/single-1',
-            date: '14-05-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique aliquid necessitatibus quisquam corrupti laborum minima odio, excepturi asperiores explicabo iure rerum mollitia provident omnis ullam, fugiat sapiente enim doloribus culpa. Lorem ipsum dolor sit amet, ',
-            description2:
-                'Consectetur adipisicing elit. Rerum voluptas tempore voluptatibus molestiae fuga culpa aliquam dolorem officiis doloremque similique recusandae quasi, nemo accusantium sint libero, rem exercitationem aut id.',
-        },
-    ]
+const SlugHistorias = ({ data }) => {
+    const { category, cover, content, title, location, publishedAt, related } = data?.attributes
+    const { url } = cover?.data?.attributes || {}
+    const { name: categoryName } = category?.data?.attributes
+    const t = useTranslation()
+
+    const publishedDate = new Date(publishedAt)
+    const day = publishedDate?.getDate()
+    const month = publishedDate?.getMonth() + 1
+    const year = publishedDate?.getFullYear()
 
     return (
         <main className='py-16'>
             <div className='pb-16 768:pb-32'>
                 <Container>
-                    {historias.map((historia, i) => {
-                        return (
-                            <Grid key={i}>
-                                <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                                    <div className='text-14 text-black/50 mb-3'>
-                                        <span>Publicado em {historia.date} </span>
-                                    </div>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                                    <figure>
-                                        <ImageContainer src={historia.album} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
-                                        <figcaption className='text-12 mt-2'></figcaption>
-                                    </figure>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
-                                    <div className='my-12 768:my-16'>
-                                        <DiaryTitle title={historia.name} />
-                                        <div className='text-18 font-light font-subjectivity'>
-                                            <p>{historia.work}</p>
-                                            <p>{historia.local}</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                                    <div className='diary-content'>
-                                        <ReactMarkdown>{historia.description}</ReactMarkdown>
-                                    </div>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                                    <div className='diary-content mb-16'>
-                                        <ReactMarkdown>{historia.description2}</ReactMarkdown>
-                                    </div>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={8} offsetTablet={2} desktopCols={6} offsetDesktop={3}>
-                                    <figure>
-                                        <ImageContainer src={historia.album} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
-                                        <figcaption className='text-12 mt-2'></figcaption>
-                                    </figure>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                                    <div className='diary-content mb-16'>
-                                        <ReactMarkdown>{historia.description2}</ReactMarkdown>
-                                    </div>
-                                </Col>
-                            </Grid>
-                        )
-                    })}
+                    <Grid>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
+                            {title && publishedAt && (
+                                <div className='text-14 text-black/50 mb-3'>{`${t.diary.single.published} ${day}-${
+                                    month < 10 ? `0${month}` : month
+                                }-${year}`}</div>
+                            )}
+                        </Col>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
+                            <figure>
+                                <ImageContainer src={getImage(url)} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
+                                <figcaption className='text-12 mt-2'></figcaption>
+                            </figure>
+                        </Col>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
+                            <div className='my-12 768:my-16'>
+                                <DiaryTitle title={title} />
+                                <div className='text-18 font-light font-subjectivity'>
+                                    <p>
+                                        {location}, {categoryName}
+                                    </p>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
+                            {content && (
+                                <div className='diary-content'>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+                                </div>
+                            )}
+                        </Col>
+                    </Grid>
                 </Container>
             </div>
 
-            <AnimatedTitle>mais histórias . mais histórias . mais histórias . </AnimatedTitle>
-            <Container>
-                <Grid rowGap={3}>
-                    {historias.map((historia, i) => {
-                        return (
-                            <>
-                                <Col key={i} mobileCols={2} tabletCols={4}>
-                                    <WorkSectionInfoCard
-                                        work={historia.work}
-                                        src={historia.album}
-                                        aspectRatio='16/9'
-                                        local={historia.local}
-                                        engaged={historia.name}
-                                    />
-                                </Col>
-                                <Col key={i} mobileCols={2} tabletCols={4}>
-                                    <WorkSectionInfoCard
-                                        work={historia.work}
-                                        src={historia.album}
-                                        aspectRatio='16/9'
-                                        local={historia.local}
-                                        engaged={historia.name}
-                                    />
-                                </Col>
-                                <Col key={i} mobileCols={2} tabletCols={4}>
-                                    <WorkSectionInfoCard
-                                        work={historia.work}
-                                        src={historia.album}
-                                        aspectRatio='16/9'
-                                        local={historia.local}
-                                        engaged={historia.name}
-                                    />
-                                </Col>
-                            </>
-                        )
-                    })}
-                </Grid>
-            </Container>
+            {related.data.length > 0 && (
+                <>
+                    <AnimatedTitle>mais histórias . mais histórias . mais histórias . </AnimatedTitle>
+                    <Container>
+                        <Grid rowGap={3}>
+                            {related.data.map(relatedStory => {
+                                console.table(relatedStory.attributes)
+                                const { id, attributes } = relatedStory
+                                const { slug, title, description, cover, location, category } = attributes
+                                const { name: relateCategoryName } = category.data.attributes
+                                const { url, mime } = cover?.data?.attributes || {}
+
+                                return (
+                                    <Col key={`related-story-${id}`} mobileCols={2} tabletCols={4}>
+                                        <WorkSectionInfoCard
+                                            typeOfMedia={mime}
+                                            category={relateCategoryName}
+                                            src={getImage(url)}
+                                            aspectRatio='16/9'
+                                            location={location}
+                                            title={title}
+                                            description={description}
+                                        />
+                                    </Col>
+                                )
+                            })}
+                        </Grid>
+                    </Container>
+                </>
+            )}
         </main>
     )
 }
 
-export default slugHistorias
+export async function getStaticPaths() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stories`)
+    const data = await res.json()
+    const posts = await data.data
+
+    const paths = posts.map(element => {
+        if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
+            return {
+                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+            }
+        } else {
+            return {
+                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+            }
+        }
+    })
+
+    const enPost = paths[0]?.enPost
+    const ptPost = paths[0]?.ptPost
+
+    return {
+        paths: enPost ? [ptPost, enPost] : [ptPost],
+        fallback: 'blocking',
+    }
+}
+
+export async function getStaticProps(context) {
+    const { locale } = context
+    const slug = context.params.slug
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
+    const queryParams = 'populate=*,related,related.cover,related.category,category,cover'
+    const baseApi = process.env.NEXT_PUBLIC_API_URL
+    const contentType = 'stories'
+    const localeQuery = `locale=${strapiLocale}`
+    const filtersQuery = `filters[slug][$eq]=${slug}`
+
+    const res = await fetch(`${baseApi}/${contentType}?${filtersQuery}&${queryParams}&${localeQuery}`)
+    const data = await res.json()
+
+    return {
+        props: {
+            data: data.data[0],
+        },
+        revalidate: 10,
+    }
+}
+
+export default SlugHistorias

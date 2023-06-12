@@ -1,9 +1,13 @@
 import ImageContainer from '../atoms/ImageContainer'
 
-const WorkSectionMediaCard = props => {
+const WorkSectionMediaCard = ({ src, aspectRatio, alt = '', typeOfMedia }) => {
     return (
-        <div className='mb-8'>
-            <ImageContainer sizes='100vw, (min-width: 768px) 45vw' src={props.src} aspectRatio={props.aspectRatio} alt={props.alt} />
+        <div className='h-full'>
+            {typeOfMedia.includes('video') ? (
+                <video muted autoPlay loop playsInline src={src} className='h-full object-cover'></video>
+            ) : (
+                <ImageContainer sizes='100vw, (min-width: 768px) 45vw' src={src} aspectRatio={aspectRatio} alt={alt} />
+            )}
         </div>
     )
 }
