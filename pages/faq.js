@@ -54,8 +54,6 @@ export async function getStaticProps(context) {
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
-    console.log(data.data.attributes)
-
     return {
         props: {
             data: data.data.attributes,

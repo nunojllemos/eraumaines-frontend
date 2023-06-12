@@ -1,385 +1,34 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
 import { ExternalLink } from '@/components/atoms/Icons'
+import { getImage } from '@/utils/utils'
+import ImageContainer from '@/components/atoms/ImageContainer'
+import useTranslation from '@/hooks/useTranslation'
 
-const Historias = () => {
+const Historias = ({ stories }) => {
+    const t = useTranslation()
+    const router = useRouter()
     const imagesDiv = useRef()
     const titlesDiv = useRef()
     const [isHoverImagesDiv, setIsHoverImagesDiv] = useState(false)
     const [isHoverTitlesDiv, setIsHoverTitlesDiv] = useState(false)
+    const [newStoriesArray, setNewStoriesArray] = useState(...stories)
 
-    const stories = [
-        {
-            name: 'Nuno e Ana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-1',
-            date: '14-05-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Miguel e Joana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Lisboa',
-            category: 'Photoshoot',
-            slug: 'historias/single-2',
-            date: '23-06-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Paula e José',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Leiria',
-            category: 'Photoshoot',
-            slug: 'historias/single-3',
-            date: '4-02-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Nuno e Ana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-1',
-            date: '14-05-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Miguel e Joana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Lisboa',
-            category: 'Photoshoot',
-            slug: 'historias/single-2',
-            date: '23-06-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Paula e José',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Leiria',
-            category: 'Photoshoot',
-            slug: 'historias/single-3',
-            date: '4-02-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Nuno e Ana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-1',
-            date: '14-05-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Miguel e Joana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Lisboa',
-            category: 'Photoshoot',
-            slug: 'historias/single-2',
-            date: '23-06-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Paula e José',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Leiria',
-            category: 'Photoshoot',
-            slug: 'historias/single-3',
-            date: '4-02-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Nuno e Ana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-1',
-            date: '14-05-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Miguel e Joana',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Lisboa',
-            category: 'Photoshoot',
-            slug: 'historias/single-2',
-            date: '23-06-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Paula e José',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Leiria',
-            category: 'Photoshoot',
-            slug: 'historias/single-3',
-            date: '4-02-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Bruna e Rafael',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Porto',
-            category: 'Casamento',
-            slug: 'historias/single-4',
-            date: '1-2-2022',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Tiago',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Algarve',
-            category: 'Batizado',
-            slug: 'historias/single-5',
-            date: '1-05-2023',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-        {
-            name: 'Fábio e Catarina',
-            album: 'https://gordonvonsteiner.com/wp-content/uploads/2020/06/clips_10.mp4',
-            place: 'Aves',
-            category: 'Casamento',
-            slug: 'historias/single-6',
-            date: '2-03-2020',
-            description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ducimus, aliquid placeat impedit culpa sint praesentium animi numquam fugit deleniti sequi',
-        },
-    ]
+    const storiesCopy = useMemo(() => new Array(...stories), [stories])
 
-    const storiesCopy = new Array(...stories)
-    stories.unshift({ name: ':) scroll back down' })
-    stories.unshift({ name: '' })
-    stories.unshift({ name: '' })
-    stories.unshift({ name: '' })
-    // stories.unshift({ name: '' })
+    useEffect(() => {
+        const newArray = new Array(...stories)
+        newArray.unshift({ attributes: { title: t.history.scroll } })
+        newArray.unshift({ id: '-1', attributes: { title: '' } })
+        newArray.unshift({ id: '-2', attributes: { title: '' } })
+        newArray.unshift({ id: '-3', attributes: { title: '' } })
+
+        setNewStoriesArray(newArray)
+    }, [stories])
 
     useEffect(() => {
         titlesDiv.current.scrollTo({
@@ -387,7 +36,13 @@ const Historias = () => {
             left: 0,
             behavior: 'instant',
         })
-    }, [])
+    }, [newStoriesArray])
+
+    useEffect(() => {
+        setTimeout(() => {
+            handleScrollEnd()
+        }, 500)
+    }, [router.locale])
 
     const handleImagesScroll = () => {
         const titlesDivHeight = titlesDiv.current.getBoundingClientRect().height
@@ -427,7 +82,9 @@ const Historias = () => {
         for (let i = 0; i < titlesDiv.current.children[0].children.length; i++) {
             const element = titlesDiv.current.children[0].children[i]
 
-            if (element.getBoundingClientRect().top > 300 && element.getBoundingClientRect().top < 350) {
+            if (innerWidth >= 1280 && element.getBoundingClientRect().top > 300 && element.getBoundingClientRect().top < 350) {
+                element.classList.add('active')
+            } else if (innerWidth < 1280 && element.getBoundingClientRect().top > 280 && element.getBoundingClientRect().top < 330) {
                 element.classList.add('active')
             } else {
                 element.classList.remove('active')
@@ -436,16 +93,16 @@ const Historias = () => {
     }
 
     const playVideo = e => {
-        if (e.currentTarget.children[0]) {
-            const video = e.currentTarget.children[0]
+        if (e.currentTarget.querySelector('video')) {
+            const video = e.currentTarget.querySelector('video')
 
             video.play()
         }
     }
 
     const stopVideo = e => {
-        if (e.currentTarget.children[0]) {
-            const video = e.currentTarget.children[0]
+        if (e.currentTarget.querySelector('video')) {
+            const video = e.currentTarget.querySelector('video')
 
             video.pause()
             video.currentTime = 0
@@ -463,33 +120,38 @@ const Historias = () => {
                         mobileCols={1}
                         tabletCols={6}
                         desktopCols={6}
-                        className='hidden 768:flex flex-col overflow-x-hidden relative text-40 1280:text-50'
+                        className='hidden 874:flex flex-col overflow-x-hidden relative text-40 1280:text-50'
                     >
                         <div
                             ref={titlesDiv}
-                            className='h-[7.5em] 1280:h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[6.25em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
+                            className='h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[5em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
                             onScroll={handleTitleScroll}
                             onMouseEnter={() => setIsHoverTitlesDiv(true)}
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
-                                {stories.map((story, index) => {
-                                    return (
-                                        <Link key={`stories-title-${index}`} href='/historias/historia-01' className='client-name'>
-                                            <div className='relative w-max first:hidden 1280:first:block'>
-                                                <p className='snap-end bg-white z-10 w-max pr-2'>{story.name}</p>
-                                                <span className='info-drawer uppercase leading-none text-12 font-subjectivity absolute -z-10 left-full bottom-6 flex items-end gap-10'>
-                                                    <span className='block w-10 bg-white relative z-1 pr-2'>
-                                                        <ExternalLink />
+                                {newStoriesArray.length > stories.length &&
+                                    newStoriesArray.map(story => {
+                                        const { id, attributes } = story
+                                        const { title, location, category, slug } = attributes || {}
+                                        const { name: categoryName } = category?.data.attributes || {}
+
+                                        return (
+                                            <Link key={`stories-title-${id}`} href={`/historias/${slug}`} className='client-name'>
+                                                <div className='relative w-max'>
+                                                    <p className='snap-end bg-white z-10 w-max pr-2'>{title}</p>
+                                                    <span className='info-drawer uppercase leading-none text-12 font-subjectivity absolute -z-10 left-full bottom-6 flex items-end gap-8 1280:gap-10'>
+                                                        <span className='block w-8 1280:w-10 bg-white relative z-1 pr-2'>
+                                                            <ExternalLink />
+                                                        </span>
+                                                        <span className='block whitespace-nowrap'>
+                                                            {location}, {categoryName}
+                                                        </span>
                                                     </span>
-                                                    <span className='block whitespace-nowrap'>
-                                                        {story.place}, {story.category}
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </Link>
-                                    )
-                                })}
+                                                </div>
+                                            </Link>
+                                        )
+                                    })}
                             </div>
                         </div>
                     </Col>
@@ -498,38 +160,35 @@ const Historias = () => {
                             ref={imagesDiv}
                             className='h-[calc(100vh_-_16rem)] overflow-y-auto 768:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
                             onScroll={handleImagesScroll}
-                            onMouseEnter={() => setIsHoverImagesDiv(true)}
-                            onMouseLeave={() => setIsHoverImagesDiv(false)}
+                            onMouseOver={() => setIsHoverImagesDiv(true)}
+                            onMouseOut={() => setIsHoverImagesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
-                                {storiesCopy.reverse().map((el, i) => {
+                                {storiesCopy.reverse().map((story, index) => {
+                                    const { id, attributes } = story
+                                    const { cover, title, location, category, slug } = attributes
+                                    const { name: categoryName } = category?.data.attributes || {}
+                                    const { url, mime } = cover?.data?.attributes
+
                                     return (
                                         <div
-                                            key={i}
-                                            onMouseEnter={playVideo}
-                                            onMouseLeave={stopVideo}
-                                            className='text-32 my-12 768:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center'
+                                            key={`reverse-slide-${id}-${index}`}
+                                            onMouseEnter={event => mime.includes('video') && playVideo(event)}
+                                            onMouseLeave={event => mime.includes('video') && stopVideo(event)}
+                                            className='text-32 my-12 874:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center'
                                         >
-                                            <video
-                                                onClick={e => {
-                                                    const isPlaying = isVideoPlaying(e.target)
-                                                    if (isPlaying) {
-                                                        e.target.currentTime = 0
-                                                        e.target.pause()
-                                                    } else {
-                                                        e.target.play()
-                                                    }
-                                                }}
-                                                muted
-                                                playsInline
-                                                loop
-                                                src={el.album}
-                                            ></video>
-                                            <span className='768:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16'>
-                                                {el.name}
+                                            {mime.includes('video') ? (
+                                                <Link scroll={false} href={`historias/${slug}`}>
+                                                    <video muted playsInline loop src={getImage(url)}></video>
+                                                </Link>
+                                            ) : (
+                                                <ImageContainer src={getImage(url)} alt='' />
+                                            )}
+                                            <span className='874:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16 414:text-18'>
+                                                {title}
                                             </span>
-                                            <span className='768:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12 uppercase'>
-                                                {el.place}, {el.category}
+                                            <span className='874:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12 uppercase'>
+                                                {location}, {categoryName}
                                             </span>
                                         </div>
                                     )
@@ -543,3 +202,26 @@ const Historias = () => {
     )
 }
 export default Historias
+
+export async function getStaticProps(context) {
+    const { locale } = context
+    let strapiLocale
+
+    if (locale === 'pt') strapiLocale = 'pt-PT'
+    if (locale === 'en') strapiLocale = 'en'
+
+    const populateQuery = 'populate=*'
+    const baseApi = process.env.NEXT_PUBLIC_API_URL
+    const contentType = 'stories'
+    const localeQuery = `locale=${strapiLocale}`
+
+    const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
+    const data = await res.json()
+
+    return {
+        props: {
+            stories: data.data,
+        },
+        revalidate: 10,
+    }
+}

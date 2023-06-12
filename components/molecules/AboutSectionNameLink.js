@@ -4,7 +4,6 @@ import HomePersonName from '../atoms/HomePersonName'
 import Link from 'next/link'
 
 const AboutSectioNameLink = props => {
-    // console.log(props.leftPerson, 'Hello')
     return (
         <Link
             href={props.href}

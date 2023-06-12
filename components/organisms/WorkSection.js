@@ -15,21 +15,21 @@ const WorkSection = ({ stories, title }) => {
                         <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                             <div className='flex flex-col h-full'>
                                 <WorkSectionCard />
-                                {stories[0] && <StoriesGridElement story={stories[0]} />}
-                                {stories[1] && <StoriesGridElement story={stories[1]} />}
+                                {stories[2] && <StoriesGridElement story={stories[2]} />}
+                                {stories[5] && <StoriesGridElement story={stories[5]} />}
                             </div>
                         </Col>
                         <Col mobileCols={2} tabletCols={4} desktopCols={4}>
                             <div className='flex flex-col h-full'>
-                                {stories[2] && <StoriesGridElement story={stories[2]} />}
+                                {stories[0] && <StoriesGridElement story={stories[0]} />}
                                 {stories[3] && <StoriesGridElement story={stories[3]} />}
-                                {stories[4] && <StoriesGridElement story={stories[4]} />}
+                                {stories[6] && <StoriesGridElement story={stories[6]} />}
                             </div>
                         </Col>
                         <Col mobileCols={2} tabletCols={4} desktopCols={5}>
                             <div className='flex flex-col h-full'>
-                                {stories[5] && <StoriesGridElement story={stories[5]} />}
-                                {stories[6] && <StoriesGridElement story={stories[6]} />}
+                                {stories[1] && <StoriesGridElement story={stories[1]} />}
+                                {stories[3] && <StoriesGridElement story={stories[3]} />}
                                 {stories[7] && <StoriesGridElement story={stories[7]} />}
                                 {stories[8] && <StoriesGridElement story={stories[8]} />}
                             </div>

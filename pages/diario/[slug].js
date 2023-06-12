@@ -19,13 +19,11 @@ const SlugDiary = ({ data }) => {
         content,
         posts: { data: relatedPosts },
     } = data.attributes
-    console.log(relatedPosts)
     const { url, caption } = cover?.data?.attributes || {}
     const publishedDate = new Date(publishedAt)
     const day = publishedDate?.getDate()
     const month = publishedDate?.getMonth() + 1
     const year = publishedDate?.getFullYear()
-    console.log(relatedPosts)
 
     const t = useTranslation()
 

@@ -33,6 +33,7 @@ export const en = {
         card: {
             link: 'read more',
         },
+        scroll: ':) scroll back down',
         single: {
             related: {
                 title: 'other articles',

@@ -26,7 +26,8 @@ export async function getStaticProps(context) {
     if (locale === 'pt') strapiLocale = 'pt-PT'
     if (locale === 'en') strapiLocale = 'en'
 
-    const populateQuery = 'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover'
+    const populateQuery =
+        'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover,stories.story.category'
     const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
     const contentType = 'home'
     const localeQuery = `locale=${strapiLocale}`
