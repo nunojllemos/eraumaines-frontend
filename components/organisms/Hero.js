@@ -12,13 +12,13 @@ const Hero = ({ title, media, typeOfMedia }) => {
     const handleMute = () => setIsMuted(prev => !prev)
 
     return (
-        <div className='h-screen mt-[-87px] 1280:mt-[-97px] relative'>
+        <div className='h-[100dvh] mt-[-87px] 1280:mt-[-97px] relative'>
             <div className='absolute top-0 h-full w-full z-[-1]'>
                 <HeroVideo media={media} typeOfMedia={typeOfMedia} isMuted={isMuted} />
             </div>
             <div className='h-full w-full absolute flex flex-col justify-end  text-white pb-5'>
                 <Container>
-                    {title && <h1 className='font-maginia w-[300px] text-80 768:text-100 1280:text-130 leading-[0.75] 768:leading-none'>{title}</h1>}
+                    {title && <h1 className='font-maginia w-1/2 768:w-[300px] text-80 768:text-100 1280:text-130 leading-[0.85] 768:leading-none'>{title}</h1>}
                     <div className='flex items-center justify-between mt-20'>
                         <div className='hover-arrow'>
                             <InternalLink href='/historias' text={t.homepage.hero.link} />

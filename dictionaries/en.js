@@ -15,6 +15,10 @@ export const en = {
         about: {
             ticker: 'more about',
         },
+        grid: {
+            cta_text: 'Stories with art',
+            cta_link_text: 'See all',
+        },
     },
     diary: {
         title: 'diary',

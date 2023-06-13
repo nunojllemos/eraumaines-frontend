@@ -15,6 +15,10 @@ export const pt = {
         about: {
             ticker: 'mais sobre',
         },
+        grid: {
+            cta_text: 'Histórias com arte',
+            cta_link_text: 'Ver todas',
+        },
     },
     diary: {
         title: 'diário',
