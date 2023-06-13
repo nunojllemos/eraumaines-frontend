@@ -12,7 +12,7 @@ import { getImage } from '@/utils/utils'
 
 const SlugHistorias = ({ data }) => {
     const { category, cover, content, title, location, publishedAt, related } = data?.attributes
-    const { url } = cover?.data?.attributes || {}
+    const { url, mime } = cover?.data?.attributes || {}
     const { name: categoryName } = category?.data?.attributes
     const t = useTranslation()
 
@@ -34,10 +34,13 @@ const SlugHistorias = ({ data }) => {
                             )}
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                            <figure>
-                                <ImageContainer src={getImage(url)} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
-                                <figcaption className='text-12 mt-2'></figcaption>
-                            </figure>
+                            {mime.includes('video') ? (
+                                <video muted autoPlay playsInline loop src={getImage(url)}></video>
+                            ) : (
+                                <figure>
+                                    <ImageContainer src={getImage(url)} aspectRatio='16/9' sizes='(min-width: 991px) 70vw, 100vw' />
+                                </figure>
+                            )}
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
                             <div className='my-12 768:my-16'>
@@ -82,6 +85,7 @@ const SlugHistorias = ({ data }) => {
                                             location={location}
                                             title={title}
                                             description={description}
+                                            slug={slug}
                                         />
                                     </Col>
                                 )

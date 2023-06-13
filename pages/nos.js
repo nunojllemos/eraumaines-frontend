@@ -6,9 +6,7 @@ import Grid from '@/components/styled-components/layout/Grid'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
-import 'swiper/css/mousewheel'
-import 'swiper/css/effect-fade'
-import { Autoplay, FreeMode, Mousewheel, EffectFade } from 'swiper'
+import { Autoplay, EffectFade } from 'swiper'
 import useTranslation from '@/hooks/useTranslation'
 import AboutPersonSection from '@/components/organisms/AboutPersonSection'
 
@@ -18,28 +16,20 @@ const Nos = ({ data }) => {
     const contentSwiperRef = useRef(null)
     const { description_01, description_02, persons, reviews } = data
 
+    console.log(reviews)
+
     const namesSwiperOptions = {
         ref: namesSwiperRef,
-        className: 'max-h-[3em] text-24 768:text-28 1280:text-50 font-power-grotesk swiper-names mb-12',
+        className: 'h-[3.75em] text-24 768:text-28 1280:text-50 font-power-grotesk swiper-names mb-12',
         direction: 'vertical',
         slidesPerView: 3,
         spaceBetween: 0,
-        mousewheel: true,
-        speed: 800,
-        freeMode: {
-            enabled: true,
-            sticky: true,
-            minimumVelocity: 0.5,
-        },
+        modules: [Autoplay],
+        speed: 1000,
         autoplay: {
-            enabled: true,
-            reverseDirection: true,
             disableOnInteraction: false,
-            invert: true,
         },
         loop: true,
-        modules: [Autoplay, Mousewheel, FreeMode],
-        // onSlideChange: () => contentSwiperRef.current.swiper.slidePrev(),
         onTransitionEnd: swiper => contentSwiperRef?.current?.swiper?.slideTo(swiper.realIndex),
     }
 
@@ -93,25 +83,38 @@ const Nos = ({ data }) => {
                             />
                         )
                     })}
-                {reviews?.length > 0 && (
+                {reviews.data.length > 0 && (
                     <section className='mt-14 768:mt-32'>
                         <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
                         <Container>
                             <Grid>
                                 <Col mobileCols={2} tabletCols={5} desktopCols={4}>
                                     <Swiper {...namesSwiperOptions}>
-                                        {reviews.map(slide => {
-                                            const { id, names } = slide || {}
-                                            return <SwiperSlide key={`name-slide-${id}`}>{names}</SwiperSlide>
+                                        {reviews.data.map(slide => {
+                                            const { id, attributes } = slide
+                                            const { author } = attributes
+
+                                            console.log(slide)
+
+                                            return (
+                                                <SwiperSlide key={`name-slide-${id}`}>
+                                                    <span className='block leading-tight'>{author}</span>
+                                                </SwiperSlide>
+                                            )
                                         })}
                                     </Swiper>
                                 </Col>
                                 <Col mobileCols={2} tabletCols={7} desktopCols={8}>
                                     <Swiper {...contentSwiperOptions}>
-                                        {reviews.map(slide => {
-                                            const { id, text } = slide || {}
+                                        {reviews.data.map(slide => {
+                                            const { id, attributes } = slide
+                                            const { content } = attributes
 
-                                            return <SwiperSlide key={`content-slide-${id}`}>{text}</SwiperSlide>
+                                            return (
+                                                <SwiperSlide key={`content-slide-${id}`} className='font-light leading-tight'>
+                                                    {content}
+                                                </SwiperSlide>
+                                            )
                                         })}
                                     </Swiper>
                                 </Col>
