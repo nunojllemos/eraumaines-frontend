@@ -15,21 +15,21 @@ const WorkSection = ({ stories, title }) => {
                 <Container>
                     <Grid>
                         <Col mobileCols={2} tabletCols={4} desktopCols={3}>
-                            <div className='flex flex-col h-full gap-8'>
+                            <div className='flex flex-col h-full gap-6 1024:gap-8'>
                                 <WorkSectionCard />
                                 {stories[2] && <StoriesGridElement story={stories[2]} />}
                                 {stories[5] && <StoriesGridElement story={stories[5]} />}
                             </div>
                         </Col>
                         <Col mobileCols={2} tabletCols={4} className='mt-8 768:mt-0'>
-                            <div className='flex flex-col h-full gap-8'>
+                            <div className='flex flex-col h-full gap-6 1024:gap-8'>
                                 {stories[0] && <StoriesGridElement story={stories[0]} />}
                                 {stories[3] && <StoriesGridElement story={stories[3]} />}
                                 {stories[6] && <StoriesGridElement story={stories[6]} />}
                             </div>
                         </Col>
                         <Col mobileCols={2} tabletCols={4} desktopCols={5} className='mt-8 768:mt-0'>
-                            <div className='flex flex-col h-full gap-8'>
+                            <div className='flex flex-col h-full gap-6 1024:gap-8'>
                                 {stories[1] && <StoriesGridElement story={stories[1]} />}
                                 {stories[4] && <StoriesGridElement story={stories[4]} />}
                                 {stories[7] && <StoriesGridElement story={stories[7]} />}
