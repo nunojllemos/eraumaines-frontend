@@ -63,7 +63,7 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                     <li className='pb-8 768:pb-0 768:pl-8 '>
                         <Link href='/alo' scroll={false}>
                             <button
-                                className={`hover-button contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk 768:px-14 768:py-4 1280:py-3 1280:px-12 ${
+                                className={`hover-button contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk 768:px-14 768:py-4 1280:py-[6.5px] 1280:px-12 ${
                                     isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
                                 } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                             >

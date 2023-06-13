@@ -8,7 +8,7 @@ const StoriesGridElement = ({ story }) => {
     console.log(__component)
 
     if (__component.includes('reviews')) {
-        return <WorkSectionTestimonialsCard invertColors={true} testimonials={story.review} />
+        return <WorkSectionTestimonialsCard testimonials={story.review} />
     }
 
     if (__component.includes('media')) {

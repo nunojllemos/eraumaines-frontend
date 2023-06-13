@@ -5,9 +5,9 @@ import { Navigation, Autoplay } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
 import Link from 'next/link'
 
-const WorkSectionTestimonialsCard = ({ testimonials, invertColors }) => {
+const WorkSectionTestimonialsCard = ({ testimonials, invertColors = false }) => {
     return (
-        <div className={`mb-8 flex-1 aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
+        <div className={`flex-1 aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
             <Swiper
                 className='h-full'
                 navigation={{
@@ -22,12 +22,11 @@ const WorkSectionTestimonialsCard = ({ testimonials, invertColors }) => {
                     return (
                         <SwiperSlide key={testimonial.id}>
                             <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom'>
-                                <p>{`"${testimonial.text}"`}</p>
+                                <p className='mb-12'>{`"${testimonial.text}"`}</p>
                                 <div>
-                                    <p>{testimonial.year}</p>
-                                    <Link href='/' className='hover:fix-hover:opacity-60'>
-                                        {testimonial.names}
-                                    </Link>
+                                    <p className='text-16'>
+                                        {testimonial.names}, <span className='text-12'>{testimonial.year}</span>
+                                    </p>
                                 </div>
                             </div>
                         </SwiperSlide>

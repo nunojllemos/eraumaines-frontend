@@ -112,7 +112,7 @@ const Historias = ({ stories }) => {
     const isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2)
 
     return (
-        <main>
+        <main className='mb-8 1024:mb-0'>
             <Container>
                 <Grid desktop={1023}>
                     <Col
@@ -158,7 +158,7 @@ const Historias = ({ stories }) => {
                     <Col desktop={1023} mobileCols={2} tabletCols={12} desktopCols={6} className='overflow-x-hidden'>
                         <div
                             ref={imagesDiv}
-                            className='h-[calc(100vh_-_16rem)] overflow-y-auto 768:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
+                            className='1024:h-[calc(100vh_-_16rem)] overflow-y-auto 1024:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
                             onScroll={handleImagesScroll}
                             onMouseOver={() => setIsHoverImagesDiv(true)}
                             onMouseOut={() => setIsHoverImagesDiv(false)}
@@ -175,17 +175,28 @@ const Historias = ({ stories }) => {
                                             key={`reverse-slide-${id}-${index}`}
                                             onMouseEnter={event => mime.includes('video') && playVideo(event)}
                                             onMouseLeave={event => mime.includes('video') && stopVideo(event)}
-                                            className='text-32 my-12 874:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center'
+                                            className='text-32 my-12 874:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center group'
                                         >
                                             {mime.includes('video') ? (
                                                 <Link scroll={false} href={`historias/${slug}`}>
                                                     <video muted playsInline loop src={getImage(url)}></video>
                                                 </Link>
                                             ) : (
-                                                <ImageContainer src={getImage(url)} alt='' />
+                                                <Link scroll={false} href={`historias/${slug}`} className='block w-full h-full'>
+                                                    <ImageContainer src={getImage(url)} alt='' />
+                                                </Link>
                                             )}
+                                            <div className='transition-opacity opacity-0 absolute bottom-4 left-4 fix-hover:group-hover:opacity-100 text-white text-24 leading-none'>
+                                                <span className='whitespace-nowrap'>{title}</span>
+                                                <span className='inline-block w-4 ml-2'>
+                                                    <ExternalLink />
+                                                </span>
+                                            </div>
                                             <span className='874:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16 414:text-18'>
                                                 {title}
+                                                <span className='inline-block w-3 ml-2'>
+                                                    <ExternalLink />
+                                                </span>
                                             </span>
                                             <span className='874:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12 uppercase'>
                                                 {location}, {categoryName}

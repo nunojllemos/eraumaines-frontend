@@ -273,7 +273,7 @@ export const Volume = () => (
 export const ExternalLink = () => {
     return (
         <svg viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M15.5061 1.36396L1.36392 15.5061M15.5061 1.36396L2.77813 1.36396M15.5061 1.36396L15.5061 14.0919' stroke='#1A1A1A' strokeWidth='2' />
+            <path d='M15.5061 1.36396L1.36392 15.5061M15.5061 1.36396L2.77813 1.36396M15.5061 1.36396L15.5061 14.0919' stroke='currentColor' strokeWidth='2' />
         </svg>
     )
 }
