@@ -12,7 +12,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
     const handleMute = () => setIsMuted(prev => !prev)
 
     return (
-        <div className='h-[100dvh] mt-[-87px] 1280:mt-[-97px] relative'>
+        <div className='h-[90vh] 1024:h-screen mt-[-87px] 1280:mt-[-97px] relative'>
             <div className='absolute top-0 h-full w-full z-[-1]'>
                 <HeroVideo media={media} typeOfMedia={typeOfMedia} isMuted={isMuted} />
             </div>
