@@ -64,4 +64,9 @@ export const en = {
         terms: 'Terms & Conditions',
         faqs: "FAQ's",
     },
+    notFound: {
+        error: 'Page not found',
+        message: 'The page you are trying to access neither exists or it was deleted.',
+        link: 'Back',
+    },
 }

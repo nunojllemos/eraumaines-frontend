@@ -4,7 +4,7 @@ import 'swiper/css/navigation'
 import { Navigation, Autoplay } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
 
-const WorkSectionTestimonialsCard = ({ testimonials, invertColors = false }) => {
+const WorkSectionTestimonialsCard = ({ reviews, invertColors = false }) => {
     return (
         <div className={`flex-1 max-w-full aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
             <Swiper
@@ -17,15 +17,21 @@ const WorkSectionTestimonialsCard = ({ testimonials, invertColors = false }) => 
                 loop={true}
                 modules={[Navigation, Autoplay]}
             >
-                {testimonials.map(testimonial => {
+                {reviews.data.map(review => {
+                    const { id, attributes } = review
+                    const { author, content, year } = attributes
+
                     return (
-                        <SwiperSlide key={testimonial.id}>
+                        <SwiperSlide key={`work-grid-review-${id}`}>
                             <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom'>
-                                <p className='mb-12'>{`"${testimonial.text}"`}</p>
+                                <p className='mb-12'>{content}</p>
                                 <div>
-                                    <p className='text-16'>
-                                        {testimonial.names}, <span className='text-12'>{testimonial.year}</span>
-                                    </p>
+                                    {author && (
+                                        <p className='text-16'>
+                                            {author}
+                                            {year && <span className='text-12'>, {year}</span>}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </SwiperSlide>

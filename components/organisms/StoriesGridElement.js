@@ -5,10 +5,10 @@ import { getImage } from '@/utils/utils'
 
 const StoriesGridElement = ({ story }) => {
     const { __component } = story
-    console.log(__component)
+    console.log(story)
 
     if (__component.includes('reviews')) {
-        return <WorkSectionTestimonialsCard testimonials={story.review} />
+        return <WorkSectionTestimonialsCard reviews={story.reviews} />
     }
 
     if (__component.includes('media')) {

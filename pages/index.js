@@ -7,6 +7,8 @@ export default function Home({ data }) {
     const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories } = data
     const { url, mime } = hero_media.data.attributes
 
+    console.log(data)
+
     return (
         <>
             <Seo title={meta_title} description={meta_description} />
@@ -27,7 +29,7 @@ export async function getStaticProps(context) {
     if (locale === 'en') strapiLocale = 'en'
 
     const populateQuery =
-        'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover,stories.story.category'
+        'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover,stories.story.category,stories.reviews,background_color'
     const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
     const contentType = 'home'
     const localeQuery = `locale=${strapiLocale}`

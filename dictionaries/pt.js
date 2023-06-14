@@ -64,4 +64,9 @@ export const pt = {
         terms: 'Termos contratuais',
         faqs: "FAQ's",
     },
+    notFound: {
+        error: 'Página não encontrada',
+        message: 'A página que tentaste aceder não existe ou foi apagada.',
+        link: 'Voltar',
+    },
 }
