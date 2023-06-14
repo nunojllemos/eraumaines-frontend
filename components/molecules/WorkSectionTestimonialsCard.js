@@ -4,9 +4,12 @@ import 'swiper/css/navigation'
 import { Navigation, Autoplay } from 'swiper'
 import { FaqArrow } from '../atoms/Icons'
 
-const WorkSectionTestimonialsCard = ({ reviews, invertColors = false }) => {
+const WorkSectionTestimonialsCard = ({ reviews, invertColors = false, backgroundColor }) => {
     return (
-        <div className={`flex-1 max-w-full aspect-square 768:aspect-auto ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}>
+        <div
+            style={{ backgroundColor }}
+            className={`max-w-full aspect-square 768:aspect-[3/2] shrink-0 ${invertColors ? `bg-white text-black` : `bg-black text-white`}`}
+        >
             <Swiper
                 className='h-full'
                 navigation={{

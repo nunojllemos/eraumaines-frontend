@@ -2,13 +2,17 @@ import ImageContainer from '../atoms/ImageContainer'
 
 const WorkSectionMediaCard = ({ src, aspectRatio, alt = '', typeOfMedia }) => {
     return (
-        <div>
+        <>
             {typeOfMedia.includes('video') ? (
-                <video muted autoPlay loop playsInline src={src} className='object-cover aspect-video'></video>
+                <div>
+                    <video muted autoPlay loop playsInline src={src} className='object-cover aspect-video'></video>
+                </div>
             ) : (
-                <ImageContainer sizes='100vw, (min-width: 768px) 45vw' src={src} aspectRatio={aspectRatio} alt={alt} />
+                <div className='flex-grow'>
+                    <ImageContainer sizes='100vw, (min-width: 768px) 45vw' src={src} aspectRatio={aspectRatio} alt={alt} />
+                </div>
             )}
-        </div>
+        </>
     )
 }
 export default WorkSectionMediaCard

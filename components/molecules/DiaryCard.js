@@ -8,8 +8,10 @@ import { Arrow } from '@/atoms/Icons'
 const DiaryCard = ({ src, aspectRatio, sizes, title, description, href = 'slug-example' }) => {
     const t = useTranslation()
 
+    console.log(href)
+
     return (
-        <Link href={`diario/${href}`} className='group hover-arrow' scroll={false}>
+        <Link href={href} className='group hover-arrow' scroll={false}>
             <article className='relative overflow-hidden diary-card'>
                 <div className='transition-all 991:scale-110 origin-top-right 991:fix-hover:group-hover:origin-bottom-left'>
                     <ImageContainer src={src ? src : '/images/post-placeholder.jpg'} aspectRatio={aspectRatio} sizes={sizes} />

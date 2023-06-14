@@ -71,12 +71,18 @@ const SlugDiary = ({ data }) => {
                         <Grid rowGap={3}>
                             {relatedPosts?.map(post => {
                                 const { id, attributes } = post
-                                const { title, description, cover } = attributes
+                                const { title, description, cover, slug } = attributes
                                 const { data: coverSrc } = cover
 
                                 return (
                                     <Col key={id} mobileCols={2} tabletCols={4}>
-                                        <DiaryCard src={getImage(coverSrc.attributes.url)} aspectRatio='4/3' title={title} description={description} />
+                                        <DiaryCard
+                                            href={`/${slug}`}
+                                            src={getImage(coverSrc.attributes.url)}
+                                            aspectRatio='4/3'
+                                            title={title}
+                                            description={description}
+                                        />
                                     </Col>
                                 )
                             })}

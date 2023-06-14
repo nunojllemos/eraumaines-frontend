@@ -3,12 +3,12 @@ import WorkSectionTestimonialsCard from '@/molecules/WorkSectionTestimonialsCard
 import WorkSectionInfoCard from '@/molecules/WorkSectionInfoCard'
 import { getImage } from '@/utils/utils'
 
-const StoriesGridElement = ({ story }) => {
+const StoriesGridElement = ({ story, backgroundColor }) => {
     const { __component } = story
     console.log(story)
 
     if (__component.includes('reviews')) {
-        return <WorkSectionTestimonialsCard reviews={story.reviews} />
+        return <WorkSectionTestimonialsCard backgroundColor={backgroundColor} reviews={story.reviews} />
     }
 
     if (__component.includes('media')) {
@@ -31,7 +31,7 @@ const StoriesGridElement = ({ story }) => {
                 location={story?.story?.data?.attributes?.location}
                 category={story?.story?.data?.attributes?.category?.data?.attributes?.name}
                 src={getImage(story?.story?.data?.attributes?.cover?.data?.attributes?.url)}
-                aspectRatio='3/4'
+                aspectRatio='1/1'
                 description={story?.story?.data?.attributes?.description}
             />
         )

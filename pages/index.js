@@ -4,7 +4,7 @@ import AboutSection from '@/components/organisms/AboutSection'
 import WorkSection from '@/components/organisms/WorkSection'
 
 export default function Home({ data }) {
-    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories } = data
+    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories, background_color } = data
     const { url, mime } = hero_media.data.attributes
 
     console.log(data)
@@ -15,7 +15,7 @@ export default function Home({ data }) {
             <main>
                 <Hero title={hero_title} media={url} typeOfMedia={mime} />
                 <AboutSection title={about_title} persons={persons} />
-                <WorkSection title={stories_title} stories={stories} />
+                <WorkSection title={stories_title} stories={stories} backgroundColor={background_color} />
             </main>
         </>
     )

@@ -4,10 +4,10 @@ import ImageContainer from '@/atoms/ImageContainer'
 
 const WorkSectionInfoCard = ({ slug, src, aspectRatio, category, location, title, description, typeOfMedia = 'image' }) => {
     return (
-        <article className='h-full relative group'>
+        <article className='relative group'>
             <Link scroll={false} href={`/historias/${slug}`} className='relative block font-light overflow-hidden cursor-pointer group  group h-full'>
                 {typeOfMedia.includes('video') ? (
-                    <video className='h-full object-cover object-center' muted playsInline autoPlay loop src={src}></video>
+                    <video className='object-cover object-center' muted playsInline autoPlay loop src={src}></video>
                 ) : (
                     <ImageContainer src={src} alt='' aspectRatio={aspectRatio} />
                 )}

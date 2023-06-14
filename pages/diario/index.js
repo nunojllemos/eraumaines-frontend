@@ -36,7 +36,7 @@ const Diario = ({ data, currentPage }) => {
                                             aspectRatio='16/9'
                                             title={posts[0].attributes?.title}
                                             description={posts[0].attributes?.description}
-                                            href={posts[0].attributes?.slug}
+                                            href={`diario/${posts[0].attributes?.slug}`}
                                         />
                                     )}
                                     {posts[1] && (
@@ -45,7 +45,7 @@ const Diario = ({ data, currentPage }) => {
                                             aspectRatio='16/9'
                                             title={posts[1].attributes?.title}
                                             description={posts[1].attributes?.description}
-                                            href={posts[1].attributes?.slug}
+                                            href={`diario/${posts[1].attributes?.slug}`}
                                         />
                                     )}
                                 </div>
@@ -59,7 +59,7 @@ const Diario = ({ data, currentPage }) => {
                                             aspectRatio='4/3'
                                             title={posts[2].attributes?.title}
                                             description={posts[2].attributes?.description}
-                                            href={posts[2].attributes?.slug}
+                                            href={`diario/${posts[2].attributes?.slug}`}
                                         />
                                     )}
                                     <div className='aspect-square 768:flex-1 relative bg-black/80'>
@@ -79,7 +79,7 @@ const Diario = ({ data, currentPage }) => {
                                             aspectRatio='4/3'
                                             title={posts[3].attributes?.title}
                                             description={posts[3].attributes?.description}
-                                            href={posts[3].attributes?.slug}
+                                            href={`diario/${posts[3].attributes?.slug}`}
                                         />
                                     )}
                                 </div>
@@ -93,7 +93,7 @@ const Diario = ({ data, currentPage }) => {
                                             aspectRatio='4/3'
                                             title={posts[4].attributes?.title}
                                             description={posts[4].attributes?.description}
-                                            href={posts[4].attributes?.slug}
+                                            href={`diario/${posts[4].attributes?.slug}`}
                                         />
                                     )}
                                     <div className='768:flex-1 relative bg-black/50'>

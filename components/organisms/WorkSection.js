@@ -5,9 +5,7 @@ import AnimatedTitle from '@/molecules/AnimatedTitle'
 import WorkSectionCard from '@/molecules/WorkSectionCard'
 import StoriesGridElement from './StoriesGridElement'
 
-const WorkSection = ({ stories, title }) => {
-    console.log(stories)
-
+const WorkSection = ({ stories, title, backgroundColor }) => {
     return (
         <div className='mb-8'>
             {title && <AnimatedTitle>{`${title} . ${title} . ${title} . ${title} .`}</AnimatedTitle>}
@@ -16,24 +14,24 @@ const WorkSection = ({ stories, title }) => {
                     <Grid>
                         <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                             <div className='flex flex-col h-full gap-4 768:gap-8'>
-                                <WorkSectionCard />
-                                {stories[2] && <StoriesGridElement story={stories[2]} />}
-                                {stories[5] && <StoriesGridElement story={stories[5]} />}
+                                <WorkSectionCard backgroundColor={backgroundColor} />
+                                {stories[2] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[2]} />}
+                                {stories[5] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[5]} />}
                             </div>
                         </Col>
                         <Col mobileCols={2} tabletCols={4} className='mt-4 768:mt-0'>
                             <div className='flex flex-col h-full gap-4 768:gap-8'>
-                                {stories[0] && <StoriesGridElement story={stories[0]} />}
-                                {stories[3] && <StoriesGridElement story={stories[3]} />}
-                                {stories[6] && <StoriesGridElement story={stories[6]} />}
+                                {stories[0] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[0]} />}
+                                {stories[3] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[3]} />}
+                                {stories[6] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[6]} />}
                             </div>
                         </Col>
                         <Col mobileCols={2} tabletCols={4} desktopCols={5} className='mt-4 768:mt-0'>
                             <div className='flex flex-col h-full gap-4 768:gap-8'>
-                                {stories[1] && <StoriesGridElement story={stories[1]} />}
-                                {stories[4] && <StoriesGridElement story={stories[4]} />}
-                                {stories[7] && <StoriesGridElement story={stories[7]} />}
-                                {stories[8] && <StoriesGridElement story={stories[8]} />}
+                                {stories[1] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[1]} />}
+                                {stories[4] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[4]} />}
+                                {stories[7] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[7]} />}
+                                {stories[8] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[8]} />}
                             </div>
                         </Col>
                     </Grid>
