@@ -145,7 +145,9 @@ const Historias = ({ stories }) => {
                                                             <ExternalLink />
                                                         </span>
                                                         <span className='block whitespace-nowrap'>
-                                                            {location}, {categoryName}
+                                                            {location && location}
+                                                            {location && categoryName && ', '}
+                                                            {categoryName && categoryName}
                                                         </span>
                                                     </span>
                                                 </div>
