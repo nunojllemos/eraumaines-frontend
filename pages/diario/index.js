@@ -82,15 +82,15 @@ const Diario = ({ data, currentPage, diary }) => {
                                         />
                                     )}
                                     <div className='aspect-square 768:flex-1 relative'>
-                                        <Image className='object-cover' src={getImage(images[randomNumbers[0]].attributes.url)} alt='' fill={true} />
+                                        <Image className='object-contain' src={getImage(images[randomNumbers[0]].attributes.url)} alt='' fill={true} />
                                     </div>
                                 </div>
                             </Col>
 
                             <Col mobileCols={2} tabletCols={6}>
                                 <div className='flex flex-col gap-8'>
-                                    <div className='aspect-[3/2] 768:flex-1 relative bg-black/30'>
-                                        <Image className='object-cover' src={getImage(images[randomNumbers[1]].attributes.url)} alt='' fill={true} />
+                                    <div className='aspect-[3/2] 768:flex-1 relative'>
+                                        <Image className='object-contain' src={getImage(images[randomNumbers[1]].attributes.url)} alt='' fill={true} />
                                     </div>
                                     {posts[3] && (
                                         <DiaryCard
@@ -115,8 +115,8 @@ const Diario = ({ data, currentPage, diary }) => {
                                             href={`diario/${posts[4].attributes?.slug}`}
                                         />
                                     )}
-                                    <div className='768:flex-1 relative bg-black/50'>
-                                        <Image className='object-cover' src={getImage(images[randomNumbers[2]].attributes.url)} alt='' fill={true} />
+                                    <div className='768:flex-1 relative'>
+                                        <Image className='object-contain' src={getImage(images[randomNumbers[2]].attributes.url)} alt='' fill={true} />
                                     </div>
                                 </div>
                             </Col>
