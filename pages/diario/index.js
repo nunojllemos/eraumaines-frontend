@@ -8,11 +8,29 @@ import useTranslation from '@/hooks/useTranslation'
 import PageLink from '@/components/molecules/PageLink'
 import { getImage } from '@/utils/utils'
 
-const Diario = ({ data, currentPage }) => {
+const Diario = ({ data, currentPage, diary }) => {
     const t = useTranslation()
     const TOTAL_PAGES = data.meta.pagination.pageCount
     const { data: posts } = data
+    const {
+        images: { data: images },
+    } = diary.data.attributes
     let pages = []
+    let randomNumbers = []
+
+    console.log(images)
+
+    const randomize = () => {
+        const numbers = images.map((image, index) => index)
+        let i = numbers.length
+        let j = 0
+
+        while (i--) {
+            j = Math.floor(Math.random() * (i + 1))
+            randomNumbers.push(numbers[j])
+            numbers.splice(j, 1)
+        }
+    }
 
     const populatePagesArray = () => {
         for (let index = 1; index <= TOTAL_PAGES; index++) {
@@ -20,6 +38,7 @@ const Diario = ({ data, currentPage }) => {
         }
     }
     populatePagesArray()
+    randomize()
 
     return (
         <main className='pb-16'>
@@ -62,8 +81,8 @@ const Diario = ({ data, currentPage }) => {
                                             href={`diario/${posts[2].attributes?.slug}`}
                                         />
                                     )}
-                                    <div className='aspect-square 768:flex-1 relative bg-black/80'>
-                                        <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
+                                    <div className='aspect-square 768:flex-1 relative'>
+                                        <Image className='object-cover' src={getImage(images[randomNumbers[0]].attributes.url)} alt='' fill={true} />
                                     </div>
                                 </div>
                             </Col>
@@ -71,7 +90,7 @@ const Diario = ({ data, currentPage }) => {
                             <Col mobileCols={2} tabletCols={6}>
                                 <div className='flex flex-col gap-8'>
                                     <div className='aspect-[3/2] 768:flex-1 relative bg-black/30'>
-                                        <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
+                                        <Image className='object-cover' src={getImage(images[randomNumbers[1]].attributes.url)} alt='' fill={true} />
                                     </div>
                                     {posts[3] && (
                                         <DiaryCard
@@ -97,7 +116,7 @@ const Diario = ({ data, currentPage }) => {
                                         />
                                     )}
                                     <div className='768:flex-1 relative bg-black/50'>
-                                        <Image className='object-contain' src='/images/octopus.gif' alt='' fill={true} />
+                                        <Image className='object-cover' src={getImage(images[randomNumbers[2]].attributes.url)} alt='' fill={true} />
                                     </div>
                                 </div>
                             </Col>
@@ -149,12 +168,18 @@ export async function getServerSideProps(context) {
     const contentType = 'posts'
     const localeQuery = `locale=${strapiLocale}`
 
-    const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}&${paginationQuery}&${pageQuery}`)
-    const data = await res.json()
+    const [postsData, diaryData] = await Promise.all([
+        fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}&${paginationQuery}&${pageQuery}`),
+        fetch(`${baseApi}/diary?${populateQuery}&${localeQuery}`),
+    ])
+
+    const data = await postsData.json()
+    const diary = await diaryData.json()
 
     return {
         props: {
             data,
+            diary,
             currentPage: CURRENT_PAGE,
         },
         // revalidate: 10,
