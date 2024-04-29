@@ -134,7 +134,7 @@ const Historias = ({ stories }) => {
                                     newStoriesArray.map(story => {
                                         const { id, attributes } = story
                                         const { title, location, category, slug } = attributes || {}
-                                        const { name: categoryName } = category?.data.attributes || {}
+                                        const { name: categoryName } = category?.data?.attributes || {}
 
                                         return (
                                             <Link key={`stories-title-${id}`} href={`/historias/${slug}`} className='client-name'>
@@ -169,7 +169,7 @@ const Historias = ({ stories }) => {
                                 {storiesCopy.reverse().map((story, index) => {
                                     const { id, attributes } = story
                                     const { cover, title, location, category, slug } = attributes
-                                    const { name: categoryName } = category?.data.attributes || {}
+                                    const { name: categoryName } = category?.data?.attributes || {}
                                     const { url, mime } = cover?.data?.attributes
 
                                     return (
