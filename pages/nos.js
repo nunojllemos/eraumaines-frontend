@@ -67,7 +67,7 @@ const Nos = ({ data }) => {
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
                         const { id, title, name, role, media, description } = person || {}
-                        const { url } = media.data.attributes || {}
+                        const url = media?.data?.attributes?.url
 
                         return (
                             <AboutPersonSection

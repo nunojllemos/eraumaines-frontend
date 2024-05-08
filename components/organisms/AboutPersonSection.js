@@ -15,9 +15,11 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                 <div className='relative pb-4'>
                     <Grid>
                         <Col className='row-start-2 768:row-start-1 my-12 768:my-0' mobileCols={2} tabletCols={8}>
-                            <MouseParallax strength={0.04}>
-                                <ImageContainer src={getImage(url)} aspectRatio='16/9' />
-                            </MouseParallax>
+                            {url && (
+                                <MouseParallax strength={0.04}>
+                                    <ImageContainer src={getImage(url)} aspectRatio='16/9' />
+                                </MouseParallax>
+                            )}
                         </Col>
                         <Col mobileCols={2} tabletCols={4}>
                             <h2 className='font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
