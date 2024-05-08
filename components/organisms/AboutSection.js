@@ -15,25 +15,28 @@ const AboutSection = ({ title, persons }) => {
                 <Container>
                     {persons &&
                         persons.map((person, i) => {
-                            return i % 2 === 0 ? (
-                                <HomePersonLeft
-                                    key={`about-${i}`}
-                                    name={person?.person_name}
-                                    role={person?.person_role}
-                                    description={person?.person_description}
-                                    image={person?.person_photo?.data?.attributes?.url}
-                                    alt='foto Inês'
-                                />
-                            ) : (
-                                <HomePersonRight
-                                    key={`about-${i}`}
-                                    name={person?.person_name}
-                                    role={person?.person_role}
-                                    description={person?.person_description}
-                                    image={person?.person_photo?.data?.attributes.url}
-                                    alt='foto Diogo'
-                                />
-                            )
+                            const url = person?.person_photo?.data?.attributes?.url
+                            return i % 2 === 0
+                                ? url && (
+                                      <HomePersonLeft
+                                          key={`about-${i}`}
+                                          name={person?.person_name}
+                                          role={person?.person_role}
+                                          description={person?.person_description}
+                                          image={url}
+                                          alt='foto Inês'
+                                      />
+                                  )
+                                : url && (
+                                      <HomePersonRight
+                                          key={`about-${i}`}
+                                          name={person?.person_name}
+                                          role={person?.person_role}
+                                          description={person?.person_description}
+                                          image={url}
+                                          alt='foto Diogo'
+                                      />
+                                  )
                         })}
                 </Container>
             </div>

@@ -12,7 +12,7 @@ export default function Home({ data }) {
             <Seo title={meta_title} description={meta_description} />
             <main>
                 <Hero title={hero_title} media={url} typeOfMedia={mime} />
-                {/* <AboutSection title={about_title} persons={persons} /> */}
+                <AboutSection title={about_title} persons={persons} />
                 <WorkSection title={stories_title} stories={stories} backgroundColor={background_color} />
             </main>
         </>
