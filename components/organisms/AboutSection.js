@@ -13,27 +13,28 @@ const AboutSection = ({ title, persons }) => {
                     </AnimatedTitle>
                 )}
                 <Container>
-                    {persons.map((person, i) => {
-                        return i % 2 === 0 ? (
-                            <HomePersonLeft
-                                key={`about-${i}`}
-                                name={person.person_name}
-                                role={person.person_role}
-                                description={person.person_description}
-                                image={person.person_photo.data.attributes.url}
-                                alt='foto Inês'
-                            />
-                        ) : (
-                            <HomePersonRight
-                                key={`about-${i}`}
-                                name={person.person_name}
-                                role={person.person_role}
-                                description={person.person_description}
-                                image={person.person_photo.data.attributes.url}
-                                alt='foto Diogo'
-                            />
-                        )
-                    })}
+                    {persons &&
+                        persons.map((person, i) => {
+                            return i % 2 === 0 ? (
+                                <HomePersonLeft
+                                    key={`about-${i}`}
+                                    name={person?.person_name}
+                                    role={person?.person_role}
+                                    description={person?.person_description}
+                                    image={person?.person_photo?.data?.attributes?.url}
+                                    alt='foto Inês'
+                                />
+                            ) : (
+                                <HomePersonRight
+                                    key={`about-${i}`}
+                                    name={person?.person_name}
+                                    role={person?.person_role}
+                                    description={person?.person_description}
+                                    image={person?.person_photo?.data?.attributes.url}
+                                    alt='foto Diogo'
+                                />
+                            )
+                        })}
                 </Container>
             </div>
         )

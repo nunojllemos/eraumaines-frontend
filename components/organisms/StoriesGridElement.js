@@ -5,7 +5,6 @@ import { getImage } from '@/utils/utils'
 
 const StoriesGridElement = ({ story, backgroundColor }) => {
     const { __component } = story
-    console.log(story)
 
     if (__component.includes('reviews')) {
         return <WorkSectionTestimonialsCard backgroundColor={backgroundColor} reviews={story.reviews} />

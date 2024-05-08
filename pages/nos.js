@@ -16,8 +16,6 @@ const Nos = ({ data }) => {
     const contentSwiperRef = useRef(null)
     const { description_01, description_02, persons, reviews } = data
 
-    console.log(reviews)
-
     const namesSwiperOptions = {
         ref: namesSwiperRef,
         className: 'h-[3.75em] text-24 768:text-28 1280:text-50 font-power-grotesk swiper-names mb-12',
@@ -93,8 +91,6 @@ const Nos = ({ data }) => {
                                         {reviews.data.map(slide => {
                                             const { id, attributes } = slide
                                             const { author } = attributes
-
-                                            console.log(slide)
 
                                             return (
                                                 <SwiperSlide key={`name-slide-${id}`}>

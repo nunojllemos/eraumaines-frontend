@@ -28,7 +28,7 @@ const Historias = ({ stories }) => {
         newArray.unshift({ id: '-3', attributes: { title: '' } })
 
         setNewStoriesArray(newArray)
-    }, [stories])
+    }, [stories, t.history.scroll])
 
     useEffect(() => {
         titlesDiv.current.scrollTo({
@@ -170,23 +170,26 @@ const Historias = ({ stories }) => {
                                     const { id, attributes } = story
                                     const { cover, title, location, category, slug } = attributes
                                     const { name: categoryName } = category?.data?.attributes || {}
-                                    const { url, mime } = cover?.data?.attributes
+                                    const url = cover?.data?.attributes?.url
+                                    const mime = cover?.data?.attributes?.mime
 
                                     return (
                                         <div
                                             key={`reverse-slide-${id}-${index}`}
-                                            onMouseEnter={event => mime.includes('video') && playVideo(event)}
-                                            onMouseLeave={event => mime.includes('video') && stopVideo(event)}
+                                            onMouseEnter={event => mime && mime.includes('video') && playVideo(event)}
+                                            onMouseLeave={event => mime && mime.includes('video') && stopVideo(event)}
                                             className='text-32 my-12 874:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center group'
                                         >
-                                            {mime.includes('video') ? (
+                                            {mime && mime.includes('video') ? (
                                                 <Link scroll={false} href={`historias/${slug}`}>
                                                     <video muted playsInline loop src={getImage(url)}></video>
                                                 </Link>
                                             ) : (
-                                                <Link scroll={false} href={`historias/${slug}`} className='block w-full h-full'>
-                                                    <ImageContainer src={getImage(url)} alt='' />
-                                                </Link>
+                                                url && (
+                                                    <Link scroll={false} href={`historias/${slug}`} className='block w-full h-full'>
+                                                        <ImageContainer src={getImage(url)} alt='' />
+                                                    </Link>
+                                                )
                                             )}
                                             <div className='transition-opacity opacity-0 absolute bottom-4 left-4 fix-hover:group-hover:opacity-100 text-white text-24 leading-none'>
                                                 <span className='whitespace-nowrap'>{title}</span>

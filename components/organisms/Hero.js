@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HeroVideo from '@/atoms/HeroVideo'
 import { Mute, Volume } from '@/atoms/Icons'
 import InternalLink from '@/molecules/InternalLink'
@@ -10,6 +10,10 @@ const Hero = ({ title, media, typeOfMedia }) => {
     const [isMuted, setIsMuted] = useState(true)
 
     const handleMute = () => setIsMuted(prev => !prev)
+
+    useEffect(() => {
+        console.log(media)
+    }, [media])
 
     return (
         <div className='h-[90vh] 1024:h-screen mt-[-87px] 1280:mt-[-97px] relative'>

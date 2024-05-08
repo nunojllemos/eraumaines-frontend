@@ -18,8 +18,6 @@ const Diario = ({ data, currentPage, diary }) => {
     let pages = []
     let randomNumbers = []
 
-    console.log(images)
-
     const randomize = () => {
         const numbers = images.map((image, index) => index)
         let i = numbers.length
