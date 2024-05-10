@@ -14,7 +14,7 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
             <Container>
                 <div className='relative pb-4'>
                     <Grid>
-                        <Col className='z-0 row-start-2 1280:row-start-1 my-12 768:my-0' mobileCols={2} tabletCols={12} desktopCols={8}>
+                        <Col className='z-0 row-start-2 1280:row-start-1 mt-24 768:my-0' mobileCols={2} tabletCols={12} desktopCols={8}>
                             {url && (
                                 <MouseParallax strength={0.04}>
                                     <ImageContainer src={getImage(url)} aspectRatio='16/9' />
@@ -22,7 +22,7 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                             )}
                         </Col>
                         <Col className='z-1' mobileCols={2} tabletCols={12} desktopCols={4}>
-                            <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
+                            <h2 className='relative mb-3 font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
                             <span className='relative default-text font-light'>{role}</span>
                             <div className='hidden 1024:block'>
                                 <AboutDescription description={description} />
@@ -42,13 +42,13 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                 <div className='relative'>
                     <Grid>
                         <Col className='z-1' mobileCols={2} tabletCols={12} desktopCols={4}>
-                            <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
+                            <h2 className='relative mb-3 font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
                             <span className='relative block default-text font-light'>{role}</span>
                             <div className='hidden 1024:block'>
                                 <AboutDescription description={description} />
                             </div>
                         </Col>
-                        <Col className='z-0 my-12 768:my-0' mobileCols={2} tabletCols={12} desktopCols={8}>
+                        <Col className='z-0 mt-24 768:my-0' mobileCols={2} tabletCols={12} desktopCols={8}>
                             <MouseParallax strength={0.04}>
                                 <ImageContainer src={getImage(url)} aspectRatio='16/9' />
                             </MouseParallax>
