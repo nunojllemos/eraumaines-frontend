@@ -21,7 +21,7 @@ const Historias = ({ stories }) => {
 
     const storiesCopy = useMemo(() => {
         console.log('inside')
-        return new Array(...stories)
+        return new Array(...stories).reverse()
     }, [stories])
 
     useEffect(() => {
@@ -167,7 +167,7 @@ const Historias = ({ stories }) => {
                                         </div>
                                     </div>
                                 </div>
-                                {storiesCopy.reverse().map((story, index) => {
+                                {storiesCopy.map((story, index) => {
                                     const { id, attributes } = story
                                     const { cover, title, location, category, slug } = attributes
                                     const { name: categoryName } = category?.data?.attributes || {}
