@@ -11,7 +11,7 @@ const WorkSectionInfoCard = ({ slug, src, aspectRatio, category, location, title
                 ) : (
                     <ImageContainer src={src} alt='' aspectRatio={aspectRatio} />
                 )}
-                <div className='transition-opacity w-6 1024:w-10 absolute top-4 fix-hover:bottom-4 left-4 fix-hover:group-hover:opacity-0 text-white z-1'>
+                <div className='transition-opacity w-6 1024:w-10 absolute top-4 fix-hover:top-auto fix-hover:bottom-4 left-4 fix-hover:group-hover:opacity-0 text-white z-1'>
                     <ExternalLink />
                 </div>
                 <div className='bg-black/40 h-full w-full absolute 768:fix-hover:opacity-0 fix-hover:group-hover:opacity-100 transition-opacity top-0 left-0'></div>
