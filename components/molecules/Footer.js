@@ -5,15 +5,16 @@ import useTranslation from '@/hooks/useTranslation'
 
 const Footer = () => {
     const t = useTranslation()
+    const currentYear = new Date().getFullYear()
 
     return (
         <footer className='z-1 mt-auto'>
             <Container>
-                <div className='flex flex-col-reverse justify-between w-full gap-6 py-4 border-t border-black 768:flex-row 768:gap-0'>
+                <div className='flex flex-col-reverse justify-between w-full gap-12 py-4 border-t border-black 768:flex-row 768:gap-0'>
                     <div>
-                        <FooterText>&copy; Era uma Inês, 2023</FooterText>
+                        <FooterText>&copy; Era uma Inês, {currentYear}</FooterText>
                     </div>
-                    <div className='flex gap-12 768:gap-6'>
+                    <div className='flex flex-col 768:flex-row gap-2 768:gap-6'>
                         <FooterLink href='/faq'>{t.footer.faqs}</FooterLink>
                         <FooterLink href='/termos'>{t.footer.terms}</FooterLink>
                     </div>
