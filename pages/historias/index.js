@@ -60,7 +60,6 @@ const Historias = ({ stories }) => {
 
         const percentage = imagesDivCurrentScrollTop / imagesDivTotalScrollValue
 
-        console.log(titlesDivTotalScrollValue, titlesDivTotalScrollValue * percentage)
         !isHoverTitlesDiv && isHoverImagesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
 
         handleScrollEnd()
