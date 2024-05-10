@@ -80,19 +80,19 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                                 isHomepage && !isMenuOpen ? 'bg-white text-black' : 'bg-black text-white'
                             } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
                         >
-                            {locales?.map(loc => (
+                            {locales?.map(_locale => (
                                 <Link
                                     scroll={false}
                                     locale={false}
-                                    key={loc.slice(0, 2)}
-                                    href={`/${loc}/${router.pathname.split('/')[1]}`}
+                                    key={_locale.slice(0, 2)}
+                                    href={`/${_locale}/${router.pathname.split('/')[1]}`}
                                     className={`transition-all w-full h-full flex items-center justify-center absolute ${
-                                        locale === loc.slice(0, 2)
+                                        locale === _locale.slice(0, 2)
                                             ? '-left-full fix-hover:left-0 fix-hover:group-hover:-left-full'
                                             : 'left-0 fix-hover:left-full fix-hover:group-hover:left-0 z-1'
                                     }`}
                                 >
-                                    {loc.slice(0, 2)}
+                                    {_locale.slice(0, 2)}
                                 </Link>
                             ))}
                         </div>

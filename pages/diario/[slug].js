@@ -27,6 +27,8 @@ const SlugDiary = ({ data }) => {
 
     const t = useTranslation()
 
+    console.log(content)
+
     return (
         <main className='py-16'>
             <div className='pb-16 768:pb-32'>

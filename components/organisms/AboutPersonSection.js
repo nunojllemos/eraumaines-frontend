@@ -5,11 +5,11 @@ import ImageContainer from '@/atoms/ImageContainer'
 import AnimatedTitle from '@/molecules/AnimatedTitle'
 import AboutDescription from '@/atoms/AboutDescription'
 import { MouseParallax } from 'react-just-parallax'
-import { getImage } from '@/utils/utils'
+import { getImage, slugify } from '@/utils/utils'
 
 const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => {
     return isLeft ? (
-        <section className='mt-14'>
+        <section className='mt-14' id={slugify(name)}>
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative pb-4'>
@@ -36,7 +36,7 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
             </Container>
         </section>
     ) : (
-        <section className='mt-14'>
+        <section className='mt-14' id={slugify(name)}>
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative'>
