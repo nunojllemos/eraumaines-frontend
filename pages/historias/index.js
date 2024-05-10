@@ -173,7 +173,7 @@ const Historias = ({ stories }) => {
                                     const url = cover?.data?.attributes?.url
                                     const mime = cover?.data?.attributes?.mime
 
-                                    console.log(mime)
+                                    console.log(slug, title, mime)
                                     return (
                                         <div
                                             key={`reverse-slide-${id}-${index}`}
