@@ -3,7 +3,7 @@ import Arrows from './Arrows'
 import HomePersonName from '../atoms/HomePersonName'
 import Link from 'next/link'
 
-const AboutSectioNameLink = props => {
+const AboutSectionNameLink = props => {
     return (
         <Link
             href={props.href}
@@ -19,4 +19,4 @@ const AboutSectioNameLink = props => {
         </Link>
     )
 }
-export default AboutSectioNameLink
+export default AboutSectionNameLink

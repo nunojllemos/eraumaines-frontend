@@ -3,6 +3,7 @@ import HomePersonMarqueeSection from '@/molecules/HomePersonMarqueeSection'
 import { getImage } from '@/utils/utils'
 
 const AboutPersonImage = props => {
+    console.log(props)
     return (
         <div
             className={`person-image overflow-hidden 768:overflow-visible max-h-[90vh] relative col-span-2 row-start-2  768:row-start-1 768:col-span-6 768:row-span-2 1280:col-span-5  hover-arrow 768:fix-hover:static ${
