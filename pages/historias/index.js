@@ -5,9 +5,8 @@ import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
 import { ExternalLink } from '@/components/atoms/Icons'
-import { getImage } from '@/utils/utils'
-import ImageContainer from '@/components/atoms/ImageContainer'
 import useTranslation from '@/hooks/useTranslation'
+import StoryCard from '@/components/organisms/StoryCard'
 
 const Historias = ({ stories }) => {
     const t = useTranslation()
@@ -56,7 +55,7 @@ const Historias = ({ stories }) => {
 
         const percentage = imagesDivCurrentScrollTop / imagesDivTotalScrollValue
 
-        !isHoverTitlesDiv && isHoverImagesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
+        !isHoverTitlesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
 
         handleScrollEnd()
     }
@@ -73,7 +72,7 @@ const Historias = ({ stories }) => {
 
         const percentage = titlesDivCurrentScrollTop / titlesDivTotalScrollValue
 
-        !isHoverImagesDiv && isHoverTitlesDiv && imagesDiv.current.scrollTo(0, imagesDivTotalScrollValue - imagesDivTotalScrollValue * percentage)
+        isHoverTitlesDiv && imagesDiv.current.scrollTo(0, imagesDivTotalScrollValue - imagesDivTotalScrollValue * percentage)
 
         handleScrollEnd()
     }
@@ -173,41 +172,16 @@ const Historias = ({ stories }) => {
                                     const url = cover?.data?.attributes?.url
                                     const mime = cover?.data?.attributes?.mime
 
-                                    console.log(slug, title, mime)
                                     return (
-                                        <div
+                                        <StoryCard
                                             key={`reverse-slide-${id}-${index}`}
-                                            onMouseEnter={event => mime && mime.includes('video') && playVideo(event)}
-                                            onMouseLeave={event => mime && mime.includes('video') && stopVideo(event)}
-                                            className='text-32 my-12 874:my-6 aspect-video relative flex items-center justify-center bg-black/10 snap-center group'
-                                        >
-                                            {mime && mime.includes('video') ? (
-                                                <Link scroll={false} href={`historias/${slug}`}>
-                                                    <video muted playsInline loop src={getImage(url)}></video>
-                                                </Link>
-                                            ) : (
-                                                url && (
-                                                    <Link scroll={false} href={`historias/${slug}`} className='block w-full h-full'>
-                                                        <ImageContainer sizes='(min-width: 1024px) 50vw, 100vw' src={getImage(url)} alt='' />
-                                                    </Link>
-                                                )
-                                            )}
-                                            <div className='transition-opacity opacity-0 absolute bottom-4 left-4 fix-hover:group-hover:opacity-100 text-white text-24 leading-none'>
-                                                <span className='whitespace-nowrap'>{title}</span>
-                                                <span className='inline-block w-4 ml-2'>
-                                                    <ExternalLink />
-                                                </span>
-                                            </div>
-                                            <span className='874:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16 414:text-18'>
-                                                {title}
-                                                <span className='inline-block w-3 ml-2'>
-                                                    <ExternalLink />
-                                                </span>
-                                            </span>
-                                            <span className='874:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12 uppercase'>
-                                                {location}, {categoryName}
-                                            </span>
-                                        </div>
+                                            mime={mime}
+                                            slug={slug}
+                                            title={title}
+                                            location={location}
+                                            categoryName={categoryName}
+                                            url={url}
+                                        />
                                     )
                                 })}
                             </div>
