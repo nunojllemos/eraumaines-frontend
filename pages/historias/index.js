@@ -162,7 +162,7 @@ const Historias = ({ stories }) => {
                             ref={imagesDiv}
                             className='1024:h-[calc(100vh_-_16rem)] overflow-y-auto 1024:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
                             onScroll={handleImagesScroll}
-                            onMouseOver={() => setIsHoverImagesDiv(true)}
+                            // onMouseOver={() => setIsHoverImagesDiv(true)}
                             onMouseOut={() => setIsHoverImagesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
