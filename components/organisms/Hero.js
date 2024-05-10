@@ -10,6 +10,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
     const [isMuted, setIsMuted] = useState(true)
 
     const handleMute = () => setIsMuted(prev => !prev)
+    const isVideo = typeOfMedia.includes('video')
 
     return (
         <div className='h-[90vh] 1024:h-screen mt-[-87px] 1280:mt-[-97px] relative'>
@@ -23,12 +24,14 @@ const Hero = ({ title, media, typeOfMedia }) => {
                         <div className='hover-arrow'>
                             <InternalLink href='/historias' text={t.homepage.hero.link} />
                         </div>
-                        <button
-                            onClick={handleMute}
-                            className='transition-colors flex items-center justify-center bg-white text-black w-14 h-14 rounded-full fix-hover:hover:bg-black fix-hover:hover:text-white'
-                        >
-                            <div className='w-8'>{isMuted ? <Volume /> : <Mute />}</div>
-                        </button>
+                        {isVideo && (
+                            <button
+                                onClick={handleMute}
+                                className='transition-colors flex items-center justify-center bg-white text-black w-14 h-14 rounded-full fix-hover:hover:bg-black fix-hover:hover:text-white'
+                            >
+                                <div className='w-8'>{isMuted ? <Volume /> : <Mute />}</div>
+                            </button>
+                        )}
                     </div>
                 </Container>
             </div>
