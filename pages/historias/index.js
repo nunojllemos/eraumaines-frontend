@@ -19,7 +19,10 @@ const Historias = ({ stories }) => {
     const [isHoverTitlesDiv, setIsHoverTitlesDiv] = useState(false)
     const [newStoriesArray, setNewStoriesArray] = useState(...stories)
 
-    const storiesCopy = useMemo(() => new Array(...stories), [stories])
+    const storiesCopy = useMemo(() => {
+        console.log('inside')
+        return new Array(...stories)
+    }, [stories])
 
     useEffect(() => {
         const newArray = new Array(...stories)
