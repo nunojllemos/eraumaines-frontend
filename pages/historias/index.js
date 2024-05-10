@@ -101,13 +101,13 @@ const Historias = ({ stories }) => {
     return (
         <main className='mb-8 1024:mb-0'>
             <Container>
-                <Grid desktop={1023}>
+                <Grid desktop={1024}>
                     <Col
-                        desktop={1023}
+                        desktop={1024}
                         mobileCols={1}
                         tabletCols={6}
                         desktopCols={6}
-                        className='hidden 874:flex flex-col overflow-x-hidden relative text-40 1280:text-50'
+                        className='hidden 1024:flex flex-col overflow-x-hidden relative text-40 1280:text-50'
                     >
                         <div
                             ref={titlesDiv}
@@ -144,7 +144,7 @@ const Historias = ({ stories }) => {
                             </div>
                         </div>
                     </Col>
-                    <Col desktop={1023} mobileCols={2} tabletCols={12} desktopCols={6} className='overflow-x-hidden'>
+                    <Col desktop={1024} mobileCols={2} tabletCols={12} desktopCols={6} className='overflow-x-hidden'>
                         <div
                             ref={imagesDiv}
                             className='1024:h-[calc(100vh_-_16rem)] overflow-y-auto 1024:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
@@ -153,13 +153,13 @@ const Historias = ({ stories }) => {
                             onMouseOut={() => setIsHoverImagesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
-                                <div className='aspect-video flex items-end group'>
+                                <div className='aspect-[16/4.5] hidden 1024:flex items-end group'>
                                     <div className='w-full overflow-hidden relative'>
-                                        <p className='uppercase text-15 absolute top-1/2 -translate-y-1/2 group-hover:translate-x-32 transition-transform duration-400'>
+                                        <p className='uppercase text-10 1280:text-15 absolute top-1/2 -translate-y-1/2 group-hover:translate-x-24 1280:group-hover:translate-x-32 transition-transform duration-400'>
                                             scroll
                                             <br /> down
                                         </p>
-                                        <div className='w-28 rotate-90 bg-white p-6'>
+                                        <div className='w-20 1280:w-28 rotate-90 bg-white p-6'>
                                             <div className='animate-up-down'>
                                                 <Arrow />
                                             </div>
@@ -185,13 +185,13 @@ const Historias = ({ stories }) => {
                                         />
                                     )
                                 })}
-                                <div className='aspect-video flex items-start group'>
+                                <div className='aspect-[16/4.5] hidden 1024:flex items-start group'>
                                     <div className='w-full overflow-hidden relative'>
-                                        <p className='uppercase text-15 absolute top-1/2 -translate-y-1/2 group-hover:translate-x-32 transition-transform duration-400'>
+                                        <p className='uppercase text-10 1280:text-15 absolute top-1/2 -translate-y-1/2 group-hover:translate-x-24 1280:group-hover:translate-x-32 transition-transform duration-400'>
                                             scroll
                                             <br /> up
                                         </p>
-                                        <div className='w-28 -rotate-90 bg-white p-6'>
+                                        <div className='w-20 1280:w-28 -rotate-90 bg-white p-6'>
                                             <div className='animate-up-down'>
                                                 <Arrow />
                                             </div>
