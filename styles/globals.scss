@@ -676,3 +676,23 @@ header {
         }
     }
 }
+
+.animate-up-down {
+    animation-name: up-down;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateX(-0.5rem);
+    }
+
+    50% {
+        transform: translateX(0.5rem);
+    }
+
+    100% {
+        transform: translateX(-0.5rem);
+    }
+}

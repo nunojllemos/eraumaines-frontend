@@ -4,7 +4,9 @@ import Link from 'next/link'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
-import { ExternalLink } from '@/components/atoms/Icons'
+import { Arrow, ExternalLink } from '@/components/atoms/Icons'
+import { getImage } from '@/utils/utils'
+import ImageContainer from '@/components/atoms/ImageContainer'
 import useTranslation from '@/hooks/useTranslation'
 import StoryCard from '@/components/organisms/StoryCard'
 
@@ -55,7 +57,8 @@ const Historias = ({ stories }) => {
 
         const percentage = imagesDivCurrentScrollTop / imagesDivTotalScrollValue
 
-        !isHoverTitlesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
+        console.log(titlesDivTotalScrollValue, titlesDivTotalScrollValue * percentage)
+        !isHoverTitlesDiv && isHoverImagesDiv && titlesDiv.current.scrollTo(0, titlesDivTotalScrollValue - titlesDivTotalScrollValue * percentage)
 
         handleScrollEnd()
     }
@@ -72,7 +75,7 @@ const Historias = ({ stories }) => {
 
         const percentage = titlesDivCurrentScrollTop / titlesDivTotalScrollValue
 
-        isHoverTitlesDiv && imagesDiv.current.scrollTo(0, imagesDivTotalScrollValue - imagesDivTotalScrollValue * percentage)
+        isHoverTitlesDiv && !isHoverImagesDiv && imagesDiv.current.scrollTo(0, imagesDivTotalScrollValue - imagesDivTotalScrollValue * percentage)
 
         handleScrollEnd()
     }
@@ -88,23 +91,6 @@ const Historias = ({ stories }) => {
             } else {
                 element.classList.remove('active')
             }
-        }
-    }
-
-    const playVideo = e => {
-        if (e.currentTarget.querySelector('video')) {
-            const video = e.currentTarget.querySelector('video')
-
-            video.play()
-        }
-    }
-
-    const stopVideo = e => {
-        if (e.currentTarget.querySelector('video')) {
-            const video = e.currentTarget.querySelector('video')
-
-            video.pause()
-            video.currentTime = 0
         }
     }
 
@@ -161,10 +147,23 @@ const Historias = ({ stories }) => {
                             ref={imagesDiv}
                             className='1024:h-[calc(100vh_-_16rem)] overflow-y-auto 1024:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
                             onScroll={handleImagesScroll}
-                            // onMouseOver={() => setIsHoverImagesDiv(true)}
+                            onMouseOver={() => setIsHoverImagesDiv(true)}
                             onMouseOut={() => setIsHoverImagesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
+                                <div className='aspect-video flex items-end group'>
+                                    <div className='w-full overflow-hidden relative'>
+                                        <p className='uppercase text-15 absolute top-1/2 -translate-y-1/2 group-hover:translate-x-32 transition-transform duration-400'>
+                                            scroll
+                                            <br /> down
+                                        </p>
+                                        <div className='w-28 rotate-90 bg-white p-6'>
+                                            <div className='animate-up-down'>
+                                                <Arrow />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {storiesCopy.reverse().map((story, index) => {
                                     const { id, attributes } = story
                                     const { cover, title, location, category, slug } = attributes
@@ -184,6 +183,19 @@ const Historias = ({ stories }) => {
                                         />
                                     )
                                 })}
+                                <div className='aspect-video flex items-start group'>
+                                    <div className='w-full overflow-hidden relative'>
+                                        <p className='uppercase text-15 absolute top-1/2 -translate-y-1/2 group-hover:translate-x-32 transition-transform duration-400'>
+                                            scroll
+                                            <br /> up
+                                        </p>
+                                        <div className='w-28 -rotate-90 bg-white p-6'>
+                                            <div className='animate-up-down'>
+                                                <Arrow />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </Col>

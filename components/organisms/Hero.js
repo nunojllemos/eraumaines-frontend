@@ -11,10 +11,6 @@ const Hero = ({ title, media, typeOfMedia }) => {
 
     const handleMute = () => setIsMuted(prev => !prev)
 
-    useEffect(() => {
-        console.log(media)
-    }, [media])
-
     return (
         <div className='h-[90vh] 1024:h-screen mt-[-87px] 1280:mt-[-97px] relative'>
             <div className='absolute top-0 h-full w-full z-[-1]'>
