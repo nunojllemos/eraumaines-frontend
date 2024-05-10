@@ -15,6 +15,7 @@ const WorkSection = ({ stories, title, backgroundColor }) => {
                         <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                             <div className='flex flex-col h-full gap-4 768:gap-8'>
                                 <WorkSectionCard backgroundColor={backgroundColor} />
+                                {stories[1] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[1]} />}
                                 {stories[2] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[2]} />}
                                 {stories[5] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[5]} />}
                             </div>
@@ -28,7 +29,6 @@ const WorkSection = ({ stories, title, backgroundColor }) => {
                         </Col>
                         <Col mobileCols={2} tabletCols={4} desktopCols={5} className='mt-4 768:mt-0'>
                             <div className='flex flex-col h-full gap-4 768:gap-8'>
-                                {stories[1] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[1]} />}
                                 {stories[4] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[4]} />}
                                 {stories[7] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[7]} />}
                                 {stories[8] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[8]} />}

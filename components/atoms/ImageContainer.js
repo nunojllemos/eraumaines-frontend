@@ -10,7 +10,7 @@ const StyledImageContainer = styled.div`
     background-color: #e2e2e2;
 `
 
-const ImageContainer = ({ src = '', alt = '', fill = true, sizes = '100vw', aspectRatio, quality = 75 }) => {
+const ImageContainer = ({ src = '', alt = '', fill = true, sizes = '100vw', aspectRatio, quality = 75, priority = false }) => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     const handleLoadingComplete = () => setIsLoaded(true)
@@ -24,6 +24,7 @@ const ImageContainer = ({ src = '', alt = '', fill = true, sizes = '100vw', aspe
                 fill={fill}
                 sizes={sizes}
                 quality={quality}
+                priority={priority}
                 onLoadingComplete={handleLoadingComplete}
             />
         </StyledImageContainer>

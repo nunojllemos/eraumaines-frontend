@@ -187,7 +187,7 @@ const Historias = ({ stories }) => {
                                             ) : (
                                                 url && (
                                                     <Link scroll={false} href={`historias/${slug}`} className='block w-full h-full'>
-                                                        <ImageContainer src={getImage(url)} alt='' />
+                                                        <ImageContainer sizes='(min-width: 1024px) 50vw, 100vw' src={getImage(url)} alt='' />
                                                     </Link>
                                                 )
                                             )}

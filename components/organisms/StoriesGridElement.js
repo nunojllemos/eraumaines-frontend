@@ -15,7 +15,7 @@ const StoriesGridElement = ({ story, backgroundColor }) => {
             <WorkSectionMediaCard
                 typeOfMedia={story?.media?.data?.attributes?.mime}
                 src={getImage(story?.media?.data?.attributes?.url)}
-                aspectRatio='2/3'
+                aspectRatio='16/9'
                 alt={story?.media?.data?.attributes?.alternativeText || ''}
             />
         )
@@ -30,7 +30,7 @@ const StoriesGridElement = ({ story, backgroundColor }) => {
                 location={story?.story?.data?.attributes?.location}
                 category={story?.story?.data?.attributes?.category?.data?.attributes?.name}
                 src={getImage(story?.story?.data?.attributes?.cover?.data?.attributes?.url)}
-                aspectRatio='1/1'
+                aspectRatio='3/2'
                 description={story?.story?.data?.attributes?.description}
             />
         )

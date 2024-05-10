@@ -5,7 +5,7 @@ const Video = ({ media, typeOfMedia, isMuted }) => {
     return typeOfMedia.includes('video') ? (
         <video className='h-full w-full object-cover object-center' loop autoPlay muted={isMuted} playsInline src={getImage(media)}></video>
     ) : (
-        <ImageContainer src={getImage(media)} alt='' />
+        <ImageContainer priority={true} src={getImage(media)} alt='' />
     )
 }
 
