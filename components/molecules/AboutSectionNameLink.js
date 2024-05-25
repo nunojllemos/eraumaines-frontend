@@ -7,7 +7,7 @@ const AboutSectionNameLink = props => {
     return (
         <Link
             href={props.href}
-            className={`mb-24 col-span-2  768:col-span-4 768:row-start-1 person-details w-max ${props.leftPerson ? `768:col-start-7 1280:col-start-6` : ''} ${
+            className={`mb-24 col-span-2 768:col-span-4 768:row-start-1 person-details w-max ${props.leftPerson ? `768:col-start-7 1280:col-start-8` : ''} ${
                 props.rightPerson ? `768:col-start-1` : ''
             } `}
         >

@@ -1,5 +1,11 @@
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
 const AboutDescription = ({ description }) => {
-    // return <p className='text-24 768:text-32 1280:text-50 font-light'>{description}</p>
-    return <p className='relative my-16 text-16 768:text-26 font-light'>{description}</p>
+    return (
+        <ReactMarkdown className='about-description-content my-16 text-16 768:text-22 font-light' remarkPlugins={[remarkGfm]}>
+            {description}
+        </ReactMarkdown>
+    )
 }
 export default AboutDescription

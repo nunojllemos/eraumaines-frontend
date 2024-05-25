@@ -13,18 +13,18 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative pb-4'>
-                    <Grid>
-                        <Col className='z-0 row-start-2 1280:row-start-1 mt-24 768:my-0' mobileCols={2} tabletCols={12} desktopCols={8}>
+                    <Grid className='py-48 items-center'>
+                        <Col className='z-0 row-start-2 1280:row-start-1 mt-24 768:my-0' mobileCols={2} tabletCols={12} offsetDesktop={2} desktopCols={4}>
                             {url && (
                                 <MouseParallax strength={0.04}>
-                                    <ImageContainer src={getImage(url)} aspectRatio='16/9' />
+                                    <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
                                 </MouseParallax>
                             )}
                         </Col>
-                        <Col className='z-1' mobileCols={2} tabletCols={12} desktopCols={4}>
-                            <h2 className='relative mb-3 font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
-                            <span className='relative default-text font-light'>{role}</span>
-                            <div className='hidden 1024:block'>
+                        <Col className='z-1' mobileCols={2} tabletCols={12} offsetDesktop={8} desktopCols={3}>
+                            <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
+                            <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
+                            <div className='hidden 1024:block text-justify'>
                                 <AboutDescription description={description} />
                             </div>
                         </Col>
@@ -40,17 +40,17 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative'>
-                    <Grid>
-                        <Col className='z-1' mobileCols={2} tabletCols={12} desktopCols={4}>
-                            <h2 className='relative mb-3 font-power-grotesk text-50 768:text-70 1280:text-90 leading-none'>{name}</h2>
-                            <span className='relative block default-text font-light'>{role}</span>
-                            <div className='hidden 1024:block'>
+                    <Grid className='py-48 items-center'>
+                        <Col className='z-1' mobileCols={2} tabletCols={12} desktopCols={3} offsetDesktop={1}>
+                            <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
+                            <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
+                            <div className='hidden 1024:block text-justify'>
                                 <AboutDescription description={description} />
                             </div>
                         </Col>
-                        <Col className='z-0 mt-24 768:my-0' mobileCols={2} tabletCols={12} desktopCols={8}>
+                        <Col className='z-0 mt-24 768:my-0' mobileCols={2} tabletCols={12} offsetDesktop={6} desktopCols={4}>
                             <MouseParallax strength={0.04}>
-                                <ImageContainer src={getImage(url)} aspectRatio='16/9' />
+                                <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
                             </MouseParallax>
                         </Col>
                         <div className='1024:hidden col-span-2 768:col-span-12'>
