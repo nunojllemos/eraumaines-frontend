@@ -4,6 +4,8 @@ import HomePersonLeft from '@/organisms/HomePersonLeft'
 import HomePersonRight from '@/organisms/HomePersonRight'
 
 const AboutSection = ({ title, persons }) => {
+    if (!persons || persons.length === 0) return
+
     return (
         persons.length > 0 && (
             <div className='pt-12'>

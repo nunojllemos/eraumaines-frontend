@@ -7,8 +7,9 @@ import Grid from '@/components/styled-components/layout/Grid'
 import { getImage } from '@/utils/utils'
 
 const Faq = ({ data }) => {
-    const { title, media, faqs } = data
-    const { url } = media.data?.attributes || {}
+    const title = data?.title
+    const faqs = data?.faqs
+    const url = data?.media.data?.attributes
 
     return (
         <main className='pb-16'>
@@ -22,7 +23,7 @@ const Faq = ({ data }) => {
                             </div>
                         </Col>
                     )}
-                    {faqs.length > 0 && (
+                    {faqs?.length > 0 && (
                         <Col tablet={800} mobileCols={2} tabletCols={6}>
                             <div className='flex flex-col'>
                                 {faqs.map(faq => {
@@ -41,22 +42,18 @@ export default Faq
 
 export async function getStaticProps(context) {
     const { locale } = context
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const populateQuery = 'populate=*'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'faq'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
 
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
     return {
         props: {
-            data: data.data.attributes,
+            data: data?.data?.attributes || null,
         },
         revalidate: 10,
     }

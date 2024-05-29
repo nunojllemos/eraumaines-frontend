@@ -10,7 +10,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
     const [isMuted, setIsMuted] = useState(true)
 
     const handleMute = () => setIsMuted(prev => !prev)
-    const isVideo = typeOfMedia.includes('video')
+    const isVideo = typeOfMedia?.includes('video')
 
     return (
         <div className='h-[90vh] 1024:h-screen mt-[-87px] 1280:mt-[-97px] relative'>

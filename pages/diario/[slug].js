@@ -12,22 +12,19 @@ import remarkGfm from 'remark-gfm'
 import { getImage } from '@/utils/utils'
 
 const SlugDiary = ({ data }) => {
-    const {
-        publishedAt,
-        title,
-        cover,
-        content,
-        posts: { data: relatedPosts },
-    } = data.attributes
-    const { url, caption } = cover?.data?.attributes || {}
+    const title = data?.attributes?.title
+    const publishedAt = data?.attributes?.publishedAt
+    const content = data?.attributes?.content
+    const relatedPosts = data?.attributes?.posts?.data
+    const url = data?.attributes?.cover?.data?.attributes?.url
+    const caption = data?.attributes?.cover?.data?.attributes?.caption
+
     const publishedDate = new Date(publishedAt)
     const day = publishedDate?.getDate()
     const month = publishedDate?.getMonth() + 1
     const year = publishedDate?.getFullYear()
 
     const t = useTranslation()
-
-    console.log(content)
 
     return (
         <main className='py-16'>
@@ -72,9 +69,12 @@ const SlugDiary = ({ data }) => {
                     <Container>
                         <Grid rowGap={3}>
                             {relatedPosts?.map(post => {
-                                const { id, attributes } = post
-                                const { title, description, cover, slug } = attributes
-                                const { data: coverSrc } = cover
+                                const id = post?.id
+                                const title = post?.attributes?.title
+                                const description = post?.attributes?.description
+                                const cover = post?.attributes?.cover
+                                const slug = post?.attributes?.slug
+                                const coverSrc = post?.attributes?.cover?.data
 
                                 return (
                                     <Col key={id} mobileCols={2} tabletCols={4}>
@@ -126,15 +126,11 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const { locale } = context
     const slug = context.params.slug
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const queryParams = 'populate=*,cover,posts.cover'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'posts'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
     const filtersQuery = `filters[slug][$eq]=${slug}`
 
     const res = await fetch(`${baseApi}/${contentType}?${filtersQuery}&${queryParams}&${localeQuery}`)
@@ -142,7 +138,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            data: data.data[0],
+            data: data.data[0] || null,
         },
         revalidate: 10,
     }

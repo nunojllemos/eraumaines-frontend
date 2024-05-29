@@ -1,4 +1,8 @@
-export const getImage = url => `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`
+export const getImage = url => {
+    if (!url) return
+
+    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`
+}
 
 export const slugify = string => {
     return String(string)

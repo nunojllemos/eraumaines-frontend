@@ -4,8 +4,16 @@ import AboutSection from '@/components/organisms/AboutSection'
 import WorkSection from '@/components/organisms/WorkSection'
 
 export default function Home({ data }) {
-    const { hero_title, hero_media, meta_title, meta_description, about_title, stories_title, persons, stories, background_color } = data
-    const { url, mime } = hero_media.data.attributes
+    const hero_title = data?.hero_title
+    const meta_title = data?.meta_title
+    const meta_description = data?.meta_description
+    const about_title = data?.about_title
+    const stories_title = data?.stories_title
+    const persons = data?.persons
+    const stories = data?.stories
+    const background_color = data?.background_color
+    const url = data?.hero_media?.data?.attributes?.url
+    const mime = data?.hero_media?.data?.attributes?.mime
 
     return (
         <>
@@ -21,23 +29,19 @@ export default function Home({ data }) {
 
 export async function getStaticProps(context) {
     const { locale } = context
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const populateQuery =
         'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover,stories.story.category,stories.reviews,background_color'
     const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
     const contentType = 'home'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
 
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
     return {
         props: {
-            data: data.data.attributes,
+            data: data?.data?.attributes || null,
         },
         revalidate: 10,
     }

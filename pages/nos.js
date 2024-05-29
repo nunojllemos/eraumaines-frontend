@@ -14,7 +14,10 @@ const Nos = ({ data }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const { description_01, description_02, persons, reviews } = data
+    const description_01 = data?.description_01
+    const description_02 = data?.description_02
+    const persons = data?.persons
+    const reviews = data?.reviews
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -81,7 +84,7 @@ const Nos = ({ data }) => {
                             />
                         )
                     })}
-                {reviews.data.length > 0 && (
+                {reviews?.data?.length > 0 && (
                     <section className='mt-14 768:mt-32'>
                         <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
                         <Container>
@@ -126,22 +129,18 @@ export default Nos
 
 export async function getStaticProps(context) {
     const { locale } = context
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const populateQuery = 'populate=*,persons,persons.media,reviews'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'about'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
 
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
     return {
         props: {
-            data: data.data.attributes,
+            data: data?.data?.attributes || null,
         },
         revalidate: 10,
     }

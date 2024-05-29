@@ -6,6 +6,8 @@ import WorkSectionCard from '@/molecules/WorkSectionCard'
 import StoriesGridElement from './StoriesGridElement'
 
 const WorkSection = ({ stories, title, backgroundColor }) => {
+    if (!stories || stories.length === 0) return
+
     return (
         <div className='mb-8'>
             {title && <AnimatedTitle>{`${title} . ${title} . ${title} . ${title} .`}</AnimatedTitle>}

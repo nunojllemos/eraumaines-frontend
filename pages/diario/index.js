@@ -10,13 +10,14 @@ import { getImage } from '@/utils/utils'
 
 const Diario = ({ data, currentPage, diary }) => {
     const t = useTranslation()
-    const TOTAL_PAGES = data.meta.pagination.pageCount
-    const { data: posts } = data
-    const {
-        images: { data: images },
-    } = diary.data.attributes
+    const posts = data?.data
+    const images = diary?.images?.data
+    const TOTAL_PAGES = data?.meta?.pagination?.pageCount
     let pages = []
     let randomNumbers = []
+
+    // console.log('data_', data)
+    // console.log('diary_', diary)
 
     const randomize = () => {
         const numbers = images.map((image, index) => index)
@@ -40,14 +41,14 @@ const Diario = ({ data, currentPage, diary }) => {
 
     return (
         <main className='pb-16'>
-            {posts.length > 0 && (
+            {posts?.length > 0 && (
                 <>
                     <AnimatedTitle>{`${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} . ${t.diary.title} .`}</AnimatedTitle>
                     <Container>
                         <Grid rowGap={2}>
                             <Col mobileCols={2} tabletCols={8}>
                                 <div className='flex flex-col gap-8'>
-                                    {posts[0] && (
+                                    {posts?.[0] && (
                                         <DiaryCard
                                             src={getImage(posts[0].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='16/9'
@@ -56,7 +57,7 @@ const Diario = ({ data, currentPage, diary }) => {
                                             href={`diario/${posts[0].attributes?.slug}`}
                                         />
                                     )}
-                                    {posts[1] && (
+                                    {posts?.[1] && (
                                         <DiaryCard
                                             src={getImage(posts[1].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='16/9'
@@ -70,7 +71,7 @@ const Diario = ({ data, currentPage, diary }) => {
 
                             <Col mobileCols={2} tabletCols={4}>
                                 <div className='flex flex-col gap-8 h-full'>
-                                    {posts[2] && (
+                                    {posts?.[2] && (
                                         <DiaryCard
                                             src={getImage(posts[2].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='4/3'
@@ -80,7 +81,9 @@ const Diario = ({ data, currentPage, diary }) => {
                                         />
                                     )}
                                     <div className='aspect-square 768:flex-1 relative'>
-                                        <Image className='object-contain' src={getImage(images[randomNumbers[0]].attributes.url)} alt='' fill={true} />
+                                        {images[randomNumbers[0]].attributes.url && (
+                                            <Image className='object-contain' src={getImage(images[randomNumbers[0]].attributes.url)} alt='' fill={true} />
+                                        )}
                                     </div>
                                 </div>
                             </Col>
@@ -88,9 +91,11 @@ const Diario = ({ data, currentPage, diary }) => {
                             <Col mobileCols={2} tabletCols={6}>
                                 <div className='flex flex-col gap-8'>
                                     <div className='aspect-[3/2] 768:flex-1 relative'>
-                                        <Image className='object-contain' src={getImage(images[randomNumbers[1]].attributes.url)} alt='' fill={true} />
+                                        {images[randomNumbers[1]].attributes.url && (
+                                            <Image className='object-contain' src={getImage(images[randomNumbers[1]].attributes.url)} alt='' fill={true} />
+                                        )}
                                     </div>
-                                    {posts[3] && (
+                                    {posts?.[3] && (
                                         <DiaryCard
                                             src={getImage(posts[3].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='4/3'
@@ -104,7 +109,7 @@ const Diario = ({ data, currentPage, diary }) => {
 
                             <Col mobileCols={2} tabletCols={6}>
                                 <div className='flex flex-col gap-8 h-full'>
-                                    {posts[4] && (
+                                    {posts?.[4] && (
                                         <DiaryCard
                                             src={getImage(posts[4].attributes?.cover?.data?.attributes?.url)}
                                             aspectRatio='4/3'
@@ -114,7 +119,9 @@ const Diario = ({ data, currentPage, diary }) => {
                                         />
                                     )}
                                     <div className='768:flex-1 relative'>
-                                        <Image className='object-contain' src={getImage(images[randomNumbers[2]].attributes.url)} alt='' fill={true} />
+                                        {images[randomNumbers[2]]?.attributes?.url && (
+                                            <Image className='object-contain' src={getImage(images[randomNumbers[2]].attributes.url)} alt='' fill={true} />
+                                        )}
                                     </div>
                                 </div>
                             </Col>
@@ -154,17 +161,15 @@ export async function getServerSideProps(context) {
     const { locale, query } = context
     const NUMBER_OF_POSTS_PER_PAGE = 5
     const CURRENT_PAGE = query.page || 1
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const paginationQuery = `pagination[pageSize]=${NUMBER_OF_POSTS_PER_PAGE}`
     const pageQuery = `pagination[page]=${CURRENT_PAGE}`
     const populateQuery = 'populate=*'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'posts'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
+
+    console.log(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}&${paginationQuery}&${pageQuery}`)
 
     const [postsData, diaryData] = await Promise.all([
         fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}&${paginationQuery}&${pageQuery}`),
@@ -174,12 +179,14 @@ export async function getServerSideProps(context) {
     const data = await postsData.json()
     const diary = await diaryData.json()
 
+    console.log(data)
+
     return {
         props: {
             data,
-            diary,
+            diary: diary?.data?.attributes || null,
             currentPage: CURRENT_PAGE,
         },
-        // revalidate: 10,
+        revalidate: 10,
     }
 }

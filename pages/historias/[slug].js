@@ -11,15 +11,24 @@ import useTranslation from '@/hooks/useTranslation'
 import { getImage } from '@/utils/utils'
 
 const SlugHistorias = ({ data }) => {
-    const { category, cover, content, title, location, publishedAt, related } = data?.attributes
-    const { url, mime } = cover?.data?.attributes || {}
-    const { name: categoryName } = category?.data?.attributes
+    const content = data?.attributes?.content
+    const title = data?.attributes?.title
+    const location = data?.attributes?.location
+    const publishedAt = data?.attributes?.publishedAt
+    const related = data?.attributes?.related
+    const url = data?.attributes?.cover?.data?.attributes?.url
+    const mime = data?.attributes?.cover?.data?.attributes?.mime
+    const categoryName = data?.attributes?.category?.data?.attributes?.name
     const t = useTranslation()
 
     const publishedDate = new Date(publishedAt)
     const day = publishedDate?.getDate()
     const month = publishedDate?.getMonth() + 1
     const year = publishedDate?.getFullYear()
+
+    console.log(mime)
+    console.log(location)
+    console.log(categoryName)
 
     return (
         <main className='py-16'>
@@ -34,7 +43,7 @@ const SlugHistorias = ({ data }) => {
                             )}
                         </Col>
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={8} offsetDesktop={2}>
-                            {mime.includes('video') ? (
+                            {mime?.includes('video') && url ? (
                                 <video muted autoPlay playsInline loop src={getImage(url)}></video>
                             ) : (
                                 <figure>
@@ -63,17 +72,20 @@ const SlugHistorias = ({ data }) => {
                 </Container>
             </div>
 
-            {related.data.length > 0 && (
+            {related?.data?.length > 0 && (
                 <>
                     <AnimatedTitle>mais histórias . mais histórias . mais histórias . </AnimatedTitle>
                     <Container>
                         <Grid rowGap={3}>
-                            {related.data.map(relatedStory => {
-                                console.table(relatedStory.attributes)
-                                const { id, attributes } = relatedStory
-                                const { slug, title, description, cover, location, category } = attributes
-                                const { relateCategoryName } = category?.data?.attributes?.name || ''
-                                const { url, mime } = cover?.data?.attributes || {}
+                            {related?.data?.map(relatedStory => {
+                                const id = relatedStory
+                                const slug = relatedStory?.attributes
+                                const title = relatedStory?.attributes
+                                const description = relatedStory?.attributes
+                                const location = relatedStory?.attributes
+                                const relateCategoryName = relatedStory?.attributes?.category?.data?.attributes?.name || ''
+                                const url = relatedStory?.attributes?.data?.attributes
+                                const mime = relatedStory?.attributes?.data?.attributes
 
                                 return (
                                     <Col key={`related-story-${id}`} mobileCols={2} tabletCols={4}>
@@ -128,15 +140,11 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const { locale } = context
     const slug = context.params.slug
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const queryParams = 'populate=*,related,related.cover,related.category,category,cover'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'stories'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
     const filtersQuery = `filters[slug][$eq]=${slug}`
 
     const res = await fetch(`${baseApi}/${contentType}?${filtersQuery}&${queryParams}&${localeQuery}`)
@@ -144,7 +152,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            data: data.data[0],
+            data: data?.data[0] || null,
         },
         revalidate: 10,
     }

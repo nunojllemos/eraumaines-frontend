@@ -8,8 +8,9 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 const termos = ({ data }) => {
-    const { title, media, content } = data
-    const { url } = media.data.attributes || {}
+    const title = data?.title
+    const content = data?.content
+    const url = data?.media.data.attributes
 
     return (
         <main className='pb-16'>
@@ -39,22 +40,18 @@ export default termos
 
 export async function getStaticProps(context) {
     const { locale } = context
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const populateQuery = 'populate=*'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'term'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
 
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
     return {
         props: {
-            data: data.data.attributes,
+            data: data?.data?.attributes || null,
         },
         revalidate: 10,
     }

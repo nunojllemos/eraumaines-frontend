@@ -117,11 +117,13 @@ const Historias = ({ stories }) => {
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
                         >
                             <div className='flex flex-col transition-all'>
-                                {newStoriesArray.length > stories.length &&
-                                    newStoriesArray.map(story => {
-                                        const { id, attributes } = story
-                                        const { title, location, category, slug } = attributes || {}
-                                        const { name: categoryName } = category?.data?.attributes || {}
+                                {newStoriesArray?.length > stories?.length &&
+                                    newStoriesArray?.map(story => {
+                                        const id = story?.id
+                                        const title = story?.attributes?.title
+                                        const location = story?.attributes?.location
+                                        const slug = story?.attributes?.slug
+                                        const categoryName = story?.attributes?.category?.data?.attributes?.name
 
                                         return (
                                             <Link key={`stories-title-${id}`} href={`/historias/${slug}`} className='client-name'>
@@ -167,11 +169,13 @@ const Historias = ({ stories }) => {
                                     </div>
                                 </div>
                                 {storiesCopy.map((story, index) => {
-                                    const { id, attributes } = story
-                                    const { cover, title, location, category, slug } = attributes
-                                    const { name: categoryName } = category?.data?.attributes || {}
-                                    const url = cover?.data?.attributes?.url
-                                    const mime = cover?.data?.attributes?.mime
+                                    const id = story?.id
+                                    const title = story?.attributes?.title
+                                    const location = story?.attributes?.location
+                                    const slug = story?.attributes?.slug
+                                    const categoryName = story?.attributes?.category?.data?.attributes
+                                    const url = story?.attributes?.cover?.data?.attributes?.url
+                                    const mime = story?.attributes?.cover?.data?.attributes?.mime
 
                                     return (
                                         <StoryCard
@@ -210,15 +214,11 @@ export default Historias
 
 export async function getStaticProps(context) {
     const { locale } = context
-    let strapiLocale
-
-    if (locale === 'pt') strapiLocale = 'pt-PT'
-    if (locale === 'en') strapiLocale = 'en'
 
     const populateQuery = 'populate=*'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'stories'
-    const localeQuery = `locale=${strapiLocale}`
+    const localeQuery = `locale=${locale}`
 
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
