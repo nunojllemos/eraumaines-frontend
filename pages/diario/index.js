@@ -16,9 +16,6 @@ const Diario = ({ data, currentPage, diary }) => {
     let pages = []
     let randomNumbers = []
 
-    // console.log('data_', data)
-    // console.log('diary_', diary)
-
     const randomize = () => {
         const numbers = images.map((image, index) => index)
         let i = numbers.length
@@ -169,8 +166,6 @@ export async function getServerSideProps(context) {
     const contentType = 'posts'
     const localeQuery = `locale=${locale}`
 
-    console.log(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}&${paginationQuery}&${pageQuery}`)
-
     const [postsData, diaryData] = await Promise.all([
         fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}&${paginationQuery}&${pageQuery}`),
         fetch(`${baseApi}/diary?${populateQuery}&${localeQuery}`),
@@ -179,14 +174,11 @@ export async function getServerSideProps(context) {
     const data = await postsData.json()
     const diary = await diaryData.json()
 
-    console.log(data)
-
     return {
         props: {
             data,
             diary: diary?.data?.attributes || null,
             currentPage: CURRENT_PAGE,
         },
-        revalidate: 10,
     }
 }

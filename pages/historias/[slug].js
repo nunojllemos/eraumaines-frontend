@@ -26,10 +26,6 @@ const SlugHistorias = ({ data }) => {
     const month = publishedDate?.getMonth() + 1
     const year = publishedDate?.getFullYear()
 
-    console.log(mime)
-    console.log(location)
-    console.log(categoryName)
-
     return (
         <main className='py-16'>
             <div className='pb-16 768:pb-32'>

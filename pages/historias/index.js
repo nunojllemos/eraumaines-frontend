@@ -20,7 +20,6 @@ const Historias = ({ stories }) => {
     const [newStoriesArray, setNewStoriesArray] = useState(...stories)
 
     const storiesCopy = useMemo(() => {
-        console.log('inside')
         return new Array(...stories).reverse()
     }, [stories])
 
