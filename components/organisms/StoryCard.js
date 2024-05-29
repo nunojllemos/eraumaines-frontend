@@ -39,13 +39,13 @@ const StoryCard = ({ mime, slug, url, title, location, categoryName }) => {
                     </Link>
                 )
             )}
-            <div className='transition-opacity opacity-0 absolute bottom-4 left-4 fix-hover:group-hover:opacity-100 text-white text-24 leading-none'>
+            <div className='pointer-events-none transition-opacity opacity-0 absolute bottom-4 left-4 fix-hover:group-hover:opacity-100 text-white text-24 leading-none'>
                 <span className='whitespace-nowrap'>{title}</span>
                 <span className='inline-block w-4 ml-2'>
                     <ExternalLink />
                 </span>
             </div>
-            <span className='874:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16 414:text-18'>
+            <span className='pointer-events-none 874:hidden absolute font-power-grotesk top-[calc(100%_+_6px)] left-0 block text-16 414:text-18'>
                 {title}
                 <span className='inline-block w-3 ml-2'>
                     <ExternalLink />

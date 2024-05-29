@@ -101,7 +101,7 @@ const Historias = ({ stories }) => {
     return (
         <main className='mb-8 1024:mb-0'>
             <Container>
-                <Grid desktop={1024}>
+                <Grid className='items-center' desktop={1024}>
                     <Col
                         desktop={1024}
                         mobileCols={1}

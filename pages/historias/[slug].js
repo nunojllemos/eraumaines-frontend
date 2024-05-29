@@ -72,7 +72,7 @@ const SlugHistorias = ({ data }) => {
                                 console.table(relatedStory.attributes)
                                 const { id, attributes } = relatedStory
                                 const { slug, title, description, cover, location, category } = attributes
-                                const { name: relateCategoryName } = category.data.attributes
+                                const { relateCategoryName } = category?.data?.attributes?.name || ''
                                 const { url, mime } = cover?.data?.attributes || {}
 
                                 return (
