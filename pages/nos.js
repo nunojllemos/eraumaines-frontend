@@ -21,7 +21,7 @@ const Nos = ({ data }) => {
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
-        className: 'h-[3.75em] text-24 768:text-28 1280:text-50 font-power-grotesk swiper-names mb-12',
+        className: 'h-[3.75em] text-24 768:text-28 font-power-grotesk swiper-names mb-12',
         direction: 'vertical',
         slidesPerView: 3,
         spaceBetween: 0,
@@ -40,7 +40,7 @@ const Nos = ({ data }) => {
         autoHeight: true,
         slidesPerView: 1,
         spaceBetween: 0,
-        speed: 800,
+        speed: 1000,
         mousewheel: false,
         allowTouchMove: false,
         loop: true,
@@ -88,9 +88,19 @@ const Nos = ({ data }) => {
                     <section className='mt-14 768:mt-32'>
                         <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
                         <Container>
-                            <Grid>
-                                <Col mobileCols={2} tabletCols={5} desktopCols={4}>
+                            <Grid className='pt-48'>
+                                <Col mobileCols={2} tabletCols={5} offsetDesktop={1} desktopCols={4}>
                                     <Swiper {...namesSwiperOptions}>
+                                        {reviews.data.map(slide => {
+                                            const { id, attributes } = slide
+                                            const { author } = attributes
+
+                                            return (
+                                                <SwiperSlide key={`name-slide-${id}`}>
+                                                    <span className='block leading-tight'>{author}</span>
+                                                </SwiperSlide>
+                                            )
+                                        })}
                                         {reviews.data.map(slide => {
                                             const { id, attributes } = slide
                                             const { author } = attributes
@@ -103,14 +113,30 @@ const Nos = ({ data }) => {
                                         })}
                                     </Swiper>
                                 </Col>
-                                <Col mobileCols={2} tabletCols={7} desktopCols={8}>
+                                <Col mobileCols={2} tabletCols={7} offsetDesktop={6} desktopCols={4}>
                                     <Swiper {...contentSwiperOptions}>
                                         {reviews.data.map(slide => {
                                             const { id, attributes } = slide
                                             const { content } = attributes
 
                                             return (
-                                                <SwiperSlide key={`content-slide-${id}`} className='font-light leading-tight'>
+                                                <SwiperSlide
+                                                    key={`content-slide-${id}`}
+                                                    className='text-16 768:text-22 font-light leading-tight text-justify !transition-all'
+                                                >
+                                                    {content}
+                                                </SwiperSlide>
+                                            )
+                                        })}
+                                        {reviews.data.map(slide => {
+                                            const { id, attributes } = slide
+                                            const { content } = attributes
+
+                                            return (
+                                                <SwiperSlide
+                                                    key={`content-slide-${id}`}
+                                                    className='text-16 768:text-22 font-light leading-tight text-justify !transition-all'
+                                                >
                                                     {content}
                                                 </SwiperSlide>
                                             )

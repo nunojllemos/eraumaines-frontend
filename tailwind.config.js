@@ -12,6 +12,7 @@ module.exports = {
             1024: '1024px',
             1140: '1140px',
             1280: '1280px',
+            1366: '1366px',
             1440: '1440px',
             1680: '1680px',
             'fix-hover': { raw: '(hover: hover) and (pointer: fine)' },

@@ -8,54 +8,53 @@ import { MouseParallax } from 'react-just-parallax'
 import { getImage, slugify } from '@/utils/utils'
 
 const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => {
-    return isLeft ? (
-        <section className='mt-14' id={slugify(name)}>
+    return (
+        <section className='1024:mt-14' id={slugify(name)}>
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative pb-4'>
-                    <Grid className='py-48 items-center'>
-                        <Col className='z-0 row-start-2 1280:row-start-1 mt-24 768:my-0' mobileCols={2} tabletCols={12} offsetDesktop={2} desktopCols={4}>
-                            {url && (
-                                <MouseParallax strength={0.04}>
-                                    <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
-                                </MouseParallax>
-                            )}
-                        </Col>
-                        <Col className='z-1' mobileCols={2} tabletCols={12} offsetDesktop={8} desktopCols={3}>
-                            <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
-                            <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
-                            <div className='hidden 1024:block text-justify'>
-                                <AboutDescription description={description} />
-                            </div>
-                        </Col>
-                        <div className='1024:hidden col-span-2 768:col-span-12'>
-                            <AboutDescription description={description} />
-                        </div>
-                    </Grid>
-                </div>
-            </Container>
-        </section>
-    ) : (
-        <section className='mt-14' id={slugify(name)}>
-            <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
-            <Container>
-                <div className='relative'>
-                    <Grid className='py-48 items-center'>
-                        <Col className='z-1' mobileCols={2} tabletCols={12} desktopCols={3} offsetDesktop={1}>
-                            <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
-                            <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
-                            <div className='hidden 1024:block text-justify'>
-                                <AboutDescription description={description} />
-                            </div>
-                        </Col>
-                        <Col className='z-0 mt-24 768:my-0' mobileCols={2} tabletCols={12} offsetDesktop={6} desktopCols={4}>
-                            <MouseParallax strength={0.04}>
-                                <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
-                            </MouseParallax>
-                        </Col>
-                        <div className='1024:hidden col-span-2 768:col-span-12'>
-                            <AboutDescription description={description} />
-                        </div>
+                    <Grid className='py-24 1024:py-48 items-center'>
+                        {isLeft ? (
+                            <>
+                                <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-3 1366:row-start-1'>
+                                    {url && (
+                                        <MouseParallax strength={0.04}>
+                                            <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
+                                        </MouseParallax>
+                                    )}
+                                </div>
+                                <div className='z-0 row-start-1 768:my-0 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1440:col-span-3 1440:col-start-9 1366:col-start-8'>
+                                    <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
+                                    <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
+                                    <div className='hidden 1366:block text-justify'>
+                                        <AboutDescription description={description} />
+                                    </div>
+                                </div>
+                                <div className='1366:hidden col-span-2 768:col-span-8 768:col-start-3'>
+                                    <AboutDescription description={description} />
+                                </div>{' '}
+                            </>
+                        ) : (
+                            <>
+                                <div className='z-0 1366:my-0 row-start-1 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1440:col-span-3 1366:col-start-2 1366:row-start-1 1440:col-start-2'>
+                                    <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
+                                    <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
+                                    <div className='hidden 1366:block text-justify'>
+                                        <AboutDescription description={description} />
+                                    </div>
+                                </div>
+
+                                <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-7 1366:row-start-1'>
+                                    <MouseParallax strength={0.04}>
+                                        <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
+                                    </MouseParallax>
+                                </div>
+
+                                <div className='1366:hidden col-span-2 768:col-span-8 768:col-start-3'>
+                                    <AboutDescription description={description} />
+                                </div>
+                            </>
+                        )}
                     </Grid>
                 </div>
             </Container>

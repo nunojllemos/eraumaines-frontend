@@ -21,7 +21,7 @@ const AccordionItem = ({ content, title }) => {
 
     return (
         <Collapsible {...collapsibleOptions}>
-            <div onClick={closeAccordion} className='cursor-pointer text-16 1024:text-18'>
+            <div onClick={closeAccordion} className='terms-content cursor-pointer text-16 1024:text-18'>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                 <p></p>
             </div>
