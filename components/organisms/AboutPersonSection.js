@@ -13,7 +13,7 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative pb-4'>
-                    <Grid className='py-24 1024:py-48 items-center'>
+                    <Grid className='py-16 768:py-24 1024:py-48 items-center'>
                         {isLeft ? (
                             <>
                                 <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-3 1366:row-start-1'>

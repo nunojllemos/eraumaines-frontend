@@ -85,11 +85,11 @@ const Nos = ({ data }) => {
                         )
                     })}
                 {reviews?.data?.length > 0 && (
-                    <section className='mt-14 768:mt-32'>
+                    <section>
                         <AnimatedTitle>{`${t.about.reviews} . ${t.about.reviews} . ${t.about.reviews} . `}</AnimatedTitle>
                         <Container>
-                            <Grid className='pt-48'>
-                                <Col mobileCols={2} tabletCols={5} offsetDesktop={1} desktopCols={4}>
+                            <Grid className='pt-12 768:pt-24 1024:pt-48'>
+                                <div className='col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-2'>
                                     <Swiper {...namesSwiperOptions}>
                                         {reviews.data.map(slide => {
                                             const { id, attributes } = slide
@@ -112,8 +112,8 @@ const Nos = ({ data }) => {
                                             )
                                         })}
                                     </Swiper>
-                                </Col>
-                                <Col mobileCols={2} tabletCols={7} offsetDesktop={6} desktopCols={4}>
+                                </div>
+                                <div className='mt-12 1366:mt-0 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-7'>
                                     <Swiper {...contentSwiperOptions}>
                                         {reviews.data.map(slide => {
                                             const { id, attributes } = slide
@@ -142,7 +142,7 @@ const Nos = ({ data }) => {
                                             )
                                         })}
                                     </Swiper>
-                                </Col>
+                                </div>
                             </Grid>
                         </Container>
                     </section>
