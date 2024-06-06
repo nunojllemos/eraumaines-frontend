@@ -1,6 +1,5 @@
 import Container from '@/layout/Container'
 import Grid from '@/layout/Grid'
-import Col from '@/layout/Col'
 import ImageContainer from '@/atoms/ImageContainer'
 import AnimatedTitle from '@/molecules/AnimatedTitle'
 import AboutDescription from '@/atoms/AboutDescription'
