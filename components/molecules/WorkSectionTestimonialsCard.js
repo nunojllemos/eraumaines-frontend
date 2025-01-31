@@ -26,7 +26,7 @@ const WorkSectionTestimonialsCard = ({ reviews, invertColors = false, background
 
                     return (
                         <SwiperSlide key={`work-grid-review-${id}`}>
-                            <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-subjectivity swiper-custom'>
+                            <div className='p-4 flex flex-col justify-between h-full text-20 1024:text-26 font-montserrat-alternates swiper-custom'>
                                 <p className='mb-12'>{content}</p>
                                 <div>
                                     {author && (

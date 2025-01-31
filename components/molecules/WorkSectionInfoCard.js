@@ -16,7 +16,7 @@ const WorkSectionInfoCard = ({ slug, src, aspectRatio, category, location, title
                 </div>
                 <div className='bg-black/40 h-full w-full absolute 768:fix-hover:opacity-0 fix-hover:group-hover:opacity-100 transition-opacity top-0 left-0'></div>
                 <div className='absolute bottom-0 768:fix-hover:-bottom-full text-white p-4 768:fix-hover:group-hover:bottom-0 transition-[bottom] '>
-                    {title && <p className='font-power-grotesk text-20 1024:text-26 mb-2'>{title}</p>}
+                    {title && <p className='font-montserrat-alternates text-20 1024:text-26 mb-2'>{title}</p>}
                     <div className='text-14 mb-8'>
                         {category && <p className='text-12 1024:text-16'>{category}</p>}
                         {location && <p className='text-12 1024:text-16'>{location}</p>}

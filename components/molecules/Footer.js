@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <footer className='z-1 mt-auto'>
             <Container>
-                <div className='flex flex-col-reverse justify-between w-full gap-12 py-4 border-t border-black 768:flex-row 768:gap-0'>
+                <div className='flex flex-col-reverse justify-between w-full gap-12 py-4 border-t border-[var(--text-color)] 768:flex-row 768:gap-0'>
                     <div>
                         <FooterText>&copy; Era uma Inês, {currentYear}</FooterText>
                     </div>

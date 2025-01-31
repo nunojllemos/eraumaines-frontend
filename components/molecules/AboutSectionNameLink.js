@@ -11,7 +11,7 @@ const AboutSectionNameLink = ({ name, rightPerson, leftPerson, role }) => {
         <Link
             href={href}
             className={`mb-24 col-span-2 768:col-span-4 768:row-start-1 person-details w-max ${leftPerson ? `768:col-start-7 1280:col-start-8` : ''} ${
-                rightPerson ? `768:col-start-1` : ''
+                rightPerson ? `768:col-start-1 1280:col-start-2` : ''
             } `}
         >
             <div className='flex hover-arrow items-baseline'>

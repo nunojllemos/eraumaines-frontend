@@ -3,7 +3,7 @@ import ImageContainer from '../atoms/ImageContainer'
 const WorkSectionMediaCard = ({ src, aspectRatio, alt = '', typeOfMedia }) => {
     return (
         <>
-            {typeOfMedia.includes('video') ? (
+            {typeOfMedia?.includes('video') ? (
                 <div>
                     <video muted autoPlay loop playsInline src={src} className='object-cover aspect-video'></video>
                 </div>

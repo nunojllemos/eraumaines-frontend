@@ -109,26 +109,37 @@ const SlugHistorias = ({ data }) => {
 export async function getStaticPaths() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stories`)
     const data = await res.json()
-    const posts = await data.data
+    const posts = await data?.data
 
-    const paths = posts.map(element => {
-        if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
-            return {
-                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-                enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
-            }
-        } else {
-            return {
-                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-            }
+    console.log(posts)
+
+    if (posts) {
+        const paths =
+            posts?.length > 0 &&
+            posts?.map(element => {
+                if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
+                    return {
+                        ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                        enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+                    }
+                } else {
+                    return {
+                        ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                    }
+                }
+            })
+
+        const enPost = paths[0]?.enPost
+        const ptPost = paths[0]?.ptPost
+
+        return {
+            paths: enPost ? [ptPost, enPost] : [ptPost],
+            fallback: 'blocking',
         }
-    })
-
-    const enPost = paths[0]?.enPost
-    const ptPost = paths[0]?.ptPost
+    }
 
     return {
-        paths: enPost ? [ptPost, enPost] : [ptPost],
+        paths: [],
         fallback: 'blocking',
     }
 }

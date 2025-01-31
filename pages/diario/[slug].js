@@ -101,24 +101,31 @@ export async function getStaticPaths() {
     const data = await res.json()
     const posts = await data.data
 
-    const paths = posts.map(element => {
-        if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
-            return {
-                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-                enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+    if (posts) {
+        const paths = posts.map(element => {
+            if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
+                return {
+                    ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                    enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+                }
+            } else {
+                return {
+                    ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                }
             }
-        } else {
-            return {
-                ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-            }
-        }
-    })
+        })
 
-    const enPost = paths[0]?.enPost
-    const ptPost = paths[0]?.ptPost
+        const enPost = paths[0]?.enPost
+        const ptPost = paths[0]?.ptPost
+
+        return {
+            paths: enPost ? [ptPost, enPost] : [ptPost],
+            fallback: 'blocking',
+        }
+    }
 
     return {
-        paths: enPost ? [ptPost, enPost] : [ptPost],
+        paths: [],
         fallback: 'blocking',
     }
 }

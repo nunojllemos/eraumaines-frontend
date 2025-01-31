@@ -224,7 +224,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            stories: data.data,
+            stories: data?.data || [],
         },
         revalidate: 10,
     }

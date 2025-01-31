@@ -28,17 +28,21 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
         <nav className='flex justify-end w-full h-full 768:w-auto text-40 768:text-24'>
             <Hamburger handleMenuClink={handleMenuClink} isMenuOpen={isMenuOpen} />
             <div
-                className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center bg-primary/80 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
+                className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center bg-[var(--background-color)]/80 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
                 ${isMenuOpen ? 'left-0' : 'left-full'}`}
             >
-                <ul className={`flex flex-col 768:flex-row 768:items-center ${isMenuOpen ? 'text-white' : 'text-current'}`}>
+                <ul
+                    className={`flex flex-col 768:flex-row 768:items-center ${
+                        isMenuOpen ? 'text-[var(--background-color)]' : 'text-[var(--background-color)]'
+                    }`}
+                >
                     {navLinks.map((navLink, i) => {
                         return (
                             <li className='pb-8 768:pr-8 768:py-0' key={i}>
                                 <Link
                                     prefetch={false}
                                     scroll={false}
-                                    className={`font-power-grotesk hover-menu ${
+                                    className={`font-rial hover-menu ${
                                         router.asPath !== '/' && navLink.url.toLowerCase().includes(router.asPath.split('/')[1]?.toLowerCase()) ? 'active' : ''
                                     }`}
                                     href={navLink.url}
@@ -63,9 +67,9 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                     <li className='pb-8 768:pb-0 768:pl-8 '>
                         <Link href='/alo' scroll={false}>
                             <button
-                                className={`hover-button contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-power-grotesk 768:px-14 768:py-4 1280:py-[6.5px] 1280:px-12 ${
-                                    isHomepage && !isMenuOpen ? 'is-home' : 'bg-black text-white'
-                                } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
+                                className={`hover-button contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-rial 768:px-14 768:py-4 1280:py-[6.5px] 1280:px-4 ${
+                                    isHomepage && !isMenuOpen ? 'is-home' : 'bg-[var(--background-color)] text-[var(--text-color)]'
+                                } ${isMenuOpen ? '!bg-[var(--text-color)] !text-[var(--background-color)]' : ''}`}
                             >
                                 <span className='transition-colors text-current'>{t.nav.contact}</span>
                                 <div className='w-16 shrink-0 768:ml-4 768:w-12'>
@@ -76,9 +80,11 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                     </li>
                     <li className='pb-8 768:pl-8 768:py-0 relative flex justify-center'>
                         <div
-                            className={`locale-button w-20 768:w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-power-grotesk relative group ${
-                                isHomepage && !isMenuOpen ? 'bg-white text-black' : 'bg-black text-white'
-                            } ${isMenuOpen ? '!bg-white !text-black' : ''}`}
+                            className={`locale-button w-20 768:w-16 aspect-square overflow-hidden transition-colors flex items-center justify-between rounded-md font-rial relative group ${
+                                isHomepage && !isMenuOpen
+                                    ? 'bg-[var(--text-color)] text-[var(--background-color)]'
+                                    : 'bg-[var(--background-color)] text-[var(--text-color)]'
+                            } ${isMenuOpen ? '!bg-[var(--text-color)] !text-[var(--background-color)]' : ''}`}
                         >
                             {locales?.map(_locale => (
                                 <Link

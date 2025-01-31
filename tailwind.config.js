@@ -22,7 +22,7 @@ module.exports = {
             transparent: 'transparent',
             current: 'currentColor',
             white: '#fff',
-            black: '#1c1c1c',
+            black: '#111',
             primary: '#1a1a1a',
         },
 
@@ -77,6 +77,8 @@ module.exports = {
                 subjectivity: 'Subjectivity',
                 'power-grotesk': 'Power Grotesk',
                 maginia: 'Maginia',
+                'montserrat-alternates': 'Montserrat Alternates',
+                rial: 'Rial',
             },
 
             transitionDuration: {

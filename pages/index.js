@@ -3,7 +3,7 @@ import Hero from '@/components/organisms/Hero'
 import AboutSection from '@/components/organisms/AboutSection'
 import WorkSection from '@/components/organisms/WorkSection'
 
-export default function Home({ data }) {
+export default function Home({ data, theme }) {
     const hero_title = data?.hero_title
     const meta_title = data?.meta_title
     const meta_description = data?.meta_description
@@ -14,6 +14,7 @@ export default function Home({ data }) {
     const background_color = data?.background_color
     const url = data?.hero_media?.data?.attributes?.url
     const mime = data?.hero_media?.data?.attributes?.mime
+    const backgroundColor = theme?.background_color
 
     return (
         <>
@@ -39,9 +40,15 @@ export async function getStaticProps(context) {
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 
+    const themeResponse = await fetch(`${baseApi}/theme`)
+    const themeData = await themeResponse.json()
+
+    console.log(themeData)
+
     return {
         props: {
             data: data?.data?.attributes || null,
+            theme: themeData?.data?.attributes || null,
         },
         revalidate: 10,
     }

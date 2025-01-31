@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import '@/styles/globals.scss'
 import Header from '@/organisms/Header'
@@ -8,6 +8,7 @@ import Favicon from '@/molecules/Favicon'
 import PageTransition from '@/molecules/PageTransition'
 
 export default function App({ Component, pageProps }) {
+    const [colors, setColors] = useState()
     const router = useRouter()
 
     useEffect(() => {
@@ -19,6 +20,23 @@ export default function App({ Component, pageProps }) {
             })
         }, 1000)
     }, [router.asPath])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
+
+            const themeResponse = await fetch(`${baseApi}/theme`)
+            const themeData = await themeResponse.json()
+            const { background_color, text_color, title_color } = themeData?.data?.attributes
+
+            // setColors({ background_color, text_color, title_color })
+            document.documentElement.style.setProperty('--background-color', background_color)
+            document.documentElement.style.setProperty('--text-color', text_color)
+            document.documentElement.style.setProperty('--title-color', title_color)
+        }
+
+        fetchData()
+    }, [])
 
     return (
         <>

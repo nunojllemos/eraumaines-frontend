@@ -17,9 +17,9 @@ const Hero = ({ title, media, typeOfMedia }) => {
             <div className='absolute top-0 h-full w-full z-[-1]'>
                 <HeroVideo media={media} typeOfMedia={typeOfMedia} isMuted={isMuted} />
             </div>
-            <div className='h-full w-full absolute flex flex-col justify-end  text-white pb-5'>
+            <div className='h-full w-full absolute flex flex-col justify-end text-[var(--text-color)] pb-5'>
                 <Container>
-                    {title && <h1 className='font-maginia w-1/2 768:w-[300px] text-80 768:text-100 1280:text-120 leading-[0.90]'>{title}</h1>}
+                    {title && <h1 className='font-rial w-1/2 768:w-[300px] text-80 768:text-100 1280:text-120'>{title}</h1>}
                     <div className='flex items-center justify-between mt-20'>
                         <div className='hover-arrow'>
                             <InternalLink href='/historias' text={t.homepage.hero.link} />
@@ -27,7 +27,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
                         {isVideo && (
                             <button
                                 onClick={handleMute}
-                                className='transition-colors flex items-center justify-center bg-white text-black w-14 h-14 rounded-full fix-hover:hover:bg-black fix-hover:hover:text-white'
+                                className='transition-colors flex items-center justify-center bg-[var(--text-color)] text-[var(--background-color)] w-14 h-14 rounded-full fix-hover:hover:bg-[var(--background-color] fix-hover:hover:text-[var(--text-color)]'
                             >
                                 <div className='w-8'>{isMuted ? <Volume /> : <Mute />}</div>
                             </button>
