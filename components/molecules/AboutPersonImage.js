@@ -9,9 +9,7 @@ const AboutPersonImage = ({ leftPerson, rightPerson, image, alt, name }) => {
                 leftPerson ? `768:col-start-1 1280:col-start-2` : ''
             } ${rightPerson ? `768:col-start-7 1280:col-start-7` : ''}`}
         >
-            <div className='brush-stroke-mask'>
-                <ImageContainer forceHeight={false} src={getImage(image)} alt={alt} aspectRatio='3/2' sizes='(min-width: 768px) 45vw, 100vw' />
-            </div>
+            <ImageContainer forceHeight={false} src={getImage(image)} alt={alt} aspectRatio='3/2' sizes='(min-width: 768px) 45vw, 100vw' />
             <HomePersonMarqueeSection name={name} />
         </div>
     )
