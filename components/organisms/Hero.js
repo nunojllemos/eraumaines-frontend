@@ -27,7 +27,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
                         {isVideo && (
                             <button
                                 onClick={handleMute}
-                                className='transition-colors flex items-center justify-center bg-[var(--text-color)] text-[var(--background-color)] w-14 h-14 rounded-full fix-hover:hover:bg-[var(--background-color] fix-hover:hover:text-[var(--text-color)]'
+                                className='transition-colors flex items-center justify-center bg-[var(--text-color)] text-[var(--background-color)] w-14 h-14 rounded-full fix-hover:hover:bg-[var(--background-color)] fix-hover:hover:text-[var(--text-color)]'
                             >
                                 <div className='w-8'>{isMuted ? <Volume /> : <Mute />}</div>
                             </button>
