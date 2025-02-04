@@ -18,10 +18,10 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
             title: t.nav.histories,
             url: '/historias',
         },
-        {
-            title: t.nav.diary,
-            url: '/diario',
-        },
+        // {
+        //     title: t.nav.diary,
+        //     url: '/diario',
+        // },
     ]
 
     return (
@@ -31,11 +31,7 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                 className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center bg-[var(--background-color)]/80 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
                 ${isMenuOpen ? 'left-0' : 'left-full'}`}
             >
-                <ul
-                    className={`flex flex-col 768:flex-row 768:items-center ${
-                        isMenuOpen ? 'text-[var(--background-color)]' : 'text-[var(--background-color)]'
-                    }`}
-                >
+                <ul className={`flex flex-col 768:flex-row 768:items-center`}>
                     {navLinks.map((navLink, i) => {
                         return (
                             <li className='pb-8 768:pr-8 768:py-0' key={i}>
@@ -68,7 +64,7 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                         <Link href='/alo' scroll={false}>
                             <button
                                 className={`hover-button contact-button transition-colors w-full flex items-center justify-between px-11 py-2 border-none rounded-md font-rial 768:px-14 768:py-4 1280:py-[6.5px] 1280:px-4 ${
-                                    isHomepage && !isMenuOpen ? 'is-home' : 'bg-[var(--background-color)] text-[var(--text-color)]'
+                                    isHomepage && !isMenuOpen ? 'is-home' : ''
                                 } ${isMenuOpen ? '!bg-[var(--text-color)] !text-[var(--background-color)]' : ''}`}
                             >
                                 <span className='transition-colors text-current'>{t.nav.contact}</span>

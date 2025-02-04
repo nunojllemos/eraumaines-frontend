@@ -118,13 +118,14 @@ header {
     transform: translateY(0);
 
     header {
-        .contact-button {
-            background-color: $black;
-            color: #fff;
+        .contact-button,
+        .locale-button {
+            color: var(--background-color);
+            background-color: var(--text-color);
 
             &.is-home {
-                background-color: #fff;
-                color: $black;
+                background-color: var(--text-color);
+                color: var(--background-color);
             }
         }
     }
@@ -158,9 +159,13 @@ header {
         color: $black;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
 
+        ul {
+            color: var(--background-color);
+        }
+
         .contact-button {
-            background-color: $black;
-            color: #fff;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
     }
 }
@@ -612,7 +617,7 @@ header {
         &:hover {
             & ~ .person-image {
                 .person-marquee {
-                    opacity: 100;
+                    opacity: 0.85;
                     pointer-events: all;
                 }
             }
