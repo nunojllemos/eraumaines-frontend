@@ -21,7 +21,7 @@ const Nos = ({ data }) => {
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
-        className: 'h-[3.75em] text-24 768:text-28 font-power-grotesk swiper-names mb-12',
+        className: 'h-[3.75em] text-24 768:text-28 font-rial swiper-names mb-12',
         direction: 'vertical',
         slidesPerView: 3,
         spaceBetween: 0,
@@ -54,8 +54,8 @@ const Nos = ({ data }) => {
 
     return (
         <>
-            <main className='pb-16'>
-                {(description_01 || description_02) && (
+            <main className='py-24'>
+                {/* {(description_01 || description_02) && (
                     <Container>
                         <Grid>
                             <Col mobileCols={2} tabletCols={9} offsetTablet={3}>
@@ -66,7 +66,7 @@ const Nos = ({ data }) => {
                             </Col>
                         </Grid>
                     </Container>
-                )}
+                )} */}
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
                         const { id, title, name, role, media, description } = person || {}

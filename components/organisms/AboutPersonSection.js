@@ -5,10 +5,15 @@ import AnimatedTitle from '@/molecules/AnimatedTitle'
 import AboutDescription from '@/atoms/AboutDescription'
 import { MouseParallax } from 'react-just-parallax'
 import { getImage, slugify } from '@/utils/utils'
+import HomePersonRole from '../atoms/HomePersonRole'
+import HomePersonName from '../atoms/HomePersonName'
 
 const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => {
+    const ASPECT_RATIO = '3/4'
+    const PARALLAX_STRENGTH = 0.04
+
     return (
-        <section className='1024:mt-14' id={slugify(name)}>
+        <section className='1024:mt-14 1280:mt-24' id={slugify(name)}>
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative pb-4'>
@@ -17,14 +22,14 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                             <>
                                 <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-3 1366:row-start-1'>
                                     {url && (
-                                        <MouseParallax strength={0.04}>
-                                            <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
+                                        <MouseParallax strength={PARALLAX_STRENGTH}>
+                                            <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio={ASPECT_RATIO} />
                                         </MouseParallax>
                                     )}
                                 </div>
                                 <div className='z-0 row-start-1 768:my-0 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1440:col-span-3 1440:col-start-9 1366:col-start-8'>
-                                    <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
-                                    <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
+                                    <HomePersonName name={name} />
+                                    <HomePersonRole role={role} />
                                     <div className='hidden 1366:block text-justify'>
                                         <AboutDescription description={description} />
                                     </div>
@@ -36,16 +41,16 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                         ) : (
                             <>
                                 <div className='z-0 1366:my-0 row-start-1 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1440:col-span-3 1366:col-start-2 1366:row-start-1 1440:col-start-2'>
-                                    <h2 className='relative font-power-grotesk text-50 768:text-70 1280:text-90 leading-[90%]'>{name}</h2>
-                                    <span className='relative text-18 font-light font-power-grotesk opacity-40'>{role}</span>
+                                    <HomePersonName name={name} />
+                                    <HomePersonRole role={role} />
                                     <div className='hidden 1366:block text-justify'>
                                         <AboutDescription description={description} />
                                     </div>
                                 </div>
 
                                 <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-7 1366:row-start-1'>
-                                    <MouseParallax strength={0.04}>
-                                        <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio='3/4' />
+                                    <MouseParallax strength={PARALLAX_STRENGTH}>
+                                        <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio={ASPECT_RATIO} />
                                     </MouseParallax>
                                 </div>
 
