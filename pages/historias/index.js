@@ -82,12 +82,19 @@ const Historias = ({ stories }) => {
     }
 
     const handleScrollEnd = () => {
-        for (let i = 0; i < titlesDiv.current.children[0].children.length; i++) {
-            const element = titlesDiv.current.children[0].children[i]
+        const titles = titlesDiv.current.children[0].children
+        const TITLES_DISTANCE_TO_TOP = titlesDiv.current.getBoundingClientRect().top
 
-            if (innerWidth >= 1280 && element.getBoundingClientRect().top > 300 && element.getBoundingClientRect().top < 350) {
-                element.classList.add('active')
-            } else if (innerWidth < 1280 && element.getBoundingClientRect().top > 280 && element.getBoundingClientRect().top < 330) {
+        for (let i = 0; i < titles.length; i++) {
+            const element = titles[i]
+            const elementDistanceToTop = element.getBoundingClientRect().top
+            const ELEMENT_HEIGHT = element.getBoundingClientRect().height
+            const TITLES_DIV_HEIGHT = titlesDiv.current.getBoundingClientRect().height
+
+            const DESKTOP_MIN_DISTANCE = TITLES_DISTANCE_TO_TOP + TITLES_DIV_HEIGHT - ELEMENT_HEIGHT
+            const DESKTOP_MAX_DISTANCE = TITLES_DISTANCE_TO_TOP + TITLES_DIV_HEIGHT
+
+            if (elementDistanceToTop >= DESKTOP_MIN_DISTANCE && elementDistanceToTop < DESKTOP_MAX_DISTANCE) {
                 element.classList.add('active')
             } else {
                 element.classList.remove('active')
