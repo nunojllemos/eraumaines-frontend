@@ -8,7 +8,7 @@ const AboutSection = ({ title, persons }) => {
 
     return (
         persons.length > 0 && (
-            <div className='py-32'>
+            <div className='py-16 768:py-32'>
                 {title && (
                     <AnimatedTitle isPrimary={false}>
                         {title} . {title} . {title} . {title} .

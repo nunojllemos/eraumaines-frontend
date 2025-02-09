@@ -66,11 +66,11 @@ const Historias = ({ stories }) => {
 
     const handleTitleScroll = () => {
         const imagesDivHeight = imagesDiv.current.getBoundingClientRect().height
-        const imagesDivFirstChildHeight = imagesDiv.current.children[0].getBoundingClientRect().height
+        const imagesDivFirstChildHeight = imagesDiv.current.children[0]?.getBoundingClientRect().height
         const imagesDivTotalScrollValue = imagesDivFirstChildHeight - imagesDivHeight
 
         const titlesDivHeight = titlesDiv.current.getBoundingClientRect().height
-        const titlesDivFirstChildHeight = titlesDiv.current.children[0].getBoundingClientRect().height
+        const titlesDivFirstChildHeight = titlesDiv.current.children[0]?.getBoundingClientRect().height
         const titlesDivTotalScrollValue = titlesDivFirstChildHeight - titlesDivHeight
         const titlesDivCurrentScrollTop = titlesDiv.current.scrollTop
 
@@ -110,7 +110,7 @@ const Historias = ({ stories }) => {
                     >
                         <div
                             ref={titlesDiv}
-                            className='h-[6.25em] font-power-grotesk leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-white/50 after:h-[5em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
+                            className='h-[6.25em] overflow-x-hidden font-rial leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-[var(--background-color)] after:opacity-80 after:h-[5em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
                             onScroll={handleTitleScroll}
                             onMouseEnter={() => setIsHoverTitlesDiv(true)}
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
@@ -127,9 +127,9 @@ const Historias = ({ stories }) => {
                                         return (
                                             <Link key={`stories-title-${id}`} href={`/historias/${slug}`} className='client-name'>
                                                 <div className='relative w-max'>
-                                                    <p className='snap-end bg-white z-10 w-max pr-2'>{title}</p>
+                                                    <p className='snap-end bg-[var(--background-color)] z-10 w-max pr-2'>{title}</p>
                                                     <span className='info-drawer uppercase leading-none text-12 font-subjectivity absolute -z-10 left-full bottom-6 flex items-end gap-8 1280:gap-10'>
-                                                        <span className='block w-8 1280:w-10 bg-white relative z-1 pr-2'>
+                                                        <span className='block w-8 1280:w-10 bg-[var(--background-color)] relative z-1 pr-2'>
                                                             <ExternalLink />
                                                         </span>
                                                         <span className='block whitespace-nowrap'>
@@ -160,7 +160,7 @@ const Historias = ({ stories }) => {
                                             scroll
                                             <br /> down
                                         </p>
-                                        <div className='w-20 1280:w-28 rotate-90 bg-white p-6'>
+                                        <div className='w-20 1280:w-28 rotate-90 text-[var(--text-color)] bg-[var(--background-color)] p-6'>
                                             <div className='animate-up-down'>
                                                 <Arrow />
                                             </div>
@@ -183,7 +183,7 @@ const Historias = ({ stories }) => {
                                             slug={slug}
                                             title={title}
                                             location={location}
-                                            categoryName={categoryName}
+                                            categoryName={categoryName.name}
                                             url={url}
                                         />
                                     )
@@ -194,7 +194,7 @@ const Historias = ({ stories }) => {
                                             scroll
                                             <br /> up
                                         </p>
-                                        <div className='w-20 1280:w-28 -rotate-90 bg-white p-6'>
+                                        <div className='w-20 1280:w-28 -rotate-90 text-[var(--text-color)] bg-[var(--background-color)] p-6'>
                                             <div className='animate-up-down'>
                                                 <Arrow />
                                             </div>

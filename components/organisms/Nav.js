@@ -28,8 +28,8 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
         <nav className='flex justify-end w-full h-full 768:w-auto text-40 768:text-24'>
             <Hamburger handleMenuClink={handleMenuClink} isMenuOpen={isMenuOpen} />
             <div
-                className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center bg-[var(--background-color)]/80 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
-                ${isMenuOpen ? 'left-0' : 'left-full'}`}
+                className={`fixed top-0 flex items-center duration-500 justify-center w-screen h-screen text-center 768:bg-transparent 768:relative 768:h-auto 768:w-auto 768:left-0
+                ${isMenuOpen ? 'bg-[var(--background-color)] left-0' : 'left-full'}`}
             >
                 <ul className={`flex flex-col 768:flex-row 768:items-center`}>
                     {navLinks.map((navLink, i) => {

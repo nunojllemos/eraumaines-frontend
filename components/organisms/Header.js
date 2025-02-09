@@ -36,7 +36,7 @@ const Header = () => {
                     <div className='flex items-center justify-between 768:w-full '>
                         <Link href='/' scroll={false} prefetch={false}>
                             <div
-                                className={`w-20 768:w-24 transition-colors 1280:w-60 shrink-0 h-max relative z-1 ${
+                                className={`w-32 768:w-24 transition-colors 1280:w-60 shrink-0 h-max relative z-1 ${
                                     isMenuOpen ? 'text-[var(--text-color)]' : ''
                                 }`}
                             >
