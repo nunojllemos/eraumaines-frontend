@@ -183,7 +183,7 @@ const Historias = ({ stories }) => {
                                             slug={slug}
                                             title={title}
                                             location={location}
-                                            categoryName={categoryName.name}
+                                            categoryName={categoryName?.name}
                                             url={url}
                                         />
                                     )
