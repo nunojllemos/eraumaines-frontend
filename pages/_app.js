@@ -27,12 +27,15 @@ export default function App({ Component, pageProps }) {
 
             const themeResponse = await fetch(`${baseApi}/theme`)
             const themeData = await themeResponse.json()
-            const { background_color, text_color, title_color } = themeData?.data?.attributes
 
-            // setColors({ background_color, text_color, title_color })
-            document.documentElement.style.setProperty('--background-color', background_color)
-            document.documentElement.style.setProperty('--text-color', text_color)
-            document.documentElement.style.setProperty('--title-color', title_color)
+            if (themeData?.data?.attributes) {
+                const { background_color, text_color, title_color } = themeData?.data?.attributes
+
+                // setColors({ background_color, text_color, title_color })
+                document.documentElement.style.setProperty('--background-color', background_color)
+                document.documentElement.style.setProperty('--text-color', text_color)
+                document.documentElement.style.setProperty('--title-color', title_color)
+            }
         }
 
         fetchData()

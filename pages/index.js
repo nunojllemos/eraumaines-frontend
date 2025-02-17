@@ -34,7 +34,7 @@ export async function getStaticProps(context) {
     const populateQuery =
         'populate=*,hero_media,persons,persons.person_photo,stories,stories.media,stories.review,stories.story,stories.story.cover,stories.story.category,stories.reviews,background_color'
     const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
-    const contentType = 'home'
+    const contentType = 'homepage'
     const localeQuery = `locale=${locale}`
 
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
