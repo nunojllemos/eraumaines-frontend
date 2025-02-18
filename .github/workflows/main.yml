@@ -22,6 +22,6 @@ jobs:
           script: |
             cd ~/frontend
             git pull origin main
-            yarn install
-            yarn build
-            pm2 restart next
+            /root/.nvm/versions/node/v16.20.2/bin/yarn install
+            /root/.nvm/versions/node/v16.20.2/bin/yarn build
+            /root/.nvm/versions/node/v16.20.2/bin/pm2 restart next
