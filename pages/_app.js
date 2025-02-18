@@ -8,7 +8,6 @@ import Favicon from '@/molecules/Favicon'
 import PageTransition from '@/molecules/PageTransition'
 
 export default function App({ Component, pageProps }) {
-    const [colors, setColors] = useState()
     const router = useRouter()
 
     useEffect(() => {
@@ -31,7 +30,8 @@ export default function App({ Component, pageProps }) {
             if (themeData?.data?.attributes) {
                 const { background_color, text_color, title_color } = themeData?.data?.attributes
 
-                // setColors({ background_color, text_color, title_color })
+                console.log(themeData)
+
                 document.documentElement.style.setProperty('--background-color', background_color)
                 document.documentElement.style.setProperty('--text-color', text_color)
                 document.documentElement.style.setProperty('--title-color', title_color)
