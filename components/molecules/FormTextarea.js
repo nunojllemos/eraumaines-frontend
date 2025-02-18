@@ -18,7 +18,7 @@ const FormTextarea = ({ name, placeholder, required = false, maxLength = 650 }) 
                 maxLength={maxLength}
                 name={name}
                 id={name}
-                className='peer py-2 px-4 border w-full h-[8em] resize-none outline-black/80 leading-snug'
+                className='peer border-[var(--text-color)] bg-[var(--background-color)] py-2 px-4 border w-full h-[8em] resize-none outline-black/80 leading-snug'
             ></textarea>
             <label
                 className='transition-all left-4 absolute pointer-events-none text-12 peer-placeholder-shown:top-12 top-2 peer-placeholder-shown:text-20 768:peer-placeholder-shown:text-22 1280:peer-placeholder-shown:text-26'

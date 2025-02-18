@@ -1,21 +1,15 @@
-const FormInput = ({ type = 'text', name, placeholder, required = false }) => {
+const FormInput = ({ type = 'text', name, placeholder, required = false, text }) => {
     return (
-        <div className='default-text relative w-full pt-8'>
+        <div className='default-text relative w-full mt-12'>
+            <span className='text-22'>&#8226; {text}</span>
             <input
                 required={required}
-                className='peer w-full bg-transparent border-b outline-black/80 py-2 px-4'
+                className='peer w-full bg-transparent transition-colors border-b focus:border-b-[var(--title-color)] !outline-none py-2 px-4 mt-4 text-18'
                 type={type}
                 id={name}
-                placeholder=' '
+                placeholder={placeholder}
                 name={name}
             />
-            <label
-                className='transition-all left-4 absolute pointer-events-none text-12 peer-placeholder-shown:top-10 top-2 peer-placeholder-shown:text-20 768:peer-placeholder-shown:text-22 1280:peer-placeholder-shown:text-26'
-                htmlFor={name}
-            >
-                {placeholder}
-                {required && <sup>*</sup>}
-            </label>
         </div>
     )
 }

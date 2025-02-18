@@ -8,6 +8,7 @@ import Favicon from '@/molecules/Favicon'
 import PageTransition from '@/molecules/PageTransition'
 
 export default function App({ Component, pageProps }) {
+    const [metaTitle, setMetaTitle] = useState('')
     const router = useRouter()
 
     useEffect(() => {
@@ -21,31 +22,43 @@ export default function App({ Component, pageProps }) {
     }, [router.asPath])
 
     useEffect(() => {
-        const fetchData = async () => {
-            const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
+        const fetchThemeData = async () => {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/theme?populate=*`)
+            const data = await response.json()
 
-            const themeResponse = await fetch(`${baseApi}/theme`)
-            const themeData = await themeResponse.json()
+            if (data?.data?.attributes) {
+                const { backgroundColor, textColor, titleColor, favicon_dark, favicon_light, meta_title } = data.data.attributes
 
-            if (themeData?.data?.attributes) {
-                const { background_color, text_color, title_color } = themeData?.data?.attributes
+                setMetaTitle(meta_title)
 
-                console.log(themeData)
+                // CREATE FAVICON
+                const lightFaviconLink = document.createElement('link')
+                lightFaviconLink.rel = 'icon'
+                lightFaviconLink.media = '(prefers-color-scheme: light)'
+                document.head.appendChild(lightFaviconLink)
+                lightFaviconLink.href = `${process.env.NEXT_PUBLIC_STRAPI_URL}${favicon_light?.data?.attributes?.url}`
 
-                document.documentElement.style.setProperty('--background-color', background_color)
-                document.documentElement.style.setProperty('--text-color', text_color)
-                document.documentElement.style.setProperty('--title-color', title_color)
+                const darkFaviconLink = document.createElement('link')
+                darkFaviconLink.rel = 'icon'
+                darkFaviconLink.media = '(prefers-color-scheme: dark)'
+                document.head.appendChild(darkFaviconLink)
+                darkFaviconLink.href = `${process.env.NEXT_PUBLIC_STRAPI_URL}${favicon_dark?.data?.attributes?.url}`
+
+                document.documentElement.style.setProperty('--background-color', backgroundColor)
+                document.documentElement.style.setProperty('--text-color', textColor)
+                document.documentElement.style.setProperty('--title-color', titleColor)
             }
         }
 
-        fetchData()
+        fetchThemeData()
     }, [])
 
     return (
         <>
             <Head>
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
-                <Favicon />
+                <meta name='theme-color' content='#ffffff'></meta>
+                <title>{metaTitle || 'Alca'}</title>
             </Head>
             <div className='flex flex-col min-h-screen relative'>
                 <Header />

@@ -14,8 +14,6 @@ const Nos = ({ data }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
-    const description_01 = data?.description_01
-    const description_02 = data?.description_02
     const persons = data?.persons
     const reviews = data?.reviews
 

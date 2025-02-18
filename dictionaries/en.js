@@ -46,7 +46,7 @@ export const en = {
         },
     },
     contacts: {
-        title: 'hello',
+        title: 'Hi there!',
         contact: 'Contacts',
         more_info: 'More information',
         form: {
@@ -58,6 +58,35 @@ export const en = {
             information_01: 'Required field',
             information_02: 'Maximum 650 characters',
             send: 'Send',
+            sendingMessage: 'Sending...',
+            thankYouMessage: 'Obrigado pela mensagem!',
+            options: {
+                default: 'Choose an option',
+                wedding: 'Wedding',
+                baptism: 'Baptism',
+                elopement: 'Elopement',
+                commercial: 'Commercial',
+            },
+            general: {
+                name: 'We want to call you by your name! What is it?',
+                contact: "Where can we talk without sounding like stalkers? We prefer cell phones, don't you?",
+                date: 'When is your big day?',
+                eventType: 'The event:',
+            },
+            wedding: {
+                placeholder: 'Write your answer here',
+                questions: {
+                    _1: 'How and when did you fall in love?',
+                    _2: 'Was the proposal movie-worthy or more discreet?',
+                    _3: 'Do you prefer Netflix & Chill or are you more into outdoor adventures?',
+                    _4: 'Did you come to us by magic, coincidence or meticulous research?',
+                    _5: 'Tell us a bit about the ceremony! Will it be Religious, Civil, Symbolic or will you invent a new style?',
+                    _6: "Where will the big party be? We're packing our bags!",
+                    _7: "What can't be missing on your day?",
+                    _8: 'How many people will celebrate with you?',
+                    _9: 'Tell us about the script of your day! Spoilers, please!',
+                },
+            },
         },
     },
     footer: {

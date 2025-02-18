@@ -17,10 +17,10 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
             <AnimatedTitle>{`${title} . ${title} . ${title} . `}</AnimatedTitle>
             <Container>
                 <div className='relative pb-4'>
-                    <Grid className='py-16 768:py-24 1024:py-48 items-center'>
+                    <Grid className='py-16 768:py-24 1024:py-48 items-center gap-'>
                         {isLeft ? (
                             <>
-                                <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-3 1366:row-start-1'>
+                                <div className='z-0 my-8 768:my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-3 1366:row-start-1'>
                                     {url && (
                                         <MouseParallax strength={PARALLAX_STRENGTH}>
                                             <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio={ASPECT_RATIO} />
@@ -47,13 +47,11 @@ const AboutPersonSection = ({ isLeft, title, description, url, name, role }) => 
                                         <AboutDescription description={description} />
                                     </div>
                                 </div>
-
-                                <div className='z-0 my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-7 1366:row-start-1'>
+                                <div className='z-0 my-8 768:my-24 1366:my-0 row-start-2 col-span-2 768:col-span-8 768:col-start-3 1366:col-span-4 1366:col-start-7 1366:row-start-1'>
                                     <MouseParallax strength={PARALLAX_STRENGTH}>
                                         <ImageContainer forceHeight={false} src={getImage(url)} aspectRatio={ASPECT_RATIO} />
                                     </MouseParallax>
                                 </div>
-
                                 <div className='1366:hidden col-span-2 768:col-span-8 768:col-start-3'>
                                     <AboutDescription description={description} />
                                 </div>
