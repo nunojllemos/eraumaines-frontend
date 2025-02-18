@@ -620,14 +620,14 @@ header {
                 .person-marquee {
                     opacity: 0.9;
                     pointer-events: all;
-
-                    .rfm-child {
-                        display: flex;
-                    }
                 }
             }
         }
     }
+}
+
+.rfm-child {
+    display: flex;
 }
 
 .marquee {
