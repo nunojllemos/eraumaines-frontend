@@ -62,9 +62,9 @@ const Alo = props => {
                             <h2 className='font-medium text-[var(--title-color)]'>{t.contacts.title}</h2>
                         </div>
                         <div className='flex flex-col gap-4 text-16 768:text-18'>
-                            {contacts && contacts.length && (
+                            {contacts && contacts?.length && (
                                 <div>
-                                    {contacts.map((contact, index) => {
+                                    {contacts?.map((contact, index) => {
                                         const component = contact.__component
                                         const contactValue = contact.value
                                         const isEmail = component.includes('email')
@@ -155,7 +155,7 @@ export async function getStaticProps(context) {
     const questionsResponse = await fetch(`${baseApi}/${formsType}?${localeQuery}&${populateQuery}`)
     const questionsData = await questionsResponse.json()
 
-    const options = questionsData?.data.map(question => question?.attributes?.title)
+    const options = questionsData?.data?.map(question => question?.attributes?.title)
 
     return {
         props: {
