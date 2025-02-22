@@ -3,12 +3,12 @@ import Arrows from '@/molecules/Arrows'
 import LinkText from '@/atoms/LinkText'
 import useTranslation from '@/hooks/useTranslation'
 
-const WorkSectionCard = ({ href = '/historias', backgroundColor }) => {
+const WorkSectionCard = ({ href = '/historias' }) => {
     const t = useTranslation()
 
     return (
         <Link
-            style={{ backgroundColor }}
+            style={{ backgroundColor: 'var(--title-color)' }}
             scroll={false}
             href={href}
             className='bg-black shrink-0 text-white hover-arrow p-4 flex flex-col justify-between aspect-square'

@@ -27,7 +27,9 @@ export default function App({ Component, pageProps }) {
             const data = await response.json()
 
             if (data?.data?.attributes) {
-                const { backgroundColor, textColor, titleColor, favicon_dark, favicon_light, meta_title } = data.data.attributes
+                const { background_color, text_color, title_color, favicon_dark, favicon_light, meta_title } = data.data.attributes
+                console.log(background_color, text_color, title_color)
+                console.log(data)
 
                 setMetaTitle(meta_title)
 
@@ -44,9 +46,9 @@ export default function App({ Component, pageProps }) {
                 document.head.appendChild(darkFaviconLink)
                 darkFaviconLink.href = `${process.env.NEXT_PUBLIC_STRAPI_URL}${favicon_dark?.data?.attributes?.url}`
 
-                document.documentElement.style.setProperty('--background-color', backgroundColor)
-                document.documentElement.style.setProperty('--text-color', textColor)
-                document.documentElement.style.setProperty('--title-color', titleColor)
+                document.documentElement.style.setProperty('--background-color', background_color)
+                document.documentElement.style.setProperty('--text-color', text_color)
+                document.documentElement.style.setProperty('--title-color', title_color)
             }
         }
 
