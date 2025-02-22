@@ -145,7 +145,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            data: data.data[0] || null,
+            data: data?.data?.[0] || null,
         },
         revalidate: 10,
     }
