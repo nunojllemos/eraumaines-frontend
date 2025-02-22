@@ -111,8 +111,6 @@ export async function getStaticPaths() {
     const data = await res.json()
     const posts = await data?.data
 
-    console.log(posts)
-
     if (posts) {
         const paths =
             posts?.length > 0 &&

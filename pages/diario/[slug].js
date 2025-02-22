@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Container from '@/components/styled-components/layout/Container'
 import Grid from '@/components/styled-components/layout/Grid'
 import Col from '@/components/styled-components/layout/Col'
@@ -63,7 +62,7 @@ const SlugDiary = ({ data }) => {
                     </Grid>
                 </Container>
             </div>
-            {relatedPosts?.length > 0 && (
+            {relatedPosts && relatedPosts?.length > 0 && (
                 <>
                     <AnimatedTitle>{`${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . ${t.diary.single.related.title} . `}</AnimatedTitle>
                     <Container>
@@ -99,32 +98,33 @@ const SlugDiary = ({ data }) => {
 export async function getStaticPaths() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?populate=*`)
     const data = await res.json()
-    const posts = await data?.data
 
-    console.log(data)
+    if (data) {
+        const posts = await data?.data
 
-    if (posts) {
-        const paths =
-            posts?.length > 0 &&
-            posts?.map(element => {
-                if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
-                    return {
-                        ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-                        enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+        if (posts) {
+            const paths =
+                posts?.length > 0 &&
+                posts?.map(element => {
+                    if (element?.attributes?.localizations?.data[0]?.attributes?.slug) {
+                        return {
+                            ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                            enPost: { params: { slug: element?.attributes?.localizations?.data[0]?.attributes?.slug }, locale: 'en' },
+                        }
+                    } else {
+                        return {
+                            ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
+                        }
                     }
-                } else {
-                    return {
-                        ptPost: { params: { slug: element?.attributes?.slug }, locale: 'pt' },
-                    }
-                }
-            })
+                })
 
-        const enPost = paths[0]?.enPost
-        const ptPost = paths[0]?.ptPost
+            const enPost = paths[0]?.enPost
+            const ptPost = paths[0]?.ptPost
 
-        return {
-            paths: enPost ? [ptPost, enPost] : [ptPost],
-            fallback: 'blocking',
+            return {
+                paths: enPost ? [ptPost, enPost] : [ptPost],
+                fallback: 'blocking',
+            }
         }
     }
 

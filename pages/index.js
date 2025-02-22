@@ -38,8 +38,6 @@ export async function getStaticProps(context) {
     const themeResponse = await fetch(`${baseApi}/theme`)
     const themeData = await themeResponse.json()
 
-    console.log(themeData)
-
     return {
         props: {
             data: data?.data?.attributes || null,

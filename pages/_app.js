@@ -28,9 +28,6 @@ export default function App({ Component, pageProps }) {
 
             if (data?.data?.attributes) {
                 const { background_color, text_color, title_color, favicon_dark, favicon_light, meta_title } = data.data.attributes
-                console.log(background_color, text_color, title_color)
-                console.log(data)
-
                 setMetaTitle(meta_title)
 
                 // CREATE FAVICON
