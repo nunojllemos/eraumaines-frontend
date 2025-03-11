@@ -10,7 +10,8 @@ import WorkSectionInfoCard from '@/components/molecules/WorkSectionInfoCard'
 import useTranslation from '@/hooks/useTranslation'
 import { getImage } from '@/utils/utils'
 
-const SlugHistorias = ({ data }) => {
+const SlugStories = ({ data }) => {
+    const attributes = data?.attributes
     const content = data?.attributes?.content
     const title = data?.attributes?.title
     const location = data?.attributes?.location
@@ -20,6 +21,8 @@ const SlugHistorias = ({ data }) => {
     const mime = data?.attributes?.cover?.data?.attributes?.mime
     const categoryName = data?.attributes?.category?.data?.attributes?.name
     const t = useTranslation()
+
+    console.log(data)
 
     const publishedDate = new Date(publishedAt)
     const day = publishedDate?.getDate()
@@ -74,17 +77,16 @@ const SlugHistorias = ({ data }) => {
                     <Container>
                         <Grid rowGap={3}>
                             {related?.data?.map(relatedStory => {
-                                const id = relatedStory
-                                const slug = relatedStory?.attributes
-                                const title = relatedStory?.attributes
-                                const description = relatedStory?.attributes
-                                const location = relatedStory?.attributes
+                                const slug = relatedStory?.attributes?.slug
+                                const title = relatedStory?.attributes?.title
+                                const description = relatedStory?.attributes?.description
+                                const location = relatedStory?.attributes?.location
                                 const relateCategoryName = relatedStory?.attributes?.category?.data?.attributes?.name || ''
-                                const url = relatedStory?.attributes?.data?.attributes
-                                const mime = relatedStory?.attributes?.data?.attributes
+                                const url = relatedStory?.attributes?.cover?.data?.attributes?.url
+                                const mime = relatedStory?.attributes?.cover?.data?.attributes?.mime
 
                                 return (
-                                    <Col key={`related-story-${id}`} mobileCols={2} tabletCols={4}>
+                                    <Col key={`related-story-${slug}`} mobileCols={2} tabletCols={4}>
                                         <WorkSectionInfoCard
                                             typeOfMedia={mime}
                                             category={relateCategoryName}
@@ -163,4 +165,4 @@ export async function getStaticProps(context) {
     }
 }
 
-export default SlugHistorias
+export default SlugStories

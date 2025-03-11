@@ -14,8 +14,11 @@ const Nos = ({ data }) => {
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
+    const description = data?.description
     const persons = data?.persons
     const reviews = data?.reviews
+
+    console.log(description)
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -53,18 +56,17 @@ const Nos = ({ data }) => {
     return (
         <>
             <main className='py-24'>
-                {/* {(description_01 || description_02) && (
-                    <Container>
-                        <Grid>
-                            <Col mobileCols={2} tabletCols={9} offsetTablet={3}>
-                                {description_01 && <p className='text-24 768:text-32 1280:text-50 font-light'>{description_01}</p>}
-                            </Col>
-                            <Col mobileCols={2} tabletCols={9}>
-                                {description_02 && <p className='text-24 768:text-32 1280:text-50 mt-16 768:mt-20 1280:mt-32 font-light'>{description_02}</p>}
-                            </Col>
-                        </Grid>
-                    </Container>
-                )} */}
+                <section className='mb-32 768:mb-64'>
+                    {description && (
+                        <Container>
+                            <Grid>
+                                <Col desktopCols={9} offsetDesktop={2}>
+                                    <p className='text-24 768:text-32 font-light leading-snug'>{description}</p>
+                                </Col>
+                            </Grid>
+                        </Container>
+                    )}
+                </section>
                 {persons?.length > 0 &&
                     persons.map((person, index) => {
                         const { id, title, name, role, media, description } = person || {}

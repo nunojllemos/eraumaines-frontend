@@ -16,7 +16,7 @@ export const en = {
             ticker: 'more about',
         },
         grid: {
-            cta_text: 'Stories with art',
+            cta_text: 'Artsy PhotoFilm',
             cta_link_text: 'See all',
         },
     },

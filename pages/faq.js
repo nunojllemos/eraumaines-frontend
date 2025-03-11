@@ -9,7 +9,7 @@ import { getImage } from '@/utils/utils'
 const Faq = ({ data }) => {
     const title = data?.title
     const faqs = data?.faqs
-    const url = data?.media.data?.attributes
+    const url = data?.media.data?.attributes?.url
 
     return (
         <main className='pb-16'>

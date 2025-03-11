@@ -13,13 +13,13 @@ import useTranslation from '@/hooks/useTranslation'
 const Email = ({ value }) => (
     <span>
         E:{' '}
-        <a className='underline underline-offset-2' href={`mailto:${value}`}>
+        <a className='underline underline-offset-2 tracking-wider' href={`mailto:${value}`}>
             {value}
         </a>
     </span>
 )
 
-const Phone = ({ value }) => <div>T: {value}</div>
+const Phone = ({ value }) => <div className='tracking-wide'>T: {value}</div>
 
 const Alo = props => {
     const form = useRef()
@@ -63,7 +63,7 @@ const Alo = props => {
                         </div>
                         <div className='flex flex-col gap-4 text-16 768:text-18'>
                             {contacts && contacts?.length && (
-                                <div>
+                                <>
                                     {contacts?.map((contact, index) => {
                                         const component = contact.__component
                                         const contactValue = contact.value
@@ -72,7 +72,7 @@ const Alo = props => {
                                         if (isEmail) return <Email key={`${component}:${contact?.id}`} value={contactValue} />
                                         return <Phone key={`${component}:${contact.id}`} value={contact.value} />
                                     })}
-                                </div>
+                                </>
                             )}
                         </div>
                         <div className='pt-32 pb-8 default-text'>

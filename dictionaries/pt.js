@@ -16,7 +16,7 @@ export const pt = {
             ticker: 'mais sobre',
         },
         grid: {
-            cta_text: 'Histórias com arte',
+            cta_text: 'Artsy PhotoFilm',
             cta_link_text: 'Ver todas',
         },
     },

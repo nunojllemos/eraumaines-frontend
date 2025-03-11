@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Instagram, Facebook } from '@/components/atoms/Icons'
-import { Envelope } from '@/components/atoms/Icons'
+import { Instagram, Facebook, Envelope, YouTube } from '@/components/atoms/Icons'
 import Hamburger from '@/molecules/Hamburger'
 import useTranslation from '@/hooks/useTranslation'
 
@@ -54,9 +53,9 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                                 <Instagram />
                             </div>
                         </a>
-                        <a href='https://www.facebook.com/' rel='noreferrer' target='_blank'>
-                            <div className='w-14 768:w-10 hover:opacity-60 duration-200 aspect-square social-link'>
-                                <Facebook />
+                        <a href='https://www.youtube.com/' rel='noreferrer' target='_blank'>
+                            <div className='w-14 768:w-14 hover:opacity-60 duration-200 aspect-square social-link'>
+                                <YouTube />
                             </div>
                         </a>
                     </li>

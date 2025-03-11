@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm'
 const termos = ({ data }) => {
     const title = data?.title
     const content = data?.content
-    const url = data?.media.data.attributes
+    const url = data?.media.data.attributes?.url
 
     return (
         <main className='pb-16'>
