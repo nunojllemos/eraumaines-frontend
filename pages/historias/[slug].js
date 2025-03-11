@@ -73,7 +73,7 @@ const SlugStories = ({ data }) => {
 
             {related?.data?.length > 0 && (
                 <>
-                    <AnimatedTitle>mais histórias . mais histórias . mais histórias . </AnimatedTitle>
+                    <AnimatedTitle>{`${t.history.single.related.title} . ${t.history.single.related.title} . ${t.history.single.related.title} . ${t.history.single.related.title} . `}</AnimatedTitle>
                     <Container>
                         <Grid rowGap={3}>
                             {related?.data?.map(relatedStory => {

@@ -40,7 +40,7 @@ export const pt = {
         scroll: ':) volta para baixo',
         single: {
             related: {
-                title: 'outros artigos',
+                title: 'mais histórias',
             },
             published: 'Publicado em',
         },

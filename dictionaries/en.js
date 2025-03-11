@@ -40,7 +40,7 @@ export const en = {
         scroll: ':) scroll back down',
         single: {
             related: {
-                title: 'other articles',
+                title: 'more stories',
             },
             published: 'Published at',
         },
