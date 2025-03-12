@@ -14,3 +14,23 @@ export const slugify = string => {
         .replace(/\s+/g, '-') // replace spaces with hyphens
         .replace(/-+/g, '-') // remove consecutive hyphens
 }
+
+export const getSocialNetworkName = url => {
+    const isYoutube = url.includes('youtube')
+    const isFacebook = url.includes('facebook')
+    const isTwitter = url.includes('x.com')
+    const isTikTok = url.includes('tiktok')
+    const isLinkedin = url.includes('linkedin')
+    const isVimeo = url.includes('vimeo')
+    const isInstagram = url.includes('instagram')
+
+    return {
+        isYoutube,
+        isFacebook,
+        isTwitter,
+        isTikTok,
+        isLinkedin,
+        isVimeo,
+        isInstagram,
+    }
+}

@@ -3,8 +3,12 @@ import { useRouter } from 'next/router'
 import { Instagram, Facebook, Envelope, YouTube } from '@/components/atoms/Icons'
 import Hamburger from '@/molecules/Hamburger'
 import useTranslation from '@/hooks/useTranslation'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { getImage, getSocialNetworkName } from '@/utils/utils'
 
 const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
+    const [socials, setSocials] = useState()
     const t = useTranslation()
     const router = useRouter()
 
@@ -22,6 +26,21 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
         //     url: '/diario',
         // },
     ]
+
+    useEffect(() => {
+        const fetchContactData = async () => {
+            const contactsPopulateQuery = 'fields[0]=socials&populate=socials.url,socials.icon'
+            const contactContentType = 'contact'
+            const baseApi = String(process.env.NEXT_PUBLIC_API_URL)
+            const localeQuery = `locale=en`
+
+            const contactsResponse = await fetch(`${baseApi}/${contactContentType}?${localeQuery}&${contactsPopulateQuery}`)
+            const data = await contactsResponse.json()
+            setSocials(data?.data?.attributes?.socials)
+        }
+
+        fetchContactData()
+    }, [])
 
     return (
         <nav className='flex justify-end w-full h-full 768:w-auto text-40 768:text-24'>
@@ -48,7 +67,26 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                         )
                     })}
                     <li className='flex gap-8 justify-center items-center order-last 768:order-none '>
-                        <a href='https://www.instagram.com/' rel='noreferrer' target='_blank'>
+                        {socials &&
+                            socials.length > 0 &&
+                            socials.map(social => {
+                                const { isYoutube, isFacebook, isTwitter, isTikTok, isLinkedin, isVimeo, isInstagram } = getSocialNetworkName(social.url)
+
+                                return (
+                                    <a key={`social-${social.id}`} href={social.url} rel='noreferrer' target='_blank'>
+                                        <div className='w-14 768:w-10 hover:opacity-60 duration-200 aspect-square social-link'>
+                                            {isYoutube && <YouTube />}
+                                            {isInstagram && <Instagram />}
+                                            {isFacebook && <Facebook />}
+                                            {isTwitter && <Facebook />}
+                                            {isTikTok && <Facebook />}
+                                            {isLinkedin && <Facebook />}
+                                            {isVimeo && <Facebook />}
+                                        </div>
+                                    </a>
+                                )
+                            })}
+                        {/* <a href='https://www.instagram.com/' rel='noreferrer' target='_blank'>
                             <div className='w-14 768:w-10 hover:opacity-60 duration-200 aspect-square social-link'>
                                 <Instagram />
                             </div>
@@ -57,7 +95,7 @@ const Nav = ({ isMenuOpen, isHomepage, handleMenuClink, locale, locales }) => {
                             <div className='w-14 768:w-14 hover:opacity-60 duration-200 aspect-square social-link'>
                                 <YouTube />
                             </div>
-                        </a>
+                        </a> */}
                     </li>
                     <li className='pb-8 768:pb-0 768:pl-8 '>
                         <Link href='/alo' scroll={false}>

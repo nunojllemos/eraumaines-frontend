@@ -5,7 +5,7 @@ import AnimatedTitle from '@/molecules/AnimatedTitle'
 import WorkSectionCard from '@/molecules/WorkSectionCard'
 import StoriesGridElement from './StoriesGridElement'
 
-const WorkSection = ({ stories, title, backgroundColor }) => {
+const WorkSection = ({ stories, title, backgroundColor, storiesTitle }) => {
     if (!stories || stories.length === 0) return
 
     return (
@@ -16,7 +16,7 @@ const WorkSection = ({ stories, title, backgroundColor }) => {
                     <Grid>
                         <Col mobileCols={2} tabletCols={4} desktopCols={3}>
                             <div className='flex flex-col h-full gap-4 768:gap-8'>
-                                <WorkSectionCard />
+                                <WorkSectionCard title={storiesTitle} />
                                 {stories[1] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[1]} />}
                                 {stories[2] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[2]} />}
                                 {stories[5] && <StoriesGridElement backgroundColor={backgroundColor} story={stories[5]} />}

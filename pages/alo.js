@@ -61,7 +61,7 @@ const Alo = props => {
                         <div className='pb-8 default-text pt-16 768:pt-0'>
                             <h2 className='font-medium text-[var(--title-color)]'>{t.contacts.title}</h2>
                         </div>
-                        <div className='flex flex-col gap-4 text-16 768:text-18'>
+                        <div className='flex flex-col gap-8 text-16 768:text-18'>
                             {contacts && contacts?.length && (
                                 <>
                                     {contacts?.map((contact, index) => {
