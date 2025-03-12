@@ -84,6 +84,11 @@ button {
     cursor: pointer;
 }
 
+pre {
+    white-space: pre-wrap;
+    word-break: keep-all;
+}
+
 a {
     text-decoration: none;
     color: currentColor;
@@ -99,10 +104,6 @@ input {
 
 input[type='search'] {
     -webkit-appearance: none;
-}
-
-header {
-    // transition: background-color $transition 1s, color $transition 1s;
 }
 
 .headroom {
