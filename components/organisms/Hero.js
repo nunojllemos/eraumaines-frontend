@@ -14,7 +14,7 @@ const Hero = ({ title, media, typeOfMedia }) => {
 
     return (
         <div className='h-[90vh] 1024:h-screen mt-[-87px] 1280:mt-[-97px] relative'>
-            <div className='absolute top-0 h-full w-full z-[-1]'>
+            <div className='absolute top-0 h-full w-full z-[-1] bg-[#000]'>
                 <HeroVideo media={media} typeOfMedia={typeOfMedia} isMuted={isMuted} />
             </div>
             <div className='h-full w-full absolute flex flex-col justify-end text-[var(--text-color)] pb-5'>
