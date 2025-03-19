@@ -9,6 +9,8 @@ import 'swiper/css/autoplay'
 import { Autoplay, EffectFade } from 'swiper'
 import useTranslation from '@/hooks/useTranslation'
 import AboutPersonSection from '@/components/organisms/AboutPersonSection'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const Nos = ({ data }) => {
     const t = useTranslation()
@@ -17,8 +19,6 @@ const Nos = ({ data }) => {
     const description = data?.description
     const persons = data?.persons
     const reviews = data?.reviews
-
-    console.log(description)
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -61,7 +61,9 @@ const Nos = ({ data }) => {
                         <Container>
                             <Grid>
                                 <Col desktopCols={9} offsetDesktop={2}>
-                                    <p className='text-24 768:text-32 font-light leading-snug'>{description}</p>
+                                    <div className='text-24 768:text-32 font-light leading-snug'>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
+                                    </div>
                                 </Col>
                             </Grid>
                         </Container>
