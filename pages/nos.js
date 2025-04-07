@@ -69,7 +69,7 @@ const Nos = ({ data }) => {
                     {description && (
                         <Container>
                             <Grid>
-                                <Col mobileCols={12} desktopCols={9} offsetDesktop={2}>
+                                <Col mobileCols={12} desktopCols={6} offsetDesktop={3}>
                                     <div className='1024:p-32'>
                                         <div className='grid grid-cols-2 relative z-1'>
                                             <div className='relative aspect-[3/4] ml-8 1024:ml-16'>
@@ -83,13 +83,13 @@ const Nos = ({ data }) => {
                                                 </ScrollParallax>
                                             </div>
                                         </div>
-                                        <div className='relative aspect-video mt-48 1024:mt-16 z-0'>
+                                        <div className='relative aspect-video mt-48 1024:mt-48 z-0'>
                                             <ScrollParallax strength={0.25}>
                                                 <Image fill src={getImage(thirdImage)} alt='' className='object-cover' />
                                             </ScrollParallax>
                                         </div>
                                     </div>
-                                    <div className='text-24 768:text-32 font-light leading-snug mt-48 relative'>
+                                    <div className='text-24 768:text-32 font-light leading-snug mt-24 relative'>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
                                     </div>
                                 </Col>
