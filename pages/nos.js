@@ -11,14 +11,23 @@ import useTranslation from '@/hooks/useTranslation'
 import AboutPersonSection from '@/components/organisms/AboutPersonSection'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import Image from 'next/image'
+import { getImage } from '@/utils/utils'
+import { ScrollParallax } from 'react-just-parallax'
 
 const Nos = ({ data }) => {
+    const PARALLAX_STRENGTH = 0.04
+
     const t = useTranslation()
     const namesSwiperRef = useRef(null)
     const contentSwiperRef = useRef(null)
     const description = data?.description
     const persons = data?.persons
     const reviews = data?.reviews
+    const images = data?.images?.data
+    const firstImage = images?.[0]?.attributes?.url
+    const secondImage = images?.[1]?.attributes?.url
+    const thirdImage = images?.[2]?.attributes?.url
 
     const namesSwiperOptions = {
         ref: namesSwiperRef,
@@ -60,8 +69,27 @@ const Nos = ({ data }) => {
                     {description && (
                         <Container>
                             <Grid>
-                                <Col desktopCols={9} offsetDesktop={2}>
-                                    <div className='text-24 768:text-32 font-light leading-snug'>
+                                <Col mobileCols={12} desktopCols={9} offsetDesktop={2}>
+                                    <div className='1024:p-32'>
+                                        <div className='grid grid-cols-2 relative z-1'>
+                                            <div className='relative aspect-[3/4] ml-8 1024:ml-16'>
+                                                <ScrollParallax strength={0.3}>
+                                                    <Image fill src={getImage(firstImage)} alt='' className='object-cover' />
+                                                </ScrollParallax>
+                                            </div>
+                                            <div className='relative aspect-[3/4] ml-4 1024:ml-24 mr-4 1024:mr-12'>
+                                                <ScrollParallax strength={0.4}>
+                                                    <Image fill src={getImage(secondImage)} alt='' className='object-cover' />
+                                                </ScrollParallax>
+                                            </div>
+                                        </div>
+                                        <div className='relative aspect-video mt-48 1024:mt-16 z-0'>
+                                            <ScrollParallax strength={0.25}>
+                                                <Image fill src={getImage(thirdImage)} alt='' className='object-cover' />
+                                            </ScrollParallax>
+                                        </div>
+                                    </div>
+                                    <div className='text-24 768:text-32 font-light leading-snug mt-48 relative'>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
                                     </div>
                                 </Col>
@@ -158,7 +186,7 @@ export default Nos
 export async function getStaticProps(context) {
     const { locale } = context
 
-    const populateQuery = 'populate=*,persons,persons.media,reviews'
+    const populateQuery = 'populate=*,persons,persons.media,reviews,images'
     const baseApi = process.env.NEXT_PUBLIC_API_URL
     const contentType = 'about'
     const localeQuery = `locale=${locale}`
