@@ -11,6 +11,7 @@ import useTranslation from '@/hooks/useTranslation'
 import StoryCard from '@/components/organisms/StoryCard'
 
 const Historias = ({ stories }) => {
+    console.log('')
     const t = useTranslation()
     const router = useRouter()
     const imagesDiv = useRef()
