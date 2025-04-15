@@ -39,8 +39,6 @@ export async function getStaticProps(context) {
     const contactsResponse = await fetch(`${baseApi}/${contactContentType}?${localeQuery}&${contactsPopulateQuery}`)
     const contactsData = await contactsResponse.json()
 
-    console.log(contactsData)
-
     const res = await fetch(`${baseApi}/${contentType}?${localeQuery}&${populateQuery}`)
     const data = await res.json()
 

@@ -22,8 +22,6 @@ const SlugStories = ({ data }) => {
     const categoryName = data?.attributes?.category?.data?.attributes?.name
     const t = useTranslation()
 
-    console.log(data)
-
     const publishedDate = new Date(publishedAt)
     const day = publishedDate?.getDate()
     const month = publishedDate?.getMonth() + 1
@@ -53,7 +51,7 @@ const SlugStories = ({ data }) => {
                         <Col mobileCols={2} tabletCols={10} offsetTablet={1} desktopCols={5} offsetDesktop={2}>
                             <div className='my-12 768:my-16'>
                                 <DiaryTitle title={title} />
-                                <div className='text-18 font-light font-subjectivity'>
+                                <div className='text-18 font-light'>
                                     <p>
                                         {location}, {categoryName}
                                     </p>

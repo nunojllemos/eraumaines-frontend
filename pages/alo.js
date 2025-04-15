@@ -37,9 +37,6 @@ const Alo = props => {
         e.preventDefault()
         setIsSending(true)
 
-        console.log(process.env.NEXT_PUBLIC_SERVICE_ID)
-        console.log(templateId)
-
         emailjs.sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, templateId, form.current, process.env.NEXT_PUBLIC_PUBLIC_KEY).then(
             result => {
                 setFormStatus(result.status)
