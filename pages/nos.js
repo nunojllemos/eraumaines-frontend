@@ -87,7 +87,7 @@ const Nos = ({ data }) => {
                                             </ScrollParallax>
                                         </div>
                                     </div>
-                                    <div className='text-24 768:text-32 font-light leading-snug mt-24 relative text-justify 1024:text-left'>
+                                    <div className='text-16 768:text-22 font-light leading-snug mt-24 relative text-justify 1024:text-left'>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
                                     </div>
                                 </Col>
