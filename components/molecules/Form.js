@@ -7,13 +7,13 @@ const Form = ({ form }) => {
     const questions = form?.[0]?.attributes?.questions
 
     return (
-        <>
+        <div key={form.id}>
             {questions &&
                 questions.length &&
-                questions?.map(question => {
+                questions?.map((question, index) => {
                     return (
                         <FormInput
-                            key={question.input_name}
+                            key={`${form?.[0]?.attributes?.title}-${question.input_name}-${index}`}
                             text={question.question}
                             name={question.input_name}
                             placeholder={question.placeholder}
@@ -21,7 +21,7 @@ const Form = ({ form }) => {
                         />
                     )
                 })}
-        </>
+        </div>
     )
 }
 

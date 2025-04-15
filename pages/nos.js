@@ -6,7 +6,8 @@ import Grid from '@/components/styled-components/layout/Grid'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
-import { Autoplay, EffectFade } from 'swiper'
+import 'swiper/css/navigation'
+import { Navigation, EffectFade } from 'swiper'
 import useTranslation from '@/hooks/useTranslation'
 import AboutPersonSection from '@/components/organisms/AboutPersonSection'
 import ReactMarkdown from 'react-markdown'
@@ -35,11 +36,8 @@ const Nos = ({ data }) => {
         direction: 'vertical',
         slidesPerView: 3,
         spaceBetween: 0,
-        modules: [Autoplay],
-        speed: 1000,
-        autoplay: {
-            disableOnInteraction: false,
-        },
+        modules: [Navigation],
+        navigation: true,
         loop: true,
         onTransitionEnd: swiper => contentSwiperRef?.current?.swiper?.slideTo(swiper.realIndex),
     }
@@ -89,7 +87,7 @@ const Nos = ({ data }) => {
                                             </ScrollParallax>
                                         </div>
                                     </div>
-                                    <div className='text-24 768:text-32 font-light leading-snug mt-24 relative'>
+                                    <div className='text-24 768:text-32 font-light leading-snug mt-24 relative text-justify 1024:text-left'>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
                                     </div>
                                 </Col>

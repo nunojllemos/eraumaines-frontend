@@ -24,18 +24,23 @@ const Phone = ({ value }) => <div className='tracking-wide'>T: {value}</div>
 const Alo = props => {
     const form = useRef()
     const [contactType, setContactType] = useState('')
+    const [templateId, setTemplateId] = useState('')
     const [formStatus, setFormStatus] = useState(0)
     const [isSending, setIsSending] = useState(false)
     const t = useTranslation()
     const title = props?.data?.title
     const image = props?.data?.image?.data?.attributes?.url
     const contacts = props?.data?.contacts
+    const options = props?.questionsData?.map(question => question?.attributes?.title)
 
     const sendEmail = e => {
         e.preventDefault()
         setIsSending(true)
 
-        emailjs.sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, process.env.NEXT_PUBLIC_TEMPLATE_ID, form.current, process.env.NEXT_PUBLIC_PUBLIC_KEY).then(
+        console.log(process.env.NEXT_PUBLIC_SERVICE_ID)
+        console.log(templateId)
+
+        emailjs.sendForm(process.env.NEXT_PUBLIC_SERVICE_ID, templateId, form.current, process.env.NEXT_PUBLIC_PUBLIC_KEY).then(
             result => {
                 setFormStatus(result.status)
                 setIsSending(false)
@@ -86,19 +91,26 @@ const Alo = props => {
                             >
                                 {t.contacts.form.sendingMessage}
                             </div>
-                            <FormInput text={t.contacts.form.general.name} name='name' placeholder={t.contacts.form.name} required={true} />
-                            <FormInput text={t.contacts.form.general.contact} name='name-1' placeholder={t.contacts.form.name} required={true} />
-                            <FormInput text={t.contacts.form.general.date} type='date' name='name-1' placeholder={t.contacts.form.name} required={true} />
+                            <FormInput text={t.contacts.form.general.name} name='names' placeholder={t.contacts.form.name} required={true} />
+                            <FormInput text={t.contacts.form.general.contact} name='contact' placeholder={t.contacts.form.name} required={true} />
+                            <FormInput text={t.contacts.form.general.date} type='date' name='date' placeholder={t.contacts.form.name} required={true} />
 
                             <div className='mt-12'>
                                 <span className='mb-12 text-22'>{t.contacts.form.general.eventType}</span>
                                 <div className='mt-12 py-3 px-6 border w-max rounded-lg border-[var(--text-color)]'>
                                     <select
-                                        onChange={e => setContactType(e.target.value)}
+                                        onChange={e => {
+                                            setContactType(e.target.value)
+
+                                            const template_id = props?.questionsData.filter(data => data?.attributes?.title === e.target.value)?.[0]?.attributes
+                                                ?.template_id
+
+                                            setTemplateId(template_id)
+                                        }}
                                         className='text-16 bg-[var(--background-color)] text-[var(--text-color)] focus-visible:!border-none !outline-none'
                                     >
                                         <option value='default'>{t.contacts.form.options.default}</option>
-                                        {props?.options?.map(option => (
+                                        {options?.map(option => (
                                             <option key={`${option}:key`} value={option}>
                                                 {option}
                                             </option>
@@ -161,6 +173,7 @@ export async function getStaticProps(context) {
         props: {
             data: pageData?.data?.attributes || null,
             questions: questionsData?.data || null,
+            questionsData: questionsData?.data || null,
             options,
         },
         revalidate: 10,

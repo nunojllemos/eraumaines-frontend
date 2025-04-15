@@ -117,8 +117,8 @@ const Historias = ({ stories }) => {
                     >
                         <div
                             ref={titlesDiv}
-                            className='h-[6.25em] overflow-x-hidden font-rial leading-tight overflow-y-auto w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-[var(--background-color)] after:opacity-80 after:h-[5em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full'
-                            onScroll={handleTitleScroll}
+                            className='h-[6.25em] font-rial leading-tight w-[calc(100%_+_16px)] scroll-smooth snap-y snap-mandatory shrink-0 after:block after:absolute after:bg-[var(--background-color)] after:opacity-80 after:h-[5em] 1280:after:h-[5em] after:left-0 after:top-0 after:z-10 after:w-full overflow-hidden'
+                            // onScroll={handleTitleScroll}
                             onMouseEnter={() => setIsHoverTitlesDiv(true)}
                             onMouseLeave={() => setIsHoverTitlesDiv(false)}
                         >
