@@ -155,7 +155,7 @@ const Historias = ({ stories }) => {
                     <Col desktop={1024} mobileCols={2} tabletCols={12} desktopCols={6} className='overflow-x-hidden'>
                         <div
                             ref={imagesDiv}
-                            className='1024:h-[calc(100vh_-_16rem)] overflow-y-auto 1024:w-[calc(100%_+_16px)] scroll-smooth snap-y snap-proximity'
+                            className='1024:h-[calc(100vh_-_16rem)] 1024:overflow-y-auto 1024:w-[calc(100%_+_16px)] 1024:scroll-smooth 1024:snap-y 1024:snap-proximity'
                             onScroll={handleImagesScroll}
                             onMouseOver={() => setIsHoverImagesDiv(true)}
                             onMouseOut={() => setIsHoverImagesDiv(false)}
