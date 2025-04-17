@@ -25,7 +25,7 @@ const Historias = ({ stories }) => {
 
     useEffect(() => {
         const newArray = new Array(...stories)
-        newArray.unshift({ attributes: { title: t.history.scroll } })
+        newArray.unshift({ attributes: { title: '' } })
         newArray.unshift({ id: '-1', attributes: { title: '' } })
         newArray.unshift({ id: '-2', attributes: { title: '' } })
         newArray.unshift({ id: '-3', attributes: { title: '' } })

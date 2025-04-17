@@ -51,7 +51,7 @@ const StoryCard = ({ mime, slug, url, title, location, categoryName }) => {
                     <ExternalLink />
                 </span>
             </span>
-            <span className='874:hidden absolute top-[calc(100%_+_1rem)] right-0 block text-12 uppercase'>
+            <span className='874:hidden absolute top-[calc(100%_+_1rem)] right-[2px] block text-12 uppercase'>
                 {location}, {categoryName}
             </span>
         </div>
