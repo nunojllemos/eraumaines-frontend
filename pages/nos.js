@@ -152,7 +152,7 @@ const Nos = ({ data }) => {
                                                     key={`content-slide-${id}`}
                                                     className='text-16 768:text-22 font-light leading-tight text-justify !transition-all'
                                                 >
-                                                    {content}
+                                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                                                 </SwiperSlide>
                                             )
                                         })}
@@ -165,7 +165,7 @@ const Nos = ({ data }) => {
                                                     key={`content-slide-${id}`}
                                                     className='text-16 768:text-22 font-light leading-tight text-justify !transition-all'
                                                 >
-                                                    {content}
+                                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                                                 </SwiperSlide>
                                             )
                                         })}
