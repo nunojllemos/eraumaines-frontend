@@ -52,6 +52,7 @@ export const en = {
         form: {
             date: 'Date',
             name: 'Name',
+            contacts: 'Contacts',
             local: 'Local',
             message: 'Message',
             maximumMessage: 'Maximum characters reached.',
@@ -69,7 +70,7 @@ export const en = {
             },
             general: {
                 name: 'We want to call you by your name! What is it?',
-                contact: "Where can we talk without sounding like stalkers? We prefer cell phones, don't you?",
+                contact: 'Where can we talk without sounding like stalkers? Leave us your phone number or email address?',
                 date: 'When is your big day?',
                 eventType: 'The event:',
             },

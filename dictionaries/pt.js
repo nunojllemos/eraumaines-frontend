@@ -52,6 +52,7 @@ export const pt = {
         form: {
             date: 'Data',
             name: 'Nome',
+            contacts: 'Contactos',
             local: 'Local',
             message: 'Mensagem',
             maximumMessage: 'Máximo de caracteres atingido.',
@@ -69,7 +70,7 @@ export const pt = {
             },
             general: {
                 name: 'Queremos te chamar pelo nome! Qual é?',
-                contact: 'Por onde podemos falar sem parecer stalkers? Nós preferimos telemóvel e tu?',
+                contact: 'Por onde podemos falar sem parecer stalkers? Deixa-nos o teu contacto telefónico ou email?',
                 date: 'Quando é o grande dia?',
                 eventType: 'O evento:',
             },

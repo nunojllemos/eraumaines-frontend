@@ -89,7 +89,7 @@ const Alo = props => {
                                 {t.contacts.form.sendingMessage}
                             </div>
                             <FormInput text={t.contacts.form.general.name} name='names' placeholder={t.contacts.form.name} required={true} />
-                            <FormInput text={t.contacts.form.general.contact} name='contact' placeholder={t.contacts.form.name} required={true} />
+                            <FormInput text={t.contacts.form.general.contact} name='contact' placeholder={t.contacts.form.contacts} required={true} />
                             <FormInput text={t.contacts.form.general.date} type='date' name='date' placeholder={t.contacts.form.name} required={true} />
 
                             <div className='mt-12'>
